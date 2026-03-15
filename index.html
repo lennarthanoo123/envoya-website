@@ -607,6 +607,19 @@
     .hero-stat-line { text-align: center; font-size: 13px; color: #334155; margin-top: 1rem; letter-spacing: 0.02em; }
 
     /* ── COMPARE TABLE ── */
+    /* ── PROBLEM SECTION ── */
+    .problem-section { padding: 80px 40px; border-bottom: 1px solid #0f1a28; }
+    .problem-inner { max-width: 900px; margin: 0 auto; }
+    .problem-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #ef4444; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); display: inline-block; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; }
+    .problem-h { font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: var(--text); line-height: 1.15; margin-bottom: 1.2rem; letter-spacing: -0.02em; }
+    .problem-sub { font-size: 15px; color: #64748b; line-height: 1.75; margin-bottom: 2.5rem; max-width: 700px; }
+    .problem-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .problem-card { background: rgba(239,68,68,0.03); border: 1px solid rgba(239,68,68,0.12); border-radius: 12px; padding: 24px; transition: border-color 0.2s; }
+    .problem-card:hover { border-color: rgba(239,68,68,0.25); }
+    .problem-card-title { font-size: 14px; font-weight: 700; color: #f1f5f9; margin-bottom: 10px; line-height: 1.4; }
+    .problem-card-text { font-size: 13px; color: #64748b; line-height: 1.7; }
+    @media (max-width: 768px) { .problem-cards { grid-template-columns: 1fr; } }
+
     .compare-section { padding: 80px 40px; }
     .compare-wrap { max-width: 800px; margin: 0 auto; overflow-x: auto; }
     .compare-table { width: 100%; border-collapse: collapse; }
@@ -781,6 +794,29 @@
   </div>
 </div>
 <p class="hero-stat-line fade-in">From 0 to 20+ meetings per week — in 4 weeks.</p>
+
+<!-- PROBLEM SECTION -->
+<section class="problem-section fade-in">
+  <div class="problem-inner">
+    <div class="problem-tag">THE PROBLEM</div>
+    <h2 class="problem-h">Most B2B companies lose deals every day<br>they never even see.</h2>
+    <p class="problem-sub">Not because your product is bad. Not because your team is lazy. But because your competitor reaches 10× more prospects today than you do. Every day you wait, you lose deals to someone selling the same thing — just smarter outreach.</p>
+    <div class="problem-cards">
+      <div class="problem-card">
+        <h3 class="problem-card-title">Your pipeline is a mess</h3>
+        <p class="problem-card-text">2–3 new meetings per week on average. While your competitor books 15. With the same product. The same team. Just a smarter system.</p>
+      </div>
+      <div class="problem-card">
+        <h3 class="problem-card-title">Your automation doesn't work</h3>
+        <p class="problem-card-text">Copy-paste templates. Mass messages. 0.3% reply rate. Prospects recognise spam from a mile away. You damage your reputation with every generic email you send.</p>
+      </div>
+      <div class="problem-card">
+        <h3 class="problem-card-title">Your best salespeople waste their time</h3>
+        <p class="problem-card-text">Hours per day looking up data, copying messages, building lists. That's €80,000 per year in salary thrown away on admin. While they could be talking to clients.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- FEATURES -->
 <section class="section" id="features">

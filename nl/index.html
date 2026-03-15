@@ -549,6 +549,17 @@
     .hero-stat-line { text-align: center; font-size: 13px; color: #334155; margin-top: 1rem; letter-spacing: 0.02em; }
 
     /* ── COMPARE TABLE ── */
+    .problem-section { padding: 80px 40px; border-bottom: 1px solid #0f1a28; }
+    .problem-inner { max-width: 900px; margin: 0 auto; }
+    .problem-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #ef4444; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); display: inline-block; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; }
+    .problem-h { font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: var(--text); line-height: 1.15; margin-bottom: 1.2rem; letter-spacing: -0.02em; }
+    .problem-sub { font-size: 15px; color: #64748b; line-height: 1.75; margin-bottom: 2.5rem; max-width: 700px; }
+    .problem-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .problem-card { background: rgba(239,68,68,0.03); border: 1px solid rgba(239,68,68,0.12); border-radius: 12px; padding: 24px; transition: border-color 0.2s; }
+    .problem-card:hover { border-color: rgba(239,68,68,0.25); }
+    .problem-card-title { font-size: 14px; font-weight: 700; color: #f1f5f9; margin-bottom: 10px; line-height: 1.4; }
+    .problem-card-text { font-size: 13px; color: #64748b; line-height: 1.7; }
+    @media (max-width: 768px) { .problem-cards { grid-template-columns: 1fr; } }
     .compare-section { padding: 80px 40px; }
     .compare-wrap { max-width: 800px; margin: 0 auto; overflow-x: auto; }
     .compare-table { width: 100%; border-collapse: collapse; }
@@ -724,6 +735,29 @@
   </div>
 </div>
 <p class="hero-stat-line fade-in">Van 0 naar 20+ afspraken per week — in 4 weken.</p>
+
+<!-- PROBLEM SECTION -->
+<section class="problem-section fade-in">
+  <div class="problem-inner">
+    <div class="problem-tag">HET PROBLEEM</div>
+    <h2 class="problem-h">De meeste B2B-bedrijven verliezen elke dag deals<br>die ze nooit te zien krijgen.</h2>
+    <p class="problem-sub">Niet omdat je product slecht is. Niet omdat je team lui is. Maar omdat je concurrent vandaag 10× meer prospects bereikt dan jij. Elke dag dat je wacht, verlies je deals aan iemand die hetzelfde verkoopt maar slimmer outreacht.</p>
+    <div class="problem-cards">
+      <div class="problem-card">
+        <h3 class="problem-card-title">Je pipeline is een ramp</h3>
+        <p class="problem-card-text">Gemiddeld 2-3 nieuwe afspraken per week. Terwijl je concurrent er 15 boekt. Met hetzelfde product. Hetzelfde team. Alleen een slimmer systeem.</p>
+      </div>
+      <div class="problem-card">
+        <h3 class="problem-card-title">Je automatisering werkt niet</h3>
+        <p class="problem-card-text">Copy-paste templates. Massaberichten. Antwoordpercentage van 0,3%. Prospects herkennen spam op 100 meter afstand. Je beschadigt je reputatie met elke generieke mail die je verstuurt.</p>
+      </div>
+      <div class="problem-card">
+        <h3 class="problem-card-title">Je beste verkopers verspillen hun tijd</h3>
+        <p class="problem-card-text">Uren per dag kwijt aan data opzoeken, berichten kopiëren, lijsten bouwen. Dat is €80.000 per jaar aan salaris dat je weggooit aan administratie. Terwijl ze met klanten zouden kunnen praten.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- FEATURES -->
 <section class="section" id="features">
