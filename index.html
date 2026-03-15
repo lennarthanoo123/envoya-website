@@ -224,38 +224,41 @@
 
     /* ── TRUST BAR ── */
     .trust-bar {
-      padding: 36px 40px;
+      padding: 40px 40px;
       border-bottom: 0.5px solid var(--border);
-      display: flex; flex-wrap: wrap; align-items: center;
-      gap: 24px; justify-content: center;
+      text-align: center;
     }
     .trust-label {
+      display: block;
       font-size: 11px; color: var(--text-faint);
       letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 28px;
     }
-    .trust-divider {
-      width: 1px; height: 20px; background: var(--border);
+    .trust-divider { display: none; }
+    .trust-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      max-width: 900px;
+      margin: 0 auto;
     }
-    .trust-logos { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
-    .logo-badge { display: flex; align-items: center; justify-content: center; padding: 0.6rem 1.4rem; border: 1px solid #1a2535; border-radius: 8px; background: rgba(255,255,255,0.01); transition: border-color 0.2s; }
-    .logo-badge:hover { border-color: #1e3050; }
-    .logo-badge--cronos { border-color: rgba(99,102,241,0.15); }
-    .logo-badge-text { font-size: 13px; font-weight: 600; color: #364f69; letter-spacing: 0.02em; font-family: -apple-system, 'Inter', sans-serif; transition: color 0.2s; }
-    .logo-badge:hover .logo-badge-text { color: #4f6a87; }
-    .logo-badge-text--indigo { color: #5b6db5; }
-    .logo-badge--cronos:hover .logo-badge-text { color: #818cf8; }
-
-    .trust-stats {
-      display: flex; gap: 32px; flex-wrap: wrap; margin-left: auto;
+    .logo-badge {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.2rem 2rem;
+      border-right: 1px solid #0f1a28;
+      transition: background 0.2s;
     }
-    .trust-stat { text-align: center; }
-    .trust-stat-num {
-      font-size: 22px; font-weight: 300; color: var(--indigo);
-      letter-spacing: -0.01em;
-    }
-    .trust-stat-lbl {
-      font-size: 11px; color: var(--text-muted); margin-top: 2px;
-    }
+    .logo-badge:last-child { border-right: none; }
+    .logo-badge:hover { background: rgba(255,255,255,0.02); }
+    .logo-badge img { height: 36px; width: auto; max-width: 180px; object-fit: contain; filter: brightness(0) invert(1) opacity(0.4); transition: filter 0.2s; }
+    .logo-badge:hover img { filter: brightness(0) invert(1) opacity(0.7); }
+    .logo-badge--cronos img { filter: brightness(10) opacity(0.35); }
+    .logo-badge--cronos:hover img { filter: brightness(10) opacity(0.6); }
+    .logo-badge-text { font-size: 15px; font-weight: 600; color: #2a3a4f; letter-spacing: 0.02em; }
+    .logo-badge:hover .logo-badge-text { color: #4a6080; }
+    .trust-stats { display: none; }
 
     /* ── STATS ROW ── */
     .stats-row {
@@ -783,29 +786,6 @@
   </div>
 </div>
 
-<!-- STATS -->
-<div class="stats-row">
-  <div class="stat-box fade-in">
-    <div class="stat-num"><span class="counter accent" data-target="35" data-suffix="+">35</span></div>
-    <div class="stat-lbl">Meetings booked</div>
-    <div class="stat-sub">in 90 days</div>
-  </div>
-  <div class="stat-box fade-in">
-    <div class="stat-num"><span class="counter accent" data-target="14.4" data-suffix="%" data-decimal="1">14.4</span></div>
-    <div class="stat-lbl">Response rate</div>
-    <div class="stat-sub">vs 3% average</div>
-  </div>
-  <div class="stat-box fade-in">
-    <div class="stat-num"><span class="counter accent" data-target="2" data-suffix="×">2</span></div>
-    <div class="stat-lbl">Faster than manual</div>
-    <div class="stat-sub">fully autonomous</div>
-  </div>
-  <div class="stat-box fade-in">
-    <div class="stat-num"><span class="accent">0</span></div>
-    <div class="stat-lbl">SDR required</div>
-    <div class="stat-sub">agent handles it</div>
-  </div>
-</div>
 <p class="hero-stat-line fade-in">From 0 to 20+ meetings per week — in 4 weeks.</p>
 
 <!-- PROBLEM SECTION -->
