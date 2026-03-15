@@ -799,6 +799,61 @@
   </div>
 </section>
 
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="section-tag fade-in">Features</div>
+  <div class="section-h fade-in">Everything your outbound needs.</div>
+  <p class="section-p fade-in">Lead Machine runs every stage of outbound — from finding the right people to writing the perfect message — without you lifting a finger.</p>
+  <div class="features-grid">
+    <div class="feature-card fade-in">
+      <span class="feature-icon">🎯</span>
+      <div class="feature-title">Smart ICP</div>
+      <div class="feature-desc">Learns who buys from you. Targets more like them. The system gets smarter with every deal you close.</div>
+    </div>
+    <div class="feature-card fade-in">
+      <span class="feature-icon">✉️</span>
+      <div class="feature-title">AI Emails</div>
+      <div class="feature-desc">Personalised hooks. Sector-matched value props. Sent automatically — at the right time, in the right tone.</div>
+    </div>
+    <div class="feature-card fade-in">
+      <span class="feature-icon">📈</span>
+      <div class="feature-title">Self-learning</div>
+      <div class="feature-desc">Every reply, meeting and deal trains the system. No setup required. It improves continuously on its own.</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="section compare-section fade-in">
+  <div class="section-tag">Comparison</div>
+  <h2 class="section-h">Envoya vs. traditional outreach</h2>
+  <p class="section-p" style="max-width:640px;margin:0 auto 2.5rem;">
+    Many companies wonder: what's actually different from what we already do?
+    This isn't about working slightly more efficiently — it's a fundamentally different approach
+    that delivers results simply unachievable with traditional methods.
+  </p>
+  <div class="compare-wrap">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th class="compare-th-label">Metric</th>
+          <th class="compare-th-old">Traditional</th>
+          <th class="compare-th-new">Envoya Lead Machine</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Outreach volume per day</td><td>10–30 messages</td><td class="compare-win">100–500+ messages</td></tr>
+        <tr><td>Personalisation level</td><td>Generic or manual</td><td class="compare-win">AI-driven, data-based</td></tr>
+        <tr><td>Cold outreach reply rate</td><td>1–3%</td><td class="compare-win">10–15%</td></tr>
+        <tr><td>Meetings booked per week</td><td>2–4</td><td class="compare-win">8–15+</td></tr>
+        <tr><td>Manual work per day</td><td>4–6 hours</td><td class="compare-win">Less than 1 hour</td></tr>
+        <tr><td>Scalability</td><td>Limited by team size</td><td class="compare-win">Infinitely scalable</td></tr>
+        <tr><td>Optimisation</td><td>Ad hoc, gut feeling</td><td class="compare-win">Continuous, data-driven</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
 <!-- HOW IT WORKS -->
 <!-- PRODUCT SHOWCASE -->
 <section class="section showcase-section fade-in" id="showcase">
@@ -991,61 +1046,6 @@
       <span class="meeting-badge">TU/e</span>
       <span class="meeting-badge">Meesman</span>
     </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="section" id="features">
-  <div class="section-tag fade-in">Features</div>
-  <div class="section-h fade-in">Everything your outbound needs.</div>
-  <p class="section-p fade-in">Lead Machine runs every stage of outbound — from finding the right people to writing the perfect message — without you lifting a finger.</p>
-  <div class="features-grid">
-    <div class="feature-card fade-in">
-      <span class="feature-icon">🎯</span>
-      <div class="feature-title">Smart ICP</div>
-      <div class="feature-desc">Learns who buys from you. Targets more like them. The system gets smarter with every deal you close.</div>
-    </div>
-    <div class="feature-card fade-in">
-      <span class="feature-icon">✉️</span>
-      <div class="feature-title">AI Emails</div>
-      <div class="feature-desc">Personalised hooks. Sector-matched value props. Sent automatically — at the right time, in the right tone.</div>
-    </div>
-    <div class="feature-card fade-in">
-      <span class="feature-icon">📈</span>
-      <div class="feature-title">Self-learning</div>
-      <div class="feature-desc">Every reply, meeting and deal trains the system. No setup required. It improves continuously on its own.</div>
-    </div>
-  </div>
-</section>
-
-<!-- COMPARISON TABLE -->
-<section class="section compare-section fade-in">
-  <div class="section-tag">Comparison</div>
-  <h2 class="section-h">Envoya vs. traditional outreach</h2>
-  <p class="section-p" style="max-width:640px;margin:0 auto 2.5rem;">
-    Many companies wonder: what's actually different from what we already do?
-    This isn't about working slightly more efficiently — it's a fundamentally different approach
-    that delivers results simply unachievable with traditional methods.
-  </p>
-  <div class="compare-wrap">
-    <table class="compare-table">
-      <thead>
-        <tr>
-          <th class="compare-th-label">Metric</th>
-          <th class="compare-th-old">Traditional</th>
-          <th class="compare-th-new">Envoya Lead Machine</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Outreach volume per day</td><td>10–30 messages</td><td class="compare-win">100–500+ messages</td></tr>
-        <tr><td>Personalisation level</td><td>Generic or manual</td><td class="compare-win">AI-driven, data-based</td></tr>
-        <tr><td>Cold outreach reply rate</td><td>1–3%</td><td class="compare-win">10–15%</td></tr>
-        <tr><td>Meetings booked per week</td><td>2–4</td><td class="compare-win">8–15+</td></tr>
-        <tr><td>Manual work per day</td><td>4–6 hours</td><td class="compare-win">Less than 1 hour</td></tr>
-        <tr><td>Scalability</td><td>Limited by team size</td><td class="compare-win">Infinitely scalable</td></tr>
-        <tr><td>Optimisation</td><td>Ad hoc, gut feeling</td><td class="compare-win">Continuous, data-driven</td></tr>
-      </tbody>
-    </table>
   </div>
 </section>
 

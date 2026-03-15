@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Envoya — Lead Machine</title>
-  <meta name="description" content="Lead Machine finds, qualifies and personalises outreach to your ideal clients — automatically. We send the agent. You close the deal." />
+  <meta name="description" content="Lead Machine vindt, kwalificeert en personaliseert outreach naar jouw ideale klanten — automatisch. Wij sturen de agent. Jij sluit de deal." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%236366f1'/><text y='.9em' font-size='60' x='50%' text-anchor='middle' fill='white' font-family='system-ui'>E</text></svg>">
-  <meta property="og:title" content="Envoya Lead Machine — We send the agent. You close the deal." />
-  <meta property="og:description" content="AI-powered outbound that finds, qualifies and personalises outreach to your ideal clients — automatically." />
-  <meta property="og:url" content="https://envoya.tech" />
+  <meta property="og:title" content="Envoya Lead Machine — Wij sturen de agent. Jij sluit de deal." />
+  <meta property="og:description" content="AI-gestuurde outbound die automatisch jouw ideale klanten vindt, kwalificeert en persoonlijk benadert." />
+  <meta property="og:url" content="https://envoya.tech/nl/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -108,56 +108,16 @@
       padding: 80px 40px 70px;
     }
     .hero-text { text-align: left; }
-    .hero-tagline-main {
-      font-size: clamp(18px, 2.2vw, 24px);
-      font-weight: 400;
-      color: #cbd5e1;
-      line-height: 1.4;
-      margin-bottom: 1.2rem;
-      letter-spacing: -0.01em;
-    }
-    .hero-visual {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .hero-visual img {
-      width: 100%;
-      height: 520px;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      border-radius: 20px;
-    }
-    .hero-visual-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(8,14,26,0.2) 0%, transparent 60%),
-                  linear-gradient(to left, transparent 40%, rgba(8,14,26,0.6) 100%);
-      border-radius: 20px;
-      pointer-events: none;
-    }
-    .hero-visual-glow {
-      position: absolute;
-      inset: -2px;
-      border-radius: 22px;
-      background: transparent;
-      border: 1px solid rgba(99,102,241,0.3);
-      box-shadow: 0 0 40px rgba(99,102,241,0.2), inset 0 0 40px rgba(99,102,241,0.05);
-      pointer-events: none;
-    }
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; padding: 60px 24px 50px; }
-      .hero-text { text-align: center; }
-      .hero-visual { max-width: 360px; margin: 0 auto; }
-      .hero-visual img { height: 360px; }
-    }
+    .hero-tagline-main { font-size: clamp(18px, 2.2vw, 24px); font-weight: 400; color: #cbd5e1; line-height: 1.4; margin-bottom: 1.2rem; letter-spacing: -0.01em; }
+    .hero-visual { position: relative; border-radius: 20px; overflow: hidden; }
+    .hero-visual img { width: 100%; height: 520px; object-fit: cover; object-position: center top; display: block; border-radius: 20px; }
+    .hero-visual-overlay { position: absolute; inset: 0; background: linear-gradient(to left, transparent 40%, rgba(8,14,26,0.6) 100%); border-radius: 20px; pointer-events: none; }
+    .hero-visual-glow { position: absolute; inset: -2px; border-radius: 22px; border: 1px solid rgba(99,102,241,0.3); box-shadow: 0 0 40px rgba(99,102,241,0.2); pointer-events: none; }
+    @media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; padding: 60px 24px 50px; } .hero-text { text-align: center; } .hero-visual { max-width: 360px; margin: 0 auto; } .hero-visual img { height: 360px; } }
 
     .hero-glow {
       position: absolute; inset: 0; z-index: 0;
-      background: radial-gradient(ellipse 80% 60% at 20% 50%, rgba(99,102,241,0.2) 0%, transparent 70%),
-                  radial-gradient(ellipse 60% 60% at 80% 30%, rgba(129,140,248,0.15) 0%, transparent 60%);
+      background: radial-gradient(ellipse 80% 60% at 20% 50%, rgba(99,102,241,0.2) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -185,7 +145,7 @@
 
     .hero-sub {
       font-size: 17px; color: var(--text-dim);
-      max-width: 520px; margin: 0 auto 40px;
+      max-width: 540px; margin: 0 auto 40px;
       line-height: 1.7; font-weight: 300;
     }
 
@@ -224,41 +184,36 @@
 
     /* ── TRUST BAR ── */
     .trust-bar {
-      padding: 40px 40px;
+      padding: 36px 40px;
       border-bottom: 0.5px solid var(--border);
-      text-align: center;
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: 24px; justify-content: center;
     }
     .trust-label {
-      display: block;
       font-size: 11px; color: var(--text-faint);
       letter-spacing: 0.1em; text-transform: uppercase;
-      margin-bottom: 28px;
     }
-    .trust-divider { display: none; }
-    .trust-logos {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      max-width: 900px;
-      margin: 0 auto;
+    .trust-divider {
+      width: 1px; height: 20px; background: var(--border);
     }
-    .logo-badge {
-      flex: 1;
-      display: flex; align-items: center; justify-content: center;
-      padding: 1.2rem 2rem;
-      border-right: 1px solid #0f1a28;
-      transition: background 0.2s;
+    .trust-logos { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+    .logo-badge { display: flex; align-items: center; justify-content: center; padding: 0.5rem 1.2rem; border: 1px solid #1a2535; border-radius: 8px; background: rgba(255,255,255,0.01); }
+    .logo-badge img { height: 22px; width: auto; max-width: 110px; object-fit: contain; filter: brightness(0) invert(1) opacity(0.35); transition: filter 0.2s; }
+    .logo-badge:hover img { filter: brightness(0) invert(1) opacity(0.65); }
+    .logo-badge--cronos { border-color: rgba(99,102,241,0.2); }
+    .logo-badge--cronos img { filter: brightness(0) invert(1) sepia(1) hue-rotate(210deg) saturate(3) opacity(0.45); }
+
+    .trust-stats {
+      display: flex; gap: 32px; flex-wrap: wrap; margin-left: auto;
     }
-    .logo-badge:last-child { border-right: none; }
-    .logo-badge:hover { background: rgba(255,255,255,0.02); }
-    .logo-badge img { height: 56px; width: auto; max-width: 240px; object-fit: contain; filter: brightness(0) invert(1); transition: filter 0.2s; }
-    .logo-badge:hover img { filter: brightness(0) invert(1) opacity(0.7); }
-    .logo-badge--cronos img { filter: brightness(0) invert(1); }
-    .logo-badge--cronos:hover img { filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
-    .logo-badge-text { font-size: 15px; font-weight: 600; color: #2a3a4f; letter-spacing: 0.02em; }
-    .logo-badge:hover .logo-badge-text { color: #4a6080; }
-    .trust-stats { display: none; }
+    .trust-stat { text-align: center; }
+    .trust-stat-num {
+      font-size: 22px; font-weight: 300; color: var(--indigo);
+      letter-spacing: -0.01em;
+    }
+    .trust-stat-lbl {
+      font-size: 11px; color: var(--text-muted); margin-top: 2px;
+    }
 
     /* ── STATS ROW ── */
     .stats-row {
@@ -274,7 +229,6 @@
       font-size: 40px; font-weight: 300; color: var(--text);
       letter-spacing: -0.02em; line-height: 1;
     }
-    .stat-num sup { font-size: 20px; color: var(--indigo); }
     .stat-num .accent { color: var(--indigo); }
     .stat-lbl {
       font-size: 11px; color: var(--text-muted);
@@ -356,7 +310,6 @@
     }
 
     /* ── LOGO GRID SECTION ── */
-    /* ── Logo grid — Clay/Linear style wordmarks ── */
     .logo-grid-section {
       background: #080e1a;
       border-top: 1px solid rgba(255,255,255,0.06);
@@ -372,44 +325,33 @@
       margin-bottom: 2.5rem;
     }
     .logo-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0;
-      max-width: 960px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem 2rem;
+      max-width: 900px;
       margin: 0 auto;
       padding: 0 40px;
-      border: 1px solid #0f1a28;
-      border-radius: 12px;
-      overflow: hidden;
     }
     .logo-item {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.2rem 1.6rem;
-      border-right: 1px solid #0f1a28;
-      border-bottom: 1px solid #0f1a28;
-      transition: background 0.2s;
-      background: transparent;
-      flex: 0 0 20%;
+      padding: 1rem 1.2rem;
+      border: 1px solid #1a2235;
+      border-radius: 8px;
+      transition: border-color 0.2s, background 0.2s;
+      background: rgba(255,255,255,0.01);
     }
-    .logo-item:hover { background: rgba(255,255,255,0.025); }
-    .logo-img { height: 32px; width: auto; max-width: 120px; object-fit: contain; filter: invert(1); opacity: 0.5; transition: opacity 0.2s; }
-    .logo-item:hover .logo-img { opacity: 0.85; }
-    /* Clay/Linear style wordmark */
-    .logo-wordmark {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      color: #1e3045;
-      text-align: center;
-      transition: color 0.2s;
-      font-family: -apple-system, 'Inter', 'Helvetica Neue', sans-serif;
-      white-space: nowrap;
+    .logo-item:hover { border-color: #2d3f5a; background: rgba(255,255,255,0.03); }
+    .logo-item img {
+      height: 28px;
+      width: auto;
+      max-width: 110px;
+      object-fit: contain;
+      filter: brightness(0) invert(1) opacity(0.22);
+      transition: filter 0.2s;
     }
-    .logo-item:hover .logo-wordmark { color: #3a5570; }
-    @media (max-width: 640px) { .logo-item { flex: 0 0 33.33%; } }
+    .logo-item:hover img { filter: brightness(0) invert(1) opacity(0.45); }
 
     /* ── PRICING ── */
     .pricing-box {
@@ -477,7 +419,6 @@
       border: 0.5px solid var(--border);
       border-radius: 12px; padding: 32px;
     }
-    /* Case study cards */
     .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
     .case-card { background: var(--card-alt); border: 0.5px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.2s; }
     .case-card:hover { border-color: rgba(99,102,241,0.3); }
@@ -534,17 +475,6 @@
       padding: 100px 40px;
       text-align: center;
     }
-    /* Founder section */
-    .founder-section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
-    .founder-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .founder-images { display: flex; flex-direction: column; gap: 12px; }
-    .founder-img-main { width: 100%; border-radius: 16px; object-fit: cover; max-height: 280px; filter: brightness(0.88) contrast(1.05); border: 1px solid #1e293b; }
-    .founder-img-team { width: 100%; border-radius: 12px; object-fit: cover; max-height: 180px; object-position: center 30%; filter: brightness(0.82) contrast(1.05) saturate(0.85); border: 1px solid #1e293b; }
-    .founder-h { font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; color: var(--text); margin-bottom: 1.2rem; line-height: 1.2; }
-    .founder-text p { color: var(--text-dim); line-height: 1.8; margin-bottom: 1rem; font-size: 15px; }
-    .founder-sig { color: #6366f1 !important; font-style: italic; font-weight: 600; }
-    .section-label-sm { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6366f1; margin-bottom: 1rem; }
-    @media (max-width: 768px) { .founder-inner { grid-template-columns: 1fr; } }
     /* Human CTA */
     .human-cta-inner { display: flex; align-items: center; gap: 2.5rem; max-width: 760px; margin: 0 auto; text-align: left; }
     .human-avatar { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid #6366f1; flex-shrink: 0; }
@@ -622,7 +552,6 @@
     .hero-stat-line { text-align: center; font-size: 13px; color: #475569; margin-top: 1rem; letter-spacing: 0.02em; }
 
     /* ── COMPARE TABLE ── */
-    /* ── PROBLEM SECTION ── */
     .problem-section { padding: 80px 40px; border-bottom: 1px solid #0f1a28; }
     .problem-inner { max-width: 900px; margin: 0 auto; }
     .problem-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #ef4444; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); display: inline-block; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; }
@@ -634,7 +563,6 @@
     .problem-card-title { font-size: 14px; font-weight: 700; color: #f1f5f9; margin-bottom: 10px; line-height: 1.4; }
     .problem-card-text { font-size: 13px; color: #94a3b8; line-height: 1.7; }
     @media (max-width: 768px) { .problem-cards { grid-template-columns: 1fr; } }
-
     .compare-section { padding: 80px 40px; }
     .compare-wrap { max-width: 800px; margin: 0 auto; overflow-x: auto; }
     .compare-table { width: 100%; border-collapse: collapse; }
@@ -718,14 +646,14 @@
     <span class="nav-logo-text">envoya</span>
   </div>
   <div class="nav-links">
-    <a href="#features">Features</a>
-    <a href="#how-it-works">How it works</a>
-    <a href="#pricing">Pricing</a>
+    <a href="#features">Functies</a>
+    <a href="#how-it-works">Hoe het werkt</a>
+    <a href="#pricing">Prijzen</a>
     <a href="#contact">Contact</a>
   </div>
   <div style="display:flex;align-items:center;">
-    <a href="/nl/" class="nav-lang">NL</a>
-    <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="nav-cta">Book a demo</a>
+    <a href="/" class="nav-lang">EN</a>
+    <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="nav-cta">Plan een demo</a>
   </div>
 </nav>
 
@@ -734,26 +662,24 @@
   <div class="hero-glow"></div>
   <div class="hero-inner">
 
-  <!-- Left: text content -->
   <div class="hero-text">
     <div class="hero-badge">
       <span class="hero-badge-dot"></span>
       Powered by Envoya AI
     </div>
-    <div class="hero-tag">THE SOLUTION</div>
-    <h1>We send the Agent.<br>You close the Deal.</h1>
-    <p class="hero-tagline-main">What if your sales team woke up tomorrow<br>with 15 new appointments in the inbox?</p>
-    <p class="hero-sub">Envoya installs an AI sales agent that reaches 500+ qualified prospects per day, runs 24/7, and personalises every message based on real data. Your team closes deals. We build the pipeline.</p>
+    <div class="hero-tag">DE OPLOSSING</div>
+    <h1>Wij sturen de Agent.<br>Jij sluit de Deal.</h1>
+    <p class="hero-tagline-main">Wat als je salesteam morgen wakker werd<br>met 15 nieuwe afspraken in de inbox?</p>
+    <p class="hero-sub">Envoya installeert een AI-salesagent die 500+ gekwalificeerde prospects per dag bereikt, 24/7 draait, en elk bericht personaliseert op basis van echte data. Jouw team sluit deals. Wij zorgen voor de pipeline.</p>
     <div class="hero-ctas">
       <div class="hero-ctas-row">
-        <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="btn-primary">Book a demo</a>
-        <a href="#features" class="btn-ghost">How it works ↓</a>
+        <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="btn-primary">Plan een demo</a>
+        <a href="#features" class="btn-ghost">Hoe het werkt ↓</a>
       </div>
       
     </div>
   </div>
 
-  <!-- Right: agent visual -->
   <div class="hero-visual">
     <img src="/assets/agent-hero.jpg" alt="Envoya AI Agent" />
     <div class="hero-visual-overlay"></div>
@@ -765,51 +691,109 @@
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
-  <span class="trust-label">Trusted by teams at</span>
+  <span class="trust-label">Vertrouwd door teams bij</span>
   <div class="trust-divider"></div>
-  <div class="trust-logos">
+    <div class="trust-logos">
     <div class="logo-badge"><img src="/assets/logos/jungleminds.png" alt="Jungle Minds" style="height:56px;width:auto;max-width:240px;filter:none;opacity:0.8;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.8"></div>
     <div class="logo-badge"><img src="/assets/logos/brushai.png" alt="Brush AI" style="height:56px;width:auto;max-width:240px;filter:brightness(0) invert(1);transition:filter 0.2s;"></div>
     <div class="logo-badge logo-badge--cronos"><img src="/assets/logos/cronos.png" alt="Cronos Group" style="height:26px;width:auto;filter:brightness(0) invert(1);transition:filter 0.2s;" onmouseover="this.style.filter='brightness(0) invert(1)'" onmouseout="this.style.filter='brightness(0) invert(1)'"></div>
   </div>
+    <div class="logo-badge"><img src="/assets/logos/brushai.png" alt="Brush AI" style="height:56px;width:auto;max-width:240px;filter:brightness(0) invert(1);transition:filter 0.2s;"></div>
+    <div class="logo-badge logo-badge--cronos"><img src="/assets/logos/cronos.png" alt="Cronos Group" style="height:40px;width:auto;max-width:220px;filter:none;opacity:0.8;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.8"></div>
+  </div>
 </div>
 
-<p class="hero-stat-line fade-in">From 0 to 20+ meetings per week — in 4 weeks.</p>
+<p class="hero-stat-line fade-in">Van 0 naar 20+ afspraken per week — in 4 weken.</p>
 
 <!-- PROBLEM SECTION -->
 <section class="problem-section fade-in">
   <div class="problem-inner">
-    <div class="problem-tag">THE PROBLEM</div>
-    <h2 class="problem-h">Most B2B companies lose deals every day<br>they never even see.</h2>
-    <p class="problem-sub">Not because your product is bad. Not because your team is lazy. But because your competitor reaches 10× more prospects today than you do. Every day you wait, you lose deals to someone selling the same thing — just smarter outreach.</p>
+    <div class="problem-tag">HET PROBLEEM</div>
+    <h2 class="problem-h">De meeste B2B-bedrijven verliezen elke dag deals<br>die ze nooit te zien krijgen.</h2>
+    <p class="problem-sub">Niet omdat je product slecht is. Niet omdat je team lui is. Maar omdat je concurrent vandaag 10× meer prospects bereikt dan jij. Elke dag dat je wacht, verlies je deals aan iemand die hetzelfde verkoopt maar slimmer outreacht.</p>
     <div class="problem-cards">
       <div class="problem-card">
-        <h3 class="problem-card-title">Your pipeline is a mess</h3>
-        <p class="problem-card-text">2–3 new meetings per week on average. While your competitor books 15. With the same product. The same team. Just a smarter system.</p>
+        <h3 class="problem-card-title">Je pipeline is een ramp</h3>
+        <p class="problem-card-text">Gemiddeld 2-3 nieuwe afspraken per week. Terwijl je concurrent er 15 boekt. Met hetzelfde product. Hetzelfde team. Alleen een slimmer systeem.</p>
       </div>
       <div class="problem-card">
-        <h3 class="problem-card-title">Your automation doesn't work</h3>
-        <p class="problem-card-text">Copy-paste templates. Mass messages. 0.3% reply rate. Prospects recognise spam from a mile away. You damage your reputation with every generic email you send.</p>
+        <h3 class="problem-card-title">Je automatisering werkt niet</h3>
+        <p class="problem-card-text">Copy-paste templates. Massaberichten. Antwoordpercentage van 0,3%. Prospects herkennen spam op 100 meter afstand. Je beschadigt je reputatie met elke generieke mail die je verstuurt.</p>
       </div>
       <div class="problem-card">
-        <h3 class="problem-card-title">Your best salespeople waste their time</h3>
-        <p class="problem-card-text">Hours per day looking up data, copying messages, building lists. That's €80,000 per year in salary thrown away on admin. While they could be talking to clients.</p>
+        <h3 class="problem-card-title">Je beste verkopers verspillen hun tijd</h3>
+        <p class="problem-card-text">Uren per dag kwijt aan data opzoeken, berichten kopiëren, lijsten bouwen. Dat is €80.000 per jaar aan salaris dat je weggooit aan administratie. Terwijl ze met klanten zouden kunnen praten.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="section-tag fade-in">Functies</div>
+  <div class="section-h fade-in">Alles wat jouw outbound nodig heeft.</div>
+  <p class="section-p fade-in">Lead Machine voert elke fase van outbound uit — van de juiste mensen vinden tot het perfecte bericht schrijven — zonder dat jij er iets voor hoeft te doen.</p>
+  <div class="features-grid">
+    <div class="feature-card fade-in">
+      <span class="feature-icon">🎯</span>
+      <div class="feature-title">Slim ICP</div>
+      <div class="feature-desc">Leert wie bij jou koopt. Richt zich op meer mensen zoals zij. Het systeem wordt slimmer met elke deal die je sluit.</div>
+    </div>
+    <div class="feature-card fade-in">
+      <span class="feature-icon">✉️</span>
+      <div class="feature-title">AI-e-mails</div>
+      <div class="feature-desc">Gepersonaliseerde hooks. Sector-afgestemde waardepropositie. Automatisch verstuurd — op het juiste moment, in de juiste toon.</div>
+    </div>
+    <div class="feature-card fade-in">
+      <span class="feature-icon">📈</span>
+      <div class="feature-title">Zelflerend</div>
+      <div class="feature-desc">Elke reply, meeting en deal traint het systeem. Geen setup vereist. Het verbetert continu uit zichzelf.</div>
+    </div>
+  </div>
+</section>
+
+<!-- VERGELIJKINGSTABEL -->
+<section class="section compare-section fade-in">
+  <div class="section-tag">VERGELIJKING</div>
+  <h2 class="section-h">Agentic Envoya vs. traditionele aanpak</h2>
+  <p class="section-p" style="max-width:640px;margin:0 auto 2.5rem;">
+    Veel bedrijven twijfelen: wat is nu het concrete verschil met wat we al doen?
+    Het gaat niet om een beetje efficiënter werken — het gaat om een fundamenteel andere manier van outreach
+    die resultaten levert die met een traditionele aanpak simpelweg onhaalbaar zijn.
+  </p>
+  <div class="compare-wrap">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th class="compare-th-label">Metric</th>
+          <th class="compare-th-old">Traditioneel</th>
+          <th class="compare-th-new">Envoya Lead Machine</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Outreach volume per dag</td><td>10–30 berichten</td><td class="compare-win">100–500+ berichten</td></tr>
+        <tr><td>Personalisatieniveau</td><td>Generiek of handmatig</td><td class="compare-win">AI-gedreven, data-based</td></tr>
+        <tr><td>Response rate cold outreach</td><td>1–3%</td><td class="compare-win">10–15%</td></tr>
+        <tr><td>Geboekte afspraken per week</td><td>2–4</td><td class="compare-win">8–15+</td></tr>
+        <tr><td>Handmatig werk per dag</td><td>4–6 uur</td><td class="compare-win">Minder dan 1 uur</td></tr>
+        <tr><td>Schaalbaarheid</td><td>Beperkt door teamgrootte</td><td class="compare-win">Onbeperkt schaalbaar</td></tr>
+        <tr><td>Optimalisatie</td><td>Ad hoc, op gevoel</td><td class="compare-win">Continue, data-gedreven</td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
 <!-- PRODUCT SHOWCASE -->
 <section class="section showcase-section fade-in" id="showcase">
-  <div class="section-tag">The system in action</div>
-  <h2 class="section-h">See how it works — real screens</h2>
-  <p class="section-p" style="max-width:600px;margin:0 auto 2rem;">No mock-ups. These are real screens from Lead Machine in use.</p>
+  <div class="section-tag">Het systeem in actie</div>
+  <h2 class="section-h">Kijk hoe het werkt — echte schermen</h2>
+  <p class="section-p" style="max-width:600px;margin:0 auto 2rem;">Geen mock-ups. Dit zijn echte schermen van Lead Machine in gebruik.</p>
   <div class="sc-counter-strip">
-    <div class="sc-counter-item"><div class="sc-counter-n" id="sc-n1">0</div><div class="sc-counter-l">Leads processed</div></div>
-    <div class="sc-counter-item"><div class="sc-counter-n" id="sc-n2">0</div><div class="sc-counter-l">Meetings booked</div></div>
+    <div class="sc-counter-item"><div class="sc-counter-n" id="sc-n1">0</div><div class="sc-counter-l">Leads verwerkt</div></div>
+    <div class="sc-counter-item"><div class="sc-counter-n" id="sc-n2">0</div><div class="sc-counter-l">Meetings geboekt</div></div>
     <div class="sc-counter-item"><div class="sc-counter-n" id="sc-n3">0<span style="font-size:0.55em;color:#6366f1">%</span></div><div class="sc-counter-l">Meeting rate</div></div>
-    <div class="sc-counter-item"><div class="sc-counter-n" id="sc-n4">0<span style="font-size:0.55em;color:#6366f1">K</span></div><div class="sc-counter-l">Contract value (€)</div></div>
+    <div class="sc-counter-item"><div class="sc-counter-n" id="sc-n4">0<span style="font-size:0.55em;color:#6366f1">K</span></div><div class="sc-counter-l">Contractwaarde (€)</div></div>
   </div>
   <div class="sc-slider-wrap">
     <div class="sc-slider">
@@ -818,13 +802,13 @@
         <div class="sc-chrome-url">app.envoya.tech · Lead Machine</div>
       </div>
       <div class="sc-slides" id="sc-slides">
-        <div class="sc-slide active"><img src="/assets/screen-pull-leads.jpg" alt="Pull leads" loading="lazy"><div class="sc-caption"><div class="sc-caption-tag">Step 1</div><div class="sc-caption-title">Pull qualified leads from Apollo</div><div class="sc-caption-desc">ICP profile loaded → AI calculates search strategy → leads scored and ranked</div></div></div>
-        <div class="sc-slide"><img src="/assets/screen-apollo-preview.jpg" alt="Apollo preview" loading="lazy"><div class="sc-caption"><div class="sc-caption-tag">Step 2</div><div class="sc-caption-title">AI selects the right leads</div><div class="sc-caption-desc">Exploit: proven ICP combinations. Explore: new potential. Wildcard: surprises.</div></div></div>
-        <div class="sc-slide"><img src="/assets/screen-lead-detail.jpg" alt="Lead detail" loading="lazy"><div class="sc-caption"><div class="sc-caption-tag">Step 3</div><div class="sc-caption-title">Full lead intelligence — per person</div><div class="sc-caption-desc">ICP score, company research, AI analysis, pipeline stage. Everything in one view.</div></div></div></div>
-        <div class="sc-slide"><img src="/assets/screen-email-generated.jpg" alt="Email generated" loading="lazy"><div class="sc-caption"><div class="sc-caption-tag">Step 5</div><div class="sc-caption-title">Email ready — personalised hook, real signal</div><div class="sc-caption-desc">Pattern A: personal signal as hook. Sector-matched references. Estimated reply probability shown.</div></div></div>
-        <div class="sc-slide"><img src="/assets/screen-meetings.jpg" alt="Meetings" loading="lazy"><div class="sc-caption"><div class="sc-caption-tag">Step 6</div><div class="sc-caption-title">42 meetings booked — and counting</div><div class="sc-caption-desc">Shuttel · Fabory · BOM · Meesman · L'Oréal. All booked by the system.</div></div></div>
-        <div class="sc-slide"><img src="/assets/screen-ai-engine.jpg" alt="AI Engine" loading="lazy"><div class="sc-caption"><div class="sc-caption-tag">Step 7</div><div class="sc-caption-title">AI Engine learns who converts</div><div class="sc-caption-desc">Customer DNA: roles and sectors that convert best. System adjusts automatically.</div></div></div>
-        <div class="sc-slide"><img src="/assets/screen-dashboard.jpg" alt="Dashboard" loading="lazy"><div class="sc-caption"><div class="sc-caption-tag">Overview</div><div class="sc-caption-title">Your pipeline — always full</div><div class="sc-caption-desc">474 leads · 388 emails sent · 10.8% meeting rate · €14,000 contract value.</div></div></div>
+        <div class="sc-slide active"><img src="/assets/screen-pull-leads.jpg" alt="Leads pullen" loading="lazy"><div class="sc-caption"><div class="sc-caption-tag">Stap 1</div><div class="sc-caption-title">Leads pullen uit Apollo</div><div class="sc-caption-desc">ICP profiel geladen → AI berekent zoekstrategie → leads gescoord en gerankt</div></div></div>
+        <div class="sc-slide"><img src="/assets/screen-apollo-preview.jpg" alt="Apollo preview" loading="lazy"><div class="sc-caption"><div class="sc-caption-tag">Stap 2</div><div class="sc-caption-title">AI selecteert de juiste leads</div><div class="sc-caption-desc">Exploit: bewezen ICP-combinaties. Explore: nieuw potentieel. Wildcard: verrassingen.</div></div></div>
+        <div class="sc-slide"><img src="/assets/screen-lead-detail.jpg" alt="Lead detail" loading="lazy"><div class="sc-caption"><div class="sc-caption-tag">Stap 3</div><div class="sc-caption-title">Volledige lead intelligence — per persoon</div><div class="sc-caption-desc">ICP-score, bedrijfsonderzoek, AI-analyse, pipelinefase. Alles in één overzicht.</div></div></div></div>
+        <div class="sc-slide"><img src="/assets/screen-email-generated.jpg" alt="Email gegenereerd" loading="lazy"><div class="sc-caption"><div class="sc-caption-tag">Stap 5</div><div class="sc-caption-title">Email klaar — persoonlijke haak, echt signaal</div><div class="sc-caption-desc">Patroon A: persoonlijk signaal als haak. Sector-matched referenties.</div></div></div>
+        <div class="sc-slide"><img src="/assets/screen-meetings.jpg" alt="Meetings" loading="lazy"><div class="sc-caption"><div class="sc-caption-tag">Stap 6</div><div class="sc-caption-title">42 meetings geboekt — en het loopt door</div><div class="sc-caption-desc">Shuttel · Fabory · BOM · Meesman · L'Oréal. Allemaal geboekt door het systeem.</div></div></div>
+        <div class="sc-slide"><img src="/assets/screen-ai-engine.jpg" alt="AI Engine" loading="lazy"><div class="sc-caption"><div class="sc-caption-tag">Stap 7</div><div class="sc-caption-title">AI Engine leert wie converteert</div><div class="sc-caption-desc">Customer DNA: rollen en sectoren die het sterkst converteren. Systeem past zich aan.</div></div></div>
+        <div class="sc-slide"><img src="/assets/screen-dashboard.jpg" alt="Dashboard" loading="lazy"><div class="sc-caption"><div class="sc-caption-tag">Overzicht</div><div class="sc-caption-title">Jouw pipeline — altijd vol</div><div class="sc-caption-desc">474 leads · 388 emails verstuurd · 10,8% meeting rate · €14.000 contractwaarde.</div></div></div>
       </div>
     </div>
     <button class="sc-arrow sc-arrow-prev" id="sc-prev">&#8592;</button>
@@ -836,15 +820,15 @@
 <!-- LIVE DEMO WIDGET -->
 <section class="section demo-section fade-in">
   <div class="section-tag">Live demo</div>
-  <div class="section-h">Watch the agent work</div>
-  <p class="section-p" style="max-width:560px;margin:0 auto 2.5rem;">This is what happens every time Lead Machine runs — automatically, 24/7.</p>
+  <div class="section-h">Kijk hoe de agent werkt</div>
+  <p class="section-p" style="max-width:560px;margin:0 auto 2.5rem;">Dit is wat er gebeurt elke keer dat Lead Machine draait — automatisch, 24/7.</p>
   <div id="demo-widget"></div>
 </section>
 
 <section class="section" id="how-it-works">
-  <div class="section-tag fade-in">How it works</div>
-  <div class="section-h fade-in">Deploy once. Run forever.</div>
-  <p class="section-p fade-in">Three steps to a full pipeline. No BDR team needed. No playbook to write. Just connect, launch, and close.</p>
+  <div class="section-tag fade-in">Hoe het werkt</div>
+  <div class="section-h fade-in">Één keer instellen. Blijft draaien.</div>
+  <p class="section-p fade-in">Drie stappen naar een volle pipeline. Geen BDR-team nodig. Geen playbook schrijven. Gewoon verbinden, opstarten en deals sluiten.</p>
   <div class="how-grid">
     <div class="how-card fade-in">
       <div class="how-num">01</div>
@@ -856,8 +840,8 @@
           <circle cx="16.5" cy="3.5" r="2" fill="#818CF8"/>
         </svg>
       </div>
-      <div class="how-title">Connect your company</div>
-      <div class="how-desc">Describe what you sell and who you target. Lead Machine builds your ICP profile and is ready to run in minutes.</div>
+      <div class="how-title">Verbind je bedrijf</div>
+      <div class="how-desc">Beschrijf wat je verkoopt en wie je target. Lead Machine bouwt je ICP-profiel en is binnen minuten klaar om te draaien.</div>
     </div>
     <div class="how-card fade-in">
       <div class="how-num">02</div>
@@ -867,8 +851,8 @@
           <path d="M7 10 L10 13 L15 7" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <div class="how-title">Pull qualified leads</div>
-      <div class="how-desc">Apollo-powered search filtered by your ICP. Only the right companies, the right roles, the right moment.</div>
+      <div class="how-title">Haal gekwalificeerde leads op</div>
+      <div class="how-desc">Apollo-aangedreven zoeken gefilterd op jouw ICP. Alleen de juiste bedrijven, de juiste rollen, het juiste moment.</div>
     </div>
     <div class="how-card fade-in">
       <div class="how-num">03</div>
@@ -878,8 +862,8 @@
           <circle cx="17" cy="4" r="2" fill="#6366F1"/>
         </svg>
       </div>
-      <div class="how-title">Send &amp; learn</div>
-      <div class="how-desc">AI writes emails, tracks replies, books meetings and improves over time. You just show up to close.</div>
+      <div class="how-title">Verstuur &amp; leer</div>
+      <div class="how-desc">AI schrijft e-mails, volgt replies op, boekt meetings en verbetert in de loop van de tijd. Jij hoeft alleen maar te verschijnen om te sluiten.</div>
     </div>
   </div>
 </section>
@@ -887,7 +871,7 @@
 <!-- LOGO GRID -->
 <section class="logo-grid-section fade-in">
   <div class="container">
-    <p class="logo-grid-label">Meetings booked at companies like</p>
+    <p class="logo-grid-label">Afspraken ingepland bij bedrijven zoals</p>
     <div class="logo-grid">
       <div class="logo-item"><img src="/assets/logos/zilverenkruis.png" alt="Zilveren Kruis" class="logo-img"></div>
       <div class="logo-item"><img src="/assets/logos/fabory.png" alt="Fabory" class="logo-img"></div>
@@ -920,8 +904,8 @@
 
 <!-- RESULTS / CASE STUDIES -->
 <section class="section">
-  <div class="section-tag fade-in">Results</div>
-  <div class="section-h fade-in">Real numbers from real teams.</div>
+  <div class="section-tag fade-in">Resultaten</div>
+  <div class="section-h fade-in">Echte cijfers van echte teams.</div>
 
   <div class="case-grid">
     <!-- Case 1: Jungle Minds -->
@@ -931,11 +915,11 @@
         <span class="case-logo-fallback" style="display:none">Jungle Minds</span>
         <div class="case-company-info">
           <div class="case-company-name">Jungle Minds</div>
-          <div class="case-company-desc">Digital product agency · ~80 people · Amsterdam</div>
+          <div class="case-company-desc">Digital product agency · ~80 medewerkers · Amsterdam</div>
         </div>
       </div>
-      <p class="case-about">Jungle Minds builds complex digital products for large corporates — B2B portals, marketplaces, UX transformation. They needed a steady flow of qualified meetings with UX and product leaders at enterprise companies.</p>
-      <p class="proof-quote">"We booked more qualified meetings in 8 weeks than in the previous 6 months combined. The system runs while we sleep."</p>
+      <p class="case-about">Jungle Minds bouwt complexe digitale producten voor grote corporates — B2B portals, marketplaces, UX-transformatie. Ze hadden een constante stroom van gekwalificeerde meetings nodig met UX- en productleiders bij enterprise bedrijven.</p>
+      <p class="proof-quote">"In 8 weken meer gekwalificeerde afspraken dan in de 6 maanden daarvoor bij elkaar. Het systeem draait terwijl wij slapen."</p>
       <div class="proof-meta">
         <div class="proof-avatar">JvdD</div>
         <div>
@@ -944,11 +928,11 @@
         </div>
       </div>
       <div class="proof-stats">
-        <div class="proof-stat"><div class="proof-stat-n">422</div><div class="proof-stat-l">leads processed</div></div>
-        <div class="proof-stat"><div class="proof-stat-n">14.4%</div><div class="proof-stat-l">reply rate</div></div>
-        <div class="proof-stat"><div class="proof-stat-n">35</div><div class="proof-stat-l">meetings booked</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">422</div><div class="proof-stat-l">leads verwerkt</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">14.4%</div><div class="proof-stat-l">responsrate</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">35</div><div class="proof-stat-l">meetings geboekt</div></div>
       </div>
-      <div class="case-highlight">1 signed deal covers the full investment</div>
+      <div class="case-highlight">1 getekende deal dekt de volledige investering</div>
     </div>
 
     <!-- Case 2: Brush AI -->
@@ -958,11 +942,11 @@
         <span class="case-logo-fallback" style="display:none">Brush AI</span>
         <div class="case-company-info">
           <div class="case-company-name">Brush AI</div>
-          <div class="case-company-desc">AI/ML consultancy · Part of Cronos Group · Netherlands</div>
+          <div class="case-company-desc">AI/ML consultancy · Onderdeel van Cronos Group · Nederland</div>
         </div>
       </div>
-      <p class="case-about">Brush AI helps enterprises extract real value from data using responsible AI. Part of the 8,000-person Cronos Group. They needed to reach CDOs, AI leads and innovation directors at large Dutch companies.</p>
-      <p class="proof-quote">"The pipeline funnel changed how our team thinks about outbound. Automated, self-learning, and genuinely effective at scale."</p>
+      <p class="case-about">Brush AI helpt enterprises echte waarde halen uit data met verantwoorde AI. Onderdeel van de 8.000-koppige Cronos Group. Ze wilden CDO's, AI-leads en innovatiedirecteuren bereiken bij grote Nederlandse bedrijven.</p>
+      <p class="proof-quote">"De pipeline funnel veranderde hoe ons team naar outbound kijkt. Geautomatiseerd, zelflerend en echt effectief op schaal."</p>
       <div class="proof-meta">
         <div class="proof-avatar">NC</div>
         <div>
@@ -971,18 +955,18 @@
         </div>
       </div>
       <div class="proof-stats">
-        <div class="proof-stat"><div class="proof-stat-n">530</div><div class="proof-stat-l">leads processed</div></div>
-        <div class="proof-stat"><div class="proof-stat-n">12%</div><div class="proof-stat-l">reply rate</div></div>
-        <div class="proof-stat"><div class="proof-stat-n">28</div><div class="proof-stat-l">meetings booked</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">530</div><div class="proof-stat-l">leads verwerkt</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">12%</div><div class="proof-stat-l">responsrate</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">28</div><div class="proof-stat-l">meetings geboekt</div></div>
       </div>
-      <div class="case-highlight">Meetings at: Triodos Bank, KPN, TomTom, Philips, NXP</div>
+      <div class="case-highlight">Meetings bij: Triodos Bank, KPN, TomTom, Philips, NXP</div>
     </div>
   </div>
 
   <div id="calendar-widget" class="fade-in" style="margin: 3rem 0;"></div>
 
   <div class="meeting-badges fade-in">
-    <div class="meeting-badges-label">Meetings booked at:</div>
+    <div class="meeting-badges-label">Afspraken ingepland bij:</div>
     <div class="meeting-badges-row">
       <span class="meeting-badge">Zilveren Kruis</span>
       <span class="meeting-badge">Fabory</span>
@@ -994,103 +978,48 @@
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="section" id="features">
-  <div class="section-tag fade-in">Features</div>
-  <div class="section-h fade-in">Everything your outbound needs.</div>
-  <p class="section-p fade-in">Lead Machine runs every stage of outbound — from finding the right people to writing the perfect message — without you lifting a finger.</p>
-  <div class="features-grid">
-    <div class="feature-card fade-in">
-      <span class="feature-icon">🎯</span>
-      <div class="feature-title">Smart ICP</div>
-      <div class="feature-desc">Learns who buys from you. Targets more like them. The system gets smarter with every deal you close.</div>
-    </div>
-    <div class="feature-card fade-in">
-      <span class="feature-icon">✉️</span>
-      <div class="feature-title">AI Emails</div>
-      <div class="feature-desc">Personalised hooks. Sector-matched value props. Sent automatically — at the right time, in the right tone.</div>
-    </div>
-    <div class="feature-card fade-in">
-      <span class="feature-icon">📈</span>
-      <div class="feature-title">Self-learning</div>
-      <div class="feature-desc">Every reply, meeting and deal trains the system. No setup required. It improves continuously on its own.</div>
-    </div>
-  </div>
-</section>
-
-<!-- COMPARISON TABLE -->
-<section class="section compare-section fade-in">
-  <div class="section-tag">Comparison</div>
-  <h2 class="section-h">Envoya vs. traditional outreach</h2>
-  <p class="section-p" style="max-width:640px;margin:0 auto 2.5rem;">
-    Many companies wonder: what's actually different from what we already do?
-    This isn't about working slightly more efficiently — it's a fundamentally different approach
-    that delivers results simply unachievable with traditional methods.
-  </p>
-  <div class="compare-wrap">
-    <table class="compare-table">
-      <thead>
-        <tr>
-          <th class="compare-th-label">Metric</th>
-          <th class="compare-th-old">Traditional</th>
-          <th class="compare-th-new">Envoya Lead Machine</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Outreach volume per day</td><td>10–30 messages</td><td class="compare-win">100–500+ messages</td></tr>
-        <tr><td>Personalisation level</td><td>Generic or manual</td><td class="compare-win">AI-driven, data-based</td></tr>
-        <tr><td>Cold outreach reply rate</td><td>1–3%</td><td class="compare-win">10–15%</td></tr>
-        <tr><td>Meetings booked per week</td><td>2–4</td><td class="compare-win">8–15+</td></tr>
-        <tr><td>Manual work per day</td><td>4–6 hours</td><td class="compare-win">Less than 1 hour</td></tr>
-        <tr><td>Scalability</td><td>Limited by team size</td><td class="compare-win">Infinitely scalable</td></tr>
-        <tr><td>Optimisation</td><td>Ad hoc, gut feeling</td><td class="compare-win">Continuous, data-driven</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
 <!-- PRICING -->
 <section class="section" id="pricing">
-  <div class="section-tag fade-in">Pricing</div>
-  <div class="section-h fade-in">One price. No surprises.</div>
-  <p class="section-p fade-in">One signed deal covers the entire investment. No monthly fees, no per-seat surprises, no hidden costs.</p>
+  <div class="section-tag fade-in">Prijzen</div>
+  <div class="section-h fade-in">Één prijs. Geen verrassingen.</div>
+  <p class="section-p fade-in">Één afgesloten deal dekt de gehele investering. Geen maandelijkse kosten, geen per-seat verrassingen, geen verborgen kosten.</p>
   <div class="pricing-box fade-in">
     <div>
       <div class="price-tag">€25,000</div>
       <div class="price-num">€25K</div>
-      <div class="price-note">per company · 3 seats · lifetime license</div>
+      <div class="price-note">per bedrijf · 3 seats · lifetime licentie</div>
       <div class="price-items">
         <div class="price-item">
           <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          Full Lead Machine platform
+          Volledig Lead Machine platform
         </div>
         <div class="price-item">
           <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          2-hour onboarding session
+          2 uur onboarding sessie
         </div>
         <div class="price-item">
           <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          No monthly fees — ever
+          Geen maandelijkse kosten — ooit
         </div>
         <div class="price-item">
           <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          AI email writer + self-learning engine
+          AI e-mailschrijver + zelflerend systeem
         </div>
         <div class="price-item">
           <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          Full analytics dashboard
+          Volledig analytics dashboard
         </div>
       </div>
-      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="price-cta">Book a demo →</a>
-      <p style="font-size:12px;color:var(--text-muted);margin-top:16px;">The ROI is simple: one signed deal covers the entire investment.</p>
+      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="price-cta">Plan een demo →</a>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:16px;">Één deal dekt de volledige investering.</p>
     </div>
     <div>
-      <div class="roi-title">The ROI is simple.</div>
-      <div class="roi-sub">One signed deal covers the entire investment.</div>
-      <div class="roi-row"><span class="roi-label">BDR salary (NL)</span><span class="roi-val">€40–60K / year</span></div>
-      <div class="roi-row"><span class="roi-label">Envoya Lead Machine</span><span class="roi-val">€25K once</span></div>
-      <div class="roi-row"><span class="roi-label">Avg. meetings / month</span><span class="roi-val">8–12</span></div>
-      <div class="roi-row"><span class="roi-label">Breakeven</span><span class="roi-val">1 signed deal</span></div>
+      <div class="roi-title">De ROI is simpel.</div>
+      <div class="roi-sub">Één afgesloten deal dekt de volledige investering.</div>
+      <div class="roi-row"><span class="roi-label">BDR-salaris (NL)</span><span class="roi-val">€40–60K / jaar</span></div>
+      <div class="roi-row"><span class="roi-label">Envoya Lead Machine</span><span class="roi-val">€25K eenmalig</span></div>
+      <div class="roi-row"><span class="roi-label">Gem. meetings / maand</span><span class="roi-val">8–12</span></div>
+      <div class="roi-row"><span class="roi-label">Break-even</span><span class="roi-val">1 afgesloten deal</span></div>
     </div>
   </div>
 </section>
@@ -1098,60 +1027,41 @@
 <!-- FAQ -->
 <section class="section faq-section fade-in">
   <div class="section-tag">FAQ</div>
-  <h2 class="section-h">Everything you want to know about Envoya</h2>
+  <h2 class="section-h">Alles wat je wil weten over Envoya</h2>
   <div class="faq-grid">
     <div class="faq-item">
-      <h3 class="faq-q">Isn't this just an expensive spam tool?</h3>
-      <p class="faq-a">No. Spam is sending the same message to 10,000 people. Our system sends each person a message based on data about that specific person. That's the difference between 0.3% and 12% reply rate.</p>
+      <h3 class="faq-q">Is dit niet gewoon een dure spamtool?</h3>
+      <p class="faq-a">Nee. Spam is hetzelfde bericht naar 10.000 mensen sturen. Ons systeem stuurt elk bericht op basis van data over die specifieke persoon. Dat is het verschil tussen 0,3% en 12% response rate.</p>
     </div>
     <div class="faq-item">
-      <h3 class="faq-q">What if it doesn't work for us?</h3>
-      <p class="faq-a">Then we fix it. We're so confident in our system that we don't equate results with no deal for us. Full stop.</p>
+      <h3 class="faq-q">Wat als het niet werkt bij ons?</h3>
+      <p class="faq-a">Dan lossen we het op. We zijn zo zeker van ons systeem dat we geen resultaat gelijkstellen aan geen deal voor ons. Punt.</p>
     </div>
     <div class="faq-item">
-      <h3 class="faq-q">How quickly do we see results?</h3>
-      <p class="faq-a">First campaign live within 14 days. First responses within 30 days. Average 3 new meetings in week 1 of the campaign.</p>
+      <h3 class="faq-q">Hoe snel zien we resultaat?</h3>
+      <p class="faq-a">Eerste campagne live binnen 14 dagen. Eerste responses binnen 30 dagen. Gemiddeld 3 nieuwe afspraken in week 1 van de campagne.</p>
     </div>
     <div class="faq-item">
-      <h3 class="faq-q">Do we need to change our sales process?</h3>
-      <p class="faq-a">No. Lead Machine fits around your existing workflow. You still do the conversations and closes. We just fill your calendar.</p>
+      <h3 class="faq-q">Moeten we ons salesproces aanpassen?</h3>
+      <p class="faq-a">Nee. Lead Machine past zich aan jouw bestaande workflow aan. Jij doet nog steeds de gesprekken en deals. Wij vullen je agenda.</p>
     </div>
     <div class="faq-item">
-      <h3 class="faq-q">How is this different from hiring an SDR?</h3>
-      <p class="faq-a">An BDR costs €40–60K/year, needs onboarding, gets sick and quits. Lead Machine costs €25K once, runs 24/7, and gets smarter every week.</p>
+      <h3 class="faq-q">Wat is het verschil met een BDR inhuren?</h3>
+      <p class="faq-a">Een BDR kost €40–60K per jaar, heeft onboarding nodig, wordt ziek en vertrekt. Lead Machine kost €25K eenmalig, draait 24/7 en wordt elke week slimmer.</p>
     </div>
     <div class="faq-item">
-      <h3 class="faq-q">Is it really AI, or just mail merge?</h3>
-      <p class="faq-a">Really AI. Every email has a personalised hook based on the recipient's recent interviews, company news or role context. Pattern A/B/C email selection, self-learning ICP weights, real-time signal research.</p>
+      <h3 class="faq-q">Is het echt AI, of gewoon mail merge?</h3>
+      <p class="faq-a">Echt AI. Elke email heeft een gepersonaliseerde haak op basis van recente interviews, bedrijfsnieuws of rolcontext. Patroon A/B/C selectie, zelflerend ICP, real-time signaalonderzoek.</p>
     </div>
   </div>
 </section>
 
 <!-- CONTACT / CTA -->
-<!-- FOUNDER SECTION -->
-<section class="founder-section fade-in">
-  <div class="founder-inner">
-    <div class="founder-images">
-      <img src="/assets/lennart-working-1.jpg" alt="Lennart de Haan at work" class="founder-img-main" />
-      <img src="/assets/team-happy.jpg" alt="Happy team" class="founder-img-team" />
-    </div>
-    <div class="founder-text">
-      <p class="section-label-sm">Built by a salesperson, for salespeople</p>
-      <h2 class="founder-h">I was the bottleneck.<br>So I automated myself.</h2>
-      <p>After 15 years in sales and business development, I was spending 4 hours a day on outreach — researching prospects, writing emails, following up. Good results, but not scalable.</p>
-      <p>Lead Machine is what I built to fix that. It runs the prospecting. I run the conversations.</p>
-      <p class="founder-sig">— Lennart de Haan, Co-Co-Founder Envoya</p>
-    </div>
-  </div>
-</section>
-
-<!-- HUMAN CTA -->
 <section class="cta-section" id="contact">
   <div class="fomo-headline fade-in">
-    <p class="fomo-label">THE SOLUTION</p>
-    <h2 class="fomo-h">Every day you wait,<br>your competitor books that meeting.</h2>
-    <p class="fomo-sub">No sales pitch. No PowerPoint. No obligations.<br>
-    We spend 20 minutes looking at your current pipeline, your ICP, and what Envoya can concretely mean for your business. Free. No strings. Honest.</p>
+    <p class="fomo-label">DE OPLOSSING</p>
+    <h2 class="fomo-h">Elke dag dat je wacht,<br>boekt je concurrent die afspraak.</h2>
+    <p class="fomo-sub">Geen verkooppraatje. Geen PowerPoint. Geen verplichtingen.<br>We kijken in 20 minuten naar jouw huidige pipeline, jouw ICP, en wat Envoya concreet voor jouw business kan betekenen. Gratis. Vrijblijvend. Eerlijk.</p>
   </div>
   <div class="human-cta-inner fade-in">
     <img src="/assets/lennart-headshot.jpg" alt="Lennart de Haan" class="human-avatar" />
@@ -1159,9 +1069,9 @@
       <p class="human-name">Lennart de Haan</p>
       <p class="human-role">Business Developer · Co-Co-Founder Envoya</p>
       <div class="cta-btns" style="margin-top:1rem">
-        <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="cta-main">Book a demo with Lennart →</a>
+        <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="cta-main">Plan een demo met Lennart →</a>
       </div>
-      <p class="human-note">Usually responds within 24 hours</p>
+      <p class="human-note">Reageert meestal binnen 24 uur</p>
     </div>
   </div>
 </section>
@@ -1179,10 +1089,10 @@
   </div>
   <div class="footer-links">
     <a href="#">Privacy</a>
-    <a href="#">Terms</a>
+    <a href="#">Voorwaarden</a>
     <a href="mailto:hello@envoya.tech">Contact</a>
   </div>
-  <span class="footer-copy">© 2026 Envoya · We send the agent. You close the deal.</span>
+  <span class="footer-copy">© 2026 Envoya · Wij sturen de agent. Jij sluit de deal.</span>
 </footer>
 
 <script>
