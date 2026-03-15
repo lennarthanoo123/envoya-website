@@ -810,10 +810,7 @@
     </div>
   </div>
 
-  <div class="calendar-visual fade-in">
-    <div class="calendar-overlay"></div>
-    <img src="/assets/calendar-full.jpg" alt="Full calendar — meetings booked by Lead Machine" />
-  </div>
+  <div id="calendar-widget" class="fade-in" style="margin: 3rem 0;"></div>
 
   <div class="meeting-badges fade-in">
     <div class="meeting-badges-label">Meetings booked at:</div>
@@ -963,5 +960,7 @@
   document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 </script>
 
+<link rel="stylesheet" href="/assets/calendar-widget.css">
+<script src="/assets/calendar-widget.js"></script>
 </body>
 </html>

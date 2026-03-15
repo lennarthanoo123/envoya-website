@@ -1,0 +1,109 @@
+/* ── Envoya Calendar Widget ─────────────────────────────────────────── */
+.cal-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.cal-badge-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.cal-week-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+  letter-spacing: 0.02em;
+}
+.cal-week-empty {
+  background: rgba(71,85,105,0.2);
+  color: #64748b;
+  border: 1px solid #1e293b;
+}
+.cal-week-full {
+  background: rgba(99,102,241,0.12);
+  color: #a5b4fc;
+  border: 1px solid rgba(99,102,241,0.3);
+}
+.cal-container {
+  background: #0d1424;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.cal-header-row,
+.cal-row {
+  display: grid;
+  grid-template-columns: 60px repeat(5, 1fr);
+}
+.cal-header-row {
+  background: #111827;
+  border-bottom: 1px solid #1e293b;
+}
+.cal-day-col {
+  padding: 12px 8px;
+  text-align: center;
+}
+.cal-day-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #475569;
+}
+.cal-row {
+  border-bottom: 1px solid rgba(30,41,59,0.6);
+  min-height: 52px;
+}
+.cal-row:last-child { border-bottom: none; }
+.cal-time-col {
+  padding: 8px 10px;
+  font-size: 10px;
+  color: #334155;
+  font-weight: 500;
+  border-right: 1px solid #1e293b;
+  display: flex;
+  align-items: center;
+}
+.cal-cell {
+  border-right: 1px solid rgba(30,41,59,0.4);
+  padding: 4px;
+  min-height: 52px;
+}
+.cal-cell:last-child { border-right: none; }
+.cal-block {
+  height: 100%;
+  min-height: 44px;
+  border-radius: 6px;
+  padding: 5px 7px;
+  font-size: 10.5px;
+  font-weight: 500;
+  line-height: 1.35;
+  cursor: default;
+  transition: filter 0.15s;
+}
+.cal-block:hover { filter: brightness(1.2); }
+
+/* Toggle button */
+.cal-toggle-btn {
+  display: block;
+  margin: 20px auto 0;
+  background: rgba(99,102,241,0.1);
+  border: 1px solid rgba(99,102,241,0.3);
+  color: #a5b4fc;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  letter-spacing: 0.02em;
+}
+.cal-toggle-btn:hover {
+  background: rgba(99,102,241,0.2);
+  border-color: rgba(99,102,241,0.5);
+  transform: translateY(-1px);
+}
