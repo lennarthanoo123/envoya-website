@@ -365,6 +365,20 @@
     }
 
     /* ── CTA SECTION ── */
+    .founder-section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+    .founder-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .founder-image img { width: 100%; border-radius: 16px; object-fit: cover; max-height: 420px; filter: brightness(0.88) contrast(1.05); border: 1px solid #1e293b; }
+    .founder-h { font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; color: var(--text); margin-bottom: 1.2rem; line-height: 1.2; }
+    .founder-text p { color: var(--text-dim); line-height: 1.8; margin-bottom: 1rem; font-size: 15px; }
+    .founder-sig { color: #6366f1 !important; font-style: italic; font-weight: 600; }
+    .section-label-sm { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6366f1; margin-bottom: 1rem; }
+    @media (max-width: 768px) { .founder-inner { grid-template-columns: 1fr; } }
+    .human-cta-inner { display: flex; align-items: center; gap: 2.5rem; max-width: 760px; margin: 0 auto; text-align: left; }
+    .human-avatar { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid #6366f1; flex-shrink: 0; }
+    .human-name { font-weight: 700; color: white; font-size: 1.05rem; margin: 0 0 0.2rem; }
+    .human-role { color: #6366f1; font-size: 0.82rem; margin: 0 0 1rem; }
+    .human-note { color: #475569; font-size: 0.78rem; margin-top: 0.75rem; }
+    @media (max-width: 640px) { .human-cta-inner { flex-direction: column; text-align: center; } }
     .cta-section {
       padding: 100px 40px;
       text-align: center;
@@ -691,23 +705,36 @@
 </section>
 
 <!-- CONTACT / CTA -->
-<section class="cta-section" id="contact">
-  <div class="cta-icon">
-    <svg width="56" height="56" viewBox="0 0 40 40" fill="none">
-      <circle cx="20" cy="20" r="18" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.3"/>
-      <circle cx="20" cy="20" r="13" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.4"/>
-      <circle cx="20" cy="20" r="8" stroke="#6366F1" stroke-width="0.9" stroke-dasharray="1.5 1.5" opacity="0.5"/>
-      <circle cx="20" cy="20" r="4" fill="#6366F1"/>
-      <circle cx="20" cy="20" r="2.2" fill="#080E1A"/>
-      <circle cx="31.7" cy="8.3" r="2.5" fill="#818CF8"/>
-      <circle cx="5.5" cy="12" r="0.9" fill="#818CF8" opacity="0.6"/>
-    </svg>
+<!-- FOUNDER SECTION -->
+<section class="founder-section fade-in">
+  <div class="founder-inner">
+    <div class="founder-image">
+      <img src="/assets/lennart-working-1.jpg" alt="Lennart de Haan aan het werk" />
+    </div>
+    <div class="founder-text">
+      <p class="section-label-sm">Gebouwd door een salesperson, voor salespeople</p>
+      <h2 class="founder-h">Ik was de bottleneck.<br>Dus heb ik mezelf geautomatiseerd.</h2>
+      <p>Na 15 jaar in sales en business development besteedde ik 4 uur per dag aan outreach — prospects onderzoeken, emails schrijven, opvolgen. Goede resultaten, maar niet schaalbaar.</p>
+      <p>Lead Machine is wat ik heb gebouwd om dat op te lossen. Het systeem doet de prospecting. Ik doe de gesprekken.</p>
+      <p class="founder-sig">— Lennart de Haan, Oprichter Envoya</p>
+    </div>
   </div>
-  <h2 class="cta-h">Klaar om jouw agent in te zetten?</h2>
-  <p class="cta-p">20 minuten. We laten je het systeem live zien, op jouw eigen leads.</p>
-  <div class="cta-btns">
-    <a href="mailto:hello@envoya.tech" class="cta-main">Demo aanvragen</a>
-    <button class="cta-sec" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Eerst de functies bekijken</button>
+</section>
+
+<!-- HUMAN CTA -->
+<section class="cta-section" id="contact">
+  <div class="human-cta-inner fade-in">
+    <img src="/assets/lennart-headshot.jpg" alt="Lennart de Haan" class="human-avatar" />
+    <div>
+      <p class="human-name">Lennart de Haan</p>
+      <p class="human-role">Business Developer · Oprichter Envoya</p>
+      <h2 class="cta-h">Laat me je laten zien wat het kan.</h2>
+      <p class="cta-p">20 minuten. Ik loop met je door het systeem op jouw eigen leads, jouw eigen ICP. Geen slides. Gewoon resultaten.</p>
+      <div class="cta-btns">
+        <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="cta-main">Plan een demo met Lennart →</a>
+      </div>
+      <p class="human-note">Reageert doorgaans binnen 24 uur</p>
+    </div>
   </div>
 </section>
 
