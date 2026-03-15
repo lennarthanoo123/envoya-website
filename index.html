@@ -183,13 +183,14 @@
     .trust-divider {
       width: 1px; height: 20px; background: var(--border);
     }
-    .trust-logos { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; justify-content: center; }
-    .logo-badge { display: flex; align-items: center; justify-content: center; padding: 0.5rem 1.2rem; border: 1px solid #1a2535; border-radius: 8px; background: rgba(255,255,255,0.01); }
-    .logo-badge img { height: 22px; width: auto; max-width: 110px; object-fit: contain; filter: brightness(0) invert(1) opacity(0.35); transition: filter 0.2s; }
-    .logo-badge:hover img { filter: brightness(0) invert(1) opacity(0.65); }
-    .logo-badge--cronos { border-color: rgba(99,102,241,0.2); }
-    .logo-badge--cronos img { filter: brightness(0) invert(1) sepia(1) hue-rotate(210deg) saturate(3) opacity(0.45); }
-    .logo-badge--cronos:hover img { opacity: 0.75; }
+    .trust-logos { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+    .logo-badge { display: flex; align-items: center; justify-content: center; padding: 0.6rem 1.4rem; border: 1px solid #1a2535; border-radius: 8px; background: rgba(255,255,255,0.01); transition: border-color 0.2s; }
+    .logo-badge:hover { border-color: #1e3050; }
+    .logo-badge--cronos { border-color: rgba(99,102,241,0.15); }
+    .logo-badge-text { font-size: 13px; font-weight: 600; color: #364f69; letter-spacing: 0.02em; font-family: -apple-system, 'Inter', sans-serif; transition: color 0.2s; }
+    .logo-badge:hover .logo-badge-text { color: #4f6a87; }
+    .logo-badge-text--indigo { color: #5b6db5; }
+    .logo-badge--cronos:hover .logo-badge-text { color: #818cf8; }
 
     .trust-stats {
       display: flex; gap: 32px; flex-wrap: wrap; margin-left: auto;
@@ -675,9 +676,9 @@
   <span class="trust-label">Trusted by teams at</span>
   <div class="trust-divider"></div>
   <div class="trust-logos">
-    <div class="logo-badge"><img src="https://logo.clearbit.com/jungleminds.nl" alt="Jungle Minds" onerror="this.outerHTML='<span style=\'font-size:11px;font-weight:700;color:#475569;letter-spacing:0.05em\'>JUNGLE MINDS</span>'"></div>
-    <div class="logo-badge"><img src="https://logo.clearbit.com/brushai.com" alt="Brush AI" onerror="this.outerHTML='<span style=\'font-size:11px;font-weight:700;color:#475569;letter-spacing:0.05em\'>BRUSH AI</span>'"></div>
-    <div class="logo-badge logo-badge--cronos"><img src="https://logo.clearbit.com/cronos.be" alt="Cronos Group" onerror="this.outerHTML='<span style=\'font-size:11px;font-weight:700;color:#818cf8;letter-spacing:0.05em\'>CRONOS GROUP</span>'"></div>
+    <div class="logo-badge"><span class="logo-badge-text">Jungle Minds</span></div>
+    <div class="logo-badge"><span class="logo-badge-text">Brush AI</span></div>
+    <div class="logo-badge logo-badge--cronos"><span class="logo-badge-text logo-badge-text--indigo">Cronos Group</span></div>
   </div>
   <div class="trust-stats">
     <div class="trust-stat">
@@ -777,145 +778,6 @@
 
 <!-- HOW IT WORKS -->
 <!-- PRODUCT SHOWCASE -->
-<section class="showcase-section fade-in" id="showcase">
-  <div class="showcase-wrap">
-
-    <!-- Mock browser chrome -->
-    <div class="showcase-browser">
-      <div class="showcase-titlebar">
-        <div class="sc-dots"><span></span><span></span><span></span></div>
-        <div class="sc-url">app.envoya.tech · Lead Machine</div>
-      </div>
-
-      <!-- Mock dashboard: sidebar + main -->
-      <div class="sc-dashboard">
-
-        <!-- Sidebar -->
-        <div class="sc-sidebar">
-          <div class="sc-nav-logo">⬡ Lead Machine</div>
-          <div class="sc-nav-item sc-nav-active">📊 Pipeline</div>
-          <div class="sc-nav-item">👥 Leads</div>
-          <div class="sc-nav-item">✉️ Emails</div>
-          <div class="sc-nav-item">🧠 AI Engine</div>
-          <div class="sc-nav-item">📈 Analytics</div>
-        </div>
-
-        <!-- Main content -->
-        <div class="sc-main">
-          <!-- KPI row -->
-          <div class="sc-kpi-row">
-            <div class="sc-kpi">
-              <div class="sc-kpi-n">422</div>
-              <div class="sc-kpi-l">Leads</div>
-            </div>
-            <div class="sc-kpi sc-kpi-highlight">
-              <div class="sc-kpi-n">14.4%</div>
-              <div class="sc-kpi-l">Reply rate</div>
-            </div>
-            <div class="sc-kpi">
-              <div class="sc-kpi-n">35</div>
-              <div class="sc-kpi-l">Meetings</div>
-            </div>
-            <div class="sc-kpi sc-kpi-green">
-              <div class="sc-kpi-n">1</div>
-              <div class="sc-kpi-l">Deal closed</div>
-            </div>
-          </div>
-
-          <!-- Lead rows -->
-          <div class="sc-leads">
-            <div class="sc-lead sc-lead-meeting">
-              <div class="sc-lead-dot sc-dot-green"></div>
-              <div class="sc-lead-avatar">AV</div>
-              <div class="sc-lead-info">
-                <div class="sc-lead-name">Annemiek Vos</div>
-                <div class="sc-lead-sub">Head of Digital · Zilveren Kruis</div>
-              </div>
-              <div class="sc-lead-tag sc-tag-meeting">Meeting</div>
-              <div class="sc-lead-score">94</div>
-            </div>
-            <div class="sc-lead sc-lead-replied">
-              <div class="sc-lead-dot sc-dot-blue"></div>
-              <div class="sc-lead-avatar sc-av2">LB</div>
-              <div class="sc-lead-info">
-                <div class="sc-lead-name">Lars Bakker</div>
-                <div class="sc-lead-sub">UX Director · ABN AMRO</div>
-              </div>
-              <div class="sc-lead-tag sc-tag-replied">Replied</div>
-              <div class="sc-lead-score">87</div>
-            </div>
-            <div class="sc-lead">
-              <div class="sc-lead-dot sc-dot-gray"></div>
-              <div class="sc-lead-avatar sc-av3">SH</div>
-              <div class="sc-lead-info">
-                <div class="sc-lead-name">Sophie Hendriks</div>
-                <div class="sc-lead-sub">Lead UX Designer · VodafoneZiggo</div>
-              </div>
-              <div class="sc-lead-tag sc-tag-sent">Email sent</div>
-              <div class="sc-lead-score">81</div>
-            </div>
-            <div class="sc-lead">
-              <div class="sc-lead-dot sc-dot-gray"></div>
-              <div class="sc-lead-avatar sc-av4">MR</div>
-              <div class="sc-lead-info">
-                <div class="sc-lead-name">Marc Rietdijk</div>
-                <div class="sc-lead-sub">Product Design Lead · ING</div>
-              </div>
-              <div class="sc-lead-tag sc-tag-sent">Email sent</div>
-              <div class="sc-lead-score">76</div>
-            </div>
-          </div>
-
-          <!-- Mini funnel bars -->
-          <div class="sc-funnel">
-            <div class="sc-funnel-row">
-              <div class="sc-funnel-label">Contacted</div>
-              <div class="sc-funnel-bar"><div class="sc-funnel-fill" style="width:100%;background:#334155"></div></div>
-              <div class="sc-funnel-n">422</div>
-            </div>
-            <div class="sc-funnel-row">
-              <div class="sc-funnel-label">Replied</div>
-              <div class="sc-funnel-bar"><div class="sc-funnel-fill sc-fill-anim" data-w="61" style="background:#6366f1"></div></div>
-              <div class="sc-funnel-n">61</div>
-            </div>
-            <div class="sc-funnel-row">
-              <div class="sc-funnel-label">Meeting</div>
-              <div class="sc-funnel-bar"><div class="sc-funnel-fill sc-fill-anim" data-w="8" style="background:#4ade80"></div></div>
-              <div class="sc-funnel-n">35</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Floating callout cards -->
-    <div class="sc-card sc-card-tl" id="sc-card-1">
-      <div class="sc-card-icon">🎯</div>
-      <div class="sc-card-title">ICP Score — 94/100</div>
-      <div class="sc-card-desc">Zilveren Kruis matches on role, sector and company size. Auto-prioritised.</div>
-    </div>
-
-    <div class="sc-card sc-card-tr" id="sc-card-2">
-      <div class="sc-card-icon">✉️</div>
-      <div class="sc-card-title">AI Email in 8 sec</div>
-      <div class="sc-card-desc">Pattern A: personal article as hook. Sector-matched references. Fully automatic.</div>
-    </div>
-
-    <div class="sc-card sc-card-bl" id="sc-card-3">
-      <div class="sc-card-icon">📈</div>
-      <div class="sc-card-title">14.4% reply rate</div>
-      <div class="sc-card-desc">4× above the market average of 3%. The system learns from every reply.</div>
-    </div>
-
-    <div class="sc-card sc-card-br" id="sc-card-4">
-      <div class="sc-card-icon">🧠</div>
-      <div class="sc-card-title">Self-learning ICP</div>
-      <div class="sc-card-desc">After every meeting, ICP weights adjust automatically. Zero manual setup.</div>
-    </div>
-
-  </div>
-</section>
-
 <!-- LIVE DEMO WIDGET -->
 <section class="section demo-section fade-in">
   <div class="section-tag">Live demo</div>
