@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Envoya — Lead Machine</title>
   <meta name="description" content="Lead Machine vindt, kwalificeert en personaliseert outreach naar jouw ideale klanten — automatisch. Wij sturen de agent. Jij sluit de deal." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%236366f1'/><text y='.9em' font-size='60' x='50%' text-anchor='middle' fill='white' font-family='system-ui'>E</text></svg>">
+  <meta property="og:title" content="Envoya Lead Machine — Wij sturen de agent. Jij sluit de deal." />
+  <meta property="og:description" content="AI-gestuurde outbound die automatisch jouw ideale klanten vindt, kwalificeert en persoonlijk benadert." />
+  <meta property="og:url" content="https://envoya.tech/nl/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -39,6 +45,13 @@
 
     a { text-decoration: none; color: inherit; }
 
+    /* ── CONTAINER ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+    /* ── FADE IN ── */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
     /* ── NAV ── */
     nav {
       position: sticky; top: 0; z-index: 100;
@@ -68,6 +81,7 @@
       border: none; cursor: pointer;
       letter-spacing: 0.04em; font-family: inherit;
       transition: opacity 0.2s;
+      display: inline-block;
     }
     .nav-cta:hover { opacity: 0.85; }
 
@@ -87,13 +101,14 @@
       position: relative; overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(ellipse at center, rgba(99,102,241,0.08) 0%, transparent 70%);
+    .hero-glow {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(99,102,241,0.35) 0%, transparent 70%),
+                  radial-gradient(ellipse 50% 40% at 80% 50%, rgba(129,140,248,0.15) 0%, transparent 60%);
       pointer-events: none;
     }
+
+    .hero > * { position: relative; z-index: 1; }
 
     .hero-badge {
       display: inline-flex; align-items: center; gap: 6px;
@@ -122,8 +137,15 @@
     }
 
     .hero-ctas {
+      display: flex; flex-direction: column; gap: 12px;
+      justify-content: center; align-items: center;
+    }
+    .hero-ctas-row {
       display: flex; gap: 12px; justify-content: center; align-items: center;
       flex-wrap: wrap;
+    }
+    .hero-tagline {
+      font-size: 13px; color: var(--text-muted);
     }
 
     .btn-primary {
@@ -131,9 +153,11 @@
       font-size: 14px; font-weight: 500;
       padding: 13px 28px; border-radius: 8px;
       border: none; cursor: pointer; font-family: inherit;
-      transition: opacity 0.2s;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: inline-block;
     }
-    .btn-primary:hover { opacity: 0.85; }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 30px rgba(99,102,241,0.4); }
+    .btn-primary:active { transform: translateY(0); }
 
     .btn-ghost {
       background: none; color: var(--text-sec);
@@ -141,6 +165,7 @@
       padding: 13px 24px; border-radius: 8px;
       cursor: pointer; font-family: inherit;
       transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
     }
     .btn-ghost:hover { border-color: var(--text-muted); color: var(--text); }
 
@@ -155,16 +180,13 @@
       font-size: 11px; color: var(--text-faint);
       letter-spacing: 0.1em; text-transform: uppercase;
     }
-    .trust-names {
-      display: flex; gap: 32px; align-items: center; flex-wrap: wrap;
-    }
-    .trust-name {
-      font-size: 14px; font-weight: 400; color: var(--text-dim);
-      letter-spacing: 0.04em;
-    }
     .trust-divider {
       width: 1px; height: 20px; background: var(--border);
     }
+    .trust-logos { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+    .logo-badge { font-size: 0.95rem; font-weight: 700; letter-spacing: 0.05em; color: #94a3b8; border: 1px solid #1e293b; padding: 0.4rem 1rem; border-radius: 6px; }
+    .logo-badge--cronos { color: #818cf8; border-color: #6366f1; }
+
     .trust-stats {
       display: flex; gap: 32px; flex-wrap: wrap; margin-left: auto;
     }
@@ -224,12 +246,13 @@
       gap: 16px; margin-top: 48px;
     }
     .feature-card {
-      background: var(--card-alt);
-      border: 0.5px solid var(--border);
-      border-radius: 12px; padding: 32px 28px;
-      transition: border-color 0.25s;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 16px; padding: 32px 28px;
+      transition: border-color 0.2s, transform 0.2s;
     }
-    .feature-card:hover { border-color: var(--indigo-bdr); }
+    .feature-card:hover { border-color: rgba(99,102,241,0.4); transform: translateY(-2px); }
     .feature-icon {
       font-size: 28px; margin-bottom: 16px; display: block;
     }
@@ -270,6 +293,46 @@
       font-size: 13px; color: var(--text-dim); line-height: 1.65;
     }
 
+    /* ── LOGO GRID SECTION ── */
+    .logo-grid-section {
+      background: #080e1a;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 4rem 0;
+    }
+    .logo-grid-label {
+      text-align: center;
+      color: #475569;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .logo-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #334155;
+      padding: 1rem;
+      border: 1px solid #1a2235;
+      border-radius: 8px;
+      transition: color 0.2s, border-color 0.2s;
+      text-align: center;
+    }
+    .logo-text:hover { color: #94a3b8; border-color: #2d3f5a; }
+
     /* ── PRICING ── */
     .pricing-box {
       background: var(--card-alt);
@@ -307,9 +370,10 @@
       font-size: 14px; font-weight: 500;
       padding: 14px 32px; border-radius: 8px;
       border: none; cursor: pointer; font-family: inherit;
-      transition: opacity 0.2s; display: inline-block;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: inline-block;
     }
-    .price-cta:hover { opacity: 0.85; }
+    .price-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 30px rgba(99,102,241,0.4); }
 
     .roi-title {
       font-size: 17px; font-weight: 500; color: var(--text);
@@ -364,21 +428,18 @@
       font-size: 10px; color: var(--text-muted); margin-top: 3px;
     }
 
+    /* ── CALENDAR VISUAL ── */
+    .calendar-visual { position: relative; border-radius: 16px; overflow: hidden; border: 1px solid #1e293b; margin: 2rem 0; }
+    .calendar-visual img { width: 100%; display: block; filter: brightness(0.85) saturate(0.7) hue-rotate(220deg); }
+    .calendar-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(99,102,241,0.15) 0%, rgba(8,14,26,0.3) 100%); pointer-events: none; z-index: 1; }
+
+    /* ── MEETING BADGES ── */
+    .meeting-badges { margin-top: 2rem; }
+    .meeting-badges-label { font-size: 11px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+    .meeting-badges-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .meeting-badge { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; color: #94a3b8; border: 1px solid #1e293b; padding: 0.3rem 0.8rem; border-radius: 6px; }
+
     /* ── CTA SECTION ── */
-    .founder-section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
-    .founder-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .founder-image img { width: 100%; border-radius: 16px; object-fit: cover; max-height: 420px; filter: brightness(0.88) contrast(1.05); border: 1px solid #1e293b; }
-    .founder-h { font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; color: var(--text); margin-bottom: 1.2rem; line-height: 1.2; }
-    .founder-text p { color: var(--text-dim); line-height: 1.8; margin-bottom: 1rem; font-size: 15px; }
-    .founder-sig { color: #6366f1 !important; font-style: italic; font-weight: 600; }
-    .section-label-sm { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6366f1; margin-bottom: 1rem; }
-    @media (max-width: 768px) { .founder-inner { grid-template-columns: 1fr; } }
-    .human-cta-inner { display: flex; align-items: center; gap: 2.5rem; max-width: 760px; margin: 0 auto; text-align: left; }
-    .human-avatar { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid #6366f1; flex-shrink: 0; }
-    .human-name { font-weight: 700; color: white; font-size: 1.05rem; margin: 0 0 0.2rem; }
-    .human-role { color: #6366f1; font-size: 0.82rem; margin: 0 0 1rem; }
-    .human-note { color: #475569; font-size: 0.78rem; margin-top: 0.75rem; }
-    @media (max-width: 640px) { .human-cta-inner { flex-direction: column; text-align: center; } }
     .cta-section {
       padding: 100px 40px;
       text-align: center;
@@ -401,15 +462,17 @@
       font-size: 15px; font-weight: 500;
       padding: 15px 36px; border-radius: 8px;
       border: none; cursor: pointer; font-family: inherit;
-      transition: opacity 0.2s;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: inline-block;
     }
-    .cta-main:hover { opacity: 0.85; }
+    .cta-main:hover { transform: translateY(-1px); box-shadow: 0 8px 30px rgba(99,102,241,0.4); }
     .cta-sec {
       background: none; color: var(--text-dim);
       font-size: 15px; border: 0.5px solid var(--border);
       padding: 15px 28px; border-radius: 8px;
       cursor: pointer; font-family: inherit;
       transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
     }
     .cta-sec:hover { border-color: var(--text-muted); color: var(--text); }
 
@@ -447,6 +510,11 @@
       .proof-grid { grid-template-columns: 1fr; }
       .pricing-box { grid-template-columns: 1fr; gap: 40px; padding: 32px 24px; }
       footer { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
+      .logo-grid { grid-template-columns: repeat(3, 1fr); padding: 0 20px; }
+      .container { padding: 0 20px; }
+    }
+    @media (max-width: 480px) {
+      .logo-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -477,12 +545,13 @@
   </div>
   <div style="display:flex;align-items:center;">
     <a href="/" class="nav-lang">EN</a>
-    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Demo aanvragen</button>
+    <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="nav-cta">Plan een demo</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-glow"></div>
   <div class="hero-badge">
     <span class="hero-badge-dot"></span>
     Powered by Envoya AI
@@ -490,8 +559,11 @@
   <h1>Wij sturen de agent.<br><em>Jij sluit de deal.</em></h1>
   <p class="hero-sub">Lead Machine vindt, kwalificeert en personaliseert outreach naar jouw ideale klanten — automatisch.</p>
   <div class="hero-ctas">
-    <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Bekijk het in actie</button>
-    <button class="btn-ghost" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Hoe het werkt ↓</button>
+    <div class="hero-ctas-row">
+      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="btn-primary">Plan een demo</a>
+      <a href="#features" class="btn-ghost">Hoe het werkt ↓</a>
+    </div>
+    <p class="hero-tagline">20 minuten. We laten het systeem live zien op jouw eigen leads.</p>
   </div>
 </section>
 
@@ -499,9 +571,10 @@
 <div class="trust-bar">
   <span class="trust-label">Vertrouwd door teams bij</span>
   <div class="trust-divider"></div>
-  <div class="trust-names">
-    <span class="trust-name">Jungle Minds</span>
-    <span class="trust-name">Brush AI</span>
+  <div class="trust-logos">
+    <span class="logo-badge">Jungle Minds</span>
+    <span class="logo-badge">Brush AI</span>
+    <span class="logo-badge logo-badge--cronos">Cronos Group</span>
   </div>
   <div class="trust-stats">
     <div class="trust-stat">
@@ -521,22 +594,22 @@
 
 <!-- STATS -->
 <div class="stats-row">
-  <div class="stat-box">
-    <div class="stat-num">35<span class="accent">+</span></div>
+  <div class="stat-box fade-in">
+    <div class="stat-num"><span class="counter accent" data-target="35" data-suffix="+">35</span></div>
     <div class="stat-lbl">Meetings geboekt</div>
     <div class="stat-sub">in 90 dagen</div>
   </div>
-  <div class="stat-box">
-    <div class="stat-num"><span class="accent">14</span>.4%</div>
+  <div class="stat-box fade-in">
+    <div class="stat-num"><span class="counter accent" data-target="14.4" data-suffix="%" data-decimal="1">14.4</span></div>
     <div class="stat-lbl">Responspercentage</div>
     <div class="stat-sub">vs. 3% gemiddeld</div>
   </div>
-  <div class="stat-box">
-    <div class="stat-num">2<span class="accent">×</span></div>
+  <div class="stat-box fade-in">
+    <div class="stat-num"><span class="counter accent" data-target="2" data-suffix="×">2</span></div>
     <div class="stat-lbl">Sneller dan handmatig</div>
     <div class="stat-sub">volledig autonoom</div>
   </div>
-  <div class="stat-box">
+  <div class="stat-box fade-in">
     <div class="stat-num"><span class="accent">0</span></div>
     <div class="stat-lbl">SDR vereist</div>
     <div class="stat-sub">de agent doet het</div>
@@ -545,21 +618,21 @@
 
 <!-- FEATURES -->
 <section class="section" id="features">
-  <div class="section-tag">Functies</div>
-  <div class="section-h">Alles wat jouw outbound nodig heeft.</div>
-  <p class="section-p">Lead Machine voert elke fase van outbound uit — van de juiste mensen vinden tot het perfecte bericht schrijven — zonder dat jij er iets voor hoeft te doen.</p>
+  <div class="section-tag fade-in">Functies</div>
+  <div class="section-h fade-in">Alles wat jouw outbound nodig heeft.</div>
+  <p class="section-p fade-in">Lead Machine voert elke fase van outbound uit — van de juiste mensen vinden tot het perfecte bericht schrijven — zonder dat jij er iets voor hoeft te doen.</p>
   <div class="features-grid">
-    <div class="feature-card">
+    <div class="feature-card fade-in">
       <span class="feature-icon">🎯</span>
       <div class="feature-title">Slim ICP</div>
       <div class="feature-desc">Leert wie bij jou koopt. Richt zich op meer mensen zoals zij. Het systeem wordt slimmer met elke deal die je sluit.</div>
     </div>
-    <div class="feature-card">
+    <div class="feature-card fade-in">
       <span class="feature-icon">✉️</span>
       <div class="feature-title">AI-e-mails</div>
       <div class="feature-desc">Gepersonaliseerde hooks. Sector-afgestemde waardepropositie. Automatisch verstuurd — op het juiste moment, in de juiste toon.</div>
     </div>
-    <div class="feature-card">
+    <div class="feature-card fade-in">
       <span class="feature-icon">📈</span>
       <div class="feature-title">Zelflerend</div>
       <div class="feature-desc">Elke reply, meeting en deal traint het systeem. Geen setup vereist. Het verbetert continu uit zichzelf.</div>
@@ -567,23 +640,13 @@
   </div>
 </section>
 
-<!-- LIVE DEMO -->
-<section class="demo-section fade-in">
-  <div class="container">
-    <p class="section-label">Live demo</p>
-    <h2>Kijk hoe de agent werkt</h2>
-    <p class="section-sub">Dit is wat er gebeurt elke keer dat Lead Machine draait — automatisch, 24/7.</p>
-    <div id="demo-widget"></div>
-  </div>
-</section>
-
 <!-- HOW IT WORKS -->
 <section class="section" id="how-it-works">
-  <div class="section-tag">Hoe het werkt</div>
-  <div class="section-h">Één keer instellen. Blijft draaien.</div>
-  <p class="section-p">Drie stappen naar een volle pipeline. Geen SDR-team nodig. Geen playbook schrijven. Gewoon verbinden, opstarten en deals sluiten.</p>
+  <div class="section-tag fade-in">Hoe het werkt</div>
+  <div class="section-h fade-in">Één keer instellen. Blijft draaien.</div>
+  <p class="section-p fade-in">Drie stappen naar een volle pipeline. Geen SDR-team nodig. Geen playbook schrijven. Gewoon verbinden, opstarten en deals sluiten.</p>
   <div class="how-grid">
-    <div class="how-card">
+    <div class="how-card fade-in">
       <div class="how-num">01</div>
       <div class="how-icon-wrap">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -596,7 +659,7 @@
       <div class="how-title">Verbind je bedrijf</div>
       <div class="how-desc">Beschrijf wat je verkoopt en wie je target. Lead Machine bouwt je ICP-profiel en is binnen minuten klaar om te draaien.</div>
     </div>
-    <div class="how-card">
+    <div class="how-card fade-in">
       <div class="how-num">02</div>
       <div class="how-icon-wrap">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -607,7 +670,7 @@
       <div class="how-title">Haal gekwalificeerde leads op</div>
       <div class="how-desc">Apollo-aangedreven zoeken gefilterd op jouw ICP. Alleen de juiste bedrijven, de juiste rollen, het juiste moment.</div>
     </div>
-    <div class="how-card">
+    <div class="how-card fade-in">
       <div class="how-num">03</div>
       <div class="how-icon-wrap">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -621,54 +684,100 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- LOGO GRID -->
+<section class="logo-grid-section fade-in">
+  <div class="container">
+    <p class="logo-grid-label">Afspraken ingepland bij bedrijven zoals</p>
+    <div class="logo-grid">
+      <span class="logo-text">Zilveren Kruis</span>
+      <span class="logo-text">Fabory</span>
+      <span class="logo-text">Shuttel</span>
+      <span class="logo-text">BOM</span>
+      <span class="logo-text">Meesman</span>
+      <span class="logo-text">TU/e</span>
+      <span class="logo-text">Triodos Bank</span>
+      <span class="logo-text">VodafoneZiggo</span>
+      <span class="logo-text">ABN AMRO</span>
+      <span class="logo-text">ING</span>
+      <span class="logo-text">APG</span>
+      <span class="logo-text">TNO</span>
+      <span class="logo-text">Unilever</span>
+      <span class="logo-text">LeasePlan</span>
+      <span class="logo-text">BAM</span>
+      <span class="logo-text">ECT Rotterdam</span>
+      <span class="logo-text">Royal Swinkels</span>
+      <span class="logo-text">SHV Energy</span>
+      <span class="logo-text">DFE Pharma</span>
+      <span class="logo-text">Mosadex</span>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS / TESTIMONIALS -->
 <section class="section">
-  <div class="section-tag">Resultaten</div>
-  <div class="section-h">Echte cijfers van echte teams.</div>
+  <div class="section-tag fade-in">Resultaten</div>
+  <div class="section-h fade-in">Echte cijfers van echte teams.</div>
   <div class="proof-grid">
-    <div class="proof-card">
-      <p class="proof-quote">"We boekten meer gekwalificeerde meetings in 8 weken dan in de voorgaande 6 maanden samen. Het systeem draait terwijl wij slapen."</p>
+    <div class="proof-card fade-in">
+      <p class="proof-quote">"In 8 weken meer gekwalificeerde afspraken dan in de 6 maanden daarvoor bij elkaar."</p>
       <div class="proof-meta">
         <div class="proof-avatar">JM</div>
         <div>
-          <div class="proof-name">Lennart de Haan</div>
-          <div class="proof-co">Jungle Minds</div>
+          <div class="proof-name">Jeffrey van den Dungen</div>
+          <div class="proof-co">Managing Director · Jungle Minds</div>
         </div>
       </div>
       <div class="proof-stats">
-        <div class="proof-stat"><div class="proof-stat-n">217</div><div class="proof-stat-l">leads</div></div>
-        <div class="proof-stat"><div class="proof-stat-n">14%</div><div class="proof-stat-l">responsrate</div></div>
-        <div class="proof-stat"><div class="proof-stat-n">28</div><div class="proof-stat-l">meetings</div></div>
-      </div>
-    </div>
-    <div class="proof-card">
-      <p class="proof-quote">"De pipeline funnel veranderde hoe ons team denkt over outbound. Overzichtelijk, geautomatiseerd en echt prettig in gebruik."</p>
-      <div class="proof-meta">
-        <div class="proof-avatar">BA</div>
-        <div>
-          <div class="proof-name">Brush AI team</div>
-          <div class="proof-co">Brush AI</div>
-        </div>
-      </div>
-      <div class="proof-stats">
-        <div class="proof-stat"><div class="proof-stat-n">407</div><div class="proof-stat-l">leads</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">422</div><div class="proof-stat-l">leads</div></div>
         <div class="proof-stat"><div class="proof-stat-n">14.4%</div><div class="proof-stat-l">responsrate</div></div>
         <div class="proof-stat"><div class="proof-stat-n">35</div><div class="proof-stat-l">meetings</div></div>
       </div>
+    </div>
+    <div class="proof-card fade-in">
+      <p class="proof-quote">"De pipeline funnel veranderde hoe ons team naar outbound kijkt. Geautomatiseerd en echt effectief."</p>
+      <div class="proof-meta">
+        <div class="proof-avatar">BA</div>
+        <div>
+          <div class="proof-name">Noëlle Cicilia</div>
+          <div class="proof-co">Co-founder · Brush AI</div>
+        </div>
+      </div>
+      <div class="proof-stats">
+        <div class="proof-stat"><div class="proof-stat-n">530</div><div class="proof-stat-l">leads</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">12%</div><div class="proof-stat-l">responsrate</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">28</div><div class="proof-stat-l">meetings</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calendar-visual fade-in">
+    <div class="calendar-overlay"></div>
+    <img src="/assets/calendar-full.jpg" alt="Volle agenda — meetings geboekt door Lead Machine" />
+  </div>
+
+  <div class="meeting-badges fade-in">
+    <div class="meeting-badges-label">Afspraken ingepland bij:</div>
+    <div class="meeting-badges-row">
+      <span class="meeting-badge">Zilveren Kruis</span>
+      <span class="meeting-badge">Fabory</span>
+      <span class="meeting-badge">Shuttel</span>
+      <span class="meeting-badge">BOM</span>
+      <span class="meeting-badge">TU/e</span>
+      <span class="meeting-badge">Meesman</span>
     </div>
   </div>
 </section>
 
 <!-- PRICING -->
 <section class="section" id="pricing">
-  <div class="section-tag">Prijzen</div>
-  <div class="section-h">Één prijs. Geen verrassingen.</div>
-  <p class="section-p">Één afgesloten deal dekt de gehele investering. Geen maandelijkse kosten, geen per-seat verrassingen, geen verborgen kosten.</p>
-  <div class="pricing-box">
+  <div class="section-tag fade-in">Prijzen</div>
+  <div class="section-h fade-in">Één prijs. Geen verrassingen.</div>
+  <p class="section-p fade-in">Één afgesloten deal dekt de gehele investering. Geen maandelijkse kosten, geen per-seat verrassingen, geen verborgen kosten.</p>
+  <div class="pricing-box fade-in">
     <div>
-      <div class="price-tag">Neem contact op voor prijzen</div>
+      <div class="price-tag">€25,000</div>
       <div class="price-num">€25K</div>
-      <div class="price-note">per bedrijf · 3 seats · voor altijd van jou</div>
+      <div class="price-note">per bedrijf · 3 seats · lifetime licentie</div>
       <div class="price-items">
         <div class="price-item">
           <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -691,7 +800,8 @@
           Volledig analytics dashboard
         </div>
       </div>
-      <button class="price-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Demo aanvragen</button>
+      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="price-cta">Plan een demo →</a>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:16px;">Één deal dekt de volledige investering.</p>
     </div>
     <div>
       <div class="roi-title">De ROI is simpel.</div>
@@ -705,36 +815,23 @@
 </section>
 
 <!-- CONTACT / CTA -->
-<!-- FOUNDER SECTION -->
-<section class="founder-section fade-in">
-  <div class="founder-inner">
-    <div class="founder-image">
-      <img src="/assets/lennart-working-1.jpg" alt="Lennart de Haan aan het werk" />
-    </div>
-    <div class="founder-text">
-      <p class="section-label-sm">Gebouwd door een salesperson, voor salespeople</p>
-      <h2 class="founder-h">Ik was de bottleneck.<br>Dus heb ik mezelf geautomatiseerd.</h2>
-      <p>Na 15 jaar in sales en business development besteedde ik 4 uur per dag aan outreach — prospects onderzoeken, emails schrijven, opvolgen. Goede resultaten, maar niet schaalbaar.</p>
-      <p>Lead Machine is wat ik heb gebouwd om dat op te lossen. Het systeem doet de prospecting. Ik doe de gesprekken.</p>
-      <p class="founder-sig">— Lennart de Haan, Oprichter Envoya</p>
-    </div>
-  </div>
-</section>
-
-<!-- HUMAN CTA -->
 <section class="cta-section" id="contact">
-  <div class="human-cta-inner fade-in">
-    <img src="/assets/lennart-headshot.jpg" alt="Lennart de Haan" class="human-avatar" />
-    <div>
-      <p class="human-name">Lennart de Haan</p>
-      <p class="human-role">Business Developer · Oprichter Envoya</p>
-      <h2 class="cta-h">Laat me je laten zien wat het kan.</h2>
-      <p class="cta-p">20 minuten. Ik loop met je door het systeem op jouw eigen leads, jouw eigen ICP. Geen slides. Gewoon resultaten.</p>
-      <div class="cta-btns">
-        <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="cta-main">Plan een demo met Lennart →</a>
-      </div>
-      <p class="human-note">Reageert doorgaans binnen 24 uur</p>
-    </div>
+  <div class="cta-icon">
+    <svg width="56" height="56" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="18" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.3"/>
+      <circle cx="20" cy="20" r="13" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.4"/>
+      <circle cx="20" cy="20" r="8" stroke="#6366F1" stroke-width="0.9" stroke-dasharray="1.5 1.5" opacity="0.5"/>
+      <circle cx="20" cy="20" r="4" fill="#6366F1"/>
+      <circle cx="20" cy="20" r="2.2" fill="#080E1A"/>
+      <circle cx="31.7" cy="8.3" r="2.5" fill="#818CF8"/>
+      <circle cx="5.5" cy="12" r="0.9" fill="#818CF8" opacity="0.6"/>
+    </svg>
+  </div>
+  <h2 class="cta-h fade-in">Klaar om jouw agent in te zetten?</h2>
+  <p class="cta-p fade-in">20 minuten. We laten het systeem live zien op jouw eigen leads.</p>
+  <div class="cta-btns fade-in">
+    <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="cta-main">Plan een demo</a>
+    <a href="#features" class="cta-sec">Eerst de functies bekijken</a>
   </div>
 </section>
 
@@ -757,7 +854,40 @@
   <span class="footer-copy">© 2026 Envoya · Wij sturen de agent. Jij sluit de deal.</span>
 </footer>
 
-<link rel="stylesheet" href="/assets/demo-widget.css">
-<script src="/assets/demo-widget.js"></script>
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Stat counter animation
+  function animateCounter(el) {
+    const target = parseFloat(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const decimal = parseInt(el.dataset.decimal || 0);
+    const duration = 1200;
+    const start = performance.now();
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const value = target * ease;
+      el.textContent = (decimal > 0 ? value.toFixed(decimal) : Math.round(value)) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && e.target.dataset.target) {
+        animateCounter(e.target);
+        counterObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+</script>
+
 </body>
 </html>
