@@ -95,16 +95,26 @@
 
     /* ── HERO ── */
     .hero {
-      padding: 96px 40px 80px;
-      text-align: center;
+      padding: 80px 40px 70px;
       border-bottom: 0.5px solid var(--border);
       position: relative; overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 3rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
     }
+    .hero-text { text-align: left; }
+    .hero-visual { position: relative; border-radius: 20px; overflow: hidden; }
+    .hero-visual img { width: 100%; height: 520px; object-fit: cover; object-position: center top; display: block; border-radius: 20px; }
+    .hero-visual-overlay { position: absolute; inset: 0; background: linear-gradient(to left, transparent 40%, rgba(8,14,26,0.6) 100%); border-radius: 20px; pointer-events: none; }
+    .hero-visual-glow { position: absolute; inset: -2px; border-radius: 22px; border: 1px solid rgba(99,102,241,0.3); box-shadow: 0 0 40px rgba(99,102,241,0.2); pointer-events: none; }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; text-align: center; } .hero-text { text-align: center; } .hero-visual { max-width: 360px; margin: 0 auto; } .hero-visual img { height: 360px; } }
 
     .hero-glow {
       position: absolute; inset: 0; z-index: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(99,102,241,0.35) 0%, transparent 70%),
-                  radial-gradient(ellipse 50% 40% at 80% 50%, rgba(129,140,248,0.15) 0%, transparent 60%);
+      background: radial-gradient(ellipse 80% 60% at 20% 50%, rgba(99,102,241,0.2) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -636,20 +646,30 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-glow"></div>
-  <div class="hero-badge">
-    <span class="hero-badge-dot"></span>
-    Powered by Envoya AI
-  </div>
-  <div class="hero-tag">DE OPLOSSING</div>
-  <h1>Wat als je salesteam morgen wakker werd<br>met 15 warme leads in de inbox?</h1>
-  <p class="hero-sub">Envoya is geen tool die je moet instellen en beheren. Het is een volledig operationeel AI-salesteam dat wij voor je bouwen, inrichten en runnen. Terwijl jij slaapt, benadert het systeem prospects, kwalificeert leads, en personaliseert elk bericht op basis van data. De prospect weet niet dat het AI is. Dat is het punt.</p>
-  <div class="hero-ctas">
-    <div class="hero-ctas-row">
-      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="btn-primary">Plan een demo</a>
-      <a href="#features" class="btn-ghost">Hoe het werkt ↓</a>
+
+  <div class="hero-text">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Powered by Envoya AI
     </div>
-    <p class="hero-tagline">20 minuten. We laten het systeem live zien op jouw eigen leads.</p>
+    <div class="hero-tag">DE OPLOSSING</div>
+    <h1>Wat als je salesteam morgen wakker werd<br>met 15 warme leads in de inbox?</h1>
+    <p class="hero-sub">Envoya is geen tool die je moet instellen en beheren. Het is een volledig operationeel AI-salesteam dat wij voor je bouwen, inrichten en runnen. Terwijl jij slaapt, benadert het systeem prospects, kwalificeert leads, en personaliseert elk bericht op basis van data. De prospect weet niet dat het AI is. Dat is het punt.</p>
+    <div class="hero-ctas">
+      <div class="hero-ctas-row">
+        <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="btn-primary">Plan een demo</a>
+        <a href="#features" class="btn-ghost">Hoe het werkt ↓</a>
+      </div>
+      <p class="hero-tagline">20 minuten. We laten het systeem live zien op jouw eigen leads.</p>
+    </div>
   </div>
+
+  <div class="hero-visual">
+    <img src="/assets/agent-hero.jpg" alt="Envoya AI Agent" />
+    <div class="hero-visual-overlay"></div>
+    <div class="hero-visual-glow"></div>
+  </div>
+
 </section>
 
 <!-- TRUST BAR -->
