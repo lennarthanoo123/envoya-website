@@ -317,22 +317,27 @@
       margin: 0 auto;
       padding: 0 40px;
     }
-    .logo-text {
+    .logo-item {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #334155;
-      padding: 1rem;
+      padding: 1rem 1.2rem;
       border: 1px solid #1a2235;
       border-radius: 8px;
-      transition: color 0.2s, border-color 0.2s;
-      text-align: center;
+      transition: border-color 0.2s, background 0.2s;
+      background: rgba(255,255,255,0.01);
     }
-    .logo-text:hover { color: #94a3b8; border-color: #2d3f5a; }
+    .logo-item:hover { border-color: #2d3f5a; background: rgba(255,255,255,0.03); }
+    .logo-item img {
+      height: 28px;
+      width: auto;
+      max-width: 110px;
+      object-fit: contain;
+      /* Uniform slate-blue tint matching dark theme — same approach as Jungle Minds */
+      filter: brightness(0) invert(1) opacity(0.22);
+      transition: filter 0.2s;
+    }
+    .logo-item:hover img { filter: brightness(0) invert(1) opacity(0.45); }
 
     /* ── PRICING ── */
     .pricing-box {
@@ -706,26 +711,26 @@
   <div class="container">
     <p class="logo-grid-label">Meetings booked at companies like</p>
     <div class="logo-grid">
-      <span class="logo-text">Zilveren Kruis</span>
-      <span class="logo-text">Fabory</span>
-      <span class="logo-text">Shuttel</span>
-      <span class="logo-text">BOM</span>
-      <span class="logo-text">Meesman</span>
-      <span class="logo-text">TU/e</span>
-      <span class="logo-text">Triodos Bank</span>
-      <span class="logo-text">VodafoneZiggo</span>
-      <span class="logo-text">ABN AMRO</span>
-      <span class="logo-text">ING</span>
-      <span class="logo-text">APG</span>
-      <span class="logo-text">TNO</span>
-      <span class="logo-text">Unilever</span>
-      <span class="logo-text">LeasePlan</span>
-      <span class="logo-text">BAM</span>
-      <span class="logo-text">ECT Rotterdam</span>
-      <span class="logo-text">Royal Swinkels</span>
-      <span class="logo-text">SHV Energy</span>
-      <span class="logo-text">DFE Pharma</span>
-      <span class="logo-text">Mosadex</span>
+      <div class="logo-item"><img src="https://logo.clearbit.com/zilverenkruis.nl" alt="Zilveren Kruis" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>ZILVEREN KRUIS</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/fabory.com" alt="Fabory" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>FABORY</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/shuttel.nl" alt="Shuttel" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>SHUTTEL</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/bom.nl" alt="BOM" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>BOM</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/meesman.nl" alt="Meesman" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>MEESMAN</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/tue.nl" alt="TU/e" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>TU/e</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/triodos.nl" alt="Triodos Bank" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>TRIODOS</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/vodafoneziggo.nl" alt="VodafoneZiggo" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>VODAFONEZIGGO</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/abnamro.com" alt="ABN AMRO" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>ABN AMRO</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/ing.nl" alt="ING" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>ING</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/apg.nl" alt="APG" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>APG</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/tno.nl" alt="TNO" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>TNO</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/unilever.com" alt="Unilever" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>UNILEVER</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/leaseplan.com" alt="LeasePlan" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>LEASEPLAN</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/bam.nl" alt="BAM" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>BAM</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/ect.nl" alt="ECT Rotterdam" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>ECT</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/royalswinkels.com" alt="Royal Swinkels" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>ROYAL SWINKELS</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/shvenergy.com" alt="SHV Energy" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>SHV ENERGY</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/dfepharma.com" alt="DFE Pharma" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>DFE PHARMA</span>'"></div>
+      <div class="logo-item"><img src="https://logo.clearbit.com/mosadex.nl" alt="Mosadex" onerror="this.parentElement.innerHTML='<span style=\'color:#334155;font-size:0.7rem;font-weight:700;letter-spacing:0.05em\'>MOSADEX</span>'"></div>
     </div>
   </div>
 </section>
