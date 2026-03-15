@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Envoya — Lead Machine</title>
+  <meta name="description" content="Lead Machine finds, qualifies and personalises outreach to your ideal clients — automatically. We send the agent. You close the deal." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --indigo:    #6366F1;
+      --indigo-soft: #818CF8;
+      --bg:        #080E1A;
+      --card:      #111827;
+      --card-alt:  #0D1520;
+      --border:    #1E293B;
+      --text:      #F8FAFC;
+      --text-sec:  #94A3B8;
+      --text-dim:  #64748B;
+      --text-muted:#475569;
+      --text-faint:#334155;
+      --indigo-bg: #1E1B4B;
+      --indigo-bdr:#3730A3;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 40px;
+      border-bottom: 0.5px solid var(--border);
+      background: rgba(8,14,26,0.92);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo-text {
+      font-size: 18px; font-weight: 300;
+      letter-spacing: 0.16em; color: var(--text);
+    }
+
+    .nav-links {
+      display: flex; gap: 32px;
+      font-size: 13px; color: var(--text-dim);
+    }
+    .nav-links a:hover { color: var(--text-sec); transition: color 0.2s; }
+
+    .nav-cta {
+      background: var(--indigo); color: #fff;
+      font-size: 12px; font-weight: 500;
+      padding: 8px 18px; border-radius: 6px;
+      border: none; cursor: pointer;
+      letter-spacing: 0.04em; font-family: inherit;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    .nav-lang {
+      font-size: 12px; color: var(--text-muted);
+      border: 0.5px solid var(--border); border-radius: 4px;
+      padding: 4px 10px; margin-right: 12px;
+      cursor: pointer; transition: color 0.2s;
+    }
+    .nav-lang:hover { color: var(--text-sec); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 96px 40px 80px;
+      text-align: center;
+      border-bottom: 0.5px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(ellipse at center, rgba(99,102,241,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--indigo-bg); border: 0.5px solid var(--indigo-bdr);
+      border-radius: 20px; padding: 5px 14px;
+      font-size: 11px; color: var(--indigo-soft);
+      letter-spacing: 0.06em; margin-bottom: 32px;
+    }
+    .hero-badge-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--indigo); flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 300; line-height: 1.12;
+      letter-spacing: -0.02em; color: var(--text);
+      margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: normal; color: var(--indigo); }
+
+    .hero-sub {
+      font-size: 17px; color: var(--text-dim);
+      max-width: 520px; margin: 0 auto 40px;
+      line-height: 1.7; font-weight: 300;
+    }
+
+    .hero-ctas {
+      display: flex; gap: 12px; justify-content: center; align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--indigo); color: #fff;
+      font-size: 14px; font-weight: 500;
+      padding: 13px 28px; border-radius: 8px;
+      border: none; cursor: pointer; font-family: inherit;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-ghost {
+      background: none; color: var(--text-sec);
+      font-size: 14px; border: 0.5px solid var(--border);
+      padding: 13px 24px; border-radius: 8px;
+      cursor: pointer; font-family: inherit;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--text-muted); color: var(--text); }
+
+    /* ── SOCIAL PROOF / TRUST BAR ── */
+    .trust-bar {
+      padding: 36px 40px;
+      border-bottom: 0.5px solid var(--border);
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: 24px; justify-content: center;
+    }
+    .trust-label {
+      font-size: 11px; color: var(--text-faint);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .trust-names {
+      display: flex; gap: 32px; align-items: center; flex-wrap: wrap;
+    }
+    .trust-name {
+      font-size: 14px; font-weight: 400; color: var(--text-dim);
+      letter-spacing: 0.04em;
+    }
+    .trust-divider {
+      width: 1px; height: 20px; background: var(--border);
+    }
+    .trust-stats {
+      display: flex; gap: 32px; flex-wrap: wrap; margin-left: auto;
+    }
+    .trust-stat { text-align: center; }
+    .trust-stat-num {
+      font-size: 22px; font-weight: 300; color: var(--indigo);
+      letter-spacing: -0.01em;
+    }
+    .trust-stat-lbl {
+      font-size: 11px; color: var(--text-muted); margin-top: 2px;
+    }
+
+    /* ── STATS ROW ── */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .stat-box {
+      padding: 36px 24px; text-align: center;
+      border-right: 0.5px solid var(--border);
+    }
+    .stat-box:last-child { border-right: none; }
+    .stat-num {
+      font-size: 40px; font-weight: 300; color: var(--text);
+      letter-spacing: -0.02em; line-height: 1;
+    }
+    .stat-num sup { font-size: 20px; color: var(--indigo); }
+    .stat-num .accent { color: var(--indigo); }
+    .stat-lbl {
+      font-size: 11px; color: var(--text-muted);
+      letter-spacing: 0.08em; text-transform: uppercase; margin-top: 6px;
+    }
+    .stat-sub { font-size: 11px; color: var(--indigo); margin-top: 3px; }
+
+    /* ── SECTION SHARED ── */
+    .section {
+      padding: 80px 40px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .section-tag {
+      font-size: 10px; color: var(--indigo);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .section-h {
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 300; color: var(--text);
+      line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 12px;
+    }
+    .section-p {
+      font-size: 15px; color: var(--text-dim);
+      line-height: 1.75; max-width: 560px; font-weight: 300;
+    }
+
+    /* ── FEATURES ── */
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 48px;
+    }
+    .feature-card {
+      background: var(--card-alt);
+      border: 0.5px solid var(--border);
+      border-radius: 12px; padding: 32px 28px;
+      transition: border-color 0.25s;
+    }
+    .feature-card:hover { border-color: var(--indigo-bdr); }
+    .feature-icon {
+      font-size: 28px; margin-bottom: 16px; display: block;
+    }
+    .feature-title {
+      font-size: 16px; font-weight: 500; color: var(--text);
+      margin-bottom: 8px;
+    }
+    .feature-desc {
+      font-size: 13px; color: var(--text-dim);
+      line-height: 1.7; font-weight: 300;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 48px;
+    }
+    .how-card {
+      background: var(--card-alt);
+      border: 0.5px solid var(--border);
+      border-radius: 12px; padding: 32px 28px;
+    }
+    .how-num {
+      font-size: 11px; color: var(--text-faint);
+      letter-spacing: 0.12em; margin-bottom: 20px;
+    }
+    .how-icon-wrap {
+      width: 40px; height: 40px;
+      background: var(--indigo-bg); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .how-title {
+      font-size: 15px; font-weight: 500; color: var(--text);
+      margin-bottom: 8px;
+    }
+    .how-desc {
+      font-size: 13px; color: var(--text-dim); line-height: 1.65;
+    }
+
+    /* ── PRICING ── */
+    .pricing-box {
+      background: var(--card-alt);
+      border: 0.5px solid var(--indigo-bdr);
+      border-radius: 16px; padding: 56px 48px;
+      margin-top: 48px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: start;
+    }
+    .price-tag {
+      font-size: 11px; color: var(--indigo);
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px;
+    }
+    .price-num {
+      font-size: 56px; font-weight: 300; color: var(--text);
+      letter-spacing: -0.02em; margin-bottom: 4px;
+    }
+    .price-note {
+      font-size: 13px; color: var(--text-dim); margin-bottom: 36px;
+    }
+    .price-items { display: flex; flex-direction: column; gap: 12px; }
+    .price-item {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 13px; color: var(--text-sec);
+    }
+    .price-check {
+      width: 18px; height: 18px; border-radius: 5px;
+      background: var(--indigo-bg);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .price-cta {
+      margin-top: 36px;
+      background: var(--indigo); color: #fff;
+      font-size: 14px; font-weight: 500;
+      padding: 14px 32px; border-radius: 8px;
+      border: none; cursor: pointer; font-family: inherit;
+      transition: opacity 0.2s; display: inline-block;
+    }
+    .price-cta:hover { opacity: 0.85; }
+
+    .roi-title {
+      font-size: 17px; font-weight: 500; color: var(--text);
+      margin-bottom: 8px;
+    }
+    .roi-sub { font-size: 13px; color: var(--text-dim); margin-bottom: 28px; }
+    .roi-row {
+      display: flex; justify-content: space-between;
+      padding: 12px 0; border-bottom: 0.5px solid var(--border);
+      font-size: 13px;
+    }
+    .roi-row:last-child { border-bottom: none; }
+    .roi-label { color: var(--text-dim); }
+    .roi-val { color: var(--indigo); font-weight: 500; }
+
+    /* ── TESTIMONIALS ── */
+    .proof-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin-top: 48px;
+    }
+    .proof-card {
+      background: var(--card-alt);
+      border: 0.5px solid var(--border);
+      border-radius: 12px; padding: 32px;
+    }
+    .proof-quote {
+      font-size: 14px; color: #CBD5E1;
+      line-height: 1.75; font-weight: 300;
+      font-style: italic; margin-bottom: 24px;
+    }
+    .proof-meta { display: flex; align-items: center; gap: 12px; }
+    .proof-avatar {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--indigo-bg); border: 0.5px solid var(--indigo-bdr);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 600; color: var(--indigo-soft);
+    }
+    .proof-name { font-size: 13px; font-weight: 500; color: var(--text); }
+    .proof-co { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+    .proof-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 10px; margin-top: 20px;
+    }
+    .proof-stat {
+      background: var(--bg); border-radius: 8px; padding: 12px;
+      text-align: center;
+    }
+    .proof-stat-n {
+      font-size: 20px; font-weight: 300; color: var(--indigo);
+    }
+    .proof-stat-l {
+      font-size: 10px; color: var(--text-muted); margin-top: 3px;
+    }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      padding: 100px 40px;
+      text-align: center;
+    }
+    .cta-icon { display: flex; justify-content: center; margin-bottom: 28px; }
+    .cta-h {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 300; color: var(--text);
+      letter-spacing: -0.01em; margin-bottom: 14px;
+    }
+    .cta-p {
+      font-size: 15px; color: var(--text-dim);
+      margin-bottom: 36px; font-weight: 300;
+    }
+    .cta-btns {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+    }
+    .cta-main {
+      background: var(--indigo); color: #fff;
+      font-size: 15px; font-weight: 500;
+      padding: 15px 36px; border-radius: 8px;
+      border: none; cursor: pointer; font-family: inherit;
+      transition: opacity 0.2s;
+    }
+    .cta-main:hover { opacity: 0.85; }
+    .cta-sec {
+      background: none; color: var(--text-dim);
+      font-size: 15px; border: 0.5px solid var(--border);
+      padding: 15px 28px; border-radius: 8px;
+      cursor: pointer; font-family: inherit;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .cta-sec:hover { border-color: var(--text-muted); color: var(--text); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 40px;
+      border-top: 0.5px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 300;
+      letter-spacing: 0.16em; color: var(--text-muted);
+    }
+    .footer-links {
+      display: flex; gap: 24px;
+      font-size: 12px; color: var(--text-faint);
+    }
+    .footer-links a:hover { color: var(--text-muted); }
+    .footer-copy { font-size: 11px; color: var(--text-faint); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 64px 20px 56px; }
+      .trust-bar { padding: 28px 20px; }
+      .trust-stats { margin-left: 0; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .stat-box { border-right: none; border-bottom: 0.5px solid var(--border); }
+      .section { padding: 56px 20px; }
+      .features-grid,
+      .how-grid,
+      .proof-grid { grid-template-columns: 1fr; }
+      .pricing-box { grid-template-columns: 1fr; gap: 40px; padding: 32px 24px; }
+      footer { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="18" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.5"/>
+      <circle cx="20" cy="20" r="13" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
+      <circle cx="20" cy="20" r="8" stroke="#6366F1" stroke-width="0.9" stroke-dasharray="1.5 1.5" opacity="0.7"/>
+      <circle cx="20" cy="20" r="4" fill="#6366F1"/>
+      <circle cx="20" cy="20" r="2.2" fill="#0F172A"/>
+      <circle cx="31.7" cy="8.3" r="2.5" fill="#818CF8"/>
+      <circle cx="33" cy="20" r="1.2" fill="#6366F1"/>
+      <circle cx="9.5" cy="28" r="1.5" stroke="#818CF8" stroke-width="0.8" fill="none"/>
+      <circle cx="5.5" cy="12" r="0.9" fill="#818CF8" opacity="0.6"/>
+      <circle cx="35" cy="30" r="0.7" fill="#818CF8" opacity="0.5"/>
+    </svg>
+    <span class="nav-logo-text">envoya</span>
+  </div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#how-it-works">How it works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div style="display:flex;align-items:center;">
+    <a href="/nl/" class="nav-lang">NL</a>
+    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request demo</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="hero-badge-dot"></span>
+    Powered by Envoya AI
+  </div>
+  <h1>We send the agent.<br><em>You close the deal.</em></h1>
+  <p class="hero-sub">Lead Machine finds, qualifies and personalises outreach to your ideal clients — automatically.</p>
+  <div class="hero-ctas">
+    <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">See it in action</button>
+    <button class="btn-ghost" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">How it works ↓</button>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <span class="trust-label">Trusted by teams at</span>
+  <div class="trust-divider"></div>
+  <div class="trust-names">
+    <span class="trust-name">Jungle Minds</span>
+    <span class="trust-name">Brush AI</span>
+  </div>
+  <div class="trust-stats">
+    <div class="trust-stat">
+      <div class="trust-stat-num">10–15%</div>
+      <div class="trust-stat-lbl">Reply rate</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-stat-num">35+</div>
+      <div class="trust-stat-lbl">Meetings booked</div>
+    </div>
+    <div class="trust-stat">
+      <div class="trust-stat-num">2×</div>
+      <div class="trust-stat-lbl">Faster than manual</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat-box">
+    <div class="stat-num">35<span class="accent">+</span></div>
+    <div class="stat-lbl">Meetings booked</div>
+    <div class="stat-sub">in 90 days</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num"><span class="accent">14</span>.4%</div>
+    <div class="stat-lbl">Response rate</div>
+    <div class="stat-sub">vs 3% average</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num">2<span class="accent">×</span></div>
+    <div class="stat-lbl">Faster than manual</div>
+    <div class="stat-sub">fully autonomous</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num"><span class="accent">0</span></div>
+    <div class="stat-lbl">SDR required</div>
+    <div class="stat-sub">agent handles it</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="section-tag">Features</div>
+  <div class="section-h">Everything your outbound needs.</div>
+  <p class="section-p">Lead Machine runs every stage of outbound — from finding the right people to writing the perfect message — without you lifting a finger.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <span class="feature-icon">🎯</span>
+      <div class="feature-title">Smart ICP</div>
+      <div class="feature-desc">Learns who buys from you. Targets more like them. The system gets smarter with every deal you close.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">✉️</span>
+      <div class="feature-title">AI Emails</div>
+      <div class="feature-desc">Personalised hooks. Sector-matched value props. Sent automatically — at the right time, in the right tone.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">📈</span>
+      <div class="feature-title">Self-learning</div>
+      <div class="feature-desc">Every reply, meeting and deal trains the system. No setup required. It improves continuously on its own.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how-it-works">
+  <div class="section-tag">How it works</div>
+  <div class="section-h">Deploy once. Run forever.</div>
+  <p class="section-p">Three steps to a full pipeline. No SDR team needed. No playbook to write. Just connect, launch, and close.</p>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">01</div>
+      <div class="how-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="10" cy="10" r="8" stroke="#6366F1" stroke-width="0.9" stroke-dasharray="2 2" opacity="0.5"/>
+          <circle cx="10" cy="10" r="4" fill="#6366F1"/>
+          <circle cx="10" cy="10" r="2.2" fill="#1E1B4B"/>
+          <circle cx="16.5" cy="3.5" r="2" fill="#818CF8"/>
+        </svg>
+      </div>
+      <div class="how-title">Connect your company</div>
+      <div class="how-desc">Describe what you sell and who you target. Lead Machine builds your ICP profile and is ready to run in minutes.</div>
+    </div>
+    <div class="how-card">
+      <div class="how-num">02</div>
+      <div class="how-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect x="2" y="4" width="16" height="12" rx="2" stroke="#6366F1" stroke-width="0.9"/>
+          <path d="M7 10 L10 13 L15 7" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="how-title">Pull qualified leads</div>
+      <div class="how-desc">Apollo-powered search filtered by your ICP. Only the right companies, the right roles, the right moment.</div>
+    </div>
+    <div class="how-card">
+      <div class="how-num">03</div>
+      <div class="how-icon-wrap">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M3 14 L7 10 L10 13 L14 7 L17 9" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="17" cy="4" r="2" fill="#6366F1"/>
+        </svg>
+      </div>
+      <div class="how-title">Send &amp; learn</div>
+      <div class="how-desc">AI writes emails, tracks replies, books meetings and improves over time. You just show up to close.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="section-tag">Results</div>
+  <div class="section-h">Real numbers from real teams.</div>
+  <div class="proof-grid">
+    <div class="proof-card">
+      <p class="proof-quote">"We booked more qualified meetings in 8 weeks than in the previous 6 months combined. The system runs while we sleep."</p>
+      <div class="proof-meta">
+        <div class="proof-avatar">JM</div>
+        <div>
+          <div class="proof-name">Lennart de Haan</div>
+          <div class="proof-co">Jungle Minds</div>
+        </div>
+      </div>
+      <div class="proof-stats">
+        <div class="proof-stat"><div class="proof-stat-n">217</div><div class="proof-stat-l">leads</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">14%</div><div class="proof-stat-l">reply rate</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">28</div><div class="proof-stat-l">meetings</div></div>
+      </div>
+    </div>
+    <div class="proof-card">
+      <p class="proof-quote">"The pipeline funnel changed how our team thinks about outbound. Clear, automated, and genuinely fun to use."</p>
+      <div class="proof-meta">
+        <div class="proof-avatar">BA</div>
+        <div>
+          <div class="proof-name">Brush AI team</div>
+          <div class="proof-co">Brush AI</div>
+        </div>
+      </div>
+      <div class="proof-stats">
+        <div class="proof-stat"><div class="proof-stat-n">407</div><div class="proof-stat-l">leads</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">14.4%</div><div class="proof-stat-l">reply rate</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">35</div><div class="proof-stat-l">meetings</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="section-tag">Pricing</div>
+  <div class="section-h">One price. No surprises.</div>
+  <p class="section-p">One signed deal covers the entire investment. No monthly fees, no per-seat surprises, no hidden costs.</p>
+  <div class="pricing-box">
+    <div>
+      <div class="price-tag">Contact for pricing</div>
+      <div class="price-num">€25K</div>
+      <div class="price-note">per company · 3 seats · yours forever</div>
+      <div class="price-items">
+        <div class="price-item">
+          <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Full Lead Machine platform
+        </div>
+        <div class="price-item">
+          <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          2-hour onboarding session
+        </div>
+        <div class="price-item">
+          <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          No monthly fees — ever
+        </div>
+        <div class="price-item">
+          <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          AI email writer + self-learning engine
+        </div>
+        <div class="price-item">
+          <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Full analytics dashboard
+        </div>
+      </div>
+      <button class="price-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book a demo</button>
+    </div>
+    <div>
+      <div class="roi-title">The ROI is simple.</div>
+      <div class="roi-sub">One signed deal covers the entire investment.</div>
+      <div class="roi-row"><span class="roi-label">SDR salary (NL)</span><span class="roi-val">€40–60K / year</span></div>
+      <div class="roi-row"><span class="roi-label">Envoya Lead Machine</span><span class="roi-val">€25K once</span></div>
+      <div class="roi-row"><span class="roi-label">Avg. meetings / month</span><span class="roi-val">8–12</span></div>
+      <div class="roi-row"><span class="roi-label">Breakeven</span><span class="roi-val">1 signed deal</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-icon">
+    <svg width="56" height="56" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="18" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.3"/>
+      <circle cx="20" cy="20" r="13" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.4"/>
+      <circle cx="20" cy="20" r="8" stroke="#6366F1" stroke-width="0.9" stroke-dasharray="1.5 1.5" opacity="0.5"/>
+      <circle cx="20" cy="20" r="4" fill="#6366F1"/>
+      <circle cx="20" cy="20" r="2.2" fill="#080E1A"/>
+      <circle cx="31.7" cy="8.3" r="2.5" fill="#818CF8"/>
+      <circle cx="5.5" cy="12" r="0.9" fill="#818CF8" opacity="0.6"/>
+    </svg>
+  </div>
+  <h2 class="cta-h">Ready to deploy your agent?</h2>
+  <p class="cta-p">20 minutes. We show you the system live, on your own leads.</p>
+  <div class="cta-btns">
+    <a href="mailto:hello@envoya.tech" class="cta-main">Request demo</a>
+    <button class="cta-sec" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Explore features first</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <svg width="18" height="18" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="18" stroke="#475569" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.4"/>
+      <circle cx="20" cy="20" r="13" stroke="#475569" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.5"/>
+      <circle cx="20" cy="20" r="4" fill="#475569"/>
+      <circle cx="31.7" cy="8.3" r="2" fill="#6366F1" opacity="0.7"/>
+    </svg>
+    envoya
+  </div>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="mailto:hello@envoya.tech">Contact</a>
+  </div>
+  <span class="footer-copy">© 2026 Envoya · We send the agent. You close the deal.</span>
+</footer>
+
+</body>
+</html>
