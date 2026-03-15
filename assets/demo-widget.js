@@ -263,6 +263,7 @@
     let stopFn = null;
     let started = false;
 
+    // Start immediately if already in view, otherwise on first intersection
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -273,10 +274,18 @@
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0 }  // fire as soon as any pixel is visible
     );
 
     observer.observe(panel);
+
+    // Fallback: start after 1s regardless (handles hidden/offscreen edge cases)
+    setTimeout(() => {
+      if (!started) {
+        started = true;
+        stopFn = startWidget(panel);
+      }
+    }, 1000);
   }
 
   /* ── Boot ─────────────────────────────────────────────────── */
