@@ -4,6 +4,7 @@
 
   const SLIDES_EN = [
     { img: '/assets/screen-pull-leads.jpg', tag: 'Step 1', title: 'Pull qualified leads from Apollo', desc: 'ICP profile loaded → AI calculates search strategy → Apollo database queried → leads scored and ranked' },
+    { img: '/assets/screen-apollo-preview.jpg', tag: 'Step 2', title: 'AI selects the right leads', desc: 'Exploit: proven ICP combinations (highest conversion). Explore: new potential. Wildcard: surprises. All auto-scored.' },
     { img: '/assets/screen-leads.jpg', tag: 'Step 2', title: '451 leads — scored, ranked, ready', desc: 'Every lead gets an ICP score. The system knows who to approach first. You see everything at a glance.' },
     { img: '/assets/screen-email-generating.jpg', tag: 'Step 3', title: 'AI writes a personalised email', desc: 'Lead data loaded → web research → signal analysis → Claude AI writes 3 email variants in seconds.' },
     { img: '/assets/screen-email-generated.jpg', tag: 'Step 4', title: 'Email ready — personalised hook, real signal', desc: 'Pattern A: personal signal as hook. Sector-matched references. Estimated reply probability shown.' },
@@ -14,6 +15,7 @@
 
   const SLIDES_NL = [
     { img: '/assets/screen-pull-leads.jpg', tag: 'Stap 1', title: 'Leads pullen uit Apollo', desc: 'ICP profiel geladen → AI berekent zoekstrategie → Apollo database bevraagd → leads scoren op ICP-criteria' },
+    { img: '/assets/screen-apollo-preview.jpg', tag: 'Stap 2', title: 'AI selecteert de juiste leads', desc: 'Exploit: bewezen ICP-combinaties (hoogste conversie). Explore: nieuw potentieel. Wildcard: verrassingen. Allemaal automatisch gescoord.' },
     { img: '/assets/screen-leads.jpg', tag: 'Stap 2', title: '451 leads — gescoord, gerankt, klaar', desc: 'Elke lead krijgt een ICP-score. Het systeem weet wie als eerste benaderd wordt. Jij ziet alles in één oogopslag.' },
     { img: '/assets/screen-email-generating.jpg', tag: 'Stap 3', title: 'AI schrijft een gepersonaliseerde email', desc: 'Lead data geladen → webonderzoek → signaalanalyse → Claude AI schrijft 3 emailvarianten in seconden.' },
     { img: '/assets/screen-email-generated.jpg', tag: 'Stap 4', title: 'Email klaar — persoonlijke haak, echt signaal', desc: 'Patroon A: persoonlijk signaal als haak. Sector-matched referenties. Geschatte reply-kans zichtbaar.' },
