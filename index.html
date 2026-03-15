@@ -183,9 +183,13 @@
     .trust-divider {
       width: 1px; height: 20px; background: var(--border);
     }
-    .trust-logos { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
-    .logo-badge { font-size: 0.95rem; font-weight: 700; letter-spacing: 0.05em; color: #94a3b8; border: 1px solid #1e293b; padding: 0.4rem 1rem; border-radius: 6px; }
-    .logo-badge--cronos { color: #818cf8; border-color: #6366f1; }
+    .trust-logos { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+    .logo-badge { display: flex; align-items: center; justify-content: center; padding: 0.5rem 1.2rem; border: 1px solid #1a2535; border-radius: 8px; background: rgba(255,255,255,0.01); }
+    .logo-badge img { height: 22px; width: auto; max-width: 110px; object-fit: contain; filter: brightness(0) invert(1) opacity(0.35); transition: filter 0.2s; }
+    .logo-badge:hover img { filter: brightness(0) invert(1) opacity(0.65); }
+    .logo-badge--cronos { border-color: rgba(99,102,241,0.2); }
+    .logo-badge--cronos img { filter: brightness(0) invert(1) sepia(1) hue-rotate(210deg) saturate(3) opacity(0.45); }
+    .logo-badge--cronos:hover img { opacity: 0.75; }
 
     .trust-stats {
       display: flex; gap: 32px; flex-wrap: wrap; margin-left: auto;
@@ -608,9 +612,9 @@
   <span class="trust-label">Trusted by teams at</span>
   <div class="trust-divider"></div>
   <div class="trust-logos">
-    <span class="logo-badge">Jungle Minds</span>
-    <span class="logo-badge">Brush AI</span>
-    <span class="logo-badge logo-badge--cronos">Cronos Group</span>
+    <div class="logo-badge"><img src="https://logo.clearbit.com/jungleminds.nl" alt="Jungle Minds" onerror="this.outerHTML='<span style=\'font-size:11px;font-weight:700;color:#475569;letter-spacing:0.05em\'>JUNGLE MINDS</span>'"></div>
+    <div class="logo-badge"><img src="https://logo.clearbit.com/brushai.com" alt="Brush AI" onerror="this.outerHTML='<span style=\'font-size:11px;font-weight:700;color:#475569;letter-spacing:0.05em\'>BRUSH AI</span>'"></div>
+    <div class="logo-badge logo-badge--cronos"><img src="https://logo.clearbit.com/cronos.be" alt="Cronos Group" onerror="this.outerHTML='<span style=\'font-size:11px;font-weight:700;color:#818cf8;letter-spacing:0.05em\'>CRONOS GROUP</span>'"></div>
   </div>
   <div class="trust-stats">
     <div class="trust-stat">
