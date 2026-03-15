@@ -1,85 +1,128 @@
-/**
- * Envoya Before/After Calendar Widget
- * Shows Week 1 (empty) vs Week 4 (packed with meetings)
- * Auto-animates with a toggle switch
- */
-(function() {
+/* ── Envoya Calendar Widget — Professional redesign ─────────────────── */
+(function () {
   const isNL = window.location.pathname.startsWith('/nl');
 
-  const MEETINGS_WEEK4 = [
-    // Monday
-    { day: 1, time: '9:00', label: isNL ? '☎️ Intro · Zilveren Kruis' : '☎️ Intro · Zilveren Kruis', color: '#6366f1', duration: 1 },
-    { day: 1, time: '11:00', label: isNL ? '📹 Kennismaking · ABN AMRO' : '📹 Discovery · ABN AMRO', color: '#818cf8', duration: 1 },
-    { day: 1, time: '14:00', label: isNL ? '🤝 Pitch · VodafoneZiggo' : '🤝 Pitch · VodafoneZiggo', color: '#6366f1', duration: 1 },
-    // Tuesday
-    { day: 2, time: '9:00', label: isNL ? '☎️ Intro · Fabory' : '☎️ Intro · Fabory', color: '#818cf8', duration: 1 },
-    { day: 2, time: '10:00', label: isNL ? '📹 Kennismaking · ING' : '📹 Discovery · ING', color: '#6366f1', duration: 1 },
-    { day: 2, time: '13:00', label: isNL ? '🤝 Deal · Triodos Bank' : '🤝 Deal · Triodos Bank', color: '#4ade80', duration: 1 },
-    { day: 2, time: '15:00', label: isNL ? '☎️ Intro · TU/e' : '☎️ Intro · TU/e', color: '#818cf8', duration: 1 },
-    // Wednesday
-    { day: 3, time: '9:00', label: isNL ? '📹 Kennismaking · APG' : '📹 Discovery · APG', color: '#6366f1', duration: 1 },
-    { day: 3, time: '11:00', label: isNL ? '☎️ Intro · TNO' : '☎️ Intro · TNO', color: '#818cf8', duration: 1 },
-    { day: 3, time: '14:00', label: isNL ? '🤝 Pitch · Unilever' : '🤝 Pitch · Unilever', color: '#6366f1', duration: 1 },
-    { day: 3, time: '16:00', label: isNL ? '☎️ Intro · Meesman' : '☎️ Intro · Meesman', color: '#818cf8', duration: 1 },
-    // Thursday
-    { day: 4, time: '9:00', label: isNL ? '☎️ Intro · BAM' : '☎️ Intro · BAM', color: '#818cf8', duration: 1 },
-    { day: 4, time: '10:00', label: isNL ? '📹 Kennismaking · KPN' : '📹 Discovery · KPN', color: '#6366f1', duration: 1 },
-    { day: 4, time: '13:00', label: isNL ? '🤝 Deal · Philips' : '🤝 Deal signed · Philips', color: '#4ade80', duration: 1 },
-    { day: 4, time: '15:00', label: isNL ? '📹 Kennismaking · LeasePlan' : '📹 Discovery · LeasePlan', color: '#6366f1', duration: 1 },
-    // Friday
-    { day: 5, time: '9:00', label: isNL ? '☎️ Intro · SHV Energy' : '☎️ Intro · SHV Energy', color: '#818cf8', duration: 1 },
-    { day: 5, time: '11:00', label: isNL ? '🤝 Pitch · TomTom' : '🤝 Pitch · TomTom', color: '#6366f1', duration: 1 },
-    { day: 5, time: '14:00', label: isNL ? '☎️ Intro · NXP' : '☎️ Intro · NXP', color: '#818cf8', duration: 1 },
+  const DAYS_EN = [
+    { name: 'MON', date: '17' },
+    { name: 'TUE', date: '18' },
+    { name: 'WED', date: '19' },
+    { name: 'THU', date: '20' },
+    { name: 'FRI', date: '21' },
   ];
-
-  const DAYS_EN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
-  const DAYS_NL = ['Ma', 'Di', 'Wo', 'Do', 'Vr'];
+  const DAYS_NL = [
+    { name: 'MA', date: '17' },
+    { name: 'DI', date: '18' },
+    { name: 'WO', date: '19' },
+    { name: 'DO', date: '20' },
+    { name: 'VR', date: '21' },
+  ];
   const DAYS = isNL ? DAYS_NL : DAYS_EN;
+
   const TIMES = ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'];
 
-  function buildCalendar(isFull) {
-    const grid = document.createElement('div');
-    grid.className = 'cal-grid';
+  // type: intro | discovery | pitch | deal
+  const MEETINGS = [
+    { day: 0, time: '9:00',  type: 'intro',     co: 'Zilveren Kruis', init: 'ZK' },
+    { day: 0, time: '11:00', type: 'discovery',  co: 'ABN AMRO',       init: 'AA' },
+    { day: 0, time: '14:00', type: 'pitch',      co: 'VodafoneZiggo',  init: 'VZ' },
+    { day: 1, time: '9:00',  type: 'intro',      co: 'Fabory',         init: 'FB' },
+    { day: 1, time: '10:00', type: 'discovery',  co: 'ING',            init: 'IN' },
+    { day: 1, time: '13:00', type: 'deal',       co: 'Triodos Bank',   init: 'TR' },
+    { day: 1, time: '15:00', type: 'intro',      co: 'TU/e',           init: 'TU' },
+    { day: 2, time: '9:00',  type: 'discovery',  co: 'APG',            init: 'AP' },
+    { day: 2, time: '11:00', type: 'intro',      co: 'TNO',            init: 'TN' },
+    { day: 2, time: '14:00', type: 'pitch',      co: 'Unilever',       init: 'UN' },
+    { day: 2, time: '16:00', type: 'intro',      co: 'Meesman',        init: 'MS' },
+    { day: 3, time: '9:00',  type: 'intro',      co: 'BAM',            init: 'BA' },
+    { day: 3, time: '10:00', type: 'discovery',  co: 'KPN',            init: 'KP' },
+    { day: 3, time: '13:00', type: 'deal',       co: 'Philips',        init: 'PH' },
+    { day: 3, time: '15:00', type: 'discovery',  co: 'LeasePlan',      init: 'LP' },
+    { day: 4, time: '9:00',  type: 'intro',      co: 'SHV Energy',     init: 'SH' },
+    { day: 4, time: '11:00', type: 'pitch',      co: 'TomTom',         init: 'TT' },
+    { day: 4, time: '14:00', type: 'intro',      co: 'NXP',            init: 'NX' },
+  ];
 
-    // Header row
-    const headerRow = document.createElement('div');
-    headerRow.className = 'cal-header-row';
-    headerRow.innerHTML = '<div class="cal-time-col"></div>' +
-      DAYS.map((d, i) => `<div class="cal-day-col"><span class="cal-day-label">${d}</span></div>`).join('');
-    grid.appendChild(headerRow);
+  const TYPE_LABELS = {
+    intro:     isNL ? 'Kennismaking' : 'Intro call',
+    discovery: isNL ? 'Discovery'    : 'Discovery',
+    pitch:     isNL ? 'Pitch'        : 'Pitch',
+    deal:      isNL ? 'Deal gesloten ✓' : 'Deal signed ✓',
+  };
 
-    // Time slots
-    TIMES.forEach(time => {
-      const row = document.createElement('div');
-      row.className = 'cal-row';
-      row.innerHTML = `<div class="cal-time-col">${time}</div>`;
+  function buildCalendar(full) {
+    const wrap = document.createElement('div');
+    wrap.className = 'cal-container';
 
-      DAYS.forEach((d, dayIdx) => {
-        const cell = document.createElement('div');
-        cell.className = 'cal-cell';
+    // Header
+    const hdr = document.createElement('div');
+    hdr.className = 'cal-header-row';
+    hdr.innerHTML = '<div class="cal-time-col"></div>' +
+      DAYS.map(d => `
+        <div class="cal-day-header">
+          <span class="cal-day-name">${d.name}</span>
+          <span class="cal-day-num">${d.date}</span>
+        </div>`).join('');
+    wrap.appendChild(hdr);
 
-        if (isFull) {
-          const meeting = MEETINGS_WEEK4.find(m => m.day === dayIdx + 1 && m.time === time);
-          if (meeting) {
-            const block = document.createElement('div');
-            block.className = 'cal-block';
-            block.style.background = meeting.color === '#4ade80'
-              ? 'rgba(74,222,128,0.15)'
-              : 'rgba(99,102,241,0.15)';
-            block.style.borderLeft = `3px solid ${meeting.color}`;
-            block.style.color = meeting.color === '#4ade80' ? '#4ade80' : '#a5b4fc';
-            block.textContent = meeting.label;
-            cell.appendChild(block);
-          }
-        }
+    const body = document.createElement('div');
+    body.className = 'cal-body';
 
-        row.appendChild(cell);
+    if (!full) {
+      // Empty state
+      const emptyWrap = document.createElement('div');
+      emptyWrap.style.display = 'grid';
+      emptyWrap.style.gridTemplateColumns = '52px repeat(5, 1fr)';
+      TIMES.forEach(t => {
+        const row = document.createElement('div');
+        row.className = 'cal-row';
+        row.innerHTML = `<div class="cal-time-col">${t}</div>` +
+          DAYS.map(() => '<div class="cal-cell"></div>').join('');
+        emptyWrap.appendChild(row);
       });
+      body.appendChild(emptyWrap);
+    } else {
+      // Full calendar
+      const grid = document.createElement('div');
+      grid.style.display = 'grid';
+      grid.style.gridTemplateColumns = '52px repeat(5, 1fr)';
 
-      grid.appendChild(row);
+      TIMES.forEach(time => {
+        const row = document.createElement('div');
+        row.className = 'cal-row';
+        row.innerHTML = `<div class="cal-time-col">${time}</div>`;
+
+        DAYS.forEach((_, di) => {
+          const cell = document.createElement('div');
+          cell.className = 'cal-cell';
+
+          const m = MEETINGS.find(m => m.day === di && m.time === time);
+          if (m) {
+            const ev = document.createElement('div');
+            ev.className = `cal-event cal-event-${m.type}`;
+            ev.innerHTML = `
+              <div class="cal-event-avatar">${m.init}</div>
+              <div class="cal-event-body">
+                <div class="cal-event-type">${TYPE_LABELS[m.type]}</div>
+                <div class="cal-event-company">${m.co}</div>
+              </div>`;
+            cell.appendChild(ev);
+          }
+          row.appendChild(cell);
+        });
+        grid.appendChild(row);
+      });
+      body.appendChild(grid);
+    }
+
+    wrap.appendChild(body);
+    return wrap;
+  }
+
+  function animateEvents(container) {
+    const events = container.querySelectorAll('.cal-event');
+    events.forEach((ev, i) => {
+      setTimeout(() => ev.classList.add('show'), i * 90);
     });
-
-    return grid;
   }
 
   function init() {
@@ -88,45 +131,38 @@
 
     let showFull = false;
 
-    const label = isNL
-      ? '<span class="cal-week-badge cal-week-empty">Week 1 — voor Lead Machine</span>'
-      : '<span class="cal-week-badge cal-week-empty">Week 1 — before Lead Machine</span>';
-
-    const labelFull = isNL
-      ? '<span class="cal-week-badge cal-week-full">Week 4 — 17 meetings geboekt 🚀</span>'
-      : '<span class="cal-week-badge cal-week-full">Week 4 — 17 meetings booked 🚀</span>';
-
-    const btnText = isNL
-      ? ['→ Zie week 4', '← Zie week 1']
-      : ['→ See week 4', '← See week 1'];
+    const LABEL_EMPTY = isNL ? 'Week 1 — vóór Lead Machine' : 'Week 1 — before Lead Machine';
+    const LABEL_FULL  = isNL ? 'Week 4 — 18 meetings geboekt 🚀' : 'Week 4 — 18 meetings booked 🚀';
+    const BTN_FORWARD = isNL ? 'Zie week 4 →' : 'See week 4 →';
+    const BTN_BACK    = isNL ? '← Terug naar week 1' : '← Back to week 1';
 
     const wrapper = document.createElement('div');
     wrapper.className = 'cal-wrapper';
 
-    const badgeEl = document.createElement('div');
-    badgeEl.className = 'cal-badge-row';
-    badgeEl.innerHTML = label;
+    const badge = document.createElement('div');
+    badge.className = 'cal-badge-row';
+    badge.innerHTML = `<span class="cal-week-badge cal-week-empty">${LABEL_EMPTY}</span>`;
 
-    const calContainer = document.createElement('div');
-    calContainer.className = 'cal-container';
-    calContainer.appendChild(buildCalendar(false));
+    const calWrap = document.createElement('div');
+    let currentCal = buildCalendar(false);
+    calWrap.appendChild(currentCal);
 
     const btn = document.createElement('button');
     btn.className = 'cal-toggle-btn';
-    btn.textContent = btnText[0];
+    btn.textContent = BTN_FORWARD;
+
     btn.onclick = () => {
       showFull = !showFull;
-      calContainer.innerHTML = '';
+      calWrap.innerHTML = '';
       const cal = buildCalendar(showFull);
-      cal.style.opacity = '0';
-      calContainer.appendChild(cal);
-      setTimeout(() => { cal.style.transition = 'opacity 0.4s'; cal.style.opacity = '1'; }, 10);
-      badgeEl.innerHTML = showFull ? labelFull : label;
-      btn.textContent = showFull ? btnText[1] : btnText[0];
+      calWrap.appendChild(cal);
+      if (showFull) animateEvents(cal);
+      badge.innerHTML = `<span class="cal-week-badge ${showFull ? 'cal-week-full' : 'cal-week-empty'}">${showFull ? LABEL_FULL : LABEL_EMPTY}</span>`;
+      btn.textContent = showFull ? BTN_BACK : BTN_FORWARD;
     };
 
-    wrapper.appendChild(badgeEl);
-    wrapper.appendChild(calContainer);
+    wrapper.appendChild(badge);
+    wrapper.appendChild(calWrap);
     wrapper.appendChild(btn);
     container.appendChild(wrapper);
   }
