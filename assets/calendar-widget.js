@@ -24,9 +24,9 @@
 
   // Week 1: only 3 meetings, lots of empty space
   const WEEK1 = [
-    { day: 1, time: '10:00', type: 'intro',     co: 'Prospect X',  init: 'PX' },
-    { day: 3, time: '14:00', type: 'discovery', co: 'Prospect Y',  init: 'PY' },
-    { day: 4, time: '11:00', type: 'intro',     co: 'Prospect Z',  init: 'PZ' },
+    { day: 1, time: '10:00', type: 'intro',     co: 'Potential client',  init: '?' },
+    { day: 3, time: '14:00', type: 'discovery', co: 'Potential client',  init: '?' },
+    { day: 4, time: '11:00', type: 'intro',     co: 'Potential client',  init: '?' },
   ];
 
   // Week 4: 30 meetings, max 1 per slot per day
@@ -117,8 +117,8 @@
 
     let showFull = false;
 
-    const LABEL_EMPTY = isNL ? 'Week 1 — vóór Lead Machine (3 meetings)' : 'Week 1 — before Lead Machine (3 meetings)';
-    const LABEL_FULL  = isNL ? 'Week 4 — 30 meetings geboekt 🚀' : 'Week 4 — 30 meetings booked 🚀';
+    const LABEL_EMPTY = isNL ? 'Week 1 — vóór Lead Machine (3 afspraken)' : 'Week 1 — before Lead Machine (3 appointments)';
+    const LABEL_FULL  = isNL ? 'Week 4 — 30 afspraken geboekt 🚀' : 'Week 4 — 30 appointments booked 🚀';
     const BTN_FORWARD = isNL ? 'Zie week 4 →' : 'See week 4 →';
     const BTN_BACK    = isNL ? '← Terug naar week 1' : '← Back to week 1';
 
