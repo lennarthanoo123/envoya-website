@@ -1,294 +1,265 @@
-/* ─── Envoya Live Demo Widget ─────────────────────────────────
-   Animated 5-step agent simulation
-   Pure vanilla JS — no dependencies
-   ──────────────────────────────────────────────────────────── */
-
+/* ── Envoya Visual Demo Widget ──────────────────────────────────────── */
 (function () {
   'use strict';
 
-  /* ── Language detection ───────────────────────────────────── */
-  const isNL = window.location.pathname.startsWith('/nl') ||
-    (document.documentElement.lang || '').toLowerCase().startsWith('nl');
+  const isNL = window.location.pathname.startsWith('/nl');
 
-  /* ── Step data ────────────────────────────────────────────── */
-  const STEPS_EN = [
-    {
-      label: 'Step 1 — Apollo Pull',
-      lines: [
-        { text: '🔍  Searching Apollo database...', delay: 0 },
-        { text: '     → 847 companies matched ICP profile', delay: 380, cls: 'pos' },
-        { text: '     → Filtering: Netherlands · 100+ employees · UX/Design roles', delay: 700 },
-        { text: '     → 12 qualified leads found', delay: 1050, cls: 'pos' },
-      ],
-    },
-    {
-      label: 'Step 2 — ICP Scoring',
-      lines: [
-        { text: '🎯  Scoring leads against campaign ICP...', delay: 0 },
-        { text: '     <bar8> Annemiek Vos · Zilveren Kruis     <val>94/100 ★★★★★</val>', delay: 400 },
-        { text: '     <bar7> Lars Bakker · ABN AMRO             <val>87/100 ★★★★</val>', delay: 750 },
-        { text: '     <bar6> Sophie Hendriks · VodafoneZiggo    <val>81/100 ★★★★</val>', delay: 1100 },
-      ],
-    },
-    {
-      label: 'Step 3 — Email Generated',
-      lines: [
-        { text: '✉️   Generating personalised email...', delay: 0 },
-        { text: '     Pattern: <hl>A</hl>  (personal signal detected)', delay: 380 },
-        { text: '     Hook: <val>"Ik zag je interview over digitale transformatie —"</val>', delay: 720 },
-        { text: '     VP: Creative Services · refs: APG, ABN AMRO, LeasePlan', delay: 1050 },
-        { text: '     → Email ready for <hl>Annemiek Vos</hl>', delay: 1380, cls: 'pos' },
-      ],
-    },
-    {
-      label: 'Step 4 — Reply Received',
-      lines: [
-        { text: '📩  New reply detected — <hl>Annemiek Vos</hl>', delay: 0 },
-        { text: '     Sentiment: <pos>POSITIVE ✓</pos>', delay: 420 },
-        { text: '     <val>"Interessant! Kunnen we volgende week inplannen?"</val>', delay: 760 },
-        { text: '     → Status updated: replied → <pos>meeting</pos>', delay: 1120 },
-      ],
-    },
-    {
-      label: 'Step 5 — Meeting Booked',
-      lines: [
-        { text: '📅  Meeting booked!', delay: 0, cls: 'pos' },
-        { text: '     Annemiek Vos · Head of UX · Zilveren Kruis', delay: 380 },
-        { text: '     Tuesday, March 24 · <val>10:00 AM</val>', delay: 720 },
-        { text: '     ─────────────────────────────────', delay: 1000, cls: 'dim' },
-        { text: '     Pipeline: <hl>35 meetings this quarter</hl>  <pos>↑ 14.4% reply rate</pos>', delay: 1300 },
-      ],
-    },
-  ];
-
-  const STEPS_NL = [
-    {
-      label: 'Stap 1 — Apollo Pull',
-      lines: [
-        { text: '🔍  Apollo database doorzoeken...', delay: 0 },
-        { text: '     → 847 bedrijven matchen ICP-profiel', delay: 380, cls: 'pos' },
-        { text: '     → Filter: Nederland · 100+ medewerkers · UX/Design-rollen', delay: 700 },
-        { text: '     → 12 gekwalificeerde leads gevonden', delay: 1050, cls: 'pos' },
-      ],
-    },
-    {
-      label: 'Stap 2 — ICP-scoring',
-      lines: [
-        { text: '🎯  Leads scoren op campagne-ICP...', delay: 0 },
-        { text: '     <bar8> Annemiek Vos · Zilveren Kruis     <val>94/100 ★★★★★</val>', delay: 400 },
-        { text: '     <bar7> Lars Bakker · ABN AMRO             <val>87/100 ★★★★</val>', delay: 750 },
-        { text: '     <bar6> Sophie Hendriks · VodafoneZiggo    <val>81/100 ★★★★</val>', delay: 1100 },
-      ],
-    },
-    {
-      label: 'Stap 3 — E-mail gegenereerd',
-      lines: [
-        { text: '✉️   Gepersonaliseerde e-mail genereren...', delay: 0 },
-        { text: '     Patroon: <hl>A</hl>  (persoonlijk signaal gedetecteerd)', delay: 380 },
-        { text: '     Hook: <val>"Ik zag je interview over digitale transformatie —"</val>', delay: 720 },
-        { text: '     VP: Creative Services · refs: APG, ABN AMRO, LeasePlan', delay: 1050 },
-        { text: '     → E-mail klaar voor <hl>Annemiek Vos</hl>', delay: 1380, cls: 'pos' },
-      ],
-    },
-    {
-      label: 'Stap 4 — Reactie ontvangen',
-      lines: [
-        { text: '📩  Nieuwe reactie — <hl>Annemiek Vos</hl>', delay: 0 },
-        { text: '     Sentiment: <pos>POSITIEF ✓</pos>', delay: 420 },
-        { text: '     <val>"Interessant! Kunnen we volgende week inplannen?"</val>', delay: 760 },
-        { text: '     → Status bijgewerkt: reactie → <pos>meeting</pos>', delay: 1120 },
-      ],
-    },
-    {
-      label: 'Stap 5 — Meeting gepland',
-      lines: [
-        { text: '📅  Meeting gepland!', delay: 0, cls: 'pos' },
-        { text: '     Annemiek Vos · Head of UX · Zilveren Kruis', delay: 380 },
-        { text: '     Dinsdag 24 maart · <val>10:00</val>', delay: 720 },
-        { text: '     ─────────────────────────────────', delay: 1000, cls: 'dim' },
-        { text: '     Pipeline: <hl>35 meetings dit kwartaal</hl>  <pos>↑ 14,4% reply rate</pos>', delay: 1300 },
-      ],
-    },
-  ];
-
-  const STEPS = isNL ? STEPS_NL : STEPS_EN;
-  const STEP_LABELS_EN = ['Apollo', 'Scoring', 'Email', 'Reply', 'Meeting'];
-  const STEP_LABELS_NL = ['Apollo', 'Scoring', 'E-mail', 'Reactie', 'Meeting'];
-  const STEP_LABELS = isNL ? STEP_LABELS_NL : STEP_LABELS_EN;
-
-  /* ── Progress between steps (ms) ─────────────────────────── */
-  const STEP_PAUSE = 2200;   // pause after last line of each step
-  const LOOP_PAUSE = 3000;   // pause before restart
-
-  /* ── Render helper: parse mini-tag syntax ─────────────────── */
-  const BARS = {
-    8: '<span class="bar-filled">████████</span><span class="bar-empty">░░</span>',
-    7: '<span class="bar-filled">███████</span><span class="bar-empty">░░░</span>',
-    6: '<span class="bar-filled">██████</span><span class="bar-empty">░░░░</span>',
+  const T = {
+    url: isNL ? 'app.envoya.tech · Lead Machine' : 'app.envoya.tech · Lead Machine',
+    step1: isNL ? '① Leads' : '① Leads',
+    step2: isNL ? '② Email' : '② Email',
+    step3: isNL ? '③ Reply' : '③ Reply',
+    step4: isNL ? '④ Meeting' : '④ Meeting',
+    leadsTitle: isNL ? 'Apollo Pull — 12 gekwalificeerde leads' : 'Apollo Pull — 12 qualified leads',
+    leadsCount: isNL ? '12 leads gevonden' : '12 leads found',
+    emailTitle: isNL ? 'AI Email genereren voor Annemiek Vos' : 'Generating AI email for Annemiek Vos',
+    emailTo: 'annemiek.vos@zilverenkruis.nl',
+    emailSubject: isNL ? 'Kennismaking Jeffrey van den Dungen' : 'Introduction Jeffrey van den Dungen',
+    emailBody: isNL
+      ? 'Ik zag je recente interview over digitale transformatie in de zorg — leek me een mooie aanleiding voor een kennismaking.\n\nMet onze Creative Services ondersteunen we organisaties met flexibele UX capaciteit — bij piekbelasting of strategische UX-vraagstukken. We werken o.a. met <strong>APG, ABN AMRO en LeasePlan</strong>. Organisaties die zoeken naar hoe je digitale producten laat landen in complexe organisaties, niet als losstaand project.\n\nGezien jouw rol als Head of Digital bij Zilveren Kruis, leek het me waardevol om je in contact te brengen met mijn collega <strong>Jeffrey van den Dungen</strong>, Managing Director bij Jungle Minds, voormalig Head of Design bij bol.com. Jeffrey spreekt regelmatig met digitale leiders over hoe je UX structureel verankert, niet als extra capaciteitslaag.\n\nSta je open voor een korte, inhoudelijke kennismaking met Jeffrey?'
+      : 'I saw your recent interview on digital transformation in healthcare — seemed like a great reason to reach out.\n\nThrough our Creative Services, we support organisations with flexible UX capacity — for peak demand or strategic UX challenges. We work with <strong>APG, ABN AMRO and LeasePlan</strong>. Organisations looking at how to embed digital products in complex environments, not as a side project.\n\nGiven your role as Head of Digital at Zilveren Kruis, I thought it would be valuable to introduce you to my colleague <strong>Jeffrey van den Dungen</strong>, Managing Director at Jungle Minds. Jeffrey regularly speaks with digital leaders about embedding UX structurally, not as an extra layer.\n\nWould you be open to a brief, substantive introduction with Jeffrey?',
+    patternTag: 'Pattern A',
+    signalTag: isNL ? 'Persoonlijk signaal gevonden' : 'Personal signal detected',
+    refsTag: isNL ? 'Refs: APG · ABN AMRO · LeasePlan' : 'Refs: APG · ABN AMRO · LeasePlan',
+    replyTitle: isNL ? 'Nieuwe reactie ontvangen' : 'New reply received',
+    replyFrom: 'Annemiek Vos · Zilveren Kruis',
+    replyMsg: isNL
+      ? '"Interessant! Ik zou graag eens kennismaken. Kunnen we volgende week iets inplannen?"'
+      : '"Interesting! I\'d love to connect. Can we schedule something next week?"',
+    statusFrom: isNL ? 'Status: Benaderd' : 'Status: Contacted',
+    statusTo: isNL ? 'Meeting gepland ✓' : 'Meeting planned ✓',
+    meetingTitle: isNL ? 'Meeting geboekt! 🎉' : 'Meeting booked! 🎉',
+    meetingDetail: isNL
+      ? 'Annemiek Vos · Head of Digital · Zilveren Kruis\nDinsdag 24 maart · 10:00'
+      : 'Annemiek Vos · Head of Digital · Zilveren Kruis\nTuesday, March 24 · 10:00 AM',
+    stat1n: '35', stat1l: isNL ? 'meetings dit kwartaal' : 'meetings this quarter',
+    stat2n: '14.4%', stat2l: isNL ? 'responsrate' : 'reply rate',
+    stat3n: '1', stat3l: isNL ? 'deal gesloten' : 'deal closed',
   };
 
-  function renderText(raw) {
-    return raw
-      .replace(/<bar(\d)>/g, (_, n) => BARS[n] || '')
-      .replace(/<\/bar>/g, '')
-      .replace(/<hl>(.*?)<\/hl>/g, '<span class="hl">$1</span>')
-      .replace(/<pos>(.*?)<\/pos>/g, '<span class="pos">$1</span>')
-      .replace(/<val>(.*?)<\/val>/g, '<span class="val">$1</span>')
-      .replace(/<dim>(.*?)<\/dim>/g, '<span class="dim">$1</span>');
-  }
+  const LEADS = [
+    { initials: 'AV', name: 'Annemiek Vos', sub: 'Head of Digital · Zilveren Kruis', score: 94, stars: '★★★★★' },
+    { initials: 'LB', name: 'Lars Bakker',  sub: 'UX Director · ABN AMRO',           score: 87, stars: '★★★★' },
+    { initials: 'SH', name: 'Sophie Hendriks', sub: 'Lead UX Designer · VodafoneZiggo', score: 81, stars: '★★★★' },
+    { initials: 'MR', name: 'Marc Rietdijk', sub: 'Product Design Lead · ING',        score: 76, stars: '★★★' },
+    { initials: 'JV', name: 'Joost Vermeer', sub: 'UX Lead · Unilever',              score: 71, stars: '★★★' },
+  ];
 
-  /* ── Build DOM ────────────────────────────────────────────── */
-  function buildWidget(container) {
-    // Live badge
-    const badge = document.createElement('div');
-    badge.className = 'demo-live-badge';
-    badge.innerHTML = '<span class="demo-live-dot"></span> LIVE';
-    container.parentNode.insertBefore(badge, container);
-
-    // Panel
-    const panel = document.createElement('div');
-    panel.className = 'demo-panel';
-    panel.innerHTML = `
-      <div class="demo-panel-header">
-        <span class="demo-panel-dot"></span>
-        <span class="demo-panel-dot"></span>
-        <span class="demo-panel-dot"></span>
-        <span class="demo-panel-title">envoya-agent · lead-machine</span>
-      </div>
-      <div class="demo-step-label">
-        <span></span>
-        <span id="demo-step-label-text">${STEPS[0].label}</span>
-        <span></span>
-      </div>
-      <div class="demo-terminal" id="demo-terminal"></div>
-      <div class="demo-progress-wrap">
-        <div class="demo-progress-track">
-          <div class="demo-progress-fill" id="demo-progress-fill"></div>
+  function buildScreen1() {
+    const div = document.createElement('div');
+    div.className = 'vdw-screen';
+    div.innerHTML = `
+      <div class="vdw-leads-header">
+        <span class="vdw-screen-title">${T.leadsTitle}</span>
+        <span class="vdw-badge">${T.leadsCount}</span>
+      </div>`;
+    LEADS.forEach(l => {
+      const row = document.createElement('div');
+      row.className = 'vdw-lead-row';
+      row.innerHTML = `
+        <div class="vdw-avatar">${l.initials}</div>
+        <div class="vdw-lead-info">
+          <div class="vdw-lead-name">${l.name}</div>
+          <div class="vdw-lead-sub">${l.sub}</div>
         </div>
-        <div class="demo-progress-labels" id="demo-progress-labels"></div>
-      </div>
-    `;
-    container.appendChild(panel);
-
-    // Step labels
-    const labelsEl = panel.querySelector('#demo-progress-labels');
-    STEP_LABELS.forEach((lbl) => {
-      const s = document.createElement('span');
-      s.className = 'demo-progress-step';
-      s.textContent = lbl;
-      labelsEl.appendChild(s);
+        <div class="vdw-score-bar">
+          <div class="vdw-score-label">${l.score}/100</div>
+          <div class="vdw-score-track"><div class="vdw-score-fill" data-w="${l.score}"></div></div>
+        </div>
+        <div class="vdw-stars">${l.stars}</div>`;
+      div.appendChild(row);
     });
-
-    return panel;
+    return div;
   }
 
-  /* ── Animation engine ─────────────────────────────────────── */
-  function startWidget(panel) {
-    const terminal   = panel.querySelector('#demo-terminal');
-    const progressFill = panel.querySelector('#demo-progress-fill');
-    const stepLabelEl  = panel.querySelector('#demo-step-label-text');
-    const stepDots     = panel.querySelectorAll('.demo-progress-step');
-    let currentStep  = 0;
-    let running      = true;
-
-    function clearTerminal() {
-      terminal.innerHTML = '';
-    }
-
-    function appendLine(lineObj) {
-      const el = document.createElement('span');
-      el.className = 'demo-line' + (lineObj.cls ? ' ' + lineObj.cls : '');
-      el.innerHTML = renderText(lineObj.text);
-      terminal.appendChild(el);
-      // Scroll to bottom
-      terminal.scrollTop = terminal.scrollHeight;
-    }
-
-    function updateProgress(stepIndex) {
-      const pct = ((stepIndex + 1) / STEPS.length) * 100;
-      progressFill.style.width = pct + '%';
-      stepDots.forEach((dot, i) => {
-        dot.className = 'demo-progress-step' +
-          (i < stepIndex ? ' done' : i === stepIndex ? ' active' : '');
-      });
-    }
-
-    function runStep(stepIndex) {
-      if (!running) return;
-
-      const step = STEPS[stepIndex];
-      stepLabelEl.textContent = step.label;
-      updateProgress(stepIndex);
-      clearTerminal();
-
-      let maxDelay = 0;
-      step.lines.forEach((line) => {
-        maxDelay = Math.max(maxDelay, line.delay);
-        setTimeout(() => {
-          if (running) appendLine(line);
-        }, line.delay);
-      });
-
-      // After last line + pause → next step or loop
-      const totalWait = maxDelay + STEP_PAUSE;
+  function animateScreen1(screen) {
+    const rows = screen.querySelectorAll('.vdw-lead-row');
+    rows.forEach((row, i) => {
       setTimeout(() => {
-        if (!running) return;
-        const next = stepIndex + 1;
-        if (next < STEPS.length) {
-          runStep(next);
-        } else {
-          // Fade out, then restart
-          panel.classList.add('fading');
-          setTimeout(() => {
-            if (!running) return;
-            panel.classList.remove('fading');
-            runStep(0);
-          }, LOOP_PAUSE);
-        }
-      }, totalWait);
-    }
-
-    runStep(0);
-
-    // Return a stop handle (useful if widget leaves viewport in future)
-    return function stop() { running = false; };
+        row.classList.add('appear');
+        if (i === 0) row.classList.add('selected');
+        const fill = row.querySelector('.vdw-score-fill');
+        if (fill) fill.style.width = fill.dataset.w + '%';
+      }, i * 180);
+    });
   }
 
-  /* ── IntersectionObserver — start only when visible ──────── */
+  function buildScreen2() {
+    const div = document.createElement('div');
+    div.className = 'vdw-screen';
+    div.innerHTML = `
+      <div class="vdw-leads-header" style="margin-bottom:12px">
+        <span class="vdw-screen-title">${T.emailTitle}</span>
+        <span class="vdw-badge green">AI ✓</span>
+      </div>
+      <div class="vdw-email-shell">
+        <div class="vdw-email-header">
+          <div class="vdw-email-field">To: <span>${T.emailTo}</span></div>
+          <div class="vdw-email-field">Subject: <span>${T.emailSubject}</span></div>
+        </div>
+        <div class="vdw-email-body vdw-typing-cursor" id="vdw-email-body">Hi Annemiek,<br><br></div>
+      </div>
+      <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:6px">
+        <span class="vdw-email-tag">${T.patternTag}</span>
+        <span class="vdw-email-tag">${T.signalTag}</span>
+        <span class="vdw-email-tag">${T.refsTag}</span>
+      </div>`;
+    return div;
+  }
+
+  function animateScreen2(screen) {
+    const body = screen.querySelector('#vdw-email-body');
+    if (!body) return;
+    const paragraphs = T.emailBody.split('\n\n');
+    let i = 0;
+    function addNext() {
+      if (i >= paragraphs.length) {
+        body.classList.remove('vdw-typing-cursor');
+        return;
+      }
+      const p = document.createElement('p');
+      p.style.marginBottom = '10px';
+      p.innerHTML = paragraphs[i];
+      body.appendChild(p);
+      i++;
+      setTimeout(addNext, 900);
+    }
+    setTimeout(addNext, 400);
+  }
+
+  function buildScreen3() {
+    const div = document.createElement('div');
+    div.className = 'vdw-screen';
+    div.innerHTML = `
+      <div class="vdw-leads-header" style="margin-bottom:14px">
+        <span class="vdw-screen-title">${T.replyTitle}</span>
+        <span class="vdw-badge green">Positief</span>
+      </div>
+      <div class="vdw-inbox-row" id="vdw-inbox">
+        <div class="vdw-inbox-avatar">AV</div>
+        <div>
+          <div class="vdw-inbox-name">${T.replyFrom}</div>
+          <div class="vdw-inbox-sub">Re: ${T.emailSubject}</div>
+          <div class="vdw-inbox-msg">${T.replyMsg}</div>
+        </div>
+      </div>
+      <div class="vdw-status-change" id="vdw-status">
+        <span>${T.statusFrom}</span>
+        <span class="vdw-arrow">→</span>
+        <span>${T.statusTo}</span>
+      </div>`;
+    return div;
+  }
+
+  function animateScreen3(screen) {
+    setTimeout(() => screen.querySelector('#vdw-inbox')?.classList.add('appear'), 300);
+    setTimeout(() => screen.querySelector('#vdw-status')?.classList.add('appear'), 1100);
+  }
+
+  function buildScreen4() {
+    const div = document.createElement('div');
+    div.className = 'vdw-screen';
+    const detailLines = T.meetingDetail.split('\n').join('<br>');
+    div.innerHTML = `
+      <div class="vdw-cal-confirm" id="vdw-cal">
+        <div class="vdw-cal-icon">📅</div>
+        <div class="vdw-cal-title">${T.meetingTitle}</div>
+        <div class="vdw-cal-detail">${detailLines}</div>
+      </div>
+      <div class="vdw-pipeline-stats" id="vdw-stats">
+        <div class="vdw-pstat"><div class="vdw-pstat-n">${T.stat1n}</div><div class="vdw-pstat-l">${T.stat1l}</div></div>
+        <div class="vdw-pstat"><div class="vdw-pstat-n">${T.stat2n}</div><div class="vdw-pstat-l">${T.stat2l}</div></div>
+        <div class="vdw-pstat"><div class="vdw-pstat-n">${T.stat3n}</div><div class="vdw-pstat-l">${T.stat3l}</div></div>
+      </div>`;
+    return div;
+  }
+
+  function animateScreen4(screen) {
+    setTimeout(() => screen.querySelector('#vdw-cal')?.classList.add('appear'), 300);
+    setTimeout(() => screen.querySelector('#vdw-stats')?.classList.add('appear'), 900);
+  }
+
+  const SCREENS = [
+    { build: buildScreen1, animate: animateScreen1, duration: 3200 },
+    { build: buildScreen2, animate: animateScreen2, duration: 5500 },
+    { build: buildScreen3, animate: animateScreen3, duration: 3500 },
+    { build: buildScreen4, animate: animateScreen4, duration: 4000 },
+  ];
+
+  function buildWidget(container) {
+    const shell = document.createElement('div');
+    shell.className = 'vdw-shell';
+
+    // Title bar
+    shell.innerHTML = `
+      <div class="vdw-titlebar">
+        <div class="vdw-dots">
+          <div class="vdw-dot vdw-dot-r"></div>
+          <div class="vdw-dot vdw-dot-y"></div>
+          <div class="vdw-dot vdw-dot-g"></div>
+        </div>
+        <div class="vdw-url">${T.url}</div>
+      </div>
+      <div class="vdw-tabs">
+        <div class="vdw-tab active" id="vdw-tab-0">${T.step1}</div>
+        <div class="vdw-tab" id="vdw-tab-1">${T.step2}</div>
+        <div class="vdw-tab" id="vdw-tab-2">${T.step3}</div>
+        <div class="vdw-tab" id="vdw-tab-3">${T.step4}</div>
+      </div>
+      <div class="vdw-progress-bar"><div class="vdw-progress-fill" id="vdw-progress"></div></div>
+      <div class="vdw-content" id="vdw-content"></div>`;
+
+    container.appendChild(shell);
+    return shell;
+  }
+
+  function run(shell) {
+    let step = 0;
+    const screens = SCREENS.map(s => s.build());
+    const content = shell.querySelector('#vdw-content');
+    const progress = shell.querySelector('#vdw-progress');
+
+    function showStep(i) {
+      // Update tabs
+      shell.querySelectorAll('.vdw-tab').forEach((t, ti) => {
+        t.className = 'vdw-tab' + (ti < i ? ' done' : ti === i ? ' active' : '');
+      });
+
+      // Swap screen
+      content.innerHTML = '';
+      const screen = screens[i];
+      screen.className = 'vdw-screen visible';
+      content.appendChild(screen);
+      SCREENS[i].animate(screen);
+
+      // Progress
+      if (progress) progress.style.width = ((i + 1) / SCREENS.length * 100) + '%';
+
+      // Auto-advance
+      setTimeout(() => {
+        const next = (i + 1) % SCREENS.length;
+        // Reset screens on loop
+        if (next === 0) {
+          screens.forEach((s, si) => {
+            const fresh = SCREENS[si].build();
+            screens[si] = fresh;
+          });
+          if (progress) progress.style.width = '0%';
+        }
+        showStep(next);
+      }, SCREENS[i].duration);
+    }
+
+    showStep(0);
+  }
+
   function init() {
     const container = document.getElementById('demo-widget');
     if (!container) return;
-
-    const panel = buildWidget(container);
-    let stopFn = null;
-    let started = false;
-
-    // Start immediately if already in view, otherwise on first intersection
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !started) {
-            started = true;
-            stopFn = startWidget(panel);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0 }  // fire as soon as any pixel is visible
-    );
-
-    observer.observe(panel);
-
-    // Fallback: start after 1s regardless (handles hidden/offscreen edge cases)
-    setTimeout(() => {
-      if (!started) {
-        started = true;
-        stopFn = startWidget(panel);
-      }
-    }, 1000);
+    const shell = buildWidget(container);
+    setTimeout(() => run(shell), 600);
   }
 
-  /* ── Boot ─────────────────────────────────────────────────── */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
