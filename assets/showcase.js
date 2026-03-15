@@ -59,7 +59,7 @@
       { id: 'sc-n1', val: 474, dec: false },
       { id: 'sc-n2', val: 42,  dec: false },
       { id: 'sc-n3', val: 10.8, dec: true },
-      { id: 'sc-n4', val: 14, dec: false },
+      { id: 'sc-n4', val: 128, dec: false },
     ];
     const section = document.getElementById('showcase');
     if (!section) return;
