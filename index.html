@@ -252,10 +252,10 @@
     }
     .logo-badge:last-child { border-right: none; }
     .logo-badge:hover { background: rgba(255,255,255,0.02); }
-    .logo-badge img { height: 44px; width: auto; max-width: 180px; object-fit: contain; filter: brightness(0) invert(1) opacity(0.65); transition: filter 0.2s; }
+    .logo-badge img { height: 56px; width: auto; max-width: 240px; object-fit: contain; filter: brightness(0) invert(1); transition: filter 0.2s; }
     .logo-badge:hover img { filter: brightness(0) invert(1) opacity(0.7); }
-    .logo-badge--cronos img { filter: brightness(0) invert(1) opacity(0.65); }
-    .logo-badge--cronos:hover img { filter: brightness(0) invert(1) opacity(0.9); }
+    .logo-badge--cronos img { filter: brightness(0) invert(1); }
+    .logo-badge--cronos:hover img { filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
     .logo-badge-text { font-size: 15px; font-weight: 600; color: #2a3a4f; letter-spacing: 0.02em; }
     .logo-badge:hover .logo-badge-text { color: #4a6080; }
     .trust-stats { display: none; }
@@ -766,8 +766,8 @@
   <span class="trust-label">Trusted by teams at</span>
   <div class="trust-divider"></div>
   <div class="trust-logos">
-    <div class="logo-badge"><img src="/assets/logos/jungleminds.png" alt="Jungle Minds" style="height:24px;width:auto;filter:brightness(0) invert(1) opacity(0.5);transition:filter 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.filter='brightness(0) invert(1) opacity(0.5)'"></div>
-    <div class="logo-badge"><img src="/assets/logos/brushai.png" alt="Brush AI" style="height:24px;width:auto;filter:brightness(0) invert(1) opacity(0.5);transition:filter 0.2s;"></div>
+    <div class="logo-badge"><img src="/assets/logos/jungleminds.png" alt="Jungle Minds" style="height:56px;width:auto;max-width:240px;filter:brightness(0) invert(1);transition:filter 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.filter='brightness(0) invert(1) opacity(0.5)'"></div>
+    <div class="logo-badge"><img src="/assets/logos/brushai.png" alt="Brush AI" style="height:56px;width:auto;max-width:240px;filter:brightness(0) invert(1);transition:filter 0.2s;"></div>
     <div class="logo-badge logo-badge--cronos"><img src="/assets/logos/cronos.png" alt="Cronos Group" style="height:26px;width:auto;filter:brightness(0) invert(1) opacity(0.65);transition:filter 0.2s;" onmouseover="this.style.filter='brightness(0) invert(1) opacity(0.9)'" onmouseout="this.style.filter='brightness(0) invert(1) opacity(0.65)'"></div>
   </div>
       <div class="trust-stat-lbl">Reply rate</div>
