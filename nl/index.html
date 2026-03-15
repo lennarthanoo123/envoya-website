@@ -403,6 +403,17 @@
       border: 0.5px solid var(--border);
       border-radius: 12px; padding: 32px;
     }
+    .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+    .case-card { background: var(--card-alt); border: 0.5px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.2s; }
+    .case-card:hover { border-color: rgba(99,102,241,0.3); }
+    .case-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .case-logo { height: 36px; width: auto; max-width: 120px; object-fit: contain; filter: brightness(0) invert(1) opacity(0.7); }
+    .case-logo-fallback { font-size: 1rem; font-weight: 800; color: #94a3b8; }
+    .case-company-name { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+    .case-company-desc { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .case-about { font-size: 13px; color: #64748b; line-height: 1.7; margin-bottom: 16px; }
+    .case-highlight { margin-top: 16px; font-size: 12px; font-weight: 600; color: #6366f1; background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); border-radius: 6px; padding: 8px 12px; }
+    @media (max-width: 768px) { .case-grid { grid-template-columns: 1fr; } }
     .proof-quote {
       font-size: 14px; color: #CBD5E1;
       line-height: 1.75; font-weight: 300;
@@ -717,40 +728,64 @@
   </div>
 </section>
 
-<!-- RESULTS / TESTIMONIALS -->
+<!-- RESULTS / CASE STUDIES -->
 <section class="section">
   <div class="section-tag fade-in">Resultaten</div>
   <div class="section-h fade-in">Echte cijfers van echte teams.</div>
-  <div class="proof-grid">
-    <div class="proof-card fade-in">
-      <p class="proof-quote">"In 8 weken meer gekwalificeerde afspraken dan in de 6 maanden daarvoor bij elkaar."</p>
+
+  <div class="case-grid">
+    <!-- Case 1: Jungle Minds -->
+    <div class="case-card fade-in">
+      <div class="case-header">
+        <img src="https://logo.clearbit.com/jungleminds.nl" alt="Jungle Minds" class="case-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <span class="case-logo-fallback" style="display:none">Jungle Minds</span>
+        <div class="case-company-info">
+          <div class="case-company-name">Jungle Minds</div>
+          <div class="case-company-desc">Digital product agency · ~80 medewerkers · Amsterdam</div>
+        </div>
+      </div>
+      <p class="case-about">Jungle Minds bouwt complexe digitale producten voor grote corporates — B2B portals, marketplaces, UX-transformatie. Ze hadden een constante stroom van gekwalificeerde meetings nodig met UX- en productleiders bij enterprise bedrijven.</p>
+      <p class="proof-quote">"In 8 weken meer gekwalificeerde afspraken dan in de 6 maanden daarvoor bij elkaar. Het systeem draait terwijl wij slapen."</p>
       <div class="proof-meta">
-        <div class="proof-avatar">JM</div>
+        <div class="proof-avatar">JvdD</div>
         <div>
           <div class="proof-name">Jeffrey van den Dungen</div>
           <div class="proof-co">Managing Director · Jungle Minds</div>
         </div>
       </div>
       <div class="proof-stats">
-        <div class="proof-stat"><div class="proof-stat-n">422</div><div class="proof-stat-l">leads</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">422</div><div class="proof-stat-l">leads verwerkt</div></div>
         <div class="proof-stat"><div class="proof-stat-n">14.4%</div><div class="proof-stat-l">responsrate</div></div>
-        <div class="proof-stat"><div class="proof-stat-n">35</div><div class="proof-stat-l">meetings</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">35</div><div class="proof-stat-l">meetings geboekt</div></div>
       </div>
+      <div class="case-highlight">1 getekende deal dekt de volledige investering</div>
     </div>
-    <div class="proof-card fade-in">
-      <p class="proof-quote">"De pipeline funnel veranderde hoe ons team naar outbound kijkt. Geautomatiseerd en echt effectief."</p>
+
+    <!-- Case 2: Brush AI -->
+    <div class="case-card fade-in">
+      <div class="case-header">
+        <img src="https://logo.clearbit.com/brushai.com" alt="Brush AI" class="case-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <span class="case-logo-fallback" style="display:none">Brush AI</span>
+        <div class="case-company-info">
+          <div class="case-company-name">Brush AI</div>
+          <div class="case-company-desc">AI/ML consultancy · Onderdeel van Cronos Group · Nederland</div>
+        </div>
+      </div>
+      <p class="case-about">Brush AI helpt enterprises echte waarde halen uit data met verantwoorde AI. Onderdeel van de 8.000-koppige Cronos Group. Ze wilden CDO's, AI-leads en innovatiedirecteuren bereiken bij grote Nederlandse bedrijven.</p>
+      <p class="proof-quote">"De pipeline funnel veranderde hoe ons team naar outbound kijkt. Geautomatiseerd, zelflerend en echt effectief op schaal."</p>
       <div class="proof-meta">
-        <div class="proof-avatar">BA</div>
+        <div class="proof-avatar">NC</div>
         <div>
           <div class="proof-name">Noëlle Cicilia</div>
-          <div class="proof-co">Co-founder · Brush AI</div>
+          <div class="proof-co">Co-founder · AI Person of the Year (Emerce)</div>
         </div>
       </div>
       <div class="proof-stats">
-        <div class="proof-stat"><div class="proof-stat-n">530</div><div class="proof-stat-l">leads</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">530</div><div class="proof-stat-l">leads verwerkt</div></div>
         <div class="proof-stat"><div class="proof-stat-n">12%</div><div class="proof-stat-l">responsrate</div></div>
-        <div class="proof-stat"><div class="proof-stat-n">28</div><div class="proof-stat-l">meetings</div></div>
+        <div class="proof-stat"><div class="proof-stat-n">28</div><div class="proof-stat-l">meetings geboekt</div></div>
       </div>
+      <div class="case-highlight">Meetings bij: Triodos Bank, KPN, TomTom, Philips, NXP</div>
     </div>
   </div>
 
