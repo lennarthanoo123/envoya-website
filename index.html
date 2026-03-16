@@ -1004,6 +1004,36 @@
       .macbook-lid { border-radius: 8px 8px 0 0; padding: 8px 8px 0; }
       .macbook-camera { margin-bottom: 6px; }
     }
+
+    /* ── Clean browser chrome frame ── */
+    .cal-browser-frame {
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 0 #e2e8f0,
+                  0 20px 60px rgba(0,0,0,0.12),
+                  0 4px 16px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+    }
+    .cal-browser-bar {
+      background: #F8FAFC;
+      border-bottom: 1px solid #E2E8F0;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cal-browser-bar .browser-url {
+      flex: 1;
+      background: #fff;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 11px;
+      color: #64748B;
+      font-family: -apple-system, 'Inter', sans-serif;
+    }
   </style>
 </head>
 <body>
@@ -1140,23 +1170,16 @@
     <div class="dream-tag">DREAM OUTCOME</div>
     <h2 class="dream-h">This is your calendar after 4 weeks.</h2>
     <!-- subline rendered dynamically by calendar widget -->
-    <div class="macbook-wrap">
-      <div class="macbook-lid">
-        <div class="macbook-camera"></div>
-        <div class="macbook-screen">
-          <div class="browser-bar">
-            <div class="browser-dots">
-              <div class="browser-dot browser-dot-r"></div>
-              <div class="browser-dot browser-dot-y"></div>
-              <div class="browser-dot browser-dot-g"></div>
-            </div>
-            <div class="browser-url">🔒 lead-machine.envoya.tech/dashboard</div>
-          </div>
-          <div id="calendar-widget"></div>
+    <div class="cal-browser-frame">
+      <div class="cal-browser-bar">
+        <div class="browser-dots">
+          <div class="browser-dot browser-dot-r"></div>
+          <div class="browser-dot browser-dot-y"></div>
+          <div class="browser-dot browser-dot-g"></div>
         </div>
+        <div class="browser-url">🔒 lead-machine.envoya.tech/dashboard</div>
       </div>
-      <div class="macbook-base"></div>
-      <div class="macbook-shadow"></div>
+      <div id="calendar-widget"></div>
     </div>
     <p class="dream-footer">Zilveren Kruis · ABN AMRO · Philips · Unilever · KPN · TomTom — all booked through Lead Machine.</p>
   </div>
