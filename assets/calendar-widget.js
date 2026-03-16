@@ -16,7 +16,7 @@
 
   const START_HOUR = 8;
   const HOURS = 10;
-  const HOUR_H = 72;
+  const HOUR_H = 52;
 
   const TYPE_LABELS = {
     intro:     isNL ? 'Kennismaking' : 'Intro call',
