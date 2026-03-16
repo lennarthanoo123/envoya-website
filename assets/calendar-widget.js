@@ -15,8 +15,8 @@
   const DAYS = isNL ? DAYS_NL : DAYS_EN;
 
   const START_HOUR = 8;
-  const HOURS = 10;
-  const HOUR_H = 52;
+  const HOURS = 9;
+  const HOUR_H = 42;
 
   const TYPE_LABELS = {
     intro:     isNL ? 'Kennismaking' : 'Intro call',
