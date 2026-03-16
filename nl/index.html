@@ -16,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { overflow-x: hidden; max-width: 100%; }
 
     :root {
       --indigo:    #6366F1;
@@ -113,7 +114,10 @@
     .hero-visual img { width: 100%; height: 520px; object-fit: cover; object-position: center top; display: block; border-radius: 20px; }
     .hero-visual-overlay { position: absolute; inset: 0; background: linear-gradient(to left, transparent 40%, rgba(8,14,26,0.6) 100%); border-radius: 20px; pointer-events: none; }
     .hero-visual-glow { position: absolute; inset: -2px; border-radius: 22px; border: 1px solid rgba(99,102,241,0.3); box-shadow: 0 0 40px rgba(99,102,241,0.2); pointer-events: none; }
-    @media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; padding: 60px 24px 50px; } .hero-text { text-align: center; } .hero-visual { max-width: 360px; margin: 0 auto; } .hero-visual img { height: 360px; } }
+    @media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; padding: 28px 24px 44px; } .hero-text { text-align: left; }
+      .hero-sub { margin: 0 0 32px; }
+      .hero-ctas { align-items: flex-start; }
+      .hero-ctas-row { justify-content: flex-start; } .hero-visual { max-width: 360px; margin: 0 auto; } .hero-visual img { height: 360px; } }
 
     .hero-glow {
       position: absolute; inset: 0; z-index: 0;
@@ -145,7 +149,7 @@
 
     .hero-sub {
       font-size: 17px; color: var(--text-dim);
-      max-width: 540px; margin: 0 auto 40px;
+      max-width: 540px; margin: 0 0 40px;
       line-height: 1.7; font-weight: 300;
     }
 
@@ -184,21 +188,38 @@
 
     /* ── TRUST BAR ── */
     .trust-bar {
-      padding: 36px 40px;
+      padding: 28px 40px;
       border-bottom: 0.5px solid var(--border);
-      display: flex; flex-wrap: wrap; align-items: center;
-      gap: 24px; justify-content: center;
+      text-align: center;
     }
     .trust-label {
-      font-size: 11px; color: var(--text-faint);
-      letter-spacing: 0.1em; text-transform: uppercase;
+      display: block;
+      font-size: 15px; color: #f1f5f9;
+      font-weight: 600; letter-spacing: 0.01em;
+      margin-bottom: 24px;
     }
-    .trust-divider {
-      width: 1px; height: 20px; background: var(--border);
+    .trust-divider { display: none; }
+    .trust-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      max-width: 900px;
+      margin: 0 auto;
     }
-    .trust-logos { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; justify-content: center; }
-    .logo-badge { display: flex; align-items: center; justify-content: center; padding: 0.5rem 1.2rem; border: 1px solid #1a2535; border-radius: 8px; background: rgba(255,255,255,0.01); }
-    .logo-badge img { height: 22px; width: auto; max-width: 110px; object-fit: contain; filter: brightness(0) invert(1) opacity(0.35); transition: filter 0.2s; }
+    .logo-badge {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.2rem 2rem;
+      border-right: 1px solid #0f1a28;
+      transition: background 0.2s;
+    }
+    .logo-badge:last-child { border-right: none; }
+    .logo-badge:hover { background: rgba(255,255,255,0.02); }
+    .logo-badge img { height: 56px; width: auto; max-width: 240px; object-fit: contain; filter: brightness(0) invert(1); transition: filter 0.2s; }
+    .logo-badge:hover img { filter: brightness(0) invert(1) opacity(0.7); }
+    .logo-badge--cronos img { filter: brightness(0) invert(1); }
+    .logo-badge--cronos:hover img { filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.4)); }
     .logo-badge:hover img { filter: brightness(0) invert(1) opacity(0.65); }
     .logo-badge--cronos { border-color: rgba(99,102,241,0.2); }
     .logo-badge--cronos img { filter: brightness(0) invert(1) sepia(1) hue-rotate(210deg) saturate(3) opacity(0.45); }
@@ -238,7 +259,7 @@
 
     /* ── SECTION SHARED ── */
     .section {
-      padding: 80px 40px;
+      padding: 56px 40px;
       border-bottom: 0.5px solid var(--border);
     }
     .section-tag {
@@ -552,7 +573,7 @@
     .hero-stat-line { text-align: center; font-size: 13px; color: #475569; margin-top: 1rem; letter-spacing: 0.02em; }
 
     /* ── COMPARE TABLE ── */
-    .problem-section { padding: 80px 40px; border-bottom: 1px solid #0f1a28; }
+    .problem-section { padding: 56px 40px; border-bottom: 1px solid #0f1a28; }
     .problem-inner { max-width: 900px; margin: 0 auto; }
     .problem-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #ef4444; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); display: inline-block; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; }
     .problem-h { font-size: clamp(28px, 4vw, 44px); font-weight: 800; color: var(--text); line-height: 1.15; margin-bottom: 1.2rem; letter-spacing: -0.02em; }
@@ -563,7 +584,7 @@
     .problem-card-title { font-size: 14px; font-weight: 700; color: #f1f5f9; margin-bottom: 10px; line-height: 1.4; }
     .problem-card-text { font-size: 13px; color: #94a3b8; line-height: 1.7; }
     @media (max-width: 768px) { .problem-cards { grid-template-columns: 1fr; } }
-    .compare-section { padding: 80px 40px; }
+    .compare-section { padding: 56px 40px; }
     .compare-wrap { max-width: 800px; margin: 0 auto; overflow-x: auto; }
     .compare-table { width: 100%; border-collapse: collapse; }
     .compare-table th, .compare-table td {
@@ -581,7 +602,7 @@
     .compare-win { color: #a5b4fc; font-weight: 600; }
 
     /* ── FAQ ── */
-    .faq-section { padding: 80px 40px; }
+    .faq-section { padding: 56px 40px; }
     .faq-grid {
       display: grid; grid-template-columns: 1fr 1fr 1fr;
       gap: 24px; max-width: 960px; margin: 0 auto;
@@ -607,8 +628,10 @@
     @media (max-width: 768px) {
       nav { padding: 16px 20px; }
       .nav-links { display: none; }
-      .hero { padding: 64px 20px 56px; }
-      .trust-bar { padding: 28px 20px; }
+      .hero { padding: 24px 20px 48px; }
+      .trust-bar { padding: 20px 16px; }
+      .logo-badge { padding: 0.6rem 0.75rem; }
+      .logo-badge img { height: 36px !important; max-width: 100px !important; }
       .trust-stats { margin-left: 0; }
       .stats-row { grid-template-columns: repeat(2, 1fr); }
       .stat-box { border-right: none; border-bottom: 0.5px solid var(--border); }
@@ -692,18 +715,13 @@
 <!-- TRUST BAR -->
 <div class="trust-bar">
   <span class="trust-label">Vertrouwd door teams bij</span>
-  <div class="trust-divider"></div>
-    <div class="trust-logos">
+  <div class="trust-logos">
     <div class="logo-badge"><img src="/assets/logos/jungleminds.png" alt="Jungle Minds" style="height:56px;width:auto;max-width:240px;filter:none;opacity:0.8;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.8"></div>
     <div class="logo-badge"><img src="/assets/logos/brushai.png" alt="Brush AI" style="height:56px;width:auto;max-width:240px;filter:brightness(0) invert(1);transition:filter 0.2s;"></div>
-    <div class="logo-badge logo-badge--cronos"><img src="/assets/logos/cronos.png" alt="Cronos Group" style="height:26px;width:auto;filter:brightness(0) invert(1);transition:filter 0.2s;" onmouseover="this.style.filter='brightness(0) invert(1)'" onmouseout="this.style.filter='brightness(0) invert(1)'"></div>
-  </div>
-    <div class="logo-badge"><img src="/assets/logos/brushai.png" alt="Brush AI" style="height:56px;width:auto;max-width:240px;filter:brightness(0) invert(1);transition:filter 0.2s;"></div>
-    <div class="logo-badge logo-badge--cronos"><img src="/assets/logos/cronos.png" alt="Cronos Group" style="height:56px;width:auto;max-width:240px;filter:none;opacity:0.8;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.8"></div>
+    <div class="logo-badge logo-badge--cronos"><img src="/assets/logos/cronos.png" alt="Cronos Group" style="height:44px;width:auto;filter:brightness(0) invert(1);transition:filter 0.2s;"></div>
   </div>
 </div>
 
-<p class="hero-stat-line fade-in">Van 0 naar 20+ afspraken per week — in 4 weken.</p>
 
 <!-- PROBLEM SECTION -->
 <section class="problem-section fade-in">
