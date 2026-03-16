@@ -841,7 +841,7 @@
     .dream-footer strong { color: #475569; font-weight: 500; }
     @media (max-width: 768px) { .dream-section { padding: 32px 24px; } }
 
-    /* ── Browser mockup frame ── */
+    /* ── Browser mockup frame (kept for reference) */
     .browser-mockup {
       background: #fff;
       border: 1px solid #E2E8F0;
@@ -893,6 +893,77 @@
       .browser-bar { padding: 8px 12px; }
       .browser-dot { width: 9px; height: 9px; }
       .browser-url { font-size: 10px; padding: 3px 8px; }
+    }
+
+    /* ── MacBook Mockup ── */
+    .macbook-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .macbook-lid {
+      background: #1d1d1f;
+      border-radius: 12px 12px 0 0;
+      padding: 14px 14px 0;
+      position: relative;
+      box-shadow: 0 -2px 0 #3a3a3c inset, 0 20px 60px rgba(0,0,0,0.18);
+    }
+    .macbook-camera {
+      width: 6px; height: 6px;
+      background: #3a3a3c;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+    }
+    .macbook-screen {
+      background: #0c1220;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Browser chrome inside screen */
+    .macbook-screen .browser-bar {
+      background: #1a2535;
+      border-bottom: 1px solid #2a3a50;
+      padding: 8px 12px;
+    }
+    .macbook-screen .browser-url {
+      background: #0f1a28;
+      border: 1px solid #2a3a50;
+      color: #64748b;
+    }
+    /* Base */
+    .macbook-base {
+      background: linear-gradient(to bottom, #2a2a2c, #1d1d1f);
+      height: 18px;
+      border-radius: 0 0 4px 4px;
+      position: relative;
+    }
+    .macbook-base::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 120px; height: 4px;
+      background: #111;
+      border-radius: 0 0 4px 4px;
+    }
+    .macbook-base::after {
+      content: '';
+      display: block;
+      height: 6px;
+      background: linear-gradient(to bottom, #e8e8ed, #d1d1d6);
+      border-radius: 0 0 8px 8px;
+      margin-top: 0;
+    }
+    .macbook-shadow {
+      height: 8px;
+      background: radial-gradient(ellipse 70% 100% at 50% 0%, rgba(0,0,0,0.18) 0%, transparent 100%);
+      margin-top: 0;
+    }
+    @media (max-width: 768px) {
+      .macbook-wrap { padding: 0 8px; }
+      .macbook-lid { border-radius: 8px 8px 0 0; padding: 8px 8px 0; }
+      .macbook-camera { margin-bottom: 6px; }
     }
   </style>
 </head>
@@ -1027,18 +1098,23 @@
     <div class="dream-tag">IDEAAL SCENARIO</div>
     <h2 class="dream-h">Dit is jouw agenda na 4 weken.</h2>
     <!-- subline rendered dynamically by calendar widget -->
-    <div class="browser-mockup">
-      <div class="browser-bar">
-        <div class="browser-dots">
-          <div class="browser-dot browser-dot-r"></div>
-          <div class="browser-dot browser-dot-y"></div>
-          <div class="browser-dot browser-dot-g"></div>
+    <div class="macbook-wrap">
+      <div class="macbook-lid">
+        <div class="macbook-camera"></div>
+        <div class="macbook-screen">
+          <div class="browser-bar">
+            <div class="browser-dots">
+              <div class="browser-dot browser-dot-r"></div>
+              <div class="browser-dot browser-dot-y"></div>
+              <div class="browser-dot browser-dot-g"></div>
+            </div>
+            <div class="browser-url">🔒 lead-machine.envoya.tech/dashboard</div>
+          </div>
+          <div id="calendar-widget"></div>
         </div>
-        <div class="browser-url">🔒 lead-machine.envoya.tech/dashboard</div>
       </div>
-      <div class="browser-content">
-        <div id="calendar-widget"></div>
-      </div>
+      <div class="macbook-base"></div>
+      <div class="macbook-shadow"></div>
     </div>
     <p class="dream-footer">Zilveren Kruis · ABN AMRO · Philips · Unilever · KPN · TomTom — allemaal geboekt via Lead Machine.</p>
   </div>
