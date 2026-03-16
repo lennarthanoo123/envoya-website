@@ -682,25 +682,25 @@
       .nav-links { display: none; }
       .hero { padding: 24px 24px 48px; }
 
-      /* Hero body — hide tail sentences */
+      /* ── MOBILE HERO: conversion-first ── */
+      .hero h1 { font-size: clamp(32px, 9vw, 48px); letter-spacing: -0.03em; }
+      .hero-sub { display: none !important; }
       .hero-sub-hide-mobile { display: none !important; }
-
-      /* CTA buttons — full width stacked */
+      .hero-tagline-main { font-size: 15px; font-weight: 300; color: #64748B; margin-bottom: 28px; }
+      .hero-tag { display: none !important; }
+      .hero-stat-card { display: none !important; }
       .hero-ctas { align-items: stretch; width: 100%; }
-      .hero-ctas-row { flex-direction: column; gap: 12px; width: 100%; }
-      .hero-ctas-row .btn-primary,
-      .hero-ctas-row .btn-ghost { width: 100%; text-align: center; box-sizing: border-box; }
+      .hero-ctas-row { flex-direction: column; gap: 0; width: 100%; }
+      .hero-ctas-row .btn-primary { width: 100%; text-align: center; box-sizing: border-box; padding: 16px; font-size: 15px; }
+      .hero-ctas-row .btn-ghost { display: none !important; }
 
-      /* Used by badge — smaller */
-      .hero-tag { font-size: 11px; padding: 4px 10px; }
-
-      /* Trust bar — logos smaller, no overflow */
+      /* Trust bar */
       .trust-bar { padding: 20px 24px; }
       .logo-badge { padding: 0.5rem 0.5rem; flex: 1; min-width: 0; }
       .logo-badge img { height: 28px !important; max-width: 80px !important; object-fit: contain; }
       .trust-logos { gap: 0; }
 
-      /* General sections — 24px horizontal */
+      /* General sections */
       .section { padding: 56px 24px; }
       .stats-row { grid-template-columns: repeat(2, 1fr); }
       .stat-box { border-right: none; border-bottom: 1px solid var(--border); }

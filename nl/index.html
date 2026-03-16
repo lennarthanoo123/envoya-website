@@ -632,17 +632,27 @@
       .nav-links { display: none; }
       .hero { padding: 24px 24px 48px; }
 
-      /* Hero body — hide tail sentences */
+      /* ── MOBILE HERO: conversion-first ── */
+
+      /* Bigger headline — statement not sentence */
+      .hero h1 { font-size: clamp(32px, 9vw, 48px); letter-spacing: -0.03em; }
+
+      /* Hide everything that delays the CTA */
+      .hero-sub { display: none !important; }
       .hero-sub-hide-mobile { display: none !important; }
+      .hero-tagline-main { font-size: 15px; font-weight: 300; color: #64748B; margin-bottom: 28px; }
 
-      /* CTA buttons — full width stacked */
+      /* Hide badge on mobile — headline leads cold */
+      .hero-tag { display: none !important; }
+
+      /* Hide live data card on mobile — scroll waste before commitment */
+      .hero-stat-card { display: none !important; }
+
+      /* Single CTA: hide ghost button, make primary full-width */
       .hero-ctas { align-items: stretch; width: 100%; }
-      .hero-ctas-row { flex-direction: column; gap: 12px; width: 100%; }
-      .hero-ctas-row .btn-primary,
-      .hero-ctas-row .btn-ghost { width: 100%; text-align: center; box-sizing: border-box; }
-
-      /* Used by badge — smaller */
-      .hero-tag { font-size: 11px; padding: 4px 10px; }
+      .hero-ctas-row { flex-direction: column; gap: 0; width: 100%; }
+      .hero-ctas-row .btn-primary { width: 100%; text-align: center; box-sizing: border-box; padding: 16px; font-size: 15px; }
+      .hero-ctas-row .btn-ghost { display: none !important; }
 
       /* Trust bar — logos smaller, no overflow */
       .trust-bar { padding: 20px 24px; }
