@@ -743,13 +743,13 @@
       overflow: hidden;
     }
     .sp-kpi {
-      padding: 20px 12px; text-align: center;
+      padding: 24px 16px; text-align: center;
       border-right: 1px solid var(--border);
     }
     .sp-kpi:last-child { border-right: none; }
     .sp-kpi-num {
-      font-size: 40px; font-weight: 900; color: var(--indigo);
-      letter-spacing: -0.04em; line-height: 1; display: block;
+      font-size: 40px; font-weight: 300; color: #6366F1;
+      letter-spacing: -0.02em; line-height: 1; display: block;
     }
     .sp-kpi-lbl {
       font-size: 11px; color: var(--text-muted);
@@ -759,8 +759,8 @@
 
     /* Quote — punchy, high contrast */
     .sp-quote {
-      font-size: 17px; color: #0F172A; line-height: 1.6;
-      font-style: normal; font-weight: 500;
+      font-size: 17px; color: #1E293B; line-height: 1.65;
+      font-style: normal; font-weight: 400;
       border-left: 3px solid var(--indigo);
       padding-left: 16px; margin: 0;
     }
@@ -1178,7 +1178,11 @@
     /* ── Social Proof — upgraded ── */
     .sp-client-logos {
       display: flex; flex-wrap: wrap; gap: 8px;
-      margin-top: 12px;
+      margin-top: 4px;
+    }
+    .sp-client-logos-label {
+      font-size: 14px; font-weight: 600; color: #0F172A;
+      margin-bottom: 8px; display: block;
     }
     .sp-client-logo-pill {
       font-size: 12px; font-weight: 600;
@@ -1195,12 +1199,13 @@
     }
     .sp-deal-bar {
       margin-top: 20px;
-      background: #0F172A; color: #fff;
+      background: #EEF2FF; color: #4338CA;
       border-radius: 10px; padding: 16px 20px;
-      font-size: 15px; font-weight: 700;
+      font-size: 15px; font-weight: 600;
       text-align: center; letter-spacing: -0.01em;
+      border: 1px solid #C7D2FE;
     }
-    .sp-deal-bar span { color: #86efac; }
+    .sp-deal-bar span { color: #4338CA; font-weight: 800; }
     .sp-cta {
       text-align: center; margin-top: 40px;
     }
@@ -1420,12 +1425,15 @@
           <div class="sp-kpi"><div class="sp-kpi-num">€128K+</div><div class="sp-kpi-lbl">revenue generated</div></div>
         </div>
         <p class="sp-quote">"Lead Machine turned cold outreach into our most reliable revenue channel. 42 meetings, a signed deal with Triodos Bank, ROI clear after week one."</p>
-        <div class="sp-client-logos">
+        <div>
+          <span class="sp-client-logos-label">Meetings at:</span>
+          <div class="sp-client-logos">
           <span class="sp-client-logo-pill">Triodos Bank</span>
           <span class="sp-client-logo-pill">KPN</span>
           <span class="sp-client-logo-pill">TomTom</span>
           <span class="sp-client-logo-pill">Philips</span>
           <span class="sp-client-logo-pill">NXP</span>
+          </div>
         </div>
         <div class="sp-person" style="margin-top:16px;">
           <img src="/assets/noelle-cicilia.jpg" alt="Noëlle Cicilia" class="sp-avatar">
