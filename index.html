@@ -739,22 +739,20 @@
     /* Stats FIRST — biggest visual element */
     .sp-kpis {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 0; border: 1px solid var(--border); border-radius: 14px;
-      overflow: hidden;
+      gap: 0;
     }
     .sp-kpi {
-      padding: 24px 16px; text-align: center;
-      border-right: 1px solid var(--border);
+      padding: 20px 8px; text-align: center; border-right: none;
     }
     .sp-kpi:last-child { border-right: none; }
     .sp-kpi-num {
-      font-size: 40px; font-weight: 300; color: #6366F1;
-      letter-spacing: -0.02em; line-height: 1; display: block;
+      font-size: 48px; font-weight: 700; color: #6366F1;
+      letter-spacing: -0.03em; line-height: 1; display: block;
     }
     .sp-kpi-lbl {
-      font-size: 11px; color: var(--text-muted);
+      font-size: 11px; color: #0F172A; font-weight: 600;
       margin-top: 6px; line-height: 1.3; display: block;
-      text-transform: uppercase; letter-spacing: 0.05em;
+      text-transform: uppercase; letter-spacing: 0.08em;
     }
 
     /* Quote — punchy, high contrast */
@@ -1397,7 +1395,6 @@
   <div class="social-proof-inner">
     <div class="section-tag">Real results</div>
     <h2 class="section-h">They didn't believe it either.<br>Then they saw the numbers.</h2>
-    <p class="section-p" style="max-width:580px;margin:0 auto;">Two live campaigns. Real numbers, pulled directly from Lead Machine.</p>
     <div class="social-proof-cards">
 
       <!-- Jeffrey — Jungle Minds -->
@@ -1407,7 +1404,17 @@
           <div class="sp-kpi"><div class="sp-kpi-num">50+</div><div class="sp-kpi-lbl">warm leads</div></div>
           <div class="sp-kpi"><div class="sp-kpi-num">€140K</div><div class="sp-kpi-lbl">open pipeline</div></div>
         </div>
-        <p class="sp-quote">"We went from 2 meetings a month to a structurally full calendar. The pipeline it generated in months is more than we used to close in a year."</p>
+        <p class="sp-quote">"From 2 meetings a month to a structurally full calendar. The pipeline it generated is more than we used to close in a year."</p>
+        <div>
+          <span class="sp-client-logos-label">Meetings at:</span>
+          <div class="sp-client-logos">
+            <span class="sp-client-logo-pill">ABN AMRO</span>
+            <span class="sp-client-logo-pill">Philips</span>
+            <span class="sp-client-logo-pill">Exact</span>
+            <span class="sp-client-logo-pill">Shuttel</span>
+            <span class="sp-client-logo-pill">BOM</span>
+          </div>
+        </div>
         <div class="sp-person">
           <img src="/assets/jeffrey-van-den-dungen.webp" alt="Jeffrey van den Dungen" class="sp-avatar">
           <div>
@@ -1424,7 +1431,7 @@
           <div class="sp-kpi"><div class="sp-kpi-num">46</div><div class="sp-kpi-lbl">warm leads</div></div>
           <div class="sp-kpi"><div class="sp-kpi-num">€128K+</div><div class="sp-kpi-lbl">revenue generated</div></div>
         </div>
-        <p class="sp-quote">"Lead Machine turned cold outreach into our most reliable revenue channel. 42 meetings, a signed deal with Triodos Bank, ROI clear after week one."</p>
+        <p class="sp-quote">"Cold outreach turned into our most reliable revenue channel. ROI clear after week one."</p>
         <div>
           <span class="sp-client-logos-label">Meetings at:</span>
           <div class="sp-client-logos">
