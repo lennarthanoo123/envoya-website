@@ -363,13 +363,35 @@
       if (currentWeek < 3) { currentWeek++; renderWeek(state, currentWeek, currentWeek === 3 ? () => { cta.style.display = 'block'; } : null); }
     };
 
-    wrapper.appendChild(subline);
-    wrapper.appendChild(badgeRow);
+    // Mount controls outside the MacBook screen if anchor divs exist
+    const topAnchor    = document.getElementById('cal-controls-top');
+    const bottomAnchor = document.getElementById('cal-controls-bottom');
+
+    if (topAnchor) {
+      const topWrap = document.createElement('div');
+      topWrap.className = 'cal-top-wrap';
+      topWrap.appendChild(subline);
+      topWrap.appendChild(badgeRow);
+      topAnchor.appendChild(topWrap);
+    } else {
+      wrapper.appendChild(subline);
+      wrapper.appendChild(badgeRow);
+    }
+
     wrapper.appendChild(calWrap);
     wrapper.appendChild(mobileList);
-    wrapper.appendChild(navRow);
-    wrapper.appendChild(cta);
     container.appendChild(wrapper);
+
+    if (bottomAnchor) {
+      const bottomWrap = document.createElement('div');
+      bottomWrap.className = 'cal-bottom-wrap';
+      bottomWrap.appendChild(navRow);
+      bottomWrap.appendChild(cta);
+      bottomAnchor.appendChild(bottomWrap);
+    } else {
+      wrapper.appendChild(navRow);
+      wrapper.appendChild(cta);
+    }
 
     // Initial render — week 1
     renderWeek(state, 0);
