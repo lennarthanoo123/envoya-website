@@ -685,7 +685,7 @@
     }
     .social-proof-inner { max-width: 1100px; margin: 0 auto; }
     .social-proof-cards {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 40px;
     }
     .sp-card {
       background: #fff; border: 1px solid var(--border);
@@ -1125,6 +1125,68 @@
     /* CTA wider */
     .cal-cta-btn { min-width: 420px; text-align: center; }
     @media (max-width: 500px) { .cal-cta-btn { min-width: 0; width: 100%; } }
+
+    /* ── Social Proof — upgraded ── */
+    .sp-client-logos {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 12px;
+    }
+    .sp-client-logo-pill {
+      font-size: 12px; font-weight: 600;
+      background: #0F172A; color: #fff;
+      padding: 4px 12px; border-radius: 20px;
+      letter-spacing: 0.01em;
+    }
+    .sp-credential {
+      display: inline-block;
+      font-size: 12px; font-weight: 700; color: #6366F1;
+      background: #EEF2FF; border: 1px solid #C7D2FE;
+      padding: 3px 10px; border-radius: 20px;
+      margin-top: 4px;
+    }
+    .sp-deal-bar {
+      margin-top: 20px;
+      background: #0F172A; color: #fff;
+      border-radius: 10px; padding: 16px 20px;
+      font-size: 15px; font-weight: 700;
+      text-align: center; letter-spacing: -0.01em;
+    }
+    .sp-deal-bar span { color: #86efac; }
+    .sp-cta {
+      text-align: center; margin-top: 40px;
+    }
+    .sp-cta-link {
+      font-size: 15px; font-weight: 600; color: #6366F1;
+      text-decoration: none; border-bottom: 2px solid #C7D2FE;
+      padding-bottom: 2px; transition: border-color 0.2s;
+    }
+    .sp-cta-link:hover { border-color: #6366F1; }
+    .sp-card--coming {
+      background: #F8FAFC; border: 2px dashed #E2E8F0;
+      border-radius: 20px; padding: 36px;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; text-align: center; gap: 12px;
+      min-height: 280px;
+    }
+    .sp-coming-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #94A3B8;
+    }
+    .sp-coming-text {
+      font-size: 20px; font-weight: 800; color: #0F172A;
+      letter-spacing: -0.02em; line-height: 1.3;
+    }
+    .sp-coming-sub {
+      font-size: 13px; color: #64748B;
+    }
+    .sp-coming-cta {
+      display: inline-block; margin-top: 8px;
+      background: #6366F1; color: #fff;
+      font-size: 13px; font-weight: 600;
+      padding: 10px 20px; border-radius: 8px;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .sp-coming-cta:hover { background: #4F46E5; }
   </style>
 </head>
 <body>
@@ -1277,7 +1339,7 @@
 <section class="social-proof fade-in">
   <div class="social-proof-inner">
     <div class="section-tag">Echte resultaten</div>
-    <h2 class="section-h">42 nieuwe afspraken.<br>€140K pipeline. Automatisch gegenereerd.</h2>
+    <h2 class="section-h">Ze geloofden het ook niet.<br>Tot ze de cijfers zagen.</h2>
     <p class="section-p" style="max-width:580px;margin:0 auto;">Twee live campagnes. Echte cijfers, rechtstreeks uit Lead Machine.</p>
     <div class="social-proof-cards">
 
@@ -1288,13 +1350,12 @@
           <div class="sp-kpi"><div class="sp-kpi-num">50+</div><div class="sp-kpi-lbl">warme leads</div></div>
           <div class="sp-kpi"><div class="sp-kpi-num">€140K</div><div class="sp-kpi-lbl">open pipeline</div></div>
         </div>
-        <p class="sp-quote">"Voor Lead Machine kwamen nieuwe klanten via ons netwerk — één of twee gesprekken per maand als het meezat. Nu hebben we structureel een volle agenda met beslissers die we zelf nooit hadden bereikt. De pipeline die dit in een paar maanden heeft gegenereerd, overtreft wat we voorheen in een heel jaar sloten."</p>
+        <p class="sp-quote">"Voor Lead Machine kwamen nieuwe klanten via ons netwerk — één of twee gesprekken per maand als het meezat. Nu hebben we structureel een volle agenda. De pipeline van de afgelopen maanden overtreft wat we voorheen in een heel jaar sloten."</p>
         <div class="sp-person">
           <img src="/assets/jeffrey-van-den-dungen.webp" alt="Jeffrey van den Dungen" class="sp-avatar">
           <div>
             <div class="sp-name">Jeffrey van den Dungen</div>
-            <div class="sp-role">Managing Director</div>
-            <div class="sp-company-badge">Jungle Minds</div>
+            <div class="sp-role">Managing Director · Jungle Minds</div>
           </div>
         </div>
       </div>
@@ -1306,17 +1367,38 @@
           <div class="sp-kpi"><div class="sp-kpi-num">46</div><div class="sp-kpi-lbl">warme leads</div></div>
           <div class="sp-kpi"><div class="sp-kpi-num">€128K+</div><div class="sp-kpi-lbl">gegenereerde omzet</div></div>
         </div>
-        <p class="sp-quote">"Koude acquisitie voelde altijd als roepen in het niets. Lead Machine maakte het ons meest betrouwbare verkoopkanaal. 42 afspraken, een getekende deal met Triodos Bank en een pipeline vol vervolgafspraken die nog lopen. De ROI was al na week één duidelijk."</p>
-        <div class="sp-person">
+        <p class="sp-quote">"Koude acquisitie voelde altijd als roepen in het niets. Lead Machine maakte het ons meest betrouwbare verkoopkanaal. 42 afspraken, een getekende deal, en een pipeline die nog loopt."</p>
+        <div class="sp-client-logos">
+          <span class="sp-client-logo-pill">Triodos Bank</span>
+          <span class="sp-client-logo-pill">KPN</span>
+          <span class="sp-client-logo-pill">TomTom</span>
+          <span class="sp-client-logo-pill">Philips</span>
+          <span class="sp-client-logo-pill">NXP</span>
+        </div>
+        <div class="sp-person" style="margin-top:16px;">
           <img src="/assets/noelle-cicilia.jpg" alt="Noëlle Cicilia" class="sp-avatar">
           <div>
             <div class="sp-name">Noëlle Cicilia</div>
-            <div class="sp-role">Co-Founder &amp; CEO</div>
-            <div class="sp-company-badge">Brush AI</div>
+            <div class="sp-role">Co-Founder &amp; CEO · Brush AI</div>
+            <span class="sp-credential">🏆 AI Person of the Year — Emerce</span>
           </div>
         </div>
       </div>
 
+      <!-- Third card — coming soon -->
+      <div class="sp-card--coming">
+        <div class="sp-coming-label">Volgende klant</div>
+        <div class="sp-coming-text">Kan dit jouw bedrijf zijn?</div>
+        <div class="sp-coming-sub">We onboarden nu nieuwe klanten. Aantal plekken beperkt.</div>
+        <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="sp-coming-cta">Boek een demo →</a>
+      </div>
+
+    </div>
+
+    <div class="sp-deal-bar">1 getekende deal dekt de volledige investering. <span>Alles daarna is pure winst.</span></div>
+
+    <div class="sp-cta">
+      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="sp-cta-link">Wil jij jouw logo op deze pagina? → Boek een demo</a>
     </div>
   </div>
 </section>
