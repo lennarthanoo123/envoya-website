@@ -1,4 +1,4 @@
-/* ── Envoya Calendar Widget — Dream Outcome v2 ───────────────────────── */
+/* ── Envoya Calendar Widget — Dream Outcome v3 ───────────────────────── */
 (function () {
   const isNL = window.location.pathname.startsWith('/nl');
 
@@ -26,104 +26,97 @@
   };
 
   const WEEKS = [
-    // Week 1 — 3 appointments
+    // Week 1 — 4 appointments (sparse)
     [
-      { day: 1, hour: 10, min:  0, dur: 60, type: 'intro',     co: isNL ? 'Potentiële klant' : 'Potential client', init: '?' },
-      { day: 3, hour: 14, min:  0, dur: 60, type: 'discovery', co: isNL ? 'Potentiële klant' : 'Potential client', init: '?' },
-      { day: 4, hour: 11, min:  0, dur: 60, type: 'intro',     co: isNL ? 'Potentiële klant' : 'Potential client', init: '?' },
+      { day: 1, hour: 10, min:  0, dur: 60, type: 'intro',     co: isNL ? 'Potentiële klant' : 'Potential client' },
+      { day: 2, hour: 14, min:  0, dur: 60, type: 'intro',     co: isNL ? 'Potentiële klant' : 'Potential client' },
+      { day: 3, hour: 11, min:  0, dur: 60, type: 'discovery', co: isNL ? 'Potentiële klant' : 'Potential client' },
+      { day: 4, hour: 15, min:  0, dur: 60, type: 'intro',     co: isNL ? 'Potentiële klant' : 'Potential client' },
     ],
-    // Week 2 — 8 appointments
+    // Week 2 — 10 appointments
     [
-      { day: 0, hour:  9, min:  0, dur: 60, type: 'intro',     co: 'ABN AMRO',      init: 'AA' },
-      { day: 0, hour: 14, min:  0, dur: 60, type: 'discovery', co: 'KPN',           init: 'KP' },
-      { day: 1, hour: 10, min:  0, dur: 60, type: 'intro',     co: 'Fabory',        init: 'FB' },
-      { day: 2, hour: 10, min:  0, dur: 60, type: 'intro',     co: 'TNO',           init: 'TN' },
-      { day: 2, hour: 14, min:  0, dur: 60, type: 'discovery', co: 'Meesman',       init: 'MS' },
-      { day: 3, hour:  9, min:  0, dur: 60, type: 'intro',     co: 'LeasePlan',     init: 'LP' },
-      { day: 3, hour: 15, min:  0, dur: 60, type: 'pitch',     co: 'Unilever',      init: 'UN' },
-      { day: 4, hour: 11, min:  0, dur: 60, type: 'intro',     co: 'TomTom',        init: 'TT' },
+      { day: 0, hour:  9, min:  0, dur: 60, type: 'intro',     co: 'ABN AMRO'     },
+      { day: 0, hour: 14, min:  0, dur: 60, type: 'discovery', co: 'KPN'          },
+      { day: 1, hour: 10, min:  0, dur: 60, type: 'intro',     co: 'Fabory'       },
+      { day: 1, hour: 15, min:  0, dur: 60, type: 'intro',     co: 'TomTom'       },
+      { day: 2, hour: 10, min:  0, dur: 60, type: 'intro',     co: 'TNO'          },
+      { day: 2, hour: 14, min:  0, dur: 60, type: 'discovery', co: 'Meesman'      },
+      { day: 3, hour:  9, min:  0, dur: 60, type: 'intro',     co: 'LeasePlan'    },
+      { day: 3, hour: 15, min:  0, dur: 60, type: 'pitch',     co: 'Unilever'     },
+      { day: 4, hour: 10, min:  0, dur: 60, type: 'intro',     co: 'ING'          },
+      { day: 4, hour: 14, min:  0, dur: 60, type: 'discovery', co: 'APG'          },
     ],
-    // Week 3 — 16 appointments
+    // Week 3 — 18 appointments
     [
-      { day: 0, hour:  8, min: 30, dur: 60, type: 'intro',     co: 'Zilveren Kruis', init: 'ZK' },
-      { day: 0, hour: 10, min:  0, dur: 60, type: 'discovery', co: 'ABN AMRO',       init: 'AA' },
-      { day: 0, hour: 13, min: 30, dur: 60, type: 'intro',     co: 'KPN',            init: 'KP' },
-      { day: 1, hour:  9, min:  0, dur: 60, type: 'intro',     co: 'Fabory',         init: 'FB' },
-      { day: 1, hour: 10, min: 30, dur: 60, type: 'discovery', co: 'ING',            init: 'IN' },
-      { day: 1, hour: 15, min:  0, dur: 60, type: 'pitch',     co: 'Unilever',       init: 'UN' },
-      { day: 2, hour:  8, min: 30, dur: 60, type: 'discovery', co: 'APG',            init: 'AP' },
-      { day: 2, hour: 10, min:  0, dur: 60, type: 'intro',     co: 'TNO',            init: 'TN' },
-      { day: 2, hour: 14, min: 30, dur: 60, type: 'discovery', co: 'SHV Energy',     init: 'SH' },
-      { day: 3, hour:  9, min:  0, dur: 60, type: 'intro',     co: 'ECT Rotterdam',  init: 'EC' },
-      { day: 3, hour: 10, min: 30, dur: 60, type: 'discovery', co: 'LeasePlan',      init: 'LP' },
-      { day: 3, hour: 15, min:  0, dur: 60, type: 'pitch',     co: 'TomTom',         init: 'TT' },
-      { day: 4, hour:  8, min: 30, dur: 60, type: 'discovery', co: 'Shuttel',        init: 'SH' },
-      { day: 4, hour: 10, min:  0, dur: 60, type: 'pitch',     co: 'BOM',            init: 'BM' },
-      { day: 4, hour: 13, min:  0, dur: 60, type: 'intro',     co: 'Mosadex',        init: 'MO' },
-      { day: 4, hour: 16, min:  0, dur: 60, type: 'intro',     co: 'Royal Swinkels', init: 'RS' },
+      { day: 0, hour:  8, min: 30, dur: 60, type: 'intro',     co: 'Zilveren Kruis' },
+      { day: 0, hour: 10, min:  0, dur: 60, type: 'discovery', co: 'ABN AMRO'       },
+      { day: 0, hour: 13, min: 30, dur: 60, type: 'intro',     co: 'KPN'            },
+      { day: 0, hour: 15, min:  0, dur: 60, type: 'pitch',     co: 'VodafoneZiggo'  },
+      { day: 1, hour:  9, min:  0, dur: 60, type: 'intro',     co: 'Fabory'         },
+      { day: 1, hour: 10, min: 30, dur: 60, type: 'discovery', co: 'ING'            },
+      { day: 1, hour: 15, min:  0, dur: 60, type: 'pitch',     co: 'Unilever'       },
+      { day: 2, hour:  8, min: 30, dur: 60, type: 'discovery', co: 'APG'            },
+      { day: 2, hour: 10, min:  0, dur: 60, type: 'intro',     co: 'TNO'            },
+      { day: 2, hour: 14, min: 30, dur: 60, type: 'discovery', co: 'SHV Energy'     },
+      { day: 3, hour:  9, min:  0, dur: 60, type: 'intro',     co: 'ECT Rotterdam'  },
+      { day: 3, hour: 10, min: 30, dur: 60, type: 'discovery', co: 'LeasePlan'      },
+      { day: 3, hour: 14, min:  0, dur: 60, type: 'pitch',     co: 'TomTom'         },
+      { day: 3, hour: 16, min:  0, dur: 45, type: 'intro',     co: 'DFE Pharma'     },
+      { day: 4, hour:  8, min: 30, dur: 60, type: 'discovery', co: 'Shuttel'        },
+      { day: 4, hour: 10, min:  0, dur: 60, type: 'pitch',     co: 'BOM'            },
+      { day: 4, hour: 13, min:  0, dur: 60, type: 'intro',     co: 'Mosadex'        },
+      { day: 4, hour: 16, min:  0, dur: 60, type: 'intro',     co: 'Royal Swinkels' },
     ],
     // Week 4 — 28 appointments
     [
-      { day: 0, hour:  8, min: 30, dur: 60, type: 'intro',     co: 'Zilveren Kruis',  init: 'ZK' },
-      { day: 0, hour: 10, min:  0, dur: 45, type: 'discovery', co: 'ABN AMRO',        init: 'AA' },
-      { day: 0, hour: 11, min: 30, dur: 60, type: 'pitch',     co: 'VodafoneZiggo',   init: 'VZ' },
-      { day: 0, hour: 13, min: 30, dur: 60, type: 'intro',     co: 'KPN',             init: 'KP' },
-      { day: 0, hour: 15, min:  0, dur: 45, type: 'discovery', co: 'Philips',         init: 'PH' },
-      { day: 0, hour: 16, min: 30, dur: 45, type: 'intro',     co: 'NXP',             init: 'NX' },
-      { day: 1, hour:  9, min:  0, dur: 60, type: 'intro',     co: 'Fabory',          init: 'FB' },
-      { day: 1, hour: 10, min: 30, dur: 60, type: 'discovery', co: 'ING',             init: 'IN' },
-      { day: 1, hour: 13, min:  0, dur: 90, type: 'deal',      co: 'Triodos Bank',    init: 'TR' },
-      { day: 1, hour: 15, min:  0, dur: 60, type: 'intro',     co: 'TU/e',            init: 'TU' },
-      { day: 1, hour: 16, min: 30, dur: 45, type: 'pitch',     co: 'Exact',           init: 'EX' },
-      { day: 2, hour:  8, min: 30, dur: 60, type: 'discovery', co: 'APG',             init: 'AP' },
-      { day: 2, hour: 10, min:  0, dur: 60, type: 'intro',     co: 'TNO',             init: 'TN' },
-      { day: 2, hour: 11, min: 30, dur: 60, type: 'pitch',     co: 'Unilever',        init: 'UN' },
-      { day: 2, hour: 13, min:  0, dur: 60, type: 'intro',     co: 'Meesman',         init: 'MS' },
-      { day: 2, hour: 14, min: 30, dur: 60, type: 'discovery', co: 'SHV Energy',      init: 'SH' },
-      { day: 2, hour: 16, min:  0, dur: 60, type: 'intro',     co: 'Royal Swinkels',  init: 'RS' },
-      { day: 3, hour:  9, min:  0, dur: 60, type: 'intro',     co: 'ECT Rotterdam',   init: 'EC' },
-      { day: 3, hour: 10, min: 30, dur: 60, type: 'discovery', co: 'LeasePlan',       init: 'LP' },
-      { day: 3, hour: 13, min:  0, dur: 90, type: 'deal',      co: 'Philips',         init: 'PH' },
-      { day: 3, hour: 15, min:  0, dur: 60, type: 'pitch',     co: 'TomTom',          init: 'TT' },
-      { day: 3, hour: 16, min: 30, dur: 45, type: 'intro',     co: 'DFE Pharma',      init: 'DF' },
-      { day: 4, hour:  8, min: 30, dur: 60, type: 'discovery', co: 'Shuttel',         init: 'SH' },
-      { day: 4, hour: 10, min:  0, dur: 60, type: 'pitch',     co: 'BOM',             init: 'BM' },
-      { day: 4, hour: 11, min: 30, dur: 45, type: 'intro',     co: 'BAM',             init: 'BA' },
-      { day: 4, hour: 13, min:  0, dur: 90, type: 'deal',      co: 'Zilveren Kruis',  init: 'ZK' },
-      { day: 4, hour: 14, min: 45, dur: 60, type: 'discovery', co: 'ABN AMRO',        init: 'AA' },
-      { day: 4, hour: 16, min:  0, dur: 60, type: 'intro',     co: 'Mosadex',         init: 'MO' },
+      { day: 0, hour:  8, min: 30, dur: 60, type: 'intro',     co: 'Zilveren Kruis' },
+      { day: 0, hour: 10, min:  0, dur: 45, type: 'discovery', co: 'ABN AMRO'       },
+      { day: 0, hour: 11, min: 30, dur: 60, type: 'pitch',     co: 'VodafoneZiggo'  },
+      { day: 0, hour: 13, min: 30, dur: 60, type: 'intro',     co: 'KPN'            },
+      { day: 0, hour: 15, min:  0, dur: 45, type: 'discovery', co: 'Philips'        },
+      { day: 0, hour: 16, min: 30, dur: 45, type: 'intro',     co: 'NXP'            },
+      { day: 1, hour:  9, min:  0, dur: 60, type: 'intro',     co: 'Fabory'         },
+      { day: 1, hour: 10, min: 30, dur: 60, type: 'discovery', co: 'ING'            },
+      { day: 1, hour: 13, min:  0, dur: 90, type: 'deal',      co: 'Triodos Bank'   },
+      { day: 1, hour: 15, min:  0, dur: 60, type: 'intro',     co: 'TU/e'           },
+      { day: 1, hour: 16, min: 30, dur: 45, type: 'pitch',     co: 'Exact'          },
+      { day: 2, hour:  8, min: 30, dur: 60, type: 'discovery', co: 'APG'            },
+      { day: 2, hour: 10, min:  0, dur: 60, type: 'intro',     co: 'TNO'            },
+      { day: 2, hour: 11, min: 30, dur: 60, type: 'pitch',     co: 'Unilever'       },
+      { day: 2, hour: 13, min:  0, dur: 60, type: 'intro',     co: 'Meesman'        },
+      { day: 2, hour: 14, min: 30, dur: 60, type: 'discovery', co: 'SHV Energy'     },
+      { day: 2, hour: 16, min:  0, dur: 60, type: 'intro',     co: 'Royal Swinkels' },
+      { day: 3, hour:  9, min:  0, dur: 60, type: 'intro',     co: 'ECT Rotterdam'  },
+      { day: 3, hour: 10, min: 30, dur: 60, type: 'discovery', co: 'LeasePlan'      },
+      { day: 3, hour: 13, min:  0, dur: 90, type: 'deal',      co: 'Philips'        },
+      { day: 3, hour: 15, min:  0, dur: 60, type: 'pitch',     co: 'TomTom'         },
+      { day: 3, hour: 16, min: 30, dur: 45, type: 'intro',     co: 'DFE Pharma'     },
+      { day: 4, hour:  8, min: 30, dur: 60, type: 'discovery', co: 'Shuttel'        },
+      { day: 4, hour: 10, min:  0, dur: 60, type: 'pitch',     co: 'BOM'            },
+      { day: 4, hour: 11, min: 30, dur: 45, type: 'intro',     co: 'BAM'            },
+      { day: 4, hour: 13, min:  0, dur: 90, type: 'deal',      co: 'Zilveren Kruis' },
+      { day: 4, hour: 14, min: 45, dur: 60, type: 'discovery', co: 'ABN AMRO'       },
+      { day: 4, hour: 16, min:  0, dur: 60, type: 'intro',     co: 'Mosadex'        },
     ],
   ];
 
-  const WEEK_COUNTS = [3, 8, 16, 28];
+  const WEEK_COUNTS = [4, 10, 18, 28];
 
   const WEEK_SUBLABELS_EN = [
     'The agent just started.',
     'Pipeline building.',
     'Calendar filling up.',
-    'This is the result.',
+    'Every appointment booked by your agent. You just showed up.',
   ];
   const WEEK_SUBLABELS_NL = [
     'De agent is net gestart.',
     'Pipeline wordt opgebouwd.',
     'Agenda vult zich.',
-    'Dit is het resultaat.',
+    'Elke afspraak geboekt door je agent. Jij verscheen gewoon.',
   ];
   const WEEK_SUBLABELS = isNL ? WEEK_SUBLABELS_NL : WEEK_SUBLABELS_EN;
 
-  const BADGE_LABELS_EN = [
-    'Week 1 — 3 appointments booked',
-    'Week 2 — 8 appointments booked',
-    'Week 3 — 16 appointments booked',
-    'Week 4 — 28 appointments booked 🚀',
-  ];
-  const BADGE_LABELS_NL = [
-    'Week 1 — 3 afspraken geboekt',
-    'Week 2 — 8 afspraken geboekt',
-    'Week 3 — 16 afspraken geboekt',
-    'Week 4 — 28 afspraken geboekt 🚀',
-  ];
-  const BADGE_LABELS = isNL ? BADGE_LABELS_NL : BADGE_LABELS_EN;
+  // ── Build calendar grid ──────────────────────────────────────────────────
 
   function buildCalendar(meetings) {
     const wrap = document.createElement('div');
@@ -152,13 +145,11 @@
       const col = document.createElement('div');
       col.className = 'cal-day-col';
       col.style.height = (HOURS * HOUR_H) + 'px';
-
       for (let h = 0; h < HOURS; h++) {
         const line = document.createElement('div');
         line.className = 'cal-hour-line';
         col.appendChild(line);
       }
-
       meetings.filter(m => m.day === di).forEach(m => {
         const topOffset = ((m.hour - START_HOUR) + m.min / 60) * HOUR_H;
         const height = Math.max((m.dur / 60) * HOUR_H - 4, 28);
@@ -171,13 +162,14 @@
         ev.innerHTML = `<div class="cal-event-time">${timeStr} · ${TYPE_LABELS[m.type]}</div><div class="cal-event-name">${m.co}</div>`;
         col.appendChild(ev);
       });
-
       body.appendChild(col);
     });
 
     wrap.appendChild(body);
     return wrap;
   }
+
+  // ── Animate counter ──────────────────────────────────────────────────────
 
   function animateCounter(el, target, duration) {
     var start = parseInt(el.textContent) || 0;
@@ -192,54 +184,61 @@
     requestAnimationFrame(step);
   }
 
-  function animateEvents(container, weekIdx) {
+  // ── Animate event cards — staggered 60ms ────────────────────────────────
+
+  function animateEvents(container, onComplete) {
     const events = container.querySelectorAll('.cal-event-block');
+    const total = events.length;
     events.forEach((ev, i) => {
-      const delay = i * 80;
       setTimeout(() => {
         ev.classList.add('show');
-        // Deal signed pulse
         if (ev.classList.contains('cal-event-deal-special')) {
           setTimeout(() => ev.classList.add('deal-pulse'), 150);
         }
-      }, delay);
+        if (i === total - 1 && onComplete) {
+          setTimeout(onComplete, 200);
+        }
+      }, i * 60);
     });
   }
 
-  function renderWeek(state, weekIdx) {
+  // ── Render a week ────────────────────────────────────────────────────────
+
+  function renderWeek(state, weekIdx, onComplete) {
     const isLast = weekIdx === 3;
 
-    // Update subline — hide on week 4 (calendar speaks for itself)
-    if (isLast) {
-      state.subline.style.display = 'none';
-    } else {
-      state.subline.style.display = '';
-      state.subline.textContent = WEEK_SUBLABELS[weekIdx];
-      state.subline.className = 'cal-dynamic-sub cal-sub-animate';
-      setTimeout(() => state.subline.classList.remove('cal-sub-animate'), 400);
-    }
+    // Subline — week 4 shows full sentence
+    state.subline.style.display = '';
+    state.subline.textContent = WEEK_SUBLABELS[weekIdx];
+    state.subline.className = 'cal-dynamic-sub cal-sub-animate';
+    setTimeout(() => state.subline.classList.remove('cal-sub-animate'), 400);
 
-    // Update badge: "Week X — [counter] appointments booked 🚀"
-    // Structure: weekContext | counter | label
-    const weekContext = isNL ? `Week ${weekIdx + 1} — ` : `Week ${weekIdx + 1} — `;
-    state.badgeWeekCtx.textContent = weekContext;
-    animateCounter(state.counter, WEEK_COUNTS[weekIdx], 800);
+    // Badge pill: "Week X — [counter] appointments booked 🚀"
+    state.badgeWeekCtx.textContent = `Week ${weekIdx + 1} — `;
+    animateCounter(state.counter, WEEK_COUNTS[weekIdx], Math.min(WEEK_COUNTS[weekIdx] * 60, 800));
     state.badge.className = `cal-week-badge ${isLast ? 'cal-week-full' : 'cal-week-mid'}`;
     state.badgeLabel.textContent = isNL
       ? (isLast ? ' afspraken geboekt 🚀' : ' afspraken geboekt')
       : (isLast ? ' appointments booked 🚀' : ' appointments booked');
 
-    // Build calendar
+    // Week pill indicator
+    state.weekPill.textContent = `Week ${weekIdx + 1} / 4`;
+
+    // Build + animate calendar
     state.calWrap.innerHTML = '';
     const cal = buildCalendar(WEEKS[weekIdx]);
     state.calWrap.appendChild(cal);
-    animateEvents(cal, weekIdx);
+    animateEvents(cal, onComplete);
 
-    // Nav buttons
+    // Nav
     state.btnBack.style.visibility = weekIdx > 0 ? 'visible' : 'hidden';
     state.btnNext.style.display = isLast ? 'none' : 'inline-flex';
-    state.cta.style.display = isLast ? 'block' : 'none';
+
+    // CTA only shown after week 4 fully completes (onComplete fires it)
+    if (!isLast) state.cta.style.display = 'none';
   }
+
+  // ── Init ─────────────────────────────────────────────────────────────────
 
   function init() {
     const container = document.getElementById('calendar-widget');
@@ -256,14 +255,14 @@
     subline.className = 'cal-dynamic-sub';
     subline.textContent = WEEK_SUBLABELS[0];
 
-    // Badge row: "Week 1 — 3 appointments booked"
+    // Badge row: "Week 1 — 4 appointments booked"
     const badgeRow = document.createElement('div');
     badgeRow.className = 'cal-badge-row';
     const badge = document.createElement('span');
     badge.className = 'cal-week-badge cal-week-mid';
     const badgeWeekCtx = document.createElement('span');
     badgeWeekCtx.className = 'cal-badge-ctx';
-    badgeWeekCtx.textContent = isNL ? 'Week 1 — ' : 'Week 1 — ';
+    badgeWeekCtx.textContent = 'Week 1 — ';
     const counter = document.createElement('span');
     counter.className = 'cal-counter';
     counter.textContent = '0';
@@ -289,6 +288,7 @@
 
     const weekPill = document.createElement('span');
     weekPill.className = 'cal-week-pill';
+    weekPill.textContent = 'Week 1 / 4';
 
     const btnNext = document.createElement('button');
     btnNext.className = 'cal-nav-btn cal-nav-btn--primary';
@@ -298,7 +298,7 @@
     navRow.appendChild(weekPill);
     navRow.appendChild(btnNext);
 
-    // CTA (shown on week 4)
+    // CTA — hidden until week 4 fully completes
     const cta = document.createElement('div');
     cta.className = 'cal-cta-row';
     cta.style.display = 'none';
@@ -306,13 +306,13 @@
       ${isNL ? 'Boek een demo om dit voor jouw pipeline te zien →' : 'Book a demo to see this for your pipeline →'}
     </a>`;
 
-    const state = { subline, badge, badgeLabel, badgeWeekCtx, counter, calWrap, btnBack, btnNext, cta };
+    const state = { subline, badge, badgeLabel, badgeWeekCtx, counter, calWrap, btnBack, btnNext, weekPill, cta };
 
     btnBack.onclick = () => {
-      if (currentWeek > 0) { currentWeek--; weekPill.textContent = `Week ${currentWeek + 1} / 4`; renderWeek(state, currentWeek); }
+      if (currentWeek > 0) { currentWeek--; cta.style.display = 'none'; renderWeek(state, currentWeek); }
     };
     btnNext.onclick = () => {
-      if (currentWeek < 3) { currentWeek++; weekPill.textContent = `Week ${currentWeek + 1} / 4`; renderWeek(state, currentWeek); }
+      if (currentWeek < 3) { currentWeek++; renderWeek(state, currentWeek, currentWeek === 3 ? () => { cta.style.display = 'block'; } : null); }
     };
 
     wrapper.appendChild(subline);
@@ -322,25 +322,25 @@
     wrapper.appendChild(cta);
     container.appendChild(wrapper);
 
-    // Initial render
-    weekPill.textContent = 'Week 1 / 4';
+    // Initial render — week 1
     renderWeek(state, 0);
 
-    // Auto-play on scroll into viewport
+    // Auto-play on scroll into viewport (fires once)
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting && !autoPlayed) {
           autoPlayed = true;
+          // Advance week by week with 1.2s gap between transitions
           [1, 2, 3].forEach(w => {
             setTimeout(() => {
               currentWeek = w;
-              weekPill.textContent = `Week ${w + 1} / 4`;
-              renderWeek(state, w);
+              const isLastWeek = w === 3;
+              renderWeek(state, w, isLastWeek ? () => { cta.style.display = 'block'; } : null);
             }, w * 1200);
           });
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.25 });
     observer.observe(container);
   }
 
