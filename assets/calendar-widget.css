@@ -122,10 +122,8 @@
 }
 .cal-nav-btn:hover { background: #EEF2FF; border-color: #C7D2FE; color: #6366F1; }
 .cal-nav-btn--primary {
-  display: inline-flex !important;
-  background: #6366F1; border-color: #6366F1; color: #fff;
+  display: none !important;
 }
-.cal-nav-btn--primary:hover { background: #4F46E5; border-color: #4F46E5; color: #fff; }
 
 /* CTA */
 .cal-cta-row { margin-top: 28px; text-align: center; }
