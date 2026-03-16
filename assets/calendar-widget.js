@@ -224,11 +224,26 @@
     // Week pill indicator
     state.weekPill.textContent = `Week ${weekIdx + 1} / 4`;
 
-    // Build + animate calendar
+    // Build + animate calendar (desktop grid)
     state.calWrap.innerHTML = '';
     const cal = buildCalendar(WEEKS[weekIdx]);
     state.calWrap.appendChild(cal);
     animateEvents(cal, onComplete);
+
+    // Build mobile list view
+    state.mobileList.innerHTML = '';
+    const DAY_NAMES = isNL ? ['Ma','Di','Wo','Do','Vr'] : ['Mon','Tue','Wed','Thu','Fri'];
+    WEEKS[weekIdx].forEach((m, i) => {
+      const item = document.createElement('div');
+      item.className = `cal-mobile-item cal-mobile-item-${m.type}`;
+      if (m.type === 'deal') item.classList.add('cal-event-deal-special');
+      item.innerHTML = `<span class="cal-mobile-item-day">${DAY_NAMES[m.day]}</span><span class="cal-mobile-item-co">${m.co}</span><span class="cal-mobile-item-type">${TYPE_LABELS[m.type]}</span>`;
+      state.mobileList.appendChild(item);
+      setTimeout(() => {
+        item.classList.add('show');
+        if (m.type === 'deal') setTimeout(() => item.classList.add('deal-pulse'), 150);
+      }, i * 60);
+    });
 
     // Nav
     state.btnBack.style.visibility = weekIdx > 0 ? 'visible' : 'hidden';
@@ -274,8 +289,10 @@
     badge.appendChild(badgeLabel);
     badgeRow.appendChild(badge);
 
-    // Calendar container
+    // Calendar container (desktop grid + mobile list)
     const calWrap = document.createElement('div');
+    const mobileList = document.createElement('div');
+    mobileList.className = 'cal-mobile-list';
 
     // Nav row
     const navRow = document.createElement('div');
@@ -306,7 +323,7 @@
       ${isNL ? 'Boek een demo om dit voor jouw pipeline te zien →' : 'Book a demo to see this for your pipeline →'}
     </a>`;
 
-    const state = { subline, badge, badgeLabel, badgeWeekCtx, counter, calWrap, btnBack, btnNext, weekPill, cta };
+    const state = { subline, badge, badgeLabel, badgeWeekCtx, counter, calWrap, mobileList, btnBack, btnNext, weekPill, cta };
 
     btnBack.onclick = () => {
       if (currentWeek > 0) { currentWeek--; cta.style.display = 'none'; renderWeek(state, currentWeek); }
@@ -318,6 +335,7 @@
     wrapper.appendChild(subline);
     wrapper.appendChild(badgeRow);
     wrapper.appendChild(calWrap);
+    wrapper.appendChild(mobileList);
     wrapper.appendChild(navRow);
     wrapper.appendChild(cta);
     container.appendChild(wrapper);
