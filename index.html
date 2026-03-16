@@ -150,7 +150,10 @@
     }
     @media (max-width: 900px) {
       .hero-inner { grid-template-columns: 1fr; padding: 28px 24px 44px; }
-      .hero-text { text-align: center; }
+      .hero-text { text-align: left; }
+      .hero-sub { margin: 0 0 32px; }
+      .hero-ctas { align-items: flex-start; }
+      .hero-ctas-row { justify-content: flex-start; }
       .hero-visual { max-width: 360px; margin: 0 auto; }
       .hero-visual img { height: 360px; }
     }
@@ -186,7 +189,7 @@
 
     .hero-sub {
       font-size: 17px; color: var(--text-dim);
-      max-width: 520px; margin: 0 auto 40px;
+      max-width: 520px; margin: 0 0 40px;
       line-height: 1.7; font-weight: 300;
     }
 
