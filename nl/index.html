@@ -709,6 +709,89 @@
       .sp-kpis { grid-template-columns: repeat(3, 1fr); }
       .social-proof { padding: 48px 20px; }
     }
+
+    /* ── HERO STAT CARD ── */
+    .hero-stat-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+      display: flex; flex-direction: column; gap: 24px;
+      min-width: 0;
+    }
+    .hsc-header {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hsc-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #22c55e; flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
+      animation: pulse-green 2s infinite;
+    }
+    @keyframes pulse-green {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.2); }
+      50%       { box-shadow: 0 0 0 6px rgba(34,197,94,0.1); }
+    }
+    .hsc-live {
+      font-size: 11px; font-weight: 700; color: #0F172A;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .hsc-pulse {
+      font-size: 11px; color: #94a3b8; margin-left: auto;
+    }
+    .hsc-main {
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .hsc-num {
+      font-size: 72px; font-weight: 900; color: #6366F1;
+      letter-spacing: -0.04em; line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .hsc-label {
+      font-size: 14px; color: #64748b; font-weight: 500;
+    }
+    .hsc-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+    .hsc-item {
+      background: #F8FAFC; border: 1px solid #E2E8F0;
+      border-radius: 12px; padding: 14px 16px;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .hsc-item--wide {
+      grid-column: 1 / -1;
+    }
+    .hsc-num-sm {
+      font-size: 24px; font-weight: 800; color: #0F172A;
+      letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+    }
+    .hsc-label-sm {
+      font-size: 11px; color: #94a3b8;
+    }
+    .hsc-bar-wrap {
+      background: #F1F5F9; border-radius: 99px; height: 6px; overflow: hidden;
+    }
+    .hsc-bar {
+      height: 100%; width: 0%; border-radius: 99px;
+      background: linear-gradient(90deg, #6366F1, #818CF8);
+      transition: width 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .hsc-footer {
+      display: flex; align-items: center; gap: 12px;
+      padding-top: 8px; border-top: 1px solid var(--border);
+    }
+    .hsc-avatar-row { display: flex; }
+    .hsc-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      object-fit: cover; object-position: center top;
+      border: 2px solid #fff;
+      margin-right: -8px;
+    }
+    .hsc-avatar:last-child { margin-right: 0; }
+    .hsc-footer-text {
+      font-size: 12px; color: #64748b; font-weight: 500;
+    }
   </style>
 </head>
 <body>
@@ -752,10 +835,10 @@
       <span class="hero-badge-dot"></span>
       Powered by Envoya AI
     </div>
-    <div class="hero-tag">DE OPLOSSING</div>
-    <h1>35 afspraken. 90 dagen.<br><em>Één agent die het zware werk doet.</em></h1>
+    <div class="hero-tag">Gebruikt door Jungle Minds &amp; Brush AI</div>
+    <h1>35 afspraken. 90 dagen.<br><em>Één agent. Nul koude acquisitie.</em></h1>
     <p class="hero-tagline-main">Wat als je je dag kon besteden aan deals sluiten in plaats van leads zoeken?</p>
-    <p class="hero-sub">Envoya's AI-agent vindt de juiste prospects, schrijft het juiste bericht en vertelt je precies wie je wanneer moet contacteren. Jij blijft in controle. De agent doet het voorwerk. Jouw agenda vult zich vanzelf.</p>
+    <p class="hero-sub">Envoya's AI-agent vindt de juiste prospects, schrijft het juiste bericht en vertelt je precies wie je wanneer moet contacteren. Jij blijft in controle. De agent doet het voorwerk. Jouw agenda vult zich. Jij sluit de deal.</p>
     <div class="hero-ctas">
       <div class="hero-ctas-row">
         <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="btn-primary">Plan een demo</a>
@@ -765,10 +848,40 @@
     </div>
   </div>
 
-  <div class="hero-visual">
-    <img src="/assets/agent-hero.jpg" alt="Envoya AI Agent" />
-    <div class="hero-visual-overlay"></div>
-    <div class="hero-visual-glow"></div>
+  <div class="hero-stat-card">
+    <div class="hsc-header">
+      <span class="hsc-dot"></span>
+      <span class="hsc-live">Live campagne data</span>
+      <span class="hsc-pulse">Realtime bijgewerkt</span>
+    </div>
+    <div class="hsc-main">
+      <span class="hsc-num" id="hsc-meetings">0</span>
+      <span class="hsc-label">nieuwe afspraken geboekt</span>
+    </div>
+    <div class="hsc-grid">
+      <div class="hsc-item">
+        <span class="hsc-num-sm" id="hsc-prospects">0</span>
+        <span class="hsc-label-sm">prospects bereikt</span>
+      </div>
+      <div class="hsc-item">
+        <span class="hsc-num-sm" id="hsc-reply">0%</span>
+        <span class="hsc-label-sm">gem. responspercentage</span>
+      </div>
+      <div class="hsc-item hsc-item--wide">
+        <span class="hsc-num-sm" id="hsc-pipeline">€0</span>
+        <span class="hsc-label-sm">open pipeline</span>
+      </div>
+    </div>
+    <div class="hsc-bar-wrap">
+      <div class="hsc-bar" id="hsc-bar"></div>
+    </div>
+    <div class="hsc-footer">
+      <div class="hsc-avatar-row">
+        <img src="/assets/jeffrey-van-den-dungen.webp" class="hsc-avatar" alt="Jeffrey">
+        <img src="/assets/noelle-cicilia.jpg" class="hsc-avatar" alt="Noëlle">
+      </div>
+      <span class="hsc-footer-text">Jungle Minds &amp; Brush AI</span>
+    </div>
   </div>
 
   </div><!-- /hero-inner -->
@@ -1264,5 +1377,37 @@
 <script src="/assets/demo-widget.js"></script>
 <link rel="stylesheet" href="/assets/showcase.css">
 <script src="/assets/showcase.js"></script>
+
+  <script>
+  (function() {
+    function animateCount(el, target, duration, prefix, suffix) {
+      var start = 0, startTime = null;
+      function step(ts) {
+        if (!startTime) startTime = ts;
+        var progress = Math.min((ts - startTime) / duration, 1);
+        var ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = prefix + Math.round(ease * target).toLocaleString() + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    function initStats() {
+      var bar = document.getElementById('hsc-bar');
+      if (!bar) return;
+      setTimeout(function() {
+        animateCount(document.getElementById('hsc-meetings'),   78, 2000, '', '');
+        animateCount(document.getElementById('hsc-prospects'),  810, 2200, '', '');
+        animateCount(document.getElementById('hsc-reply'),       20, 1800, '', '%');
+        animateCount(document.getElementById('hsc-pipeline'),   140, 2400, '€', 'K');
+        if (bar) setTimeout(function() { bar.style.width = '72%'; }, 300);
+      }, 400);
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initStats);
+    } else {
+      initStats();
+    }
+  })();
+  </script>
 </body>
 </html>
