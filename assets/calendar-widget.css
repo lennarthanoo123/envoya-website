@@ -156,30 +156,62 @@
   .cal-cta-btn { font-size: 14px; padding: 14px 20px; display: block; }
 }
 
-/* Mobile list view */
+/* Mobile stat counter view */
 .cal-mobile-list {
   display: none;
   flex-direction: column;
-  gap: 8px;
-  padding: 4px 0;
+  align-items: center;
+  padding: 8px 0 16px;
+  gap: 0;
 }
-.cal-mobile-item {
+.cal-mobile-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 16px;
+  width: 100%;
+  padding: 8px 0;
+}
+.cal-mobile-stat {
+  text-align: center;
+}
+.cal-mobile-stat-num {
+  font-size: 52px;
+  font-weight: 900;
+  color: #6366F1;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  display: block;
+}
+.cal-mobile-stat-num.deal-num { color: #16a34a; }
+.cal-mobile-stat-lbl {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-top: 6px;
+  display: block;
+}
+.cal-mobile-deals {
+  margin-top: 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cal-mobile-deal-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(74,222,128,0.08);
+  border: 1px solid rgba(74,222,128,0.2);
   border-radius: 10px;
   opacity: 0;
+  transition: opacity 0.3s;
 }
-.cal-mobile-item.show {
-  animation: eventAppear 0.15s ease-out forwards;
-}
-.cal-mobile-item-intro     { background: rgba(99,102,241,0.08);  border-left: 3px solid #6366f1; }
-.cal-mobile-item-discovery { background: rgba(129,140,248,0.08); border-left: 3px solid #818cf8; }
-.cal-mobile-item-pitch     { background: rgba(251,191,36,0.08);  border-left: 3px solid #f59e0b; }
-.cal-mobile-item-deal      { background: rgba(74,222,128,0.12);  border-left: 3px solid #4ade80; }
-.cal-mobile-item-day { font-size: 10px; font-weight: 700; color: #94a3b8; width: 28px; text-align: center; flex-shrink: 0; }
-.cal-mobile-item-co  { font-size: 13px; font-weight: 700; color: #0F172A; flex: 1; }
-.cal-mobile-item-type { font-size: 11px; color: #94a3b8; flex-shrink: 0; }
-.cal-mobile-item-deal .cal-mobile-item-co  { color: #166534; }
-.cal-mobile-item-deal .cal-mobile-item-type { color: #4ade80; font-weight: 600; }
+.cal-mobile-deal-row.show { opacity: 1; }
+.cal-mobile-deal-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; flex-shrink: 0; }
+.cal-mobile-deal-co { font-size: 13px; font-weight: 700; color: #0F172A; flex: 1; }
+.cal-mobile-deal-lbl { font-size: 11px; font-weight: 600; color: #16a34a; }

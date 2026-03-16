@@ -230,20 +230,51 @@
     state.calWrap.appendChild(cal);
     animateEvents(cal, onComplete);
 
-    // Build mobile list view
+    // Build mobile stat counter view
     state.mobileList.innerHTML = '';
-    const DAY_NAMES = isNL ? ['Ma','Di','Wo','Do','Vr'] : ['Mon','Tue','Wed','Thu','Fri'];
-    WEEKS[weekIdx].forEach((m, i) => {
-      const item = document.createElement('div');
-      item.className = `cal-mobile-item cal-mobile-item-${m.type}`;
-      if (m.type === 'deal') item.classList.add('cal-event-deal-special');
-      item.innerHTML = `<span class="cal-mobile-item-day">${DAY_NAMES[m.day]}</span><span class="cal-mobile-item-co">${m.co}</span><span class="cal-mobile-item-type">${TYPE_LABELS[m.type]}</span>`;
-      state.mobileList.appendChild(item);
-      setTimeout(() => {
-        item.classList.add('show');
-        if (m.type === 'deal') setTimeout(() => item.classList.add('deal-pulse'), 150);
-      }, i * 60);
+    const meetings = WEEKS[weekIdx];
+    const dealCount = meetings.filter(m => m.type === 'deal').length;
+    const dealCompanies = meetings.filter(m => m.type === 'deal');
+
+    const statsGrid = document.createElement('div');
+    statsGrid.className = 'cal-mobile-stats';
+
+    const stats = [
+      { id: 'mob-appts', num: WEEK_COUNTS[weekIdx], lbl: isNL ? 'afspraken' : 'appointments' },
+      { id: 'mob-deals', num: dealCount, lbl: isNL ? 'deals getekend' : 'deals signed', deal: true },
+    ];
+
+    stats.forEach(s => {
+      const cell = document.createElement('div');
+      cell.className = 'cal-mobile-stat';
+      const numEl = document.createElement('span');
+      numEl.className = 'cal-mobile-stat-num' + (s.deal ? ' deal-num' : '');
+      numEl.id = s.id;
+      numEl.textContent = '0';
+      const lblEl = document.createElement('span');
+      lblEl.className = 'cal-mobile-stat-lbl';
+      lblEl.textContent = s.lbl;
+      cell.appendChild(numEl);
+      cell.appendChild(lblEl);
+      statsGrid.appendChild(cell);
+      animateCounter(numEl, s.num, 800);
     });
+
+    state.mobileList.appendChild(statsGrid);
+
+    // Deal signed rows (only if any this week)
+    if (dealCompanies.length > 0) {
+      const dealsWrap = document.createElement('div');
+      dealsWrap.className = 'cal-mobile-deals';
+      dealCompanies.forEach((m, i) => {
+        const row = document.createElement('div');
+        row.className = 'cal-mobile-deal-row';
+        row.innerHTML = `<span class="cal-mobile-deal-dot"></span><span class="cal-mobile-deal-co">${m.co}</span><span class="cal-mobile-deal-lbl">${TYPE_LABELS['deal']}</span>`;
+        dealsWrap.appendChild(row);
+        setTimeout(() => row.classList.add('show'), 600 + i * 200);
+      });
+      state.mobileList.appendChild(dealsWrap);
+    }
 
     // Nav
     state.btnBack.style.visibility = weekIdx > 0 ? 'visible' : 'hidden';
