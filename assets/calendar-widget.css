@@ -74,21 +74,21 @@
 /* Events */
 .cal-event-block {
   position: absolute; left: 4px; right: 4px;
-  border-radius: 6px; padding: 7px 10px;
+  border-radius: 8px; padding: 8px 10px; min-height: 48px;
   overflow: hidden; cursor: default; z-index: 2;
   opacity: 0;
 }
-.cal-event-intro     { background: rgba(99,102,241,0.2);  border-left: 3px solid #6366f1; }
-.cal-event-discovery { background: rgba(129,140,248,0.18); border-left: 3px solid #818cf8; }
-.cal-event-pitch     { background: rgba(251,191,36,0.15);  border-left: 3px solid #f59e0b; }
-.cal-event-deal      { background: rgba(74,222,128,0.15);  border-left: 3px solid #4ade80; }
+.cal-event-intro     { background: rgba(30,42,80,0.85);   border-left: 4px solid #6366f1; }
+.cal-event-discovery { background: rgba(25,38,70,0.85);    border-left: 4px solid #818cf8; }
+.cal-event-pitch     { background: rgba(60,40,10,0.85);    border-left: 4px solid #f59e0b; }
+.cal-event-deal      { background: rgba(10,50,30,0.85);    border-left: 4px solid #4ade80; }
 
-.cal-event-time { font-size: 10px; font-weight: 600; margin-bottom: 3px; opacity: 0.75; }
-.cal-event-intro .cal-event-time     { color: #818cf8; }
-.cal-event-discovery .cal-event-time { color: #a5b4fc; }
-.cal-event-pitch .cal-event-time     { color: #fbbf24; }
-.cal-event-deal .cal-event-time      { color: #4ade80; }
-.cal-event-name { font-size: 13px; font-weight: 700; color: #f1f5f9; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.3; }
+.cal-event-time { font-size: 11px; font-weight: 500; margin-bottom: 4px; opacity: 1; line-height: 1.2; }
+.cal-event-intro .cal-event-time     { color: #a5b4fc; }
+.cal-event-discovery .cal-event-time { color: #c7d2fe; }
+.cal-event-pitch .cal-event-time     { color: #fcd34d; }
+.cal-event-deal .cal-event-time      { color: #86efac; }
+.cal-event-name { font-size: 15px; font-weight: 700; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.2; letter-spacing: -0.01em; }
 
 /* Appear animation — staggered */
 @keyframes eventAppear {
