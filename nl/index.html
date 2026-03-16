@@ -630,21 +630,38 @@
     @media (max-width: 768px) {
       nav { padding: 16px 20px; }
       .nav-links { display: none; }
-      .hero { padding: 24px 20px 48px; }
-      .trust-bar { padding: 20px 16px; }
-      .logo-badge { padding: 0.6rem 0.75rem; }
-      .logo-badge img { height: 36px !important; max-width: 100px !important; }
+      .hero { padding: 24px 24px 48px; }
+
+      /* Hero body — hide tail sentences */
+      .hero-sub-hide-mobile { display: none; }
+
+      /* CTA buttons — full width stacked */
+      .hero-ctas { align-items: stretch; width: 100%; }
+      .hero-ctas-row { flex-direction: column; gap: 12px; width: 100%; }
+      .hero-ctas-row .btn-primary,
+      .hero-ctas-row .btn-ghost { width: 100%; text-align: center; box-sizing: border-box; }
+
+      /* Used by badge — smaller */
+      .hero-tag { font-size: 11px; padding: 4px 10px; }
+
+      /* Trust bar — logos smaller, no overflow */
+      .trust-bar { padding: 20px 24px; }
+      .logo-badge { padding: 0.5rem 0.5rem; flex: 1; min-width: 0; }
+      .logo-badge img { height: 28px !important; max-width: 80px !important; object-fit: contain; }
+      .trust-logos { gap: 0; }
+
+      /* General sections — 24px horizontal */
+      .section { padding: 56px 24px; }
       .trust-stats { margin-left: 0; }
       .stats-row { grid-template-columns: repeat(2, 1fr); }
       .stat-box { border-right: none; border-bottom: 1px solid var(--border); }
-      .section { padding: 56px 20px; }
       .features-grid,
       .how-grid,
       .proof-grid { grid-template-columns: 1fr; }
       .pricing-box { grid-template-columns: 1fr; gap: 40px; padding: 32px 24px; }
-      footer { flex-direction: column; align-items: flex-start; padding: 24px 20px; }
-      .logo-grid { grid-template-columns: repeat(3, 1fr); padding: 0 20px; }
-      .container { padding: 0 20px; }
+      footer { flex-direction: column; align-items: flex-start; padding: 24px 24px; }
+      .logo-grid { grid-template-columns: repeat(3, 1fr); padding: 0 24px; }
+      .container { padding: 0 24px; }
     }
     @media (max-width: 480px) {
       .logo-grid { grid-template-columns: repeat(2, 1fr); }
@@ -859,7 +876,7 @@
     <div class="hero-tag">Gebruikt door Jungle Minds &amp; Brush AI</div>
     <h1>35 afspraken. 90 dagen.<br><em>Één agent. Nul koude acquisitie.</em></h1>
     <p class="hero-tagline-main">Wat als je je dag kon besteden aan deals sluiten in plaats van leads zoeken?</p>
-    <p class="hero-sub">Envoya's AI-agent vindt de juiste prospects, schrijft het juiste bericht en vertelt je precies wie je wanneer moet contacteren. Jij blijft in controle. De agent doet het voorwerk. Jouw agenda vult zich. Jij sluit de deal.</p>
+    <p class="hero-sub">Envoya's AI-agent vindt de juiste prospects, schrijft het juiste bericht en vertelt je precies wie je wanneer moet contacteren.<span class="hero-sub-hide-mobile"> Jij blijft in controle. De agent doet het voorwerk. Jouw agenda vult zich. Jij sluit de deal.</span></p>
     <div class="hero-ctas">
       <div class="hero-ctas-row">
         <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="btn-primary">Plan een demo</a>
