@@ -791,6 +791,21 @@
     .hsc-footer-text {
       font-size: 12px; color: #64748b; font-weight: 500;
     }
+
+    /* ── DREAM OUTCOME SECTION ── */
+    .dream-section {
+      padding: 72px 40px;
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+    }
+    .dream-inner { max-width: 900px; margin: 0 auto; }
+    .dream-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #6366F1; background: #EEF2FF; border: 1px solid #C7D2FE; display: inline-block; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; }
+    .dream-h { font-size: clamp(32px, 4.5vw, 48px); font-weight: 800; color: #0F172A; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -0.03em; }
+    .dream-sub { font-size: 16px; color: #64748B; line-height: 1.7; margin-bottom: 2.5rem; max-width: 560px; }
+    .dream-calendar { border-radius: 16px; overflow: hidden; border: 1px solid #E2E8F0; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+    .dream-footer { margin-top: 1.5rem; text-align: center; font-size: 13px; color: #94A3B8; }
+    .dream-footer strong { color: #475569; font-weight: 500; }
+    @media (max-width: 768px) { .dream-section { padding: 56px 20px; } }
   </style>
 </head>
 <body>
@@ -1148,18 +1163,18 @@
     </div>
   </div>
 
-  <div id="calendar-widget" class="fade-in" style="margin: 3rem 0;"></div>
+</section>
 
-  <div class="meeting-badges fade-in">
-    <div class="meeting-badges-label">Afspraken ingepland bij:</div>
-    <div class="meeting-badges-row">
-      <span class="meeting-badge">Zilveren Kruis</span>
-      <span class="meeting-badge">Fabory</span>
-      <span class="meeting-badge">Shuttel</span>
-      <span class="meeting-badge">BOM</span>
-      <span class="meeting-badge">TU/e</span>
-      <span class="meeting-badge">Meesman</span>
+<!-- DREAM OUTCOME -->
+<section class="dream-section fade-in">
+  <div class="dream-inner">
+    <div class="dream-tag">IDEAAL SCENARIO</div>
+    <h2 class="dream-h">Dit is jouw agenda na 4 weken.</h2>
+    <p class="dream-sub">Elke afspraak geboekt door je agent. Jij verscheen gewoon.</p>
+    <div class="dream-calendar">
+      <div id="calendar-widget"></div>
     </div>
+    <p class="dream-footer">Zilveren Kruis · ABN AMRO · Philips · Unilever · KPN · TomTom — allemaal geboekt via Lead Machine.</p>
   </div>
 </section>
 
