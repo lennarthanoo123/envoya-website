@@ -995,6 +995,40 @@
       color: #64748B;
       font-family: -apple-system, 'Inter', sans-serif;
     }
+
+    /* ── MacBook image mockup ── */
+    .macbook-img-wrap {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      user-select: none;
+    }
+    .macbook-img-wrap img.macbook-img {
+      width: 100%;
+      display: block;
+      pointer-events: none;
+      position: relative;
+      z-index: 2;
+    }
+    .macbook-screen-content {
+      position: absolute;
+      top: 10%;
+      left: 11.05%;
+      width: 77.9%;
+      height: 71.9%;
+      overflow: hidden;
+      border-radius: 2px;
+      z-index: 1;
+      background: #0c1220;
+    }
+    /* Scale calendar to fit inside screen */
+    .macbook-screen-content .cal-wrapper {
+      transform-origin: top left;
+      width: 900px;
+    }
+    @media (max-width: 768px) {
+      .macbook-img-wrap { max-width: 100%; }
+    }
   </style>
 </head>
 <body>
@@ -1128,16 +1162,11 @@
     <div class="dream-tag">IDEAAL SCENARIO</div>
     <h2 class="dream-h">Dit is jouw agenda na 4 weken.</h2>
     <!-- subline rendered dynamically by calendar widget -->
-    <div class="cal-browser-frame">
-      <div class="cal-browser-bar">
-        <div class="browser-dots">
-          <div class="browser-dot browser-dot-r"></div>
-          <div class="browser-dot browser-dot-y"></div>
-          <div class="browser-dot browser-dot-g"></div>
-        </div>
-        <div class="browser-url">🔒 lead-machine.envoya.tech/dashboard</div>
+    <div class="macbook-img-wrap">
+      <div class="macbook-screen-content">
+        <div id="calendar-widget"></div>
       </div>
-      <div id="calendar-widget"></div>
+      <img src="/assets/macbook-frame.jpg" class="macbook-img" alt="Lead Machine dashboard on MacBook" draggable="false">
     </div>
     <p class="dream-footer">Zilveren Kruis · ABN AMRO · Philips · Unilever · KPN · TomTom — allemaal geboekt via Lead Machine.</p>
   </div>
