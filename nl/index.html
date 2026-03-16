@@ -194,7 +194,7 @@
     }
     .trust-label {
       display: block;
-      font-size: 15px; color: #f1f5f9;
+      font-size: 15px; color: var(--text);
       font-weight: 600; letter-spacing: 0.01em;
       margin-bottom: 24px;
     }
@@ -216,7 +216,7 @@
     }
     .logo-badge:last-child { border-right: none; }
     .logo-badge:hover { background: rgba(99,102,241,0.03); }
-    .logo-badge img { height: 56px; width: auto; max-width: 240px; object-fit: contain; filter: none; opacity: 0.85; transition: opacity 0.2s; }
+    .logo-badge img { height: 56px; width: auto; max-width: 240px; object-fit: contain; filter: none; opacity: 0.75; transition: opacity 0.2s; }
     .logo-badge:hover img { opacity: 1; }
     .logo-badge--cronos img { filter: none; opacity: 0.75; }
     .logo-badge--cronos:hover img { opacity: 1; }
@@ -444,7 +444,7 @@
     .case-card { background: #F8FAFC; border: 0.5px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.2s; }
     .case-card:hover { border-color: rgba(99,102,241,0.3); }
     .case-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
-    .case-logo { height: 36px; width: auto; max-width: 120px; object-fit: contain; filter: brightness(0) invert(1) opacity(0.7); }
+    .case-logo { height: 36px; width: auto; max-width: 120px; object-fit: contain; filter: none; opacity: 0.7; }
     .case-logo-fallback { font-size: 1rem; font-weight: 800; color: #64748B; }
     .case-company-name { font-size: 0.95rem; font-weight: 700; color: var(--text); }
     .case-company-desc { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
@@ -499,7 +499,7 @@
     /* Human CTA */
     .human-cta-inner { display: flex; align-items: center; gap: 2.5rem; max-width: 760px; margin: 0 auto; text-align: left; }
     .human-avatar { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid #6366f1; flex-shrink: 0; }
-    .human-name { font-weight: 700; color: white; font-size: 1.05rem; margin: 0 0 0.2rem; }
+    .human-name { font-weight: 700; color: var(--text); font-size: 1.05rem; margin: 0 0 0.2rem; }
     .human-role { color: #6366f1; font-size: 0.82rem; margin: 0 0 1rem; }
     .human-note { color: #64748B; font-size: 0.78rem; margin-top: 0.75rem; }
     @media (max-width: 640px) { .human-cta-inner { flex-direction: column; text-align: center; } }
@@ -594,12 +594,12 @@
     .compare-table thead { background: #F1F5F9; }
     .compare-th-label { color: #64748B; font-weight: 600; width: 35%; }
     .compare-th-old { color: #64748B; font-weight: 600; }
-    .compare-th-new { color: #a5b4fc; font-weight: 700; }
+    .compare-th-new { color: var(--indigo); font-weight: 700; }
     .compare-table tbody tr { transition: background 0.15s; }
     .compare-table tbody tr:hover { background: rgba(99,102,241,0.06); }
     .compare-table td:first-child { color: #64748B; }
     .compare-table td:nth-child(2) { color: #64748B; }
-    .compare-win { color: #a5b4fc; font-weight: 600; }
+    .compare-win { color: var(--indigo); font-weight: 600; }
 
     /* ── FAQ ── */
     .faq-section { padding: 56px 40px; }
@@ -614,7 +614,7 @@
       transition: border-color 0.2s;
     }
     .faq-item:hover { border-color: #1e3050; }
-    .faq-q { font-size: 13px; font-weight: 700; color: #e2e8f0; margin-bottom: 10px; line-height: 1.4; }
+    .faq-q { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 10px; line-height: 1.4; }
     .faq-a { font-size: 12px; color: #64748B; line-height: 1.7; }
     @media (max-width: 768px) { .faq-grid { grid-template-columns: 1fr; } }
 
@@ -718,7 +718,7 @@
       <circle cx="20" cy="20" r="13" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
       <circle cx="20" cy="20" r="8" stroke="#6366F1" stroke-width="0.9" stroke-dasharray="1.5 1.5" opacity="0.7"/>
       <circle cx="20" cy="20" r="4" fill="#6366F1"/>
-      <circle cx="20" cy="20" r="2.2" fill="#0F172A"/>
+      <circle cx="20" cy="20" r="2.2" fill="#6366F1"/>
       <circle cx="31.7" cy="8.3" r="2.5" fill="#818CF8"/>
       <circle cx="33" cy="20" r="1.2" fill="#6366F1"/>
       <circle cx="9.5" cy="28" r="1.5" stroke="#818CF8" stroke-width="0.8" fill="none"/>
