@@ -115,20 +115,14 @@
   margin-top: 20px; gap: 12px;
 }
 .cal-week-pill {
-  font-size: 12px; font-weight: 600; color: #94a3b8;
-  background: #F1F5F9; border: 1px solid #E2E8F0;
-  border-radius: 20px; padding: 5px 14px;
+  display: none !important;
 }
 .cal-nav-btn {
-  display: inline-flex; align-items: center;
-  background: #F8FAFC; border: 1px solid #E2E8F0;
-  color: #475569; font-size: 12px; font-weight: 600;
-  padding: 8px 20px; border-radius: 8px; cursor: pointer;
-  transition: all 0.2s; letter-spacing: 0.02em;
-  font-family: inherit;
+  display: none !important;
 }
 .cal-nav-btn:hover { background: #EEF2FF; border-color: #C7D2FE; color: #6366F1; }
 .cal-nav-btn--primary {
+  display: inline-flex !important;
   background: #6366F1; border-color: #6366F1; color: #fff;
 }
 .cal-nav-btn--primary:hover { background: #4F46E5; border-color: #4F46E5; color: #fff; }
@@ -137,13 +131,13 @@
 .cal-cta-row { margin-top: 28px; text-align: center; }
 .cal-cta-btn {
   display: inline-block;
-  background: #0F172A; color: #fff;
+  background: #6366F1; color: #fff;
   font-size: 14px; font-weight: 600;
   padding: 14px 28px; border-radius: 10px;
   text-decoration: none; letter-spacing: 0.01em;
   transition: background 0.2s, transform 0.2s;
 }
-.cal-cta-btn:hover { background: #6366F1; transform: translateY(-1px); }
+.cal-cta-btn:hover { background: #4F46E5; transform: translateY(-1px); }
 
 /* ── MOBILE: hide full grid, show compact list ── */
 @media (max-width: 768px) {
