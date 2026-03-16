@@ -209,15 +209,25 @@
   function renderWeek(state, weekIdx) {
     const isLast = weekIdx === 3;
 
-    // Update subline
-    state.subline.textContent = WEEK_SUBLABELS[weekIdx];
-    state.subline.className = 'cal-dynamic-sub cal-sub-animate';
-    setTimeout(() => state.subline.classList.remove('cal-sub-animate'), 400);
+    // Update subline — hide on week 4 (calendar speaks for itself)
+    if (isLast) {
+      state.subline.style.display = 'none';
+    } else {
+      state.subline.style.display = '';
+      state.subline.textContent = WEEK_SUBLABELS[weekIdx];
+      state.subline.className = 'cal-dynamic-sub cal-sub-animate';
+      setTimeout(() => state.subline.classList.remove('cal-sub-animate'), 400);
+    }
 
-    // Update badge counter
+    // Update badge: "Week X — [counter] appointments booked 🚀"
+    // Structure: weekContext | counter | label
+    const weekContext = isNL ? `Week ${weekIdx + 1} — ` : `Week ${weekIdx + 1} — `;
+    state.badgeWeekCtx.textContent = weekContext;
     animateCounter(state.counter, WEEK_COUNTS[weekIdx], 800);
     state.badge.className = `cal-week-badge ${isLast ? 'cal-week-full' : 'cal-week-mid'}`;
-    state.badgeLabel.textContent = BADGE_LABELS[weekIdx].replace(/\d+(?= appointments| afspraken)/, '');
+    state.badgeLabel.textContent = isNL
+      ? (isLast ? ' afspraken geboekt 🚀' : ' afspraken geboekt')
+      : (isLast ? ' appointments booked 🚀' : ' appointments booked');
 
     // Build calendar
     state.calWrap.innerHTML = '';
@@ -246,17 +256,21 @@
     subline.className = 'cal-dynamic-sub';
     subline.textContent = WEEK_SUBLABELS[0];
 
-    // Badge row
+    // Badge row: "Week 1 — 3 appointments booked"
     const badgeRow = document.createElement('div');
     badgeRow.className = 'cal-badge-row';
     const badge = document.createElement('span');
     badge.className = 'cal-week-badge cal-week-mid';
+    const badgeWeekCtx = document.createElement('span');
+    badgeWeekCtx.className = 'cal-badge-ctx';
+    badgeWeekCtx.textContent = isNL ? 'Week 1 — ' : 'Week 1 — ';
     const counter = document.createElement('span');
     counter.className = 'cal-counter';
     counter.textContent = '0';
     const badgeLabel = document.createElement('span');
     badgeLabel.className = 'cal-badge-label';
     badgeLabel.textContent = isNL ? ' afspraken geboekt' : ' appointments booked';
+    badge.appendChild(badgeWeekCtx);
     badge.appendChild(counter);
     badge.appendChild(badgeLabel);
     badgeRow.appendChild(badge);
@@ -292,7 +306,7 @@
       ${isNL ? 'Boek een demo om dit voor jouw pipeline te zien →' : 'Book a demo to see this for your pipeline →'}
     </a>`;
 
-    const state = { subline, badge, badgeLabel, counter, calWrap, btnBack, btnNext, cta };
+    const state = { subline, badge, badgeLabel, badgeWeekCtx, counter, calWrap, btnBack, btnNext, cta };
 
     btnBack.onclick = () => {
       if (currentWeek > 0) { currentWeek--; weekPill.textContent = `Week ${currentWeek + 1} / 4`; renderWeek(state, currentWeek); }

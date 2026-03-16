@@ -109,9 +109,9 @@
   animation: eventAppear 0.15s ease-out forwards, dealPulse 0.4s ease-out 0.15s;
 }
 
-/* Nav row */
+/* Nav row — back+pill grouped right, next button right */
 .cal-nav-row {
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center; justify-content: flex-end;
   margin-top: 20px; gap: 12px;
 }
 .cal-week-pill {
