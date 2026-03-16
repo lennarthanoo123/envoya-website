@@ -1035,7 +1035,7 @@
       font-family: -apple-system, 'Inter', sans-serif;
     }
 
-    /* ── MacBook image mockup ── */
+    /* ── MacBook image mockup (old) */
     .macbook-img-wrap {
       position: relative;
       max-width: 900px;
@@ -1067,6 +1067,45 @@
     }
     @media (max-width: 768px) {
       .macbook-img-wrap { max-width: 100%; }
+    }
+
+    /* ── MacBook image mockup — fixed ── */
+    .macbook-img-wrap {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      display: block;
+      line-height: 0;
+    }
+    .macbook-img-wrap .macbook-img {
+      width: 100%;
+      display: block;
+      position: relative;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .macbook-screen-content {
+      position: absolute;
+      top: 10%;
+      left: 11.05%;
+      width: 77.72%;
+      height: 71.67%;
+      overflow: hidden;
+      z-index: 1;
+      background: #0c1220;
+      border-radius: 1px;
+    }
+    /* Scale down cal-wrapper to fit screen */
+    .macbook-screen-content .cal-wrapper {
+      width: 100%;
+      zoom: 0.72;
+      transform-origin: top left;
+    }
+    @media (max-width: 900px) {
+      .macbook-screen-content .cal-wrapper { zoom: 0.55; }
+    }
+    @media (max-width: 768px) {
+      .macbook-img-wrap { display: none; }
     }
   </style>
 </head>
