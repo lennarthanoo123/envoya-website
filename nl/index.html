@@ -1094,6 +1094,37 @@
       margin-top: 20px;
       text-align: center;
     }
+
+    /* ── Dream Outcome — new elements ── */
+    .dream-stat-line {
+      font-size: 18px; font-weight: 600; color: #6366F1;
+      text-align: center; margin-bottom: 12px; letter-spacing: -0.01em;
+    }
+    .dream-before-after {
+      font-size: 13px; color: #94A3B8;
+      text-align: center; margin-top: 16px;
+    }
+    /* Deal annotation — floats right of MacBook */
+    .deal-annotation {
+      position: absolute;
+      right: -180px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12px; color: #22C55E; font-weight: 500;
+      white-space: nowrap;
+      display: flex; align-items: center; gap: 6px;
+      opacity: 0;
+      transition: opacity 0.4s ease 2s;
+    }
+    .deal-annotation.visible { opacity: 1; }
+    .deal-annotation::before {
+      content: '←';
+      font-size: 14px;
+    }
+    .macbook-img-wrap { position: relative; }
+    /* CTA wider */
+    .cal-cta-btn { min-width: 420px; text-align: center; }
+    @media (max-width: 500px) { .cal-cta-btn { min-width: 0; width: 100%; } }
   </style>
 </head>
 <body>
@@ -1225,6 +1256,7 @@
 <section class="dream-section fade-in">
   <div class="dream-inner">
     <div class="dream-tag">IDEAAL SCENARIO</div>
+    <p class="dream-stat-line">€345K open pipeline. 28 afspraken. 4 weken. Één agent.</p>
     <h2 class="dream-h">Dit is jouw agenda na 4 weken.</h2>
     <!-- subline rendered dynamically by calendar widget -->
     <div id="cal-controls-top" class="cal-controls-top"></div>
@@ -1233,8 +1265,10 @@
         <div id="calendar-widget"></div>
       </div>
       <img src="/assets/macbook-frame.png" class="macbook-img" alt="Lead Machine dashboard on MacBook" draggable="false">
+      <span class="deal-annotation">3 deals getekend deze week</span>
     </div>
     <div id="cal-controls-bottom" class="cal-controls-bottom"></div>
+    <p class="dream-before-after">De week voor Lead Machine: 2 afspraken. Week 4: 28.</p>
     <p class="dream-footer">Zilveren Kruis · ABN AMRO · Philips · Unilever · KPN · TomTom — allemaal geboekt via Lead Machine.</p>
   </div>
 </section>

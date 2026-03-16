@@ -106,13 +106,13 @@
     'The agent just started.',
     'Pipeline building.',
     'Calendar filling up.',
-    'Every appointment booked by your agent. You just showed up.',
+    'Those aren\'t fake logos. That\'s a real week. Real companies. Real meetings.',
   ];
   const WEEK_SUBLABELS_NL = [
     'De agent is net gestart.',
     'Pipeline wordt opgebouwd.',
     'Agenda vult zich.',
-    'Elke afspraak geboekt door je agent. Jij verscheen gewoon.',
+    'Dat zijn geen nep-logo\'s. Dit is een echte week. Echte bedrijven. Echte afspraken.',
   ];
   const WEEK_SUBLABELS = isNL ? WEEK_SUBLABELS_NL : WEEK_SUBLABELS_EN;
 
@@ -351,7 +351,7 @@
     cta.className = 'cal-cta-row';
     cta.style.display = 'none';
     cta.innerHTML = `<a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="cal-cta-btn">
-      ${isNL ? 'Boek een demo om dit voor jouw pipeline te zien →' : 'Book a demo to see this for your pipeline →'}
+      ${isNL ? 'Wil jij dit jouw agenda volgend maand? Boek een demo →' : 'Want this to be your calendar next month? Book a demo →'}
     </a>`;
 
     const state = { subline, badge, badgeLabel, badgeWeekCtx, counter, calWrap, mobileList, btnBack, btnNext, weekPill, cta };
@@ -406,7 +406,12 @@
             setTimeout(() => {
               currentWeek = w;
               const isLastWeek = w === 3;
-              renderWeek(state, w, isLastWeek ? () => { cta.style.display = 'block'; } : null);
+              renderWeek(state, w, isLastWeek ? () => {
+              cta.style.display = 'block';
+              // Show deal annotation
+              const ann = document.querySelector('.deal-annotation');
+              if (ann) ann.classList.add('visible');
+            } : null);
             }, w * 1200);
           });
         }
