@@ -840,6 +840,60 @@
     .dream-footer { margin-top: 1.5rem; text-align: center; font-size: 13px; color: #64748B; }
     .dream-footer strong { color: #475569; font-weight: 500; }
     @media (max-width: 768px) { .dream-section { padding: 32px 24px; } }
+
+    /* ── Browser mockup frame ── */
+    .browser-mockup {
+      background: #fff;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.06);
+      overflow: hidden;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .browser-bar {
+      background: #F1F5F9;
+      border-bottom: 1px solid #E2E8F0;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .browser-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+    .browser-dot-r { background: #FF5F57; }
+    .browser-dot-y { background: #FEBC2E; }
+    .browser-dot-g { background: #28C840; }
+    .browser-url {
+      flex: 1;
+      background: #fff;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 11px;
+      color: #64748B;
+      font-family: -apple-system, 'Inter', sans-serif;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .browser-content {
+      background: #0c1220;
+      overflow: hidden;
+    }
+    @media (max-width: 768px) {
+      .browser-mockup { border-radius: 8px; }
+      .browser-bar { padding: 8px 12px; }
+      .browser-dot { width: 9px; height: 9px; }
+      .browser-url { font-size: 10px; padding: 3px 8px; }
+    }
   </style>
 </head>
 <body>
@@ -973,8 +1027,18 @@
     <div class="dream-tag">IDEAAL SCENARIO</div>
     <h2 class="dream-h">Dit is jouw agenda na 4 weken.</h2>
     <!-- subline rendered dynamically by calendar widget -->
-    <div class="dream-calendar">
-      <div id="calendar-widget"></div>
+    <div class="browser-mockup">
+      <div class="browser-bar">
+        <div class="browser-dots">
+          <div class="browser-dot browser-dot-r"></div>
+          <div class="browser-dot browser-dot-y"></div>
+          <div class="browser-dot browser-dot-g"></div>
+        </div>
+        <div class="browser-url">🔒 lead-machine.envoya.tech/dashboard</div>
+      </div>
+      <div class="browser-content">
+        <div id="calendar-widget"></div>
+      </div>
     </div>
     <p class="dream-footer">Zilveren Kruis · ABN AMRO · Philips · Unilever · KPN · TomTom — allemaal geboekt via Lead Machine.</p>
   </div>
