@@ -215,11 +215,11 @@
       transition: background 0.2s;
     }
     .logo-badge:last-child { border-right: none; }
-    .logo-badge:hover { background: rgba(99,102,241,0.03); }
-    .logo-badge img { height: 56px; width: auto; max-width: 240px; object-fit: contain; filter: none; opacity: 0.75; transition: opacity 0.2s; }
+    .logo-badge:hover { background: transparent; }
+    .logo-badge img { height: 48px; width: auto; max-width: 220px; object-fit: contain; filter: none; opacity: 0.7; transition: opacity 0.2s; }
     .logo-badge:hover img { opacity: 1; }
-    .logo-badge--cronos img { filter: none; opacity: 0.75; }
-    .logo-badge--cronos:hover img { opacity: 1; }
+    .logo-badge--cronos img { height: 56px !important; filter: none; opacity: 0.7; }
+    .logo-badge--cronos:hover img { opacity: 1 !important; }
     .logo-badge:hover img { filter: brightness(0) invert(1) opacity(0.65); }
     .logo-badge--cronos { border-color: rgba(99,102,241,0.2); }
     .logo-badge--cronos img { filter: brightness(0) invert(1) sepia(1) hue-rotate(210deg) saturate(3) opacity(0.45); }
@@ -778,9 +778,9 @@
 <div class="trust-bar">
   <span class="trust-label">Vertrouwd door teams bij</span>
   <div class="trust-logos">
-    <div class="logo-badge"><img src="/assets/logos/jungleminds.png" alt="Jungle Minds" style="height:56px;width:auto;max-width:240px;filter:none;opacity:0.8;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.8"></div>
-    <div class="logo-badge"><img src="/assets/logos/brushai.png" alt="Brush AI" style="height:56px;width:auto;max-width:240px;filter:none;opacity:0.85;transition:opacity 0.2s;"></div>
-    <div class="logo-badge logo-badge--cronos"><img src="/assets/logos/cronos.png" alt="Cronos Group" style="height:44px;width:auto;filter:none;opacity:0.85;transition:opacity 0.2s;"></div>
+    <div class="logo-badge"><img src="/assets/logos/jungleminds.png" alt="Jungle Minds"></div>
+    <div class="logo-badge"><img src="/assets/logos/brushai.png" alt="Brush AI"></div>
+    <div class="logo-badge logo-badge--cronos"><img src="/assets/logos/cronos.png" alt="Cronos Group"></div>
   </div>
 </div>
 
