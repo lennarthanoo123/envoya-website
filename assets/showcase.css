@@ -590,16 +590,19 @@
     align-items: flex-start;
     padding: 20px 20px 24px;
     justify-content: flex-start;
+    order: 1;                      /* text below diagram on mobile */
   }
 
   .fb-image {
     width: 100%;
     flex: none;
+    order: 0;                      /* diagram above text on mobile */
   }
 
   .fb-image,
   .fb-block-reverse .fb-image {
     transform: translateY(20px);   /* only slide up, not from side */
+    order: 0;                      /* diagram above text on mobile */
   }
 
   .fb-diagram {
