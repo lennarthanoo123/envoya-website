@@ -240,6 +240,7 @@
       border: '1px solid #e2e8f0',
       borderRadius: '12px',
       width: '100%',
+      height: '100%',
       boxSizing: 'border-box',
       display: 'flex',
       flexDirection: 'column',
@@ -321,11 +322,11 @@
       win.appendChild(r);
     });
 
-    /* Body area */
+    /* Body area — fixed height, overflow hidden so typing doesn't push layout */
     var body = el('div', {
       padding: '12px 14px',
       flex: '1',
-      minHeight: '120px',
+      overflow: 'hidden',
       fontFamily: 'Inter, -apple-system, sans-serif',
       fontSize: '12.5px',
       color: '#1e293b',

@@ -38,7 +38,7 @@
   padding: 56px 56px;
   display: flex;
   gap: 56px;
-  align-items: center;
+  align-items: stretch;
   min-height: 480px;
   margin-bottom: 24px;
   max-width: 1120px;
@@ -55,6 +55,9 @@
 .fb-text {
   flex: 0 0 38%;
   max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .fb-headline {
