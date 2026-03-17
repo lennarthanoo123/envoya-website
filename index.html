@@ -631,8 +631,9 @@
     .problem-h { font-size: clamp(32px, 4.5vw, 48px); font-weight: 800; color: #0F172A; line-height: 1.1; margin-bottom: 1.2rem; letter-spacing: -0.03em; }
     .problem-sub { font-size: 16px; color: #0F172A; line-height: 1.75; margin-bottom: 3rem; max-width: 640px; }
     .problem-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .problem-card { background: #F8FAFC; border: 1px solid #E2E8F0; border-left: 3px solid #EF4444; border-radius: 12px; padding: 28px 24px; }
-    .problem-card-title { font-size: 15px; font-weight: 700; color: #0F172A; margin-bottom: 12px; line-height: 1.35; }
+    .problem-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; padding: 24px; }
+    .problem-card-icon { font-size: 32px; margin-bottom: 14px; display: block; line-height: 1; }
+    .problem-card-title { font-size: 15px; font-weight: 700; color: #0F172A; margin-bottom: 10px; line-height: 1.35; }
     .problem-card-text { font-size: 14px; color: #0F172A; line-height: 1.75; }
     @media (max-width: 768px) { .problem-cards { grid-template-columns: 1fr; } .problem-section { padding: 56px 20px; } }
 
@@ -1355,14 +1356,17 @@
     <p class="problem-sub">That's not an estimate. It's what happens when your competitor reaches 10x more prospects than you — with the same product, the same team, and a smarter outreach system.</p>
     <div class="problem-cards">
       <div class="problem-card">
+        <span class="problem-card-icon">🎲</span>
         <h3 class="problem-card-title">Your pipeline runs on luck</h3>
         <p class="problem-card-text">2–3 meetings a week, if you're lucky. Your competitor books 15+ — same product, same market, smarter outreach. The difference is the machine, not the team.</p>
       </div>
       <div class="problem-card">
+        <span class="problem-card-icon">🔥</span>
         <h3 class="problem-card-title">Generic outreach burns your reputation</h3>
         <p class="problem-card-text">Copy-paste templates. 0.3% reply rate. Every mass email you send teaches prospects to ignore you — permanently. You're not just losing time. You're losing future deals.</p>
       </div>
       <div class="problem-card">
+        <span class="problem-card-icon">📋</span>
         <h3 class="problem-card-title">Your closers do admin instead of closing</h3>
         <p class="problem-card-text">4–6 hours a day researching, writing, following up. That's €80K/year in salary spent on work a machine should handle. While your best people could be talking to clients.</p>
       </div>
@@ -1713,7 +1717,7 @@
 <script src="/assets/calendar-widget.js"></script>
 <link rel="stylesheet" href="/assets/demo-widget.css">
 <script src="/assets/demo-widget.js"></script>
-<link rel="stylesheet" href="/assets/showcase.css?v=1773767185">
+<link rel="stylesheet" href="/assets/showcase.css?v=1773767602">
 <script src="/assets/showcase.js?v=1773766292"></script>
 
   <script>

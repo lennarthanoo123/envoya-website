@@ -549,26 +549,78 @@
 /* ── MOBILE ── */
 @media (max-width: 900px) {
   .fb-section {
-    padding: 48px 20px;
+    padding: 48px 16px 32px;
   }
+
+  .fb-header {
+    text-align: left;
+    margin-bottom: 32px;
+    padding: 0;
+  }
+
+  .fb-header .section-tag {
+    text-align: left;
+  }
+
+  .fb-header .section-h {
+    font-size: clamp(24px, 7vw, 32px);
+  }
+
   .fb-block,
   .fb-block-reverse {
-    flex-direction: column;
-    padding: 24px;
-    gap: 28px;
+    flex-direction: column;        /* diagram FIRST, text second */
+    gap: 20px;
+    padding: 28px 20px;
+    margin-bottom: 16px;
+    height: auto !important;       /* remove fixed height on mobile */
+    min-height: 0 !important;
+    border-radius: 16px;
   }
+
+  .fb-block-reverse {
+    flex-direction: column;        /* same order: diagram first on mobile */
+  }
+
   .fb-text {
     flex: none;
     max-width: 100%;
     width: 100%;
+    text-align: left;
+    align-items: flex-start;
   }
+
   .fb-image {
     width: 100%;
+    flex: none;
   }
+
   .fb-image,
   .fb-block-reverse .fb-image {
-    transform: translateY(24px);
+    transform: translateY(20px);   /* only slide up, not from side */
   }
+
+  .fb-diagram {
+    min-height: 260px;
+    height: 260px !important;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .fw-widget {
+    height: 260px;
+    overflow: hidden;
+  }
+
+  .fb-headline {
+    font-size: clamp(22px, 6vw, 28px);
+    margin-bottom: 12px;
+  }
+
+  .fb-body {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
   .fb-b4-stats {
     grid-template-columns: 1fr 1fr;
   }
