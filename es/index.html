@@ -1627,7 +1627,7 @@
         <p class="cta-card-role">Business Developer · Co-Founder Envoya</p>
       </div>
     </div>
-    <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:10px 16px;font-size:13px;color:#DC2626;font-weight:500;text-align:center;">
+    <div data-urgency style="background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:10px 16px;font-size:13px;color:#DC2626;font-weight:500;text-align:center;">
       Incorporamos 3 nuevos clientes por mes. Actualmente 2 plazas disponibles para abril.
     </div>
     <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="cta-card-btn">Reservar demo con Lennart →</a>
@@ -1665,7 +1665,7 @@
           Ve cada lead, respuesta y reunión en un solo lugar
         </div>
       </div>
-      <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:10px 16px;margin:16px 0;font-size:13px;color:#DC2626;font-weight:500;">Próximo onboarding: 7 de abril · 2 plazas disponibles</div>
+      <div data-urgency style="background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:10px 16px;margin:16px 0;font-size:13px;color:#DC2626;font-weight:500;text-align:center;">Próximo onboarding: 7 de abril · 2 plazas disponibles</div>
       <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="price-cta" style="width:100%;text-align:center;display:block;">Reservar demo →</a>
       <p style="font-size:12px;color:#94A3B8;margin-top:10px;text-align:center;">Normalmente operativo en 7 días tras la firma.</p>
     </div>
@@ -1915,5 +1915,36 @@ function toggleFaq(i) {
   });
 }
 </script>
+  <script>
+  (function() {
+    function getNextOnboarding() {
+      var now = new Date();
+      var d = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+      while (d.getDay() !== 1) { d.setDate(d.getDate() + 1); }
+      return d;
+    }
+    function formatDate(d, lang) {
+      var months = {
+        en: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        nl: ['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'],
+        es: ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic']
+      };
+      var m = (months[lang] || months.en);
+      return d.getDate() + ' ' + m[d.getMonth()];
+    }
+    var lang = document.documentElement.lang || 'en';
+    var d = getNextOnboarding();
+    var date = formatDate(d, lang);
+    var labels = {
+      en: 'Next onboarding: ' + date + ' · 2 spots remaining',
+      nl: 'Volgende onboarding: ' + date + ' · 2 plekken beschikbaar',
+      es: 'Próximo onboarding: ' + date + ' · 2 plazas disponibles'
+    };
+    var label = labels[lang] || labels.en;
+    document.querySelectorAll('[data-urgency]').forEach(function(el) {
+      el.textContent = label;
+    });
+  })();
+  </script>
 </body>
 </html>
