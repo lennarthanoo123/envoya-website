@@ -84,7 +84,8 @@
       transition: opacity 0.2s;
       display: inline-block;
     }
-    .nav-cta:hover { opacity: 0.85; }
+    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(99,102,241,0.2); }
+    .nav-cta { transition: opacity 0.2s, transform 0.25s cubic-bezier(0.165,0.84,0.44,1), box-shadow 0.25s; }
 
     .nav-lang {
       font-size: 12px; color: var(--text-muted);
@@ -173,7 +174,7 @@
       transition: transform 0.15s, box-shadow 0.15s;
       display: inline-block;
     }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 30px rgba(99,102,241,0.4); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(99,102,241,0.3); transition: transform 0.25s cubic-bezier(0.165,0.84,0.44,1), box-shadow 0.25s; }
     .btn-primary:active { transform: translateY(0); }
 
     .btn-ghost {
@@ -1236,6 +1237,41 @@
       text-decoration: none; transition: background 0.2s;
     }
     .sp-coming-cta:hover { background: #4F46E5; }
+
+    /* ── Clay-style button hover — arrow slides up ── */
+    .btn-primary, .nav-cta, .cta-main, .price-cta, .fb-cta, .cal-cta-btn,
+    .sp-coming-cta, .human-cta a {
+      position: relative;
+      overflow: hidden;
+    }
+    /* All buttons: subtle lift + shadow on hover */
+    .btn-primary:hover, .cta-main:hover, .price-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99,102,241,0.25);
+    }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(99,102,241,0.2);
+    }
+    /* Feature block CTAs */
+    .fb-cta {
+      transition: background 0.25s, transform 0.25s cubic-bezier(0.165,0.84,0.44,1), box-shadow 0.25s;
+    }
+    .fb-cta:hover {
+      background: #6366F1 !important;
+      color: #fff !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99,102,241,0.25);
+    }
+    /* Cal CTA */
+    .cal-cta-btn {
+      transition: background 0.25s, transform 0.25s cubic-bezier(0.165,0.84,0.44,1), box-shadow 0.25s;
+    }
+    .cal-cta-btn:hover {
+      background: #4F46E5 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99,102,241,0.3);
+    }
   </style>
 </head>
 <body>
