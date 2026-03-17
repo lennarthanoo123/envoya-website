@@ -606,20 +606,20 @@
 
     /* ── FAQ ── */
     .faq-section { padding: 48px 40px; }
-    .faq-grid {
-      display: grid; grid-template-columns: 1fr 1fr 1fr;
-      gap: 24px; max-width: 960px; margin: 0 auto;
+    .faq-accordion { max-width: 720px; margin: 0 auto; }
+    .faq-row { border-bottom: 0.5px solid #E2E8F0; }
+    .faq-row:first-child { border-top: 0.5px solid #E2E8F0; }
+    .faq-q-btn {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 0; background: none; border: none; cursor: pointer;
+      font-family: inherit; text-align: left; gap: 12px;
     }
-    .faq-item {
-      background: rgba(99,102,241,0.03);
-      border: 1px solid #E2E8F0;
-      border-radius: 12px; padding: 20px 22px;
-      transition: border-color 0.2s;
-    }
-    .faq-item:hover { border-color: #1e3050; }
-    .faq-q { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 10px; line-height: 1.4; }
-    .faq-a { font-size: 12px; color: #0F172A; line-height: 1.7; }
-    @media (max-width: 768px) { .faq-grid { grid-template-columns: 1fr; } }
+    .faq-q-btn span { font-size: 16px; font-weight: 600; color: #0F172A; line-height: 1.4; }
+    .faq-chevron { flex-shrink: 0; transition: transform 0.25s ease; }
+    .faq-row.open .faq-chevron { transform: rotate(180deg); }
+    .faq-a-wrap { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-row.open .faq-a-wrap { max-height: 400px; }
+    .faq-a { font-size: 15px; color: #64748B; line-height: 1.75; padding-bottom: 20px; }
 
     /* ── FOMO CTA ── */
     .fomo-headline { text-align: center; margin-bottom: 3rem; }
@@ -1583,32 +1583,84 @@
 <!-- FAQ -->
 <section class="section faq-section fade-in">
   <div class="section-tag">FAQ</div>
-  <h2 class="section-h">Alles wat je wil weten over Envoya</h2>
-  <div class="faq-grid">
-    <div class="faq-item">
-      <h3 class="faq-q">Is dit niet gewoon een dure spamtool?</h3>
-      <p class="faq-a">Nee. Spam is hetzelfde bericht naar 10.000 mensen sturen. Ons systeem stuurt elk bericht op basis van data over die specifieke persoon. Dat is het verschil tussen 0,3% en 12% response rate.</p>
+  <h2 class="section-h" style="font-size:32px;font-weight:700;color:#0F172A;">Nog niet zeker? Dit vragen mensen altijd vlak voor ze tekenen.</h2>
+  <div class="faq-accordion" id="faq-accordion">
+
+    <div class="faq-row open" data-i="0">
+      <button class="faq-q-btn" onclick="toggleFaq(0)">
+        <span>Is dit niet gewoon een duur spam-instrument?</span>
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a-wrap">
+        <p class="faq-a">Nee. Spam is volume zonder relevantie. Lead Machine verstuurt minder e-mails, naar meer gerichte mensen, met meer personalisatie dan een mens ooit zou kunnen. Het gemiddelde responspercentage is 16–26%. Spam haalt 0,1%.</p>
+      </div>
     </div>
-    <div class="faq-item">
-      <h3 class="faq-q">Wat als het niet werkt bij ons?</h3>
-      <p class="faq-a">Dan lossen we het op. We zijn zo zeker van ons systeem dat we geen resultaat gelijkstellen aan geen deal voor ons. Punt.</p>
+
+    <div class="faq-row" data-i="1">
+      <button class="faq-q-btn" onclick="toggleFaq(1)">
+        <span>Hoe verschilt dit van een SDR inhuren?</span>
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a-wrap">
+        <p class="faq-a">Een SDR kost €60–90K per jaar, heeft 3 maanden nodig om op te starten en vertrekt. Lead Machine kost €25K éénmalig, is live in 2 uur en wordt beter naarmate je het gebruikt. Hij belt ook niet ziek.</p>
+      </div>
     </div>
-    <div class="faq-item">
-      <h3 class="faq-q">Hoe snel zien we resultaat?</h3>
-      <p class="faq-a">Eerste campagne live binnen 14 dagen. Eerste responses binnen 30 dagen. Gemiddeld 3 nieuwe afspraken in week 1 van de campagne.</p>
+
+    <div class="faq-row" data-i="2">
+      <button class="faq-q-btn" onclick="toggleFaq(2)">
+        <span>Wat als het bij ons niet werkt?</span>
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a-wrap">
+        <p class="faq-a">We doen een kwalificatiegesprek van 20 minuten voordat je koopt. Als we denken dat Lead Machine niet geschikt is voor jouw bedrijf, zeggen we dat eerlijk. We hebben al klanten afgewezen.</p>
+      </div>
     </div>
-    <div class="faq-item">
-      <h3 class="faq-q">Moeten we ons salesproces aanpassen?</h3>
-      <p class="faq-a">Nee. Lead Machine past zich aan jouw bestaande workflow aan. Jij doet nog steeds de gesprekken en deals. Wij vullen je agenda.</p>
+
+    <div class="faq-row" data-i="3">
+      <button class="faq-q-btn" onclick="toggleFaq(3)">
+        <span>Hoe snel zien we resultaten?</span>
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a-wrap">
+        <p class="faq-a">Eerste e-mails gaan binnen 48 uur na setup de deur uit. Eerste reacties komen doorgaans binnen de eerste week. De meeste klanten hebben hun eerste meeting geboekt binnen 10 dagen.</p>
+      </div>
     </div>
-    <div class="faq-item">
-      <h3 class="faq-q">Wat is het verschil met een BDR inhuren?</h3>
-      <p class="faq-a">Een BDR kost €40–60K per jaar, heeft onboarding nodig, wordt ziek en vertrekt. Lead Machine kost €25K eenmalig, draait 24/7 en wordt elke week slimmer.</p>
+
+    <div class="faq-row" data-i="4">
+      <button class="faq-q-btn" onclick="toggleFaq(4)">
+        <span>Moeten we ons verkoopproces aanpassen?</span>
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a-wrap">
+        <p class="faq-a">Nee. Lead Machine past zich aan jouw bestaande werkwijze aan. Jij doet nog steeds de gesprekken en sluit de deals. Wij vullen alleen je agenda.</p>
+      </div>
     </div>
-    <div class="faq-item">
-      <h3 class="faq-q">Is het echt AI, of gewoon mail merge?</h3>
-      <p class="faq-a">Echt AI. Elke email heeft een gepersonaliseerde haak op basis van recente interviews, bedrijfsnieuws of rolcontext. Patroon A/B/C selectie, zelflerend ICP, real-time signaalonderzoek.</p>
+
+    <div class="faq-row" data-i="5">
+      <button class="faq-q-btn" onclick="toggleFaq(5)">
+        <span>Is het echt AI, of gewoon mailmerge?</span>
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a-wrap">
+        <p class="faq-a">Echt AI. Elke e-mail wordt opnieuw gegenereerd vanuit een echt signaal dat specifiek is voor die persoon — een presentatie, een artikel, een bedrijfsverandering. Geen twee e-mails zijn hetzelfde.</p>
+      </div>
     </div>
+
+    <div class="faq-row" data-i="6">
+      <button class="faq-q-btn" onclick="toggleFaq(6)">
+        <span>Waarom €25K en geen maandelijks abonnement?</span>
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a-wrap">
+        <p class="faq-a">Omdat abonnementen onze prikkels verkeerd aligneren. Een maandelijkse vergoeding betekent dat wij baat hebben bij je aanblijven — ook als je geen resultaten boekt. Een eenmalig bedrag betekent dat wij winnen als jij wint. Jij bezit het systeem voor altijd. Geen leveranciersafhankelijkheid. Geen verlengingsonderhandelingen. Eén beslissing, klaar.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center;padding:40px 0 0;border-top:0.5px solid #E2E8F0;margin-top:24px;">
+    <p style="font-size:16px;color:#64748B;margin-bottom:16px;">Nog vragen? Boek gewoon de demo van 20 minuten. We beantwoorden alles live.</p>
+    <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" style="background:#6366F1;color:white;font-size:15px;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;display:inline-block;">Boek een demo met Lennart →</a>
   </div>
 </section>
 
@@ -1649,7 +1701,7 @@
     <a href="#">Voorwaarden</a>
     <a href="mailto:hello@envoya.tech">Contact</a>
   </div>
-  <span class="footer-copy">© 2026 Envoya · De juiste lead. De juiste boodschap.</span>
+  <span class="footer-copy" style="font-size:13px;color:#94A3B8;">© 2026 Envoya · Wij sturen de agent. Jij sluit de deal.</span>
 </footer>
 
 <script>
@@ -1755,5 +1807,14 @@
   })();
   </script>
   <script src="/assets/feature-widgets.js?v=1773773126"></script>
+<script>
+function toggleFaq(i) {
+  const rows = document.querySelectorAll('.faq-row');
+  rows.forEach(function(r, idx) {
+    if (idx === i) { r.classList.toggle('open'); }
+    else { r.classList.remove('open'); }
+  });
+}
+</script>
 </body>
 </html>
