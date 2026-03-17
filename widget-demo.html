@@ -1,173 +1,375 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Mini Widget Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead Machine — Widget Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  body { font-family: 'Inter', -apple-system, sans-serif; background: #f8fafc; margin: 0; padding: 40px; }
-  h2 { color: #0F172A; font-size: 14px; margin-bottom: 16px; font-weight: 600; }
-
-  /* ── WIDGET: Lead Intelligence ── */
-  .widget-lead {
-    background: #0c1220;
-    border-radius: 12px;
-    padding: 20px;
-    width: 400px;
-    font-family: -apple-system, sans-serif;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #F8FAFC;
+    min-height: 100vh;
+    padding: 48px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
   }
-  .w-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-  .w-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #818cf8); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 16px; flex-shrink: 0; }
-  .w-name { font-size: 14px; font-weight: 700; color: #f1f5f9; }
-  .w-role { font-size: 11px; color: #64748b; margin-top: 2px; }
-  .w-badge { margin-left: auto; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); color: #a5b4fc; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; }
 
-  /* ICP Score bar */
-  .w-icp-label { display: flex; justify-content: space-between; margin-bottom: 6px; }
-  .w-icp-label span:first-child { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
-  .w-icp-score { font-size: 18px; font-weight: 900; color: #6366f1; }
-  .w-bar-track { background: #1e293b; border-radius: 99px; height: 8px; overflow: hidden; }
-  .w-bar-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, #6366f1, #818cf8); width: 0%; transition: width 1.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+  h2 {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #94a3b8;
+    text-align: center; width: 100%;
+  }
 
-  /* Signal */
-  .w-signal { background: rgba(99,102,241,0.07); border: 1px solid rgba(99,102,241,0.2); border-radius: 8px; padding: 10px 12px; margin-top: 14px; }
-  .w-signal-tag { font-size: 9px; font-weight: 700; color: #6366f1; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
-  .w-signal-text { font-size: 12px; color: #cbd5e1; line-height: 1.5; opacity: 0; transform: translateY(4px); transition: all 0.5s ease 1.8s; }
-  .w-signal-text.visible { opacity: 1; transform: none; }
+  .demo-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 520px;
+  }
+
+  /* ════════════════════════════════════════════════
+     WIDGET 1 — Lead Intelligence Card
+  ═══════════════════════════════════════════════ */
+  .lm-card {
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  /* Top row */
+  .lc-top { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .lc-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 800; font-size: 15px; flex-shrink: 0;
+  }
+  .lc-name { font-size: 14px; font-weight: 700; color: #0F172A; }
+  .lc-role { font-size: 12px; color: #64748b; margin-top: 2px; }
+  .lc-company { font-size: 11px; color: #94a3b8; margin-top: 1px; }
+
+  /* ICP Score */
+  .lc-icp-row { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; }
+  .lc-icp-label { font-size: 10px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.08em; }
+  .lc-icp-score { font-size: 28px; font-weight: 900; color: #6366F1; letter-spacing: -0.03em; line-height: 1; }
+  .lc-icp-max { font-size: 13px; font-weight: 400; color: #94a3b8; }
+  .lc-bar-track { background: #F1F5F9; border-radius: 99px; height: 7px; overflow: hidden; margin-bottom: 16px; }
+  .lc-bar-fill {
+    height: 100%; border-radius: 99px; width: 0%;
+    background: linear-gradient(90deg, #6366f1, #818cf8);
+    transition: width 1.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
 
   /* Tags */
-  .w-tags { display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
-  .w-tag { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 20px; }
-  .w-tag-role  { background: rgba(34,197,94,0.1);  color: #4ade80; border: 1px solid rgba(34,197,94,0.2); }
-  .w-tag-sector { background: rgba(251,191,36,0.1); color: #fbbf24; border: 1px solid rgba(251,191,36,0.2); }
-
-  /* ── WIDGET: Email Writer ── */
-  .widget-email {
-    background: #0c1220;
-    border-radius: 12px;
-    padding: 20px;
-    width: 400px;
-    font-family: -apple-system, sans-serif;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.2);
-    margin-top: 32px;
+  .lc-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+  .lc-tag {
+    font-size: 10px; font-weight: 600; padding: 3px 10px;
+    border-radius: 20px; display: inline-flex; align-items: center; gap: 4px;
   }
-  .w-email-header { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 12px; }
-  .w-email-subject { font-size: 13px; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
-  .w-email-body { font-size: 12px; color: #94a3b8; line-height: 1.7; min-height: 80px; }
-  .cursor { display: inline-block; width: 2px; height: 14px; background: #6366f1; margin-left: 1px; vertical-align: middle; animation: blink 0.8s infinite; }
-  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
-  .w-signal-source { display: inline; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); border-radius: 4px; padding: 1px 6px; color: #a5b4fc; font-size: 11px; }
+  .lc-tag-role    { background: #EEF2FF; color: #6366F1; border: 1px solid #C7D2FE; }
+  .lc-tag-sector  { background: #FFF7ED; color: #C2410C; border: 1px solid #FED7AA; }
+  .lc-tag-signal  { background: #F0FDF4; color: #16A34A; border: 1px solid #BBF7D0; }
 
-  /* Controls */
-  button { margin-top: 16px; background: #6366f1; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; }
-  button:hover { background: #4f46e5; }
+  /* Signal box */
+  .lc-signal {
+    background: #F8FAFC; border: 1px solid #E2E8F0;
+    border-left: 3px solid #6366F1;
+    border-radius: 8px; padding: 12px 14px;
+    opacity: 0; transform: translateY(6px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .lc-signal.visible { opacity: 1; transform: none; }
+  .lc-signal-header {
+    font-size: 9px; font-weight: 700; color: #6366F1;
+    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .lc-signal-pulse {
+    width: 6px; height: 6px; border-radius: 50%; background: #6366F1;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
+  }
+  .lc-signal-text { font-size: 12px; color: #334155; line-height: 1.6; }
+  .lc-signal-source { font-size: 10px; color: #6366F1; font-weight: 600; margin-top: 6px; }
+
+  /* ════════════════════════════════════════════════
+     WIDGET 2 — Email Writer
+  ═══════════════════════════════════════════════ */
+  .em-card {
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    overflow: hidden;
+    width: 100%;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  /* Compose bar */
+  .em-compose-bar {
+    background: #F8FAFC;
+    border-bottom: 1px solid #E2E8F0;
+    padding: 10px 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .em-dots { display: flex; gap: 5px; }
+  .em-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .em-dot-r { background: #FC5753; }
+  .em-dot-y { background: #FDBC40; }
+  .em-dot-g { background: #34C749; }
+  .em-compose-title { font-size: 12px; font-weight: 600; color: #334155; }
+  .em-ai-badge {
+    margin-left: auto; background: #EEF2FF; color: #6366F1;
+    font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 20px;
+    border: 1px solid #C7D2FE; display: flex; align-items: center; gap: 4px;
+  }
+  .em-ai-dot { width: 5px; height: 5px; border-radius: 50%; background: #6366F1; animation: pulse 1s infinite; }
+
+  /* Meta rows */
+  .em-meta { padding: 12px 16px 0; }
+  .em-meta-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 7px 0; border-bottom: 1px solid #F1F5F9;
+    font-size: 12px;
+  }
+  .em-meta-label { font-weight: 600; color: #94a3b8; width: 44px; flex-shrink: 0; font-size: 11px; }
+  .em-meta-value { color: #0F172A; }
+  .em-meta-row:last-child { border-bottom: none; }
+
+  /* Body */
+  .em-body {
+    padding: 16px;
+    font-size: 13px;
+    color: #334155;
+    line-height: 1.75;
+    min-height: 120px;
+    border-top: 1px solid #F1F5F9;
+  }
+  .em-highlight {
+    background: #EEF2FF; border-radius: 3px;
+    padding: 1px 5px; color: #6366F1; font-weight: 500;
+  }
+  .em-cursor {
+    display: inline-block; width: 2px; height: 14px;
+    background: #6366F1; vertical-align: middle; margin-left: 1px;
+    animation: blink 0.75s step-end infinite;
+  }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+  /* Pattern badge */
+  .em-pattern-badge {
+    margin: 0 16px 16px;
+    background: #F0FDF4; border: 1px solid #BBF7D0;
+    border-radius: 8px; padding: 8px 12px;
+    font-size: 11px; color: #166534; font-weight: 600;
+    display: flex; align-items: center; gap: 6px;
+    opacity: 0; transform: translateY(4px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .em-pattern-badge.visible { opacity: 1; transform: none; }
+
+  /* Replay button */
+  .replay-btn {
+    background: #6366F1; color: #fff; border: none;
+    padding: 10px 20px; border-radius: 8px;
+    font-size: 12px; font-weight: 600; cursor: pointer;
+    font-family: inherit; transition: background 0.2s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .replay-btn:hover { background: #4F46E5; }
 </style>
 </head>
 <body>
 
-<h2>Widget 1 — Lead Intelligence (animates on load)</h2>
-<div class="widget-lead" id="wl">
-  <div class="w-header">
-    <div class="w-avatar">JV</div>
-    <div>
-      <div class="w-name">Jeffrey Vos</div>
-      <div class="w-role">Head of Digital · Adevinta</div>
+<!-- WIDGET 1 -->
+<div class="demo-block">
+  <h2>Step 1 — Lead Intelligence</h2>
+  <div class="lm-card">
+    <div class="lc-top">
+      <div class="lc-avatar">RU</div>
+      <div>
+        <div class="lc-name">Roos Ubbink</div>
+        <div class="lc-role">Head of Digital Marketing</div>
+        <div class="lc-company">DUO · 850 employees</div>
+      </div>
     </div>
-    <div class="w-badge">ICP Match</div>
-  </div>
-  <div class="w-icp-label">
-    <span>ICP Score</span>
-    <span class="w-icp-score" id="score">0</span>
-  </div>
-  <div class="w-bar-track"><div class="w-bar-fill" id="bar"></div></div>
-  <div class="w-signal">
-    <div class="w-signal-tag">📡 Signal detected</div>
-    <div class="w-signal-text" id="sig">"Jeffrey gave an interview about digital transformation in e-commerce — published 3 weeks ago on Emerce."</div>
-  </div>
-  <div class="w-tags">
-    <span class="w-tag w-tag-role">Head of Digital ★★★★★</span>
-    <span class="w-tag w-tag-sector">E-commerce ★★★★</span>
+
+    <div class="lc-icp-row">
+      <span class="lc-icp-label">ICP Score</span>
+      <span><span class="lc-icp-score" id="score-num">0</span><span class="lc-icp-max">/100</span></span>
+    </div>
+    <div class="lc-bar-track">
+      <div class="lc-bar-fill" id="score-bar"></div>
+    </div>
+
+    <div class="lc-tags">
+      <span class="lc-tag lc-tag-role">Head of Digital ★★★★★</span>
+      <span class="lc-tag lc-tag-sector">Overheid ★★★★</span>
+      <span class="lc-tag lc-tag-signal" id="signal-tag" style="opacity:0;transition:opacity 0.4s ease 1.4s">📡 Verse signal</span>
+    </div>
+
+    <div class="lc-signal" id="signal-box">
+      <div class="lc-signal-header">
+        <div class="lc-signal-pulse"></div>
+        Signal detected — Pattern A
+      </div>
+      <div class="lc-signal-text">"Roos sprak op de Emerce eDay over AI-toepassingen in de publieke sector — gepubliceerd 2 weken geleden."</div>
+      <div class="lc-signal-source">→ Bron: Emerce.nl · 14 mrt 2026</div>
+    </div>
   </div>
 </div>
 
-<h2 style="margin-top:32px">Widget 2 — Email Writer (typing animation)</h2>
-<div class="widget-email">
-  <div class="w-email-header">✉ Generating personalised email…</div>
-  <div class="w-email-subject">Kennismaking Noëlle Cicilia</div>
-  <div class="w-email-body" id="typed"></div>
+<!-- WIDGET 2 -->
+<div class="demo-block">
+  <h2>Step 2 — Email Writer</h2>
+  <div class="em-card">
+    <div class="em-compose-bar">
+      <div class="em-dots">
+        <div class="em-dot em-dot-r"></div>
+        <div class="em-dot em-dot-y"></div>
+        <div class="em-dot em-dot-g"></div>
+      </div>
+      <span class="em-compose-title">New email — Roos Ubbink · DUO</span>
+      <div class="em-ai-badge"><div class="em-ai-dot"></div> AI writing</div>
+    </div>
+
+    <div class="em-meta">
+      <div class="em-meta-row">
+        <span class="em-meta-label">Van</span>
+        <span class="em-meta-value">Lennart de Haan &lt;lennart@brushai.com&gt;</span>
+      </div>
+      <div class="em-meta-row">
+        <span class="em-meta-label">Aan</span>
+        <span class="em-meta-value">r.ubbink@duo.nl</span>
+      </div>
+      <div class="em-meta-row">
+        <span class="em-meta-label">Onderwerp</span>
+        <span class="em-meta-value" style="font-weight:600;">Kennismaking Noëlle Cicilia</span>
+      </div>
+    </div>
+
+    <div class="em-body" id="email-body"><span class="em-cursor" id="cursor"></span></div>
+
+    <div class="em-pattern-badge" id="pattern-badge">
+      ✓ Pattern A — Personal signal as hook · Confidence: 94%
+    </div>
+  </div>
 </div>
 
-<button onclick="restart()">▶ Replay animation</button>
+<button class="replay-btn" onclick="runAll()">▶ Replay animations</button>
 
 <script>
-const emailText = [
-  { text: 'Hi Jeffrey,\n\n', delay: 0 },
-  { text: 'Ik zag je ', delay: 600 },
-  { text: 'interview over digitale transformatie in e-commerce', delay: 0, highlight: true },
-  { text: ' op Emerce — leek me een mooie aanleiding.\n\n', delay: 0 },
-  { text: 'Bij Brush AI, onderdeel van de Cronos Groep, helpen we bedrijven als Triodos Bank, APG en TNO om AI verantwoord in te zetten.\n\n', delay: 200 },
-  { text: 'Mijn collega Noëlle Cicilia, co-founder en ', delay: 300 },
-  { text: 'AI Person of the Year', delay: 0, highlight: true },
-  { text: ', zou graag kort kennismaken.\n\nSta je open voor een korte, inhoudelijke kennismaking?', delay: 0 },
+const emailParts = [
+  { t: 'Hi Roos,\n\n',                           ms: 0 },
+  { t: 'Ik zag je presentatie op de ',            ms: 700 },
+  { t: 'Emerce eDay over AI in de publieke sector', ms: 0, hl: true },
+  { t: ' — leek me een mooie aanleiding voor een kort bericht.\n\n', ms: 0 },
+  { t: 'Bij Brush AI, onderdeel van de Cronos Groep, ondersteunen we organisaties als ', ms: 400 },
+  { t: 'Triodos Bank, APG en TNO', ms: 0, hl: true },
+  { t: ' met AI-toepassingen die echt waarde leveren.\n\n', ms: 0 },
+  { t: 'Mijn collega ', ms: 300 },
+  { t: 'Noëlle Cicilia', ms: 0, hl: true },
+  { t: ', co-founder en AI Person of the Year (Emerce), zou graag kort kennismaken — niet als verkoopgesprek, maar als inhoudelijke kennismaking.\n\n', ms: 0 },
+  { t: 'Sta je open voor een korte, inhoudelijke kennismaking met haar?', ms: 200 },
 ];
 
-function animateICP() {
-  const bar = document.getElementById('bar');
-  const score = document.getElementById('score');
-  const sig = document.getElementById('sig');
-  
+let animTimer = null;
+
+function animateScore() {
+  const bar = document.getElementById('score-bar');
+  const num = document.getElementById('score-num');
+  const sigBox = document.getElementById('signal-box');
+  const sigTag = document.getElementById('signal-tag');
+
+  bar.style.transition = 'none';
   bar.style.width = '0%';
-  score.textContent = '0';
-  sig.classList.remove('visible');
-  
+  num.textContent = '0';
+  sigBox.classList.remove('visible');
+  sigTag.style.opacity = '0';
+
   setTimeout(() => {
-    bar.style.width = '87%';
+    bar.style.transition = 'width 1.6s cubic-bezier(0.165, 0.84, 0.44, 1)';
+    bar.style.width = '92%';
+
     let n = 0;
-    const interval = setInterval(() => {
-      n = Math.min(n + 3, 87);
-      score.textContent = n;
-      if (n >= 87) clearInterval(interval);
-    }, 20);
-  }, 400);
-  
-  setTimeout(() => sig.classList.add('visible'), 1800);
+    const iv = setInterval(() => {
+      n = Math.min(n + 2, 92);
+      num.textContent = n;
+      if (n >= 92) {
+        clearInterval(iv);
+        sigTag.style.opacity = '1';
+        setTimeout(() => sigBox.classList.add('visible'), 200);
+      }
+    }, 17);
+  }, 300);
 }
 
 function animateEmail() {
-  const el = document.getElementById('typed');
-  el.innerHTML = '<span class="cursor"></span>';
-  
-  let totalDelay = 200;
-  
-  emailText.forEach(chunk => {
-    totalDelay += chunk.delay;
-    const d = totalDelay;
-    
+  const body = document.getElementById('email-body');
+  const badge = document.getElementById('pattern-badge');
+
+  body.innerHTML = '<span class="em-cursor" id="cursor"></span>';
+  badge.classList.remove('visible');
+
+  let delay = 500;
+  emailParts.forEach(part => {
+    delay += part.ms;
+    const d = delay;
+
     setTimeout(() => {
-      const cursor = el.querySelector('.cursor');
+      const cursor = body.querySelector('.em-cursor');
+      if (!cursor) return;
+
       const span = document.createElement('span');
-      
-      if (chunk.highlight) {
-        span.style.cssText = 'background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);border-radius:4px;padding:1px 6px;color:#a5b4fc;';
+      span.style.whiteSpace = 'pre-wrap';
+
+      if (part.hl) {
+        span.className = 'em-highlight';
+        span.textContent = part.t;
+        body.insertBefore(span, cursor);
       } else {
-        span.style.color = '#94a3b8';
-        span.style.whiteSpace = 'pre-wrap';
+        // Type character by character
+        const chars = part.t.split('');
+        chars.forEach((ch, i) => {
+          setTimeout(() => {
+            const cursor2 = body.querySelector('.em-cursor');
+            if (!cursor2) return;
+            const c = document.createElement('span');
+            c.style.whiteSpace = 'pre-wrap';
+            c.style.color = '#334155';
+            c.textContent = ch;
+            body.insertBefore(c, cursor2);
+          }, i * 16);
+        });
       }
-      span.textContent = chunk.text;
-      
-      el.insertBefore(span, cursor);
     }, d);
-    
-    totalDelay += chunk.text.length * 18;
+
+    delay += part.hl ? 80 : part.t.length * 16;
   });
+
+  // Show badge after typing completes
+  setTimeout(() => badge.classList.add('visible'), delay + 300);
 }
 
-function restart() {
-  animateICP();
+function runAll() {
+  animateScore();
   animateEmail();
 }
 
-restart();
+// Autoplay on load
+runAll();
 </script>
 </body>
 </html>
