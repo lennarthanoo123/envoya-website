@@ -53,13 +53,19 @@
       }
     }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
     io.observe(target);
-    // Fallback: if already visible at init time, fire after short delay
+    // Fallback 1: if already visible at init time, fire after short delay
     setTimeout(function () {
       var rect = target.getBoundingClientRect();
       if (rect.top < window.innerHeight && rect.bottom > 0 && target.children.length === 0) {
         fire();
       }
-    }, 500);
+    }, 1500);
+    // Fallback 2: safety net — ensure widget always renders
+    setTimeout(function () {
+      if (target.children.length === 0) {
+        fire();
+      }
+    }, 3000);
   }
 
   /* ════════════════════════════════════════════════════════
@@ -139,7 +145,7 @@
     var scoreAnnotation = el('div', {
       fontFamily: 'Inter, -apple-system, sans-serif',
       fontSize: '11px', fontWeight: '600', color: '#6366F1', marginBottom: '4px'
-    }, { text: nl ? 'Alleen scores 80+ komen door' : 'Only 80+ scores enter your pipeline' });
+    }, { text: isNL ? 'Alleen scores 80+ komen door' : 'Only 80+ scores enter your pipeline' });
     card.appendChild(scoreAnnotation);
 
     /* Progress bar */
@@ -752,10 +758,10 @@
   function init() {
     injectKeyframes();
 
-    observe('fw-lead', 0.3, function (el) { buildLeadWidget(el); });
-    observe('fw-email', 0.2, function (el) { buildEmailWidget(el); });
-    observe('fw-cal', 0.2, function (el) { buildCalWidget(el); });
-    observe('fw-learn', 0.3, function (el) { buildLearnWidget(el); });
+    observe('fw-lead', 0.05, function (el) { buildLeadWidget(el); });
+    observe('fw-email', 0.05, function (el) { buildEmailWidget(el); });
+    observe('fw-cal', 0.05, function (el) { buildCalWidget(el); });
+    observe('fw-learn', 0.05, function (el) { buildLearnWidget(el); });
   }
 
   if (document.readyState === 'loading') {
