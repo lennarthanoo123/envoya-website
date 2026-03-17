@@ -1,4 +1,4 @@
-/* feature-widgets.js — Live animated widgets for Envoya feature blocks */
+/* feature-widgets.js — Clay-style product UI widgets for Envoya feature blocks */
 (function () {
   'use strict';
 
@@ -20,7 +20,7 @@
     return e;
   }
 
-  function countUp(el, from, to, duration, decimals, prefix) {
+  function countUp(elRef, from, to, duration, decimals, prefix) {
     prefix = prefix || '';
     var start = null;
     function step(ts) {
@@ -28,7 +28,7 @@
       var progress = Math.min((ts - start) / duration, 1);
       var eased = 1 - Math.pow(1 - progress, 3);
       var val = from + (to - from) * eased;
-      el.textContent = prefix + val.toFixed(decimals);
+      elRef.textContent = prefix + val.toFixed(decimals);
       if (progress < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
@@ -53,360 +53,372 @@
       }
     }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
     io.observe(target);
-    // Fallback 1: if already visible at init time, fire after short delay
     setTimeout(function () {
       var rect = target.getBoundingClientRect();
       if (rect.top < window.innerHeight && rect.bottom > 0 && target.children.length === 0) {
         fire();
       }
     }, 1500);
-    // Fallback 2: safety net — ensure widget always renders
     setTimeout(function () {
-      if (target.children.length === 0) {
-        fire();
-      }
+      if (target.children.length === 0) { fire(); }
     }, 3000);
   }
 
+  var BASE = {
+    fontFamily: 'Inter, -apple-system, sans-serif'
+  };
+
   /* ════════════════════════════════════════════════════════
-     WIDGET 1 — Lead Intelligence
+     WIDGET 1 — Lead Search UI (Block 1, indigo bg #EEF2FF)
   ════════════════════════════════════════════════════════ */
   function buildLeadWidget(container) {
-    var isMobile = window.innerWidth <= 900; container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;' : 'height:100%;') + 'display:flex;align-items:stretch;';
+    var isMobile = window.innerWidth <= 900;
+    container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;' : 'height:100%;') + 'display:flex;align-items:stretch;padding:20px;box-sizing:border-box;';
 
-    var card = el('div', {
-      background: '#0c1220',
-      borderRadius: '14px',
-      padding: '20px',
+    var wrap = el('div', {
       width: '100%',
       boxSizing: 'border-box',
       display: 'flex',
       flexDirection: 'column',
-      gap: '14px',
-      position: 'relative',
-      overflow: 'hidden'
-    });
-
-    /* Avatar + info row */
-    var topRow = el('div', { display: 'flex', alignItems: 'center', gap: '12px' });
-
-    var avatar = document.createElement('img');
-    avatar.src = '/assets/roos-ubbink.jpg';
-    avatar.alt = 'Roos Ubbink';
-    avatar.style.width = '44px';
-    avatar.style.height = '44px';
-    avatar.style.borderRadius = '50%';
-    avatar.style.objectFit = 'cover';
-    avatar.style.objectPosition = 'center top';
-    avatar.style.flexShrink = '0';
-    avatar.style.border = '2px solid rgba(99,102,241,0.4)';
-
-    var info = el('div', { flex: '1' });
-    var name = el('div', {
-      fontFamily: 'Inter, -apple-system, sans-serif',
-      fontSize: '15px',
-      fontWeight: '700',
-      color: '#f1f5f9',
-      lineHeight: '1.2'
-    }, { text: 'Roos Ubbink' });
-    var role = el('div', {
-      fontFamily: 'Inter, -apple-system, sans-serif',
-      fontSize: '12px',
-      color: '#94a3b8',
-      marginTop: '2px'
-    }, { text: 'Head of Digital · DUO · 850 medewerkers' });
-    info.appendChild(name);
-    info.appendChild(role);
-    topRow.appendChild(avatar);
-    topRow.appendChild(info);
-    card.appendChild(topRow);
-
-    /* ICP Score row */
-    var scoreRow = el('div', { display: 'flex', alignItems: 'center', justifyContent: 'space-between' });
-    var scoreLabel = el('div', {
-      fontFamily: 'Inter, -apple-system, sans-serif',
-      fontSize: '11px',
-      fontWeight: '600',
-      color: '#64748b',
-      textTransform: 'uppercase',
-      letterSpacing: '0.05em'
-    }, { text: 'ICP Score' });
-    var scoreNum = el('div', {
-      fontFamily: 'Inter, -apple-system, sans-serif',
-      fontSize: '26px',
-      fontWeight: '800',
-      color: '#818cf8'
-    }, { text: '0' });
-    scoreRow.appendChild(scoreLabel);
-    scoreRow.appendChild(scoreNum);
-    card.appendChild(scoreRow);
-
-    /* ICP annotation */
-    var scoreAnnotation = el('div', {
-      fontFamily: 'Inter, -apple-system, sans-serif',
-      fontSize: '11px', fontWeight: '600', color: '#6366F1', marginBottom: '4px'
-    }, { text: isNL ? 'Alleen scores 80+ komen door' : 'Only 80+ scores enter your pipeline' });
-    card.appendChild(scoreAnnotation);
-
-    /* Progress bar */
-    var barBg = el('div', {
-      background: '#1e293b',
-      borderRadius: '99px',
-      height: '8px',
-      overflow: 'hidden',
-      width: '100%'
-    });
-    var barFg = el('div', {
-      background: 'linear-gradient(90deg, #4f46e5, #818cf8)',
-      height: '100%',
-      width: '0%',
-      borderRadius: '99px',
-      transition: 'width 1.6s cubic-bezier(0.165,0.84,0.44,1)'
-    });
-    barBg.appendChild(barFg);
-    card.appendChild(barBg);
-
-    /* Tags */
-    var tagsRow = el('div', { display: 'flex', gap: '8px', flexWrap: 'wrap' });
-    var t1 = el('div', {
-      background: 'rgba(79,70,229,0.18)',
-      color: '#818cf8',
-      borderRadius: '99px',
-      padding: '4px 12px',
-      fontSize: '11px',
-      fontWeight: '600',
-      fontFamily: 'Inter, -apple-system, sans-serif'
-    }, { text: 'Head of Digital ★★★★★' });
-    var t2 = el('div', {
-      background: 'rgba(245,158,11,0.18)',
-      color: '#fbbf24',
-      borderRadius: '99px',
-      padding: '4px 12px',
-      fontSize: '11px',
-      fontWeight: '600',
-      fontFamily: 'Inter, -apple-system, sans-serif'
-    }, { text: 'Overheid ★★★★' });
-    tagsRow.appendChild(t1);
-    tagsRow.appendChild(t2);
-    card.appendChild(tagsRow);
-
-    /* Signal box */
-    var signalBox = el('div', {
-      background: 'rgba(79,70,229,0.10)',
-      border: '1px solid rgba(79,70,229,0.25)',
-      borderRadius: '10px',
-      padding: '12px 14px',
-      opacity: '0',
-      transition: 'opacity 0.6s ease',
-      marginTop: '2px'
-    });
-
-    var sigHeader = el('div', { display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' });
-
-    var dot = el('div', {
-      width: '8px',
-      height: '8px',
-      borderRadius: '50%',
-      background: '#4f46e5',
-      flexShrink: '0',
-      animation: 'fwPulse 1.8s ease-in-out infinite'
-    });
-    var sigTitle = el('div', {
-      fontFamily: 'Inter, -apple-system, sans-serif',
-      fontSize: '11px',
-      fontWeight: '700',
-      color: '#818cf8',
-      textTransform: 'uppercase',
-      letterSpacing: '0.05em'
-    }, { text: '📡 Signal detected · Pattern A' });
-    sigHeader.appendChild(dot);
-    sigHeader.appendChild(sigTitle);
-
-    var sigQuote = el('div', {
-      fontFamily: 'Inter, -apple-system, sans-serif',
-      fontSize: '12px',
-      color: '#cbd5e1',
-      fontStyle: 'italic',
-      lineHeight: '1.5',
-      marginBottom: '4px'
-    }, { text: '"Roos sprak op de Emerce eDay over AI in de publieke sector — 14 mrt 2026."' });
-
-    var sigSource = el('div', {
-      fontFamily: 'Inter, -apple-system, sans-serif',
-      fontSize: '11px',
-      color: '#64748b'
-    }, { text: '→ Bron: Emerce.nl' });
-
-    signalBox.appendChild(sigHeader);
-    signalBox.appendChild(sigQuote);
-    signalBox.appendChild(sigSource);
-    card.appendChild(signalBox);
-
-    container.appendChild(card);
-
-    /* Animate */
-    countUp(scoreNum, 0, 92, 1400, 0);
-    setTimeout(function () { barFg.style.width = '92%'; }, 50);
-    setTimeout(function () { signalBox.style.opacity = '1'; }, 1800);
-  }
-
-  /* ════════════════════════════════════════════════════════
-     WIDGET 2 — Email Writer
-  ════════════════════════════════════════════════════════ */
-  function buildEmailWidget(container) {
-    var isMobile = window.innerWidth <= 900; container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;' : 'height:100%;') + 'display:flex;align-items:stretch;';
-
-    var win = el('div', {
-      background: '#fff',
-      border: '1px solid #e2e8f0',
-      borderRadius: '12px',
-      width: '100%',
-      height: '100%',
-      boxSizing: 'border-box',
-      display: 'flex',
-      flexDirection: 'column',
-      overflow: 'hidden',
-      boxShadow: '0 4px 24px rgba(0,0,0,0.10)'
-    });
-
-    /* Top bar */
-    var topBar = el('div', {
-      background: '#f8fafc',
-      borderBottom: '1px solid #e2e8f0',
-      padding: '10px 14px',
-      display: 'flex',
-      alignItems: 'center',
       gap: '10px'
     });
 
-    var dots = el('div', { display: 'flex', gap: '5px' });
-    [['#ff5f57'], ['#ffbd2e'], ['#28ca41']].forEach(function (c) {
-      dots.appendChild(el('div', {
-        width: '10px', height: '10px', borderRadius: '50%', background: c[0], flexShrink: '0'
-      }));
+    /* ── Search bar ── */
+    var searchBar = el('div', {
+      background: '#fff',
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+      padding: '9px 12px',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px'
     });
-    dots.style.flexShrink = '0';
-
-    var title = el('div', {
-      fontFamily: 'Inter, -apple-system, sans-serif',
+    var spinner = el('div', { flexShrink: '0' });
+    spinner.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="animation:fwSpin 0.9s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>';
+    var searchText = el('div', {
+      fontFamily: BASE.fontFamily,
       fontSize: '12px',
+      color: '#6366f1',
       fontWeight: '600',
-      color: '#475569',
       flex: '1'
-    }, { text: 'New email — Roos Ubbink · DUO' });
+    }, { text: 'Searching 275M+ contacts...' });
+    var searchDots = el('div', {
+      fontFamily: BASE.fontFamily,
+      fontSize: '12px',
+      color: '#a5b4fc',
+      animation: 'fwBlink 1.2s ease-in-out infinite'
+    }, { text: '●●●' });
+    searchBar.appendChild(spinner);
+    searchBar.appendChild(searchText);
+    searchBar.appendChild(searchDots);
+    wrap.appendChild(searchBar);
 
+    /* ── Filter chips ── */
+    var chipsRow = el('div', {
+      display: 'flex',
+      gap: '6px',
+      flexWrap: 'wrap'
+    });
+    var chips = [
+      { label: 'Head of Digital ★★★★★', bg: '#EEF2FF', color: '#4338ca', border: '#c7d2fe' },
+      { label: 'B2B · NL · 50-500 FTE',  bg: '#f1f5f9', color: '#475569', border: '#cbd5e1' },
+      { label: 'Recent signal ✓',         bg: '#ECFDF5', color: '#059669', border: '#6ee7b7' }
+    ];
+    chips.forEach(function (c) {
+      var chip = el('div', {
+        background: c.bg,
+        color: c.color,
+        border: '1px solid ' + c.border,
+        borderRadius: '99px',
+        padding: '4px 10px',
+        fontSize: '10px',
+        fontWeight: '700',
+        fontFamily: BASE.fontFamily,
+        whiteSpace: 'nowrap'
+      }, { text: c.label });
+      chipsRow.appendChild(chip);
+    });
+    wrap.appendChild(chipsRow);
+
+    /* ── Lead rows ── */
+    var leads = [
+      { abbr: 'DU', abbrColor: '#6366f1', co: 'DUO',           person: 'Roos Ubbink',    score: 92, scoreColor: '#22c55e' },
+      { abbr: 'TB', abbrColor: '#059669', co: 'Triodos Bank',   person: 'Mark de Vries',  score: 88, scoreColor: '#22c55e' },
+      { abbr: 'AB', abbrColor: '#f59e0b', co: 'ABN AMRO',       person: 'Lotte Jansen',   score: 74, scoreColor: '#f59e0b' }
+    ];
+
+    var leadRows = [];
+    leads.forEach(function (lead) {
+      var row = el('div', {
+        background: '#fff',
+        borderRadius: '8px',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+        padding: '10px 12px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+        opacity: '0',
+        transform: 'translateY(6px)',
+        transition: 'opacity 0.35s ease, transform 0.35s ease'
+      });
+
+      /* Logo circle */
+      var logo = el('div', {
+        width: '32px',
+        height: '32px',
+        borderRadius: '50%',
+        background: lead.abbrColor,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: BASE.fontFamily,
+        fontSize: '11px',
+        fontWeight: '800',
+        color: '#fff',
+        flexShrink: '0'
+      }, { text: lead.abbr });
+
+      /* Name/company */
+      var info = el('div', { flex: '1', minWidth: '0' });
+      var coName = el('div', {
+        fontFamily: BASE.fontFamily,
+        fontSize: '12px',
+        fontWeight: '700',
+        color: '#0f172a',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
+      }, { text: lead.co });
+      var personName = el('div', {
+        fontFamily: BASE.fontFamily,
+        fontSize: '10px',
+        color: '#64748b',
+        marginTop: '1px'
+      }, { text: lead.person });
+      info.appendChild(coName);
+      info.appendChild(personName);
+
+      /* Score area */
+      var scoreArea = el('div', {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-end',
+        gap: '4px',
+        flexShrink: '0',
+        minWidth: '60px'
+      });
+      var scoreNum = el('div', {
+        fontFamily: BASE.fontFamily,
+        fontSize: '13px',
+        fontWeight: '800',
+        color: lead.scoreColor
+      }, { text: lead.score + '/100' });
+      var barBg = el('div', {
+        width: '56px',
+        height: '4px',
+        background: '#f1f5f9',
+        borderRadius: '99px',
+        overflow: 'hidden'
+      });
+      var barFg = el('div', {
+        height: '100%',
+        width: '0%',
+        background: lead.scoreColor,
+        borderRadius: '99px',
+        transition: 'width 1s cubic-bezier(0.165,0.84,0.44,1)'
+      });
+      barBg.appendChild(barFg);
+      scoreArea.appendChild(scoreNum);
+      scoreArea.appendChild(barBg);
+
+      row.appendChild(logo);
+      row.appendChild(info);
+      row.appendChild(scoreArea);
+      wrap.appendChild(row);
+      leadRows.push({ row: row, barFg: barFg, score: lead.score });
+    });
+
+    /* ── Footer ── */
+    var footer = el('div', {
+      background: '#fff',
+      borderRadius: '8px',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+      padding: '8px 12px',
+      fontFamily: BASE.fontFamily,
+      fontSize: '11px',
+      color: '#4338ca',
+      fontWeight: '700',
+      textAlign: 'center',
+      opacity: '0',
+      transition: 'opacity 0.5s ease'
+    }, { text: '↑ 847 leads found · Top 84 match your ICP' });
+    wrap.appendChild(footer);
+
+    container.appendChild(wrap);
+
+    /* Animate */
+    leadRows.forEach(function (item, i) {
+      setTimeout(function () {
+        item.row.style.opacity = '1';
+        item.row.style.transform = 'translateY(0)';
+        setTimeout(function () {
+          item.barFg.style.width = item.score + '%';
+        }, 80);
+      }, 300 + i * 150);
+    });
+    setTimeout(function () { footer.style.opacity = '1'; }, 900);
+  }
+
+  /* ════════════════════════════════════════════════════════
+     WIDGET 2 — Email Compose UI (Block 2, amber bg #FFFBEB)
+  ════════════════════════════════════════════════════════ */
+  function buildEmailWidget(container) {
+    var isMobile = window.innerWidth <= 900;
+    container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;' : 'height:100%;') + 'display:flex;align-items:stretch;padding:20px;box-sizing:border-box;';
+
+    /* Outer compose window */
+    var win = el('div', {
+      background: '#fff',
+      borderRadius: '10px',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+      width: '100%',
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexDirection: 'column',
+      overflow: 'hidden'
+    });
+
+    /* Window chrome bar */
+    var chrome = el('div', {
+      background: '#f8fafc',
+      borderBottom: '1px solid #e2e8f0',
+      padding: '8px 12px',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '6px'
+    });
+    ['#ff5f57','#ffbd2e','#28ca41'].forEach(function (c) {
+      chrome.appendChild(el('div', { width: '9px', height: '9px', borderRadius: '50%', background: c, flexShrink: '0' }));
+    });
+    var winTitle = el('div', {
+      fontFamily: BASE.fontFamily,
+      fontSize: '11px',
+      fontWeight: '600',
+      color: '#64748b',
+      marginLeft: '6px',
+      flex: '1'
+    }, { text: 'Nieuw bericht' });
     var aiBadge = el('div', {
-      background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
+      background: '#f59e0b',
       color: '#fff',
       borderRadius: '99px',
-      padding: '3px 10px',
-      fontSize: '10px',
-      fontWeight: '700',
-      fontFamily: 'Inter, -apple-system, sans-serif',
-      animation: 'fwPulse 2s ease-in-out infinite',
+      padding: '2px 8px',
+      fontSize: '9px',
+      fontWeight: '800',
+      fontFamily: BASE.fontFamily,
       whiteSpace: 'nowrap'
-    }, { text: 'AI writing' });
+    }, { text: '✦ AI' });
+    chrome.appendChild(winTitle);
+    chrome.appendChild(aiBadge);
+    win.appendChild(chrome);
 
-    topBar.appendChild(dots);
-    topBar.appendChild(title);
-    topBar.appendChild(aiBadge);
-    win.appendChild(topBar);
-
-    /* Meta rows */
-    [
+    /* Header fields */
+    var fields = [
       ['Van', 'lennart@envoya.tech'],
       ['Aan', 'roos.ubbink@duo.nl'],
-      ['Onderwerp', 'Korte kennismaking — Brush AI × DUO']
-    ].forEach(function (row, i, arr) {
-      var r = el('div', {
+      ['Onderwerp', 'Korte kennismaking — AI × DUO']
+    ];
+    fields.forEach(function (f, i, arr) {
+      var row = el('div', {
         display: 'flex',
+        alignItems: 'center',
         gap: '8px',
-        padding: '8px 14px',
-        borderBottom: i < arr.length - 1 ? '1px solid #f1f5f9' : 'none',
-        alignItems: 'center'
+        padding: '6px 12px',
+        borderBottom: i < arr.length - 1 ? '1px solid #f8fafc' : '1px solid #e2e8f0'
       });
       var label = el('div', {
-        fontFamily: 'Inter, -apple-system, sans-serif',
-        fontSize: '11px',
-        fontWeight: '600',
+        fontFamily: BASE.fontFamily,
+        fontSize: '10px',
+        fontWeight: '700',
         color: '#94a3b8',
-        width: '60px',
+        width: '56px',
         flexShrink: '0'
-      }, { text: row[0] });
+      }, { text: f[0] });
       var value = el('div', {
-        fontFamily: 'Inter, -apple-system, sans-serif',
-        fontSize: '12px',
+        fontFamily: BASE.fontFamily,
+        fontSize: '11px',
         color: '#334155'
-      }, { text: row[1] });
-      r.appendChild(label);
-      r.appendChild(value);
-      win.appendChild(r);
+      }, { text: f[1] });
+      row.appendChild(label);
+      row.appendChild(value);
+      win.appendChild(row);
     });
 
-    /* Body area — fixed height, overflow hidden so typing doesn't push layout */
+    /* Body */
     var body = el('div', {
-      padding: '12px 14px',
+      padding: '10px 12px',
+      fontFamily: BASE.fontFamily,
+      fontSize: '11.5px',
+      color: '#1e293b',
+      lineHeight: '1.65',
       flex: '1',
       overflow: 'hidden',
-      fontFamily: 'Inter, -apple-system, sans-serif',
-      fontSize: '12.5px',
-      color: '#1e293b',
-      lineHeight: '1.6',
-      position: 'relative'
+      minHeight: isMobile ? '80px' : 'unset'
     });
     win.appendChild(body);
 
-    /* Confidence badge (hidden initially) */
-    var confBadge = el('div', {
-      margin: '8px 14px 12px',
-      background: 'rgba(16,185,129,0.1)',
-      border: '1px solid rgba(16,185,129,0.3)',
-      color: '#10b981',
+    /* Signal badge */
+    var badge = el('div', {
+      margin: '0 12px 10px',
+      background: '#ECFDF5',
+      border: '1px solid #6ee7b7',
+      color: '#059669',
       borderRadius: '99px',
-      padding: '5px 14px',
-      fontSize: '11px',
+      padding: '5px 12px',
+      fontSize: '10px',
       fontWeight: '700',
-      fontFamily: 'Inter, -apple-system, sans-serif',
+      fontFamily: BASE.fontFamily,
       display: 'inline-block',
       opacity: '0',
-      transition: 'opacity 0.5s ease'
-    }, { text: '✓ Pattern A — Personal signal · Confidence: 94%' });
-    win.appendChild(confBadge);
+      transition: 'opacity 0.5s ease',
+      whiteSpace: 'nowrap'
+    }, { text: '📡 Pattern A · Signal: Emerce eDay · Confidence 94%' });
+    win.appendChild(badge);
 
     container.appendChild(win);
 
-    /* Typewriter */
-    var segments = [
-      { type: 'text', content: 'Hi Roos,\n\nIk zag je ' },
-      { type: 'highlight', content: 'presentatie op de Emerce eDay' },
-      { type: 'text', content: ' over AI in de publieke sector — mooie aanleiding.\n\nBij Brush AI helpen we ' },
-      { type: 'highlight', content: 'Triodos Bank, APG en TNO' },
-      { type: 'text', content: ' met AI die echt waarde levert.\n\nMijn collega ' },
-      { type: 'highlight', content: 'Noëlle Cicilia' },
-      { type: 'text', content: ', AI Person of the Year, zou graag kort kennismaken.\n\nSta je open voor een korte, inhoudelijke kennismaking?' }
+    /* Typewriter segments */
+    var segs = [
+      { t: 'text', c: 'Hi Roos,\n\nIk zag je ' },
+      { t: 'hl',   c: 'presentatie op de Emerce eDay' },
+      { t: 'text', c: ' over AI in de publieke sector.\n\nBij Brush AI helpen we ' },
+      { t: 'hl',   c: 'Triodos Bank, APG en TNO' },
+      { t: 'text', c: ' al met AI die echt waarde levert. Mijn collega ' },
+      { t: 'hl',   c: 'Noëlle Cicilia' },
+      { t: 'text', c: ' zou graag kort kennismaken.' }
     ];
 
     var bodySpan = el('span');
     body.appendChild(bodySpan);
 
-    function renderSegments(segs, onDone) {
+    function renderSegs(list, onDone) {
       var i = 0;
       function next() {
-        if (i >= segs.length) { onDone && onDone(); return; }
-        var seg = segs[i++];
-        if (seg.type === 'highlight') {
+        if (i >= list.length) { onDone && onDone(); return; }
+        var s = list[i++];
+        if (s.t === 'hl') {
           var hl = el('span', {
-            background: 'rgba(79,70,229,0.12)',
+            background: 'rgba(99,102,241,0.12)',
             color: '#4f46e5',
-            borderRadius: '4px',
-            padding: '1px 5px',
-            fontWeight: '600',
-            fontSize: '12.5px'
-          }, { text: seg.content });
+            borderRadius: '3px',
+            padding: '1px 4px',
+            fontWeight: '700',
+            fontSize: '11.5px'
+          }, { text: s.c });
           bodySpan.appendChild(hl);
-          setTimeout(next, 80);
+          setTimeout(next, 60);
         } else {
-          typeText(seg.content, bodySpan, next);
+          typeText(s.c, bodySpan, next);
         }
       }
       next();
@@ -417,91 +429,80 @@
       function tick() {
         if (i >= text.length) { cb && cb(); return; }
         var ch = text[i++];
-        if (ch === '\n') {
-          parent.appendChild(document.createElement('br'));
-        } else {
-          parent.appendChild(document.createTextNode(ch));
-        }
-        setTimeout(tick, 18);
+        if (ch === '\n') { parent.appendChild(document.createElement('br')); }
+        else { parent.appendChild(document.createTextNode(ch)); }
+        setTimeout(tick, 16);
       }
       tick();
     }
 
-    renderSegments(segments, function () {
-      setTimeout(function () { confBadge.style.opacity = '1'; }, 400);
+    renderSegs(segs, function () {
+      setTimeout(function () { badge.style.opacity = '1'; }, 300);
     });
   }
 
   /* ════════════════════════════════════════════════════════
-     WIDGET 3 — Calendar
+     WIDGET 3 — Calendar/Agenda UI (Block 3, emerald bg #ECFDF5)
   ════════════════════════════════════════════════════════ */
   function buildCalWidget(container) {
     var nl = isNL;
-    var isMobile = window.innerWidth <= 900; container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;' : 'height:100%;') + 'display:flex;align-items:stretch;';
+    var isMobile = window.innerWidth <= 900;
+    container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;' : 'height:100%;') + 'display:flex;align-items:stretch;padding:20px;box-sizing:border-box;';
 
-    /* Outer shell — white bg like Google Calendar */
     var wrap = el('div', {
       background: '#fff',
-      borderRadius: '14px',
-      border: '1px solid #e2e8f0',
+      borderRadius: '10px',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
       width: '100%',
       boxSizing: 'border-box',
       display: 'flex',
       flexDirection: 'column',
-      overflow: 'hidden',
-      boxShadow: '0 4px 24px rgba(0,0,0,0.08)'
+      overflow: 'hidden'
     });
 
-    /* Calendar header bar */
-    var calHeader = el('div', {
+    /* Header */
+    var header = el('div', {
       background: '#f8fafc',
       borderBottom: '1px solid #e2e8f0',
-      padding: '12px 16px',
+      padding: '10px 14px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between'
     });
-    var calTitle = el('div', {
-      fontFamily: 'Inter, -apple-system, sans-serif',
-      fontSize: '13px',
+    var headerTitle = el('div', {
+      fontFamily: BASE.fontFamily,
+      fontSize: '12px',
       fontWeight: '700',
-      color: '#0F172A'
+      color: '#0f172a'
     }, { text: nl ? 'Mijn agenda — Week 4' : 'My Calendar — Week 4' });
-    var calBadge = el('div', {
-      background: '#EEF2FF',
-      color: '#6366F1',
-      border: '1px solid #C7D2FE',
+    var meetingBadge = el('div', {
+      background: '#ECFDF5',
+      color: '#059669',
+      border: '1px solid #6ee7b7',
       borderRadius: '99px',
       padding: '3px 10px',
       fontSize: '11px',
       fontWeight: '700',
-      fontFamily: 'Inter, -apple-system, sans-serif',
+      fontFamily: BASE.fontFamily,
       display: 'flex',
       alignItems: 'center',
       gap: '4px'
     });
     var counterSpan = el('span', {}, { text: '0' });
-    calBadge.appendChild(counterSpan);
-    calBadge.appendChild(document.createTextNode(nl ? ' afspraken' : ' meetings'));
-    calHeader.appendChild(calTitle);
-    calHeader.appendChild(calBadge);
-    wrap.appendChild(calHeader);
+    meetingBadge.appendChild(counterSpan);
+    meetingBadge.appendChild(document.createTextNode(nl ? ' afspraken' : ' meetings'));
+    header.appendChild(headerTitle);
+    header.appendChild(meetingBadge);
+    wrap.appendChild(header);
 
-    /* Day-view time grid */
-    var grid = el('div', {
-      flex: '1',
-      padding: '8px 0',
-      overflowY: 'auto'
-    });
-
-    /* Meetings: time | colored block | company + type */
+    /* Meeting rows */
     var meetings = [
-      { time: '09:00', company: 'VodafoneZiggo', type: nl ? 'Kennismaking' : 'Intro call',   color: '#4285f4', day: nl ? 'Ma' : 'Mon' },
-      { time: '13:00', company: 'Triodos Bank',   type: nl ? 'Deal getekend ✓' : 'Deal signed ✓', color: '#33b679', day: nl ? 'Ma' : 'Mon', deal: true },
-      { time: '10:30', company: 'ABN AMRO',       type: 'Discovery',                          color: '#7986cb', day: nl ? 'Di' : 'Tue' },
-      { time: '14:00', company: 'Philips',         type: 'Pitch',                              color: '#f6bf26', day: nl ? 'Di' : 'Tue' },
-      { time: '09:30', company: 'Alliander',       type: nl ? 'Kennismaking' : 'Intro call',  color: '#4285f4', day: nl ? 'Wo' : 'Wed' },
-      { time: '11:00', company: 'ASML',            type: 'Discovery',                          color: '#7986cb', day: nl ? 'Do' : 'Thu' }
+      { time: '09:00', day: nl ? 'Ma' : 'Mon', company: 'VodafoneZiggo', type: nl ? 'Kennismaking' : 'Intro call',    color: '#4285f4' },
+      { time: '10:30', day: nl ? 'Di' : 'Tue', company: 'ABN AMRO',       type: 'Discovery',                          color: '#7986cb' },
+      { time: '13:00', day: nl ? 'Ma' : 'Mon', company: 'Triodos Bank',   type: nl ? 'Deal getekend ✓' : 'Deal signed ✓', color: '#22c55e', deal: true },
+      { time: '14:00', day: nl ? 'Di' : 'Tue', company: 'Philips',         type: 'Pitch',                              color: '#f59e0b' },
+      { time: '09:30', day: nl ? 'Wo' : 'Wed', company: 'Alliander',       type: nl ? 'Kennismaking' : 'Intro call',  color: '#4285f4' },
+      { time: '11:00', day: nl ? 'Do' : 'Thu', company: 'ASML',            type: 'Discovery',                          color: '#7986cb' }
     ];
 
     var rows = [];
@@ -510,148 +511,153 @@
         display: 'flex',
         alignItems: 'center',
         gap: '0',
-        padding: '4px 12px',
+        borderBottom: '1px solid #f8fafc',
         opacity: '0',
-        transform: 'translateY(6px)',
-        transition: 'opacity 0.3s ease, transform 0.3s ease',
-        borderBottom: '1px solid #f8fafc'
+        transform: 'translateY(5px)',
+        transition: 'opacity 0.3s ease, transform 0.3s ease'
       });
 
-      /* Day + time column */
+      /* Time column */
       var timeCol = el('div', {
-        width: '68px',
+        width: '56px',
         flexShrink: '0',
-        textAlign: 'right',
-        paddingRight: '12px'
+        padding: '8px 10px 8px 14px',
+        textAlign: 'right'
       });
-      var dayLabel = el('div', {
-        fontFamily: 'Inter, -apple-system, sans-serif',
-        fontSize: '10px',
+      var dayLbl = el('div', {
+        fontFamily: BASE.fontFamily,
+        fontSize: '9px',
         fontWeight: '700',
         color: '#94a3b8',
         textTransform: 'uppercase',
-        letterSpacing: '0.05em'
+        letterSpacing: '0.04em'
       }, { text: m.day });
-      var timeLabel = el('div', {
-        fontFamily: 'Inter, -apple-system, sans-serif',
-        fontSize: '12px',
+      var timeLbl = el('div', {
+        fontFamily: BASE.fontFamily,
+        fontSize: '11px',
         fontWeight: '600',
         color: '#475569'
       }, { text: m.time });
-      timeCol.appendChild(dayLabel);
-      timeCol.appendChild(timeLabel);
+      timeCol.appendChild(dayLbl);
+      timeCol.appendChild(timeLbl);
 
-      /* Color block */
+      /* Event block */
       var block = el('div', {
-        background: m.color,
-        borderRadius: '6px',
-        padding: '8px 12px',
         flex: '1',
-        minHeight: '44px',
+        background: m.color,
+        margin: '5px 12px 5px 0',
+        borderRadius: '6px',
+        padding: '7px 11px',
+        minHeight: '40px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center'
       });
+      var isDark = m.color === '#f59e0b';
       var coName = el('div', {
-        fontFamily: 'Inter, -apple-system, sans-serif',
-        fontSize: '12px',
+        fontFamily: BASE.fontFamily,
+        fontSize: '11px',
         fontWeight: '700',
-        color: m.color === '#f6bf26' ? '#1a1000' : '#fff',
+        color: isDark ? '#1a1000' : '#fff',
         lineHeight: '1.2'
       }, { text: m.company });
-      var typeLabel = el('div', {
-        fontFamily: 'Inter, -apple-system, sans-serif',
-        fontSize: '10px',
-        color: m.color === '#f6bf26' ? 'rgba(0,0,0,0.65)' : 'rgba(255,255,255,0.8)',
+      var typeLbl = el('div', {
+        fontFamily: BASE.fontFamily,
+        fontSize: '9px',
+        color: isDark ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.85)',
         marginTop: '2px'
       }, { text: m.type });
       block.appendChild(coName);
-      block.appendChild(typeLabel);
-
-      if (m.deal) { row.dataset.isDeal = '1'; }
+      block.appendChild(typeLbl);
+      if (m.deal) { row.dataset.deal = '1'; }
 
       row.appendChild(timeCol);
       row.appendChild(block);
-      grid.appendChild(row);
+      wrap.appendChild(row);
       rows.push(row);
     });
 
-    wrap.appendChild(grid);
     container.appendChild(wrap);
 
-    /* Animate counter */
     countUp(counterSpan, 0, 28, 1200, 0);
 
-    /* Staggered rows */
     rows.forEach(function (row, i) {
       setTimeout(function () {
         row.style.opacity = '1';
         row.style.transform = 'translateY(0)';
-        if (row.dataset.isDeal) {
+        if (row.dataset.deal) {
           setTimeout(function () {
-            var block = row.querySelector('div[style*="background: rgb(51, 182, 121)"], div[style*="background: #33b679"]');
+            var block = row.querySelector('div[style*="#22c55e"]');
             if (block) {
-              block.style.boxShadow = '0 0 16px rgba(51,182,121,0.5)';
-              block.style.transform = 'scaleX(1.01)';
-              setTimeout(function () {
-                block.style.transform = '';
-                block.style.boxShadow = '0 0 6px rgba(51,182,121,0.2)';
-              }, 300);
+              block.style.boxShadow = '0 0 14px rgba(34,197,94,0.4)';
+              setTimeout(function () { block.style.boxShadow = '0 0 4px rgba(34,197,94,0.15)'; }, 500);
             }
-          }, 350);
+          }, 300);
         }
-      }, 400 + i * 100);
+      }, 350 + i * 110);
     });
   }
 
   /* ════════════════════════════════════════════════════════
-     WIDGET 4 — Learning Engine
+     WIDGET 4 — Learning Dashboard UI (Block 4, rose bg #FFF1F2)
   ════════════════════════════════════════════════════════ */
   function buildLearnWidget(container) {
     var nl = isNL;
-    var isMobile = window.innerWidth <= 900; container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;' : 'height:100%;') + 'display:flex;align-items:stretch;';
+    var isMobile = window.innerWidth <= 900;
+    container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;' : 'height:100%;') + 'display:flex;align-items:stretch;padding:20px;box-sizing:border-box;';
 
     var wrap = el('div', {
-      background: '#0c1220',
-      borderRadius: '14px',
-      padding: '22px 20px',
+      background: '#fff',
+      borderRadius: '10px',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
       width: '100%',
       boxSizing: 'border-box',
+      padding: '16px 16px 14px',
       display: 'flex',
       flexDirection: 'column',
-      gap: '16px',
-      alignItems: 'stretch'
+      gap: '12px'
     });
 
-    /* Center badge */
-    var badge = el('div', {
-      background: '#1e293b',
-      borderRadius: '99px',
-      padding: '8px 18px',
-      fontFamily: 'Inter, -apple-system, sans-serif',
+    /* Title row */
+    var titleRow = el('div', {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between'
+    });
+    var title = el('div', {
+      fontFamily: BASE.fontFamily,
       fontSize: '11px',
       fontWeight: '800',
-      color: '#818cf8',
+      color: '#0f172a',
       textTransform: 'uppercase',
-      letterSpacing: '0.08em',
-      textAlign: 'center',
-      alignSelf: 'center',
-      animation: 'fwGlow 2.5s ease-in-out infinite'
-    }, { text: 'AUTO-LEARNING ENGINE' });
-    wrap.appendChild(badge);
+      letterSpacing: '0.06em'
+    }, { text: 'Customer DNA' });
+    var liveBadge = el('div', {
+      background: '#FFF1F2',
+      color: '#e11d48',
+      border: '1px solid #fecdd3',
+      borderRadius: '99px',
+      padding: '2px 8px',
+      fontSize: '9px',
+      fontWeight: '800',
+      fontFamily: BASE.fontFamily
+    }, { text: '● LIVE' });
+    titleRow.appendChild(title);
+    titleRow.appendChild(liveBadge);
+    wrap.appendChild(titleRow);
 
-    /* Stats */
+    /* Bar stats */
     var stats = [
-      { label: 'Head of Digital', labelNL: 'Head of Digital', val: 2.3, max: 5 },
-      { label: 'Finance sector', labelNL: 'Financiële sector', val: 1.8, max: 4 },
-      { label: 'Pattern A reply rate', labelNL: 'Pattern A respons', val: 4.0, max: 6 }
+      { label: nl ? 'Head of Digital' : 'Head of Digital', pct: 87, color: '#6366f1' },
+      { label: nl ? 'Finance sector'  : 'Finance sector',  pct: 72, color: '#f59e0b' },
+      { label: 'Pattern A',                                 pct: 94, color: '#22c55e' }
     ];
 
-    var statEls = [];
+    var barItems = [];
     stats.forEach(function (s) {
       var row = el('div', {
         opacity: '0',
-        transform: 'translateY(8px)',
+        transform: 'translateY(6px)',
         transition: 'opacity 0.4s ease, transform 0.4s ease'
       });
 
@@ -661,79 +667,117 @@
         alignItems: 'center',
         marginBottom: '5px'
       });
-
       var lbl = el('div', {
-        fontFamily: 'Inter, -apple-system, sans-serif',
+        fontFamily: BASE.fontFamily,
+        fontSize: '11px',
+        color: '#334155',
+        fontWeight: '600'
+      }, { text: s.label });
+      var pctLbl = el('div', {
+        fontFamily: BASE.fontFamily,
         fontSize: '12px',
-        color: '#94a3b8',
-        fontWeight: '500'
-      }, { text: nl ? s.labelNL : s.label });
-
-      var numSpan = el('div', {
-        fontFamily: 'Inter, -apple-system, sans-serif',
-        fontSize: '14px',
         fontWeight: '800',
-        color: '#10b981'
-      }, { text: '+0.0%' });
-
+        color: s.color
+      }, { text: '0%' });
       topRow.appendChild(lbl);
-      topRow.appendChild(numSpan);
+      topRow.appendChild(pctLbl);
       row.appendChild(topRow);
 
       var barBg = el('div', {
-        background: '#1e293b',
+        background: '#f1f5f9',
         borderRadius: '99px',
-        height: '4px',
+        height: '6px',
         overflow: 'hidden'
       });
       var barFg = el('div', {
-        background: 'linear-gradient(90deg, #10b981, #34d399)',
         height: '100%',
         width: '0%',
+        background: s.color,
         borderRadius: '99px',
-        transition: 'width 1s cubic-bezier(0.165,0.84,0.44,1)'
+        transition: 'width 1.2s cubic-bezier(0.165,0.84,0.44,1)'
       });
       barBg.appendChild(barFg);
       row.appendChild(barBg);
-
       wrap.appendChild(row);
-      statEls.push({ row: row, numSpan: numSpan, barFg: barFg, val: s.val, max: s.max });
+      barItems.push({ row: row, barFg: barFg, pctLbl: pctLbl, pct: s.pct });
     });
 
-    /* ICP confidence badge */
-    var icpBadge = el('div', {
-      background: 'rgba(79,70,229,0.15)',
-      border: '1px solid rgba(79,70,229,0.3)',
-      borderRadius: '99px',
-      padding: '6px 18px',
-      fontFamily: 'Inter, -apple-system, sans-serif',
-      fontSize: '12px',
-      fontWeight: '700',
-      color: '#818cf8',
-      textAlign: 'center',
-      alignSelf: 'center',
+    /* Chip row */
+    var chipRow = el('div', {
+      display: 'flex',
+      gap: '6px',
+      flexWrap: 'wrap',
       opacity: '0',
       transition: 'opacity 0.5s ease'
-    }, { text: 'ICP confidence: 87%' });
-    wrap.appendChild(icpBadge);
+    });
+    [
+      { text: '+2.3% this week', bg: '#ECFDF5', color: '#059669', border: '#6ee7b7' },
+      { text: '↑ Improving',      bg: '#EEF2FF', color: '#4338ca', border: '#c7d2fe' }
+    ].forEach(function (c) {
+      chipRow.appendChild(el('div', {
+        background: c.bg,
+        color: c.color,
+        border: '1px solid ' + c.border,
+        borderRadius: '99px',
+        padding: '4px 10px',
+        fontSize: '10px',
+        fontWeight: '700',
+        fontFamily: BASE.fontFamily,
+        whiteSpace: 'nowrap'
+      }, { text: c.text }));
+    });
+    wrap.appendChild(chipRow);
+
+    /* ICP confidence row with mini circular indicator */
+    var icpRow = el('div', {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      background: '#FFF1F2',
+      border: '1px solid #fecdd3',
+      borderRadius: '8px',
+      padding: '8px 12px',
+      opacity: '0',
+      transition: 'opacity 0.5s ease'
+    });
+    var icpLabel = el('div', {
+      fontFamily: BASE.fontFamily,
+      fontSize: '11px',
+      fontWeight: '700',
+      color: '#e11d48'
+    }, { text: 'ICP Confidence' });
+    var icpPct = el('div', {
+      fontFamily: BASE.fontFamily,
+      fontSize: '16px',
+      fontWeight: '800',
+      color: '#e11d48'
+    }, { text: '0%' });
+    icpRow.appendChild(icpLabel);
+    icpRow.appendChild(icpPct);
+    wrap.appendChild(icpRow);
 
     container.appendChild(wrap);
 
-    /* Animate rows */
-    statEls.forEach(function (s, i) {
+    /* Animate bars */
+    barItems.forEach(function (item, i) {
       setTimeout(function () {
-        s.row.style.opacity = '1';
-        s.row.style.transform = 'translateY(0)';
+        item.row.style.opacity = '1';
+        item.row.style.transform = 'translateY(0)';
         setTimeout(function () {
-          countUp(s.numSpan, 0, s.val, 800, 1, '+');
-          // append % after countUp finishes:
-          setTimeout(function () { s.numSpan.textContent = '+' + s.val.toFixed(1) + '%'; }, 820);
-          s.barFg.style.width = ((s.val / s.max) * 100) + '%';
+          item.barFg.style.width = item.pct + '%';
+          countUp(item.pctLbl, 0, item.pct, 1000, 0, '', '%');
+          setTimeout(function () { item.pctLbl.textContent = item.pct + '%'; }, 1020);
         }, 50);
-      }, i * 300);
+      }, 200 + i * 280);
     });
 
-    setTimeout(function () { icpBadge.style.opacity = '1'; }, stats.length * 300 + 900);
+    var afterBars = 200 + barItems.length * 280 + 400;
+    setTimeout(function () { chipRow.style.opacity = '1'; }, afterBars);
+    setTimeout(function () {
+      icpRow.style.opacity = '1';
+      countUp(icpPct, 0, 87, 900, 0);
+      setTimeout(function () { icpPct.textContent = '87%'; }, 920);
+    }, afterBars + 300);
   }
 
   /* ─── Keyframes ────────────────────────────────────────── */
@@ -742,13 +786,17 @@
     var style = document.createElement('style');
     style.id = 'fw-keyframes';
     style.textContent = [
-      '@keyframes fwPulse {',
-      '  0%,100%{opacity:1;transform:scale(1);}',
-      '  50%{opacity:0.6;transform:scale(0.95);}',
+      '@keyframes fwSpin {',
+      '  from { transform: rotate(0deg); }',
+      '  to   { transform: rotate(360deg); }',
       '}',
-      '@keyframes fwGlow {',
-      '  0%,100%{box-shadow:0 0 0 rgba(79,70,229,0);}',
-      '  50%{box-shadow:0 0 12px rgba(79,70,229,0.4);}',
+      '@keyframes fwBlink {',
+      '  0%,100% { opacity: 1; }',
+      '  50%      { opacity: 0.3; }',
+      '}',
+      '@keyframes fwPulse {',
+      '  0%,100% { opacity:1; transform:scale(1); }',
+      '  50%      { opacity:0.6; transform:scale(0.95); }',
       '}'
     ].join('\n');
     document.head.appendChild(style);
@@ -757,11 +805,10 @@
   /* ─── Init ─────────────────────────────────────────────── */
   function init() {
     injectKeyframes();
-
-    observe('fw-lead', 0.05, function (el) { buildLeadWidget(el); });
-    observe('fw-email', 0.05, function (el) { buildEmailWidget(el); });
-    observe('fw-cal', 0.05, function (el) { buildCalWidget(el); });
-    observe('fw-learn', 0.05, function (el) { buildLearnWidget(el); });
+    observe('fw-lead',  0.05, function (e) { buildLeadWidget(e);  });
+    observe('fw-email', 0.05, function (e) { buildEmailWidget(e); });
+    observe('fw-cal',   0.05, function (e) { buildCalWidget(e);   });
+    observe('fw-learn', 0.05, function (e) { buildLearnWidget(e); });
   }
 
   if (document.readyState === 'loading') {

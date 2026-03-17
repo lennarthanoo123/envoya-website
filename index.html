@@ -71,7 +71,7 @@
 
     .nav-links {
       display: flex; gap: 32px;
-      font-size: 13px; color: var(--text-dim);
+      font-size: 13px; font-weight: 600; color: #0F172A;
     }
     .nav-links a:hover { color: var(--text-sec); transition: color 0.2s; }
 
@@ -427,8 +427,8 @@
       letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px;
     }
     .price-num {
-      font-size: 56px; font-weight: 300; color: var(--text);
-      letter-spacing: -0.02em; margin-bottom: 4px;
+      font-size: 72px; font-weight: 700; color: #0F172A;
+      letter-spacing: -0.04em; line-height: 1; margin-bottom: 4px;
     }
     .price-note {
       font-size: 13px; color: var(--text-dim); margin-bottom: 36px;
@@ -1617,22 +1617,19 @@
 <!-- PRICING -->
 <section class="section" id="pricing">
   <div class="section-tag fade-in">Pricing</div>
-  <div class="section-h fade-in">One price. No surprises.</div>
-  <p class="section-p fade-in">One signed deal covers the entire investment. No monthly fees, no per-seat surprises, no hidden costs.</p>
+  <div class="section-h fade-in">The last sales investment you'll ever make.</div>
   <div class="pricing-box fade-in">
     <div>
-      <div class="price-tag">€25,000</div>
       <div class="price-num">€25K</div>
       <div class="price-note">per company · 3 seats · lifetime license</div>
-      <p style="font-size:12px;color:#EF4444;font-weight:500;margin-top:8px;">Next onboarding: April 7 · 1 spot remaining</p>
       <div class="price-items">
         <div class="price-item">
           <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          Full Lead Machine platform
+          A full outbound machine running 24/7
         </div>
         <div class="price-item">
           <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          2-hour onboarding session
+          Live setup with your own leads in 2 hours
         </div>
         <div class="price-item">
           <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -1640,23 +1637,25 @@
         </div>
         <div class="price-item">
           <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          AI email writer + self-learning engine
+          AI that gets smarter every week you use it
         </div>
         <div class="price-item">
           <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          Full analytics dashboard
+          See every lead, reply and meeting in one place
         </div>
       </div>
-      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="price-cta">Book a demo →</a>
-      <p style="font-size:12px;color:var(--text-muted);margin-top:16px;">The ROI is simple: one signed deal covers the entire investment.</p>
+      <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:10px 16px;margin:16px 0;font-size:13px;color:#DC2626;font-weight:500;">Next onboarding: April 7 · 1 spot remaining</div>
+      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="price-cta" style="width:100%;text-align:center;display:block;">Book a demo →</a>
+      <p style="font-size:12px;color:#94A3B8;margin-top:10px;text-align:center;">Usually set up within 7 days of signing.</p>
     </div>
     <div>
-      <div class="roi-title">The ROI is simple.</div>
-      <div class="roi-sub">One signed deal covers the entire investment.</div>
+      <div class="roi-title">Why this pays for itself in week one.</div>
       <div class="roi-row"><span class="roi-label">BDR salary (NL)</span><span class="roi-val">€40–60K / year</span></div>
       <div class="roi-row"><span class="roi-label">Envoya Lead Machine</span><span class="roi-val">€25K once</span></div>
       <div class="roi-row"><span class="roi-label">Avg. meetings / month</span><span class="roi-val">8–12</span></div>
       <div class="roi-row"><span class="roi-label">Breakeven</span><span class="roi-val">1 signed deal</span></div>
+      <div class="roi-row"><span class="roi-label" style="font-size:13px;color:#0F172A;">Year 2 cost</span><span style="font-size:13px;font-weight:700;color:#16A34A;">€0</span></div>
+      <div class="roi-row" style="border-bottom:none;"><span class="roi-label" style="font-size:13px;color:#0F172A;">Your competitor pays</span><span style="font-size:13px;font-weight:600;color:#EF4444;">€50K again</span></div>
     </div>
   </div>
 </section>
