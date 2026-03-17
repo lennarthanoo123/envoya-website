@@ -35,15 +35,15 @@
   background: #fff;
   border-radius: 24px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  padding: 48px;
+  padding: 56px 56px;
   display: flex;
-  gap: 48px;
+  gap: 56px;
   align-items: center;
+  min-height: 480px;
   margin-bottom: 24px;
   max-width: 1120px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 24px;
 }
 
 /* Even blocks: diagram left, text right */
@@ -68,7 +68,7 @@
 
 .fb-body {
   font-size: 16px;
-  color: #64748B;
+  color: #1E293B;
   line-height: 1.75;
   margin-bottom: 28px;
 }
@@ -76,8 +76,8 @@
 .fb-cta {
   background: #0F172A;
   color: #fff;
-  padding: 12px 22px;
-  border-radius: 8px;
+  padding: 13px 24px;
+  border-radius: 99px;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
@@ -99,9 +99,13 @@
 
 .fb-diagram {
   border-radius: 20px;
-  padding: 28px;
+  padding: 32px;
   position: relative;
   overflow: hidden;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Block color themes */
