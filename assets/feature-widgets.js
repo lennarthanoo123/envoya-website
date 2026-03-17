@@ -323,10 +323,14 @@
     win.appendChild(chrome);
 
     /* Header fields */
-    var fields = [
+    var fields = nl ? [
       ['Van', 'lennart@envoya.tech'],
       ['Aan', 'roos.ubbink@duo.nl'],
       ['Onderwerp', 'Korte kennismaking — AI × DUO']
+    ] : [
+      ['From', 'lennart@envoya.tech'],
+      ['To', 'roos.ubbink@duo.nl'],
+      ['Subject', 'Quick introduction — Brush AI × DUO']
     ];
     fields.forEach(function (f, i, arr) {
       var row = el('div', {
@@ -388,7 +392,7 @@
     container.appendChild(win);
 
     /* Typewriter segments */
-    var segs = [
+    var segs = nl ? [
       { t: 'text', c: 'Hi Roos,\n\nIk zag je ' },
       { t: 'hl',   c: 'presentatie op de Emerce eDay' },
       { t: 'text', c: ' over AI in de publieke sector.\n\nBij Brush AI helpen we ' },
@@ -396,6 +400,14 @@
       { t: 'text', c: ' al met AI die echt waarde levert. Mijn collega ' },
       { t: 'hl',   c: 'Noëlle Cicilia' },
       { t: 'text', c: ' zou graag kort kennismaken.' }
+    ] : [
+      { t: 'text', c: 'Hi Roos,\n\nI saw your ' },
+      { t: 'hl',   c: 'talk at Emerce eDay' },
+      { t: 'text', c: ' on AI in the public sector — great timing for a quick note.\n\nAt Brush AI we help ' },
+      { t: 'hl',   c: 'Triodos Bank, APG and TNO' },
+      { t: 'text', c: ' get real value from AI. My colleague ' },
+      { t: 'hl',   c: 'Noëlle Cicilia' },
+      { t: 'text', c: ' would love to connect briefly.' }
     ];
 
     var bodySpan = el('span');
