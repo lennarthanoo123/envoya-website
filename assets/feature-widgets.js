@@ -765,7 +765,7 @@
         item.row.style.transform = 'translateY(0)';
         setTimeout(function () {
           item.barFg.style.width = item.pct + '%';
-          countUp(item.pctLbl, 0, item.pct, 1000, 0, '', '%');
+          countUp(item.pctLbl, 0, item.pct, 1000, 0);
           setTimeout(function () { item.pctLbl.textContent = item.pct + '%'; }, 1020);
         }, 50);
       }, 200 + i * 280);
