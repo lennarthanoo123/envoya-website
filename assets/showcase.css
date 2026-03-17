@@ -1,163 +1,154 @@
-/* ── Envoya Real Screenshot Showcase ────────────────────────────────── */
-.showcase-section {
-  padding: 80px 0;
-  overflow: hidden;
-}
-.showcase-section .section-tag { text-align: center; }
-.showcase-section .section-h { text-align: center; }
-.showcase-section .section-p { text-align: center; max-width: 600px; margin: 0 auto 3rem; }
+/* ── Clay-style Feature Blocks — Envoya Lead Machine ─────────────────── */
 
-/* ── Counter strip ── */
-.sc-counter-strip {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
-}
-.sc-counter-item { text-align: center; }
-.sc-counter-n {
-  font-size: clamp(36px, 5vw, 56px);
-  font-weight: 900;
-  color: #a5b4fc;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.02em;
-}
-.sc-counter-n .sc-unit { font-size: 0.55em; color: #6366f1; }
-.sc-counter-l {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #334155;
-  margin-top: 6px;
+.fb-section {
+  background: #ffffff;
+  padding: 80px 0 40px;
 }
 
-/* ── Screenshot slider ── */
-.sc-slider-wrap {
-  position: relative;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 40px;
+.fb-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 72px;
+  padding: 0 24px;
 }
-.sc-slider {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(99,102,241,0.15);
-  background: #0d1117;
-  cursor: pointer;
+.fb-header .section-h {
+  margin-top: 12px;
 }
-/* Browser chrome */
-.sc-chrome {
-  background: #111827;
-  border-bottom: 1px solid #1e293b;
-  padding: 10px 16px;
+
+/* ── Feature block row ── */
+.fb-block {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 64px;
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  padding: 0 40px;
+}
+
+/* Reversed row: image left, text right */
+.fb-block-reverse {
+  flex-direction: row-reverse;
+}
+
+/* ── Text side ── */
+.fb-text {
+  flex: 0 0 420px;
+  max-width: 480px;
+}
+.fb-text .section-tag {
+  display: inline-flex;
+  margin-bottom: 16px;
+}
+
+.fb-headline {
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.25;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+
+.fb-body {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.75;
+  margin: 0 0 24px;
+}
+
+.fb-stat {
+  display: inline-block;
+  background: #EEF2FF;
+  border-left: 3px solid #6366F1;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6366F1;
+  line-height: 1.4;
+}
+
+/* ── Image side ── */
+.fb-image {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Browser chrome frame */
+.fb-chrome {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  background: #f1f5f9;
+}
+
+.fb-chrome-bar {
+  background: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fb-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
   flex-shrink: 0;
 }
-.sc-chrome-dots { display: flex; gap: 6px; }
-.sc-chrome-dots span { width: 10px; height: 10px; border-radius: 50%; }
-.sc-chrome-dots span:nth-child(1) { background: rgba(239,68,68,0.5); }
-.sc-chrome-dots span:nth-child(2) { background: rgba(245,158,11,0.5); }
-.sc-chrome-dots span:nth-child(3) { background: rgba(34,197,94,0.5); }
-.sc-chrome-url {
-  flex: 1; background: #1a2535; border-radius: 6px;
-  padding: 5px 12px; font-size: 11px; color: #3d4f69; font-family: monospace;
+.fb-dot-r { background: #fc5753; }
+.fb-dot-y { background: #fdbc40; }
+.fb-dot-g { background: #34c749; }
+
+.fb-url-bar {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 11px;
+  color: #94a3b8;
+  font-family: -apple-system, monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* Slide container */
-.sc-slides {
-  position: relative;
-  height: 480px;
-  overflow: hidden;
-}
-.sc-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  display: flex;
-  flex-direction: column;
-}
-.sc-slide.active { opacity: 1; z-index: 2; }
-.sc-slide img {
+.fb-chrome img {
+  display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   object-position: top left;
-  display: block;
 }
 
-/* Caption overlay */
-.sc-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(8,14,26,0.95));
-  padding: 40px 24px 20px;
-  z-index: 3;
-}
-.sc-caption-tag {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #6366f1;
-  margin-bottom: 4px;
-}
-.sc-caption-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: #e2e8f0;
-  margin-bottom: 3px;
-}
-.sc-caption-desc {
-  font-size: 12px;
-  color: #64748b;
-}
+/* ── Mobile: stack vertically ── */
+@media (max-width: 900px) {
+  .fb-block,
+  .fb-block-reverse {
+    flex-direction: column;
+    gap: 32px;
+    padding: 0 20px;
+    margin-bottom: 56px;
+  }
 
-/* Dot nav */
-.sc-dots-nav {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 20px;
-}
-.sc-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: #1e293b; cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-}
-.sc-dot.active { background: #6366f1; transform: scale(1.4); }
+  .fb-text {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+  }
 
-/* Prev/next arrows */
-.sc-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px; height: 40px;
-  background: rgba(15,22,35,0.9);
-  border: 1px solid #1e293b;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer;
-  color: #475569;
-  font-size: 16px;
-  transition: all 0.2s;
-  z-index: 10;
-  user-select: none;
+  .fb-image {
+    width: 100%;
+  }
 }
-.sc-arrow:hover { background: rgba(99,102,241,0.2); border-color: rgba(99,102,241,0.4); color: #a5b4fc; }
-.sc-arrow-prev { left: -8px; }
-.sc-arrow-next { right: -8px; }
 
 @media (max-width: 640px) {
-  .sc-arrow { display: none; }
-  .sc-slides { height: 280px; }
-  .sc-counter-strip { gap: 1.5rem; }
+  .fb-section {
+    padding: 60px 0 20px;
+  }
+  .fb-header {
+    margin-bottom: 48px;
+  }
 }
