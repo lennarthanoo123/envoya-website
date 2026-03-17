@@ -273,6 +273,7 @@
      WIDGET 2 — Email Compose UI (Block 2, amber bg #FFFBEB)
   ════════════════════════════════════════════════════════ */
   function buildEmailWidget(container) {
+    var nl = isNL;
     var isMobile = window.innerWidth <= 900;
     container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;' : 'height:100%;') + 'display:flex;align-items:stretch;padding:20px;box-sizing:border-box;';
 
