@@ -1253,6 +1253,69 @@
     .founder-sig { color: #6366f1 !important; font-style: italic; font-weight: 600; }
     .section-label-sm { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6366f1; margin-bottom: 0.8rem; display: block; }
     @media (max-width: 768px) { .founder-inner { grid-template-columns: 1fr; } }
+  /* ── Mobile hamburger ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #0F172A;
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 56px;
+    left: 0; right: 0; bottom: 0;
+    background: #fff;
+    z-index: 99;
+    padding: 24px;
+    flex-direction: column;
+    gap: 8px;
+    border-top: 1px solid #E2E8F0;
+    overflow-y: auto;
+  }
+  .nav-mobile-overlay.open { display: flex; }
+  .nav-mobile-link {
+    display: block;
+    padding: 14px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0F172A;
+    text-decoration: none;
+    border-bottom: 1px solid #F1F5F9;
+  }
+  .nav-mobile-link:last-of-type { border-bottom: none; }
+  .nav-mobile-cta {
+    display: block;
+    margin-top: 16px;
+    background: #6366F1;
+    color: #fff;
+    text-align: center;
+    padding: 16px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .nav-hamburger { display: flex; }
+    .nav-cta { display: none !important; }
+  }
   </style>
 </head>
 <body>
@@ -1283,9 +1346,19 @@
   <div style="display:flex;align-items:center;">
     <a href="/" class="nav-lang">EN</a>
     <a href="/es/" class="nav-lang">ES</a>
+    <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
 <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="nav-cta">Plan een demo</a>
   </div>
 </nav>
+<div class="nav-mobile-overlay" id="nav-mobile-overlay">
+  <a href="#showcase" class="nav-mobile-link" onclick="closeMobileNav()">Hoe het werkt</a>
+  <a href="#pricing" class="nav-mobile-link" onclick="closeMobileNav()">Prijzen</a>
+  <a href="#faq" class="nav-mobile-link" onclick="closeMobileNav()">FAQ</a>
+  <a href="#contact" class="nav-mobile-link" onclick="closeMobileNav()">Contact</a>
+  <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="nav-mobile-cta" onclick="closeMobileNav()">Demo boeken met Lennart →</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1885,5 +1958,29 @@ function toggleFaq(i) {
     });
   })();
   </script>
+<script>
+function toggleMobileNav() {
+  var btn = document.getElementById('nav-hamburger');
+  var overlay = document.getElementById('nav-mobile-overlay');
+  btn.classList.toggle('open');
+  overlay.classList.toggle('open');
+  document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+}
+function closeMobileNav() {
+  var btn = document.getElementById('nav-hamburger');
+  var overlay = document.getElementById('nav-mobile-overlay');
+  btn.classList.remove('open');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+// Close on outside tap
+document.addEventListener('click', function(e) {
+  var overlay = document.getElementById('nav-mobile-overlay');
+  var btn = document.getElementById('nav-hamburger');
+  if (overlay && overlay.classList.contains('open') && !overlay.contains(e.target) && !btn.contains(e.target)) {
+    closeMobileNav();
+  }
+});
+</script>
 </body>
 </html>
