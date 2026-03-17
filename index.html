@@ -1084,39 +1084,6 @@
       font-family: -apple-system, 'Inter', sans-serif;
     }
 
-    /* ── MacBook image mockup (old) */
-    .macbook-img-wrap {
-      position: relative;
-      max-width: 900px;
-      margin: 0 auto;
-      user-select: none;
-    }
-    .macbook-img-wrap img.macbook-img {
-      width: 100%;
-      display: block;
-      pointer-events: none;
-      position: relative;
-      z-index: 2;
-    }
-    .macbook-screen-content {
-      position: absolute;
-      top: 10%;
-      left: 11.05%;
-      width: 77.9%;
-      height: 71.9%;
-      overflow: hidden;
-      border-radius: 2px;
-      z-index: 1;
-      background: #0c1220;
-    }
-    /* Scale calendar to fit inside screen */
-    .macbook-screen-content .cal-wrapper {
-      transform-origin: top left;
-      width: 900px;
-    }
-    @media (max-width: 768px) {
-      .macbook-img-wrap { max-width: 100%; }
-    }
 
     /* ── MacBook image mockup — fixed ── */
     .macbook-img-wrap {
@@ -1209,7 +1176,6 @@
       content: '←';
       font-size: 14px;
     }
-    .macbook-img-wrap { position: relative; }
     /* CTA wider */
     .cal-cta-btn { min-width: 420px; text-align: center; }
     @media (max-width: 500px) { .cal-cta-btn { min-width: 0; width: 100%; } }
@@ -1843,8 +1809,8 @@
   document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 </script>
 
-<link rel="stylesheet" href="/assets/calendar-widget.css">
-<script src="/assets/calendar-widget.js"></script>
+<link rel="stylesheet" href="/assets/calendar-widget.css?v=1773776584">
+<script src="/assets/calendar-widget.js?v=1773776584"></script>
 <link rel="stylesheet" href="/assets/demo-widget.css">
 <script src="/assets/demo-widget.js"></script>
 <link rel="stylesheet" href="/assets/showcase.css?v=1773768117">

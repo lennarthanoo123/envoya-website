@@ -73,6 +73,7 @@
      WIDGET 1 — Lead Search UI (Block 1, indigo bg #EEF2FF)
   ════════════════════════════════════════════════════════ */
   function buildLeadWidget(container) {
+    var nl = isNL;
     var isMobile = window.innerWidth <= 900;
     container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;' : 'height:100%;') + 'display:flex;align-items:stretch;padding:20px;box-sizing:border-box;';
 
