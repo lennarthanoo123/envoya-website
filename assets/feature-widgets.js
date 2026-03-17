@@ -120,6 +120,13 @@
     scoreRow.appendChild(scoreNum);
     card.appendChild(scoreRow);
 
+    /* ICP annotation */
+    var scoreAnnotation = el('div', {
+      fontFamily: 'Inter, -apple-system, sans-serif',
+      fontSize: '11px', fontWeight: '600', color: '#6366F1', marginBottom: '4px'
+    }, { text: nl ? 'Alleen scores 80+ komen door' : 'Only 80+ scores enter your pipeline' });
+    card.appendChild(scoreAnnotation);
+
     /* Progress bar */
     var barBg = el('div', {
       background: '#1e293b',
@@ -444,11 +451,11 @@
     /* Meeting cards */
     var meetings = [
       { company: 'VodafoneZiggo', type: nl ? 'Intro gesprek' : 'Intro call', time: 'Ma 10:00', bg: '#1e3a5f', accent: '#3b82f6' },
-      { company: 'ABN AMRO', type: 'Discovery', time: 'Ma 14:00', bg: '#2d1b69', accent: '#7c3aed' },
-      { company: 'Philips', type: 'Pitch', time: 'Di 11:00', bg: '#451a03', accent: '#f59e0b' },
-      { company: 'ASML', type: 'Discovery', time: 'Wo 09:00', bg: '#1e3a5f', accent: '#3b82f6' },
-      { company: 'Alliander', type: nl ? 'Intro gesprek' : 'Intro call', time: 'Do 14:00', bg: '#2d1b69', accent: '#7c3aed' },
-      { company: 'Triodos Bank', type: nl ? 'Deal getekend ✓' : 'Deal signed ✓', time: 'Vr 13:00', bg: '#052e16', accent: '#10b981', deal: true }
+      { company: 'Triodos Bank', type: nl ? 'Deal getekend ✓' : 'Deal signed ✓', time: 'Ma 14:00', bg: '#052e16', accent: '#10b981', deal: true },
+      { company: 'ABN AMRO', type: 'Discovery', time: 'Di 09:00', bg: '#2d1b69', accent: '#7c3aed' },
+      { company: 'Philips', type: 'Pitch', time: 'Di 14:00', bg: '#451a03', accent: '#f59e0b' },
+      { company: 'Alliander', type: nl ? 'Intro gesprek' : 'Intro call', time: 'Wo 10:00', bg: '#2d1b69', accent: '#7c3aed' },
+      { company: 'ASML', type: 'Discovery', time: 'Do 11:00', bg: '#1e3a5f', accent: '#3b82f6' }
     ];
 
     var cards = [];
