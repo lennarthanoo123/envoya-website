@@ -75,7 +75,7 @@
   function buildLeadWidget(container) {
     var nl = isNL;
     var isMobile = window.innerWidth <= 900;
-    container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;padding:20px 20px 0;' : 'height:100%;padding:20px;') + 'display:flex;align-items:stretch;box-sizing:border-box;';
+    container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;padding:20px;' : 'height:100%;padding:20px;') + 'display:flex;align-items:stretch;box-sizing:border-box;';
 
     var wrap = el('div', {
       width: '100%',
@@ -277,7 +277,7 @@
   function buildEmailWidget(container) {
     var nl = isNL;
     var isMobile = window.innerWidth <= 900;
-    container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;padding:20px 20px 0;' : 'height:100%;padding:20px;') + 'display:flex;align-items:stretch;box-sizing:border-box;';
+    container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;padding:20px;' : 'height:100%;padding:20px;') + 'display:flex;align-items:stretch;box-sizing:border-box;';
 
     /* Outer compose window */
     var win = el('div', {
@@ -474,7 +474,7 @@
   function buildCalWidget(container) {
     var nl = isNL;
     var isMobile = window.innerWidth <= 900;
-    container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;padding:20px 20px 0;' : 'height:100%;padding:20px;') + 'display:flex;align-items:stretch;box-sizing:border-box;';
+    container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;padding:20px;' : 'height:100%;padding:20px;') + 'display:flex;align-items:stretch;box-sizing:border-box;';
 
     var wrap = el('div', {
       background: '#fff',
@@ -631,7 +631,7 @@
   function buildLearnWidget(container) {
     var nl = isNL;
     var isMobile = window.innerWidth <= 900;
-    container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;padding:20px 20px 0;' : 'height:100%;padding:20px;') + 'display:flex;align-items:stretch;box-sizing:border-box;';
+    container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;padding:20px;' : 'height:100%;padding:20px;') + 'display:flex;align-items:stretch;box-sizing:border-box;';
 
     var wrap = el('div', {
       background: '#fff',

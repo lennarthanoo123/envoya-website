@@ -590,7 +590,8 @@
     align-items: flex-start;
     padding: 20px 20px 24px;
     justify-content: flex-start;
-    order: 1;                      /* text below diagram on mobile */
+    order: 1;
+    border-top: 1px solid #E2E8F0;
   }
 
   .fb-image {
@@ -611,14 +612,13 @@
     width: 100%;
     align-items: stretch;
     border-radius: 12px 12px 0 0;
-    padding: 20px 20px 0;
+    padding: 20px 20px 20px;
+    overflow: visible;
   }
 
   .fw-widget {
     height: auto;
-    overflow: hidden;
-    margin-bottom: 0;
-    padding-bottom: 0;
+    overflow: visible;
   }
 
   .fb-headline {
