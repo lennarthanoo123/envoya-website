@@ -25,8 +25,9 @@
 }
 .cal-week-mid  { background: #EEF2FF; color: #6366F1; border: 1px solid #C7D2FE; }
 .cal-week-full { background: #6366F1; color: #fff;    border: 1px solid #6366F1; }
-.cal-counter   { font-variant-numeric: tabular-nums; font-weight: 900; font-size: 14px; }
-.cal-badge-label { font-weight: 500; }
+.cal-counter   { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 12px; }
+.cal-badge-label { font-weight: 700; font-size: 12px; }
+.cal-badge-ctx   { font-weight: 700; font-size: 12px; }
 
 /* Calendar shell */
 .cal-container {
