@@ -3,461 +3,487 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Envoya — Live Demo Widget Preview</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>Envoya — Live Demo Widget v3</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Inter', -apple-system, sans-serif;
-    background: #F8FAFC;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
-  }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #F1F5F9;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
 
-  /* ── WIDGET SHELL ── */
-  .demo {
-    width: 100%;
-    max-width: 560px;
-    background: #0c1220;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 24px 80px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.06);
-    font-family: 'Inter', -apple-system, sans-serif;
-  }
+/* ── WIDGET SHELL ── */
+.widget {
+  width: 100%;
+  max-width: 680px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.10), 0 0 0 1px #E2E8F0;
+}
 
-  /* Top chrome bar */
-  .demo-bar {
-    background: #111827;
-    border-bottom: 1px solid #1e293b;
-    padding: 10px 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .demo-dots { display: flex; gap: 6px; }
-  .demo-dot { width: 10px; height: 10px; border-radius: 50%; }
-  .demo-dot-r { background: #ff5f57; }
-  .demo-dot-y { background: #ffbd2e; }
-  .demo-dot-g { background: #28ca41; }
-  .demo-url {
-    flex: 1; background: #1e293b; border-radius: 6px;
-    padding: 4px 12px; font-size: 11px; color: #64748b;
-  }
-  .demo-status {
-    font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
-    color: #4ade80; display: flex; align-items: center; gap: 5px;
-    white-space: nowrap;
-  }
-  .demo-status-dot {
-    width: 6px; height: 6px; border-radius: 50%; background: #4ade80;
-    animation: blink 1.2s ease-in-out infinite;
-  }
-  @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+/* App chrome bar */
+.chrome {
+  background: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.dots { display: flex; gap: 5px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-r { background: #FF5F57; }
+.dot-y { background: #FFBD2E; }
+.dot-g { background: #28CA41; }
+.chrome-url {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: #94A3B8;
+}
+.chrome-badge {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 10px; font-weight: 700; color: #16A34A;
+  background: #F0FDF4; border: 1px solid #BBF7D0;
+  border-radius: 99px; padding: 3px 10px;
+  white-space: nowrap;
+}
+.live-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #22C55E;
+  animation: livepulse 1.4s ease-in-out infinite;
+}
+@keyframes livepulse {
+  0%,100% { opacity:1; } 50% { opacity:0.4; }
+}
 
-  /* Step label */
-  .demo-step {
-    padding: 12px 16px 8px;
-    font-size: 10px; font-weight: 700; color: #6366f1;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    opacity: 0; transition: opacity 0.3s;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .demo-step.visible { opacity: 1; }
-  .demo-step-num {
-    background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3);
-    color: #818cf8; border-radius: 4px; padding: 1px 6px; font-size: 9px;
-  }
+/* ── BODY ── */
+.body { padding: 0; }
 
-  /* Lead table */
-  .demo-table { width: 100%; border-collapse: collapse; }
-  .demo-table th {
-    padding: 6px 12px; font-size: 9px; font-weight: 700;
-    color: #334155; text-transform: uppercase; letter-spacing: 0.08em;
-    border-bottom: 1px solid #1e293b; text-align: left; background: #0c1220;
-  }
-  .demo-table td {
-    padding: 8px 12px; font-size: 12px; color: #94a3b8;
-    border-bottom: 1px solid rgba(30,41,59,0.5);
-    transition: all 0.4s;
-  }
-  .demo-row { opacity: 0; transform: translateY(4px); transition: opacity 0.35s, transform 0.35s; }
-  .demo-row.visible { opacity: 1; transform: none; }
-  .demo-row.highlighted td { background: rgba(99,102,241,0.06); color: #e2e8f0; }
-  .demo-row.faded td { opacity: 0.3; }
-  .demo-row.success td { background: rgba(74,222,128,0.05); }
+/* Step banner */
+.step-banner {
+  padding: 10px 20px;
+  background: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+}
+.step-pill {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.06em;
+  padding: 3px 10px; border-radius: 99px;
+  flex-shrink: 0;
+}
+.step-desc {
+  font-size: 12px; color: #334155; font-weight: 500; line-height: 1.4;
+  transition: opacity 0.25s;
+}
 
-  /* Company cell */
-  .cell-company { font-weight: 700; color: #f1f5f9 !important; }
-  .cell-role { color: #64748b !important; }
-  .cell-company-wrap { display: flex; align-items: center; gap: 8px; }
-  .cell-avatar {
-    width: 22px; height: 22px; border-radius: 50%;
-    background: linear-gradient(135deg, #6366f1, #818cf8);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 8px; font-weight: 800; color: #fff; flex-shrink: 0;
-  }
+/* Step colors */
+.step-scan   .step-pill { background: #EEF2FF; color: #6366F1; }
+.step-score  .step-pill { background: #FFF7ED; color: #EA580C; }
+.step-signal .step-pill { background: #FFFBEB; color: #B45309; }
+.step-email  .step-pill { background: #F0FDF4; color: #16A34A; }
+.step-sent   .step-pill { background: #F0FDF4; color: #16A34A; }
+.step-booked .step-pill { background: #ECFDF5; color: #059669; }
 
-  /* ICP score bar */
-  .score-wrap { display: flex; align-items: center; gap: 6px; }
-  .score-bar-bg {
-    width: 48px; height: 5px; background: #1e293b; border-radius: 99px; overflow: hidden;
-  }
-  .score-bar-fg {
-    height: 100%; border-radius: 99px; width: 0%;
-    transition: width 1s cubic-bezier(0.165,0.84,0.44,1);
-  }
-  .score-num { font-size: 11px; font-weight: 700; min-width: 24px; }
+/* ── LEAD TABLE ── */
+.lead-table { width: 100%; border-collapse: collapse; }
+.lead-table th {
+  padding: 8px 12px;
+  font-size: 10px; font-weight: 700; color: #94A3B8;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  text-align: left;
+  background: #FAFAFA;
+  border-bottom: 1px solid #F1F5F9;
+}
+.lead-row {
+  opacity: 0; transform: translateY(3px);
+  transition: opacity 0.35s ease, transform 0.35s ease, background 0.3s;
+}
+.lead-row.visible { opacity: 1; transform: none; }
+.lead-row.hl { background: #FAFFFE; }
+.lead-row.dim td { opacity: 0.35; }
+.lead-row.success { background: #F0FDF4; }
+.lead-row.meeting { background: #ECFDF5; }
 
-  /* Status badge */
-  .badge {
-    display: inline-flex; align-items: center; gap: 4px;
-    font-size: 10px; font-weight: 600; padding: 2px 8px;
-    border-radius: 20px; white-space: nowrap;
-  }
-  .badge-new     { background: rgba(100,116,139,0.15); color: #64748b; }
-  .badge-scan    { background: rgba(99,102,241,0.15); color: #818cf8; border: 1px solid rgba(99,102,241,0.2); }
-  .badge-signal  { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.2); }
-  .badge-sent    { background: rgba(99,102,241,0.15); color: #a5b4fc; }
-  .badge-replied { background: rgba(74,222,128,0.15); color: #4ade80; border: 1px solid rgba(74,222,128,0.2); }
-  .badge-meeting { background: rgba(74,222,128,0.2); color: #4ade80; border: 1px solid rgba(74,222,128,0.3); font-weight: 700; }
+.lead-table td {
+  padding: 9px 12px;
+  font-size: 12px; color: #334155;
+  border-bottom: 1px solid #F8FAFC;
+  vertical-align: middle;
+}
 
-  /* Signal callout */
-  .signal-callout {
-    margin: 0 12px 10px;
-    background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2);
-    border-radius: 8px; padding: 8px 12px;
-    font-size: 11px; color: #fbbf24; font-weight: 500;
-    display: flex; align-items: center; gap: 8px;
-    opacity: 0; transform: translateY(4px);
-    transition: opacity 0.4s, transform 0.4s;
-    line-height: 1.5;
-  }
-  .signal-callout.visible { opacity: 1; transform: none; }
+/* Company cell */
+.cell-co { display: flex; align-items: center; gap: 8px; }
+.avatar {
+  width: 26px; height: 26px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 800; color: #fff;
+  flex-shrink: 0;
+}
+.co-name { font-weight: 700; color: #0F172A; font-size: 12px; }
+.co-person { font-size: 10px; color: #64748B; }
 
-  /* Email compose overlay */
-  .email-overlay {
-    margin: 0 12px 12px;
-    background: #fff; border-radius: 10px; overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    opacity: 0; transform: translateY(8px) scale(0.98);
-    transition: opacity 0.4s, transform 0.4s;
-    max-height: 0;
-  }
-  .email-overlay.visible {
-    opacity: 1; transform: none; max-height: 300px;
-  }
-  .email-top {
-    background: #f1f5f9; border-bottom: 1px solid #e2e8f0;
-    padding: 8px 12px; display: flex; align-items: center; gap: 8px;
-  }
-  .email-top-label { font-size: 11px; font-weight: 700; color: #334155; flex: 1; }
-  .email-ai-badge {
-    background: linear-gradient(135deg, #6366f1, #818cf8);
-    color: #fff; font-size: 9px; font-weight: 700;
-    padding: 2px 8px; border-radius: 99px; letter-spacing: 0.05em;
-    animation: blink 1s infinite;
-  }
-  .email-meta { border-bottom: 1px solid #f1f5f9; }
-  .email-meta-row {
-    display: flex; gap: 8px; padding: 5px 12px;
-    border-bottom: 1px solid #f8fafc; font-size: 11px;
-  }
-  .email-meta-lbl { color: #94a3b8; font-weight: 600; width: 52px; flex-shrink: 0; }
-  .email-meta-val { color: #0f172a; }
-  .email-body {
-    padding: 10px 12px; font-size: 11.5px; color: #1e293b;
-    line-height: 1.65; min-height: 60px; max-height: 120px; overflow: hidden;
-  }
-  .email-hl {
-    background: rgba(99,102,241,0.1); border-radius: 3px;
-    padding: 0 4px; color: #6366f1; font-weight: 600;
-  }
-  .email-cursor {
-    display: inline-block; width: 2px; height: 13px;
-    background: #6366f1; vertical-align: middle; margin-left: 1px;
-    animation: blink 0.75s step-end infinite;
-  }
+/* Score bar */
+.score-wrap { display: flex; align-items: center; gap: 6px; }
+.score-track {
+  width: 44px; height: 5px;
+  background: #F1F5F9; border-radius: 99px; overflow: hidden;
+}
+.score-fill {
+  height: 100%; border-radius: 99px; width: 0%;
+  transition: width 0.9s cubic-bezier(0.165,0.84,0.44,1);
+}
+.score-num { font-size: 11px; font-weight: 700; min-width: 22px; }
 
-  /* Result bar */
-  .result-bar {
-    margin: 8px 12px 12px;
-    background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.25);
-    border-radius: 8px; padding: 8px 12px;
-    display: flex; align-items: center; gap: 8px;
-    font-size: 12px; color: #4ade80; font-weight: 700;
-    opacity: 0; transition: opacity 0.4s;
-  }
-  .result-bar.visible { opacity: 1; }
+/* Signal badge */
+.signal-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: #FFFBEB; border: 1px solid #FDE68A;
+  color: #92400E; font-size: 10px; font-weight: 600;
+  padding: 2px 8px; border-radius: 99px;
+  opacity: 0; transform: scale(0.9);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.signal-badge.show { opacity: 1; transform: scale(1); }
 
-  /* Progress bar at bottom */
-  .demo-progress {
-    height: 2px; background: #1e293b;
-  }
-  .demo-progress-bar {
-    height: 100%; background: #6366f1; width: 0%;
-    transition: width 0.1s linear;
-  }
+/* Status badge */
+.status {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 9px; border-radius: 99px;
+}
+.st-new      { background: #F1F5F9; color: #64748B; }
+.st-scoring  { background: #FFF7ED; color: #EA580C; }
+.st-signal   { background: #FFFBEB; color: #B45309; }
+.st-writing  { background: #EFF6FF; color: #2563EB; animation: writing 1s ease-in-out infinite alternate; }
+.st-sent     { background: #EFF6FF; color: #2563EB; }
+.st-replied  { background: #F0FDF4; color: #16A34A; }
+.st-meeting  { background: #DCFCE7; color: #15803D; font-size: 11px; }
+@keyframes writing { from { opacity:0.7; } to { opacity:1; } }
 
-  /* Replay btn */
-  .replay { text-align: center; margin-top: 20px; }
-  .replay button {
-    background: #6366f1; color: #fff; border: none;
-    padding: 10px 24px; border-radius: 8px; font-size: 13px;
-    font-weight: 600; cursor: pointer; font-family: inherit;
-    transition: background 0.2s;
-  }
-  .replay button:hover { background: #4f46e5; }
+/* ── EMAIL OVERLAY ── */
+.email-overlay {
+  margin: 0 12px 12px;
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+.email-overlay.open {
+  max-height: 220px;
+  opacity: 1;
+}
+.email-chrome {
+  background: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 8px 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.email-chrome-label { font-size: 11px; font-weight: 700; color: #334155; flex: 1; }
+.email-ai {
+  background: #6366F1; color: #fff;
+  font-size: 9px; font-weight: 800;
+  padding: 2px 8px; border-radius: 99px;
+  letter-spacing: 0.06em; animation: writing 0.8s infinite alternate;
+}
+.email-meta-row {
+  display: flex; gap: 8px; padding: 5px 14px;
+  border-bottom: 1px solid #F8FAFC; font-size: 11px;
+}
+.email-lbl { color: #94A3B8; font-weight: 600; width: 52px; flex-shrink: 0; }
+.email-val { color: #0F172A; }
+.email-body {
+  padding: 10px 14px;
+  font-size: 12px; color: #1E293B; line-height: 1.7;
+  min-height: 50px; max-height: 90px; overflow: hidden;
+  white-space: pre-wrap;
+}
+.hl { background: #EEF2FF; border-radius: 3px; padding: 0 4px; color: #6366F1; font-weight: 600; }
+.cursor {
+  display: inline-block; width: 2px; height: 13px;
+  background: #6366F1; vertical-align: middle; margin-left: 1px;
+  animation: blink 0.7s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
+
+/* ── RESULT BAR ── */
+.result-bar {
+  margin: 0 12px 12px;
+  background: #F0FDF4; border: 1px solid #6EE7B7;
+  border-radius: 10px; padding: 10px 14px;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: #065F46; font-weight: 700;
+  opacity: 0; transform: translateY(4px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+.result-bar.show { opacity: 1; transform: none; }
+
+/* ── PROGRESS BAR ── */
+.w-prog { height: 3px; background: #F1F5F9; }
+.w-prog-fill { height: 100%; background: linear-gradient(90deg,#6366F1,#818CF8); width:0%; transition:width 0.1s linear; }
+
+/* Replay */
+.w-replay { text-align: center; margin-top: 16px; }
+.w-replay button {
+  background: #EEF2FF; color: #6366F1; border: none;
+  padding: 9px 22px; border-radius: 99px;
+  font-size: 12px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: background 0.2s;
+}
+.w-replay button:hover { background: #C7D2FE; }
 </style>
 </head>
 <body>
+<div style="max-width:700px;width:100%;">
+  <p style="font-family:Inter,sans-serif;font-size:11px;color:#94a3b8;text-align:center;margin-bottom:14px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;">Envoya Lead Machine · Live preview</p>
 
-<div style="width:100%;max-width:600px;">
-  <p style="font-family:Inter,sans-serif;font-size:12px;color:#94a3b8;text-align:center;margin-bottom:16px;letter-spacing:0.05em;text-transform:uppercase;font-weight:600;">Envoya Lead Machine — Live Demo Widget Preview</p>
-
-  <div class="demo">
-    <div class="demo-bar">
-      <div class="demo-dots">
-        <div class="demo-dot demo-dot-r"></div>
-        <div class="demo-dot demo-dot-y"></div>
-        <div class="demo-dot demo-dot-g"></div>
+  <div class="widget">
+    <!-- Chrome -->
+    <div class="chrome">
+      <div class="dots">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
       </div>
-      <div class="demo-url">app.envoya.tech · Lead Machine</div>
-      <div class="demo-status"><div class="demo-status-dot"></div>LIVE</div>
+      <div class="chrome-url">app.envoya.tech · Lead Machine</div>
+      <div class="chrome-badge"><div class="live-dot"></div>Agent running</div>
     </div>
 
-    <div class="demo-step" id="step-label">
-      <span class="demo-step-num" id="step-num">01</span>
-      <span id="step-text">Scanning lead database…</span>
+    <!-- Step banner -->
+    <div class="step-banner step-scan" id="banner">
+      <span class="step-pill" id="step-pill">🔍 SCANNING</span>
+      <span class="step-desc" id="step-desc">Searching 275M+ contacts for your ICP profile…</span>
     </div>
 
-    <div style="overflow:auto;">
-      <table class="demo-table">
-        <thead>
-          <tr>
-            <th>Company / Person</th>
-            <th>Role</th>
-            <th>ICP Score</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="lead-rows"></tbody>
-      </table>
-    </div>
+    <!-- Lead table -->
+    <table class="lead-table">
+      <thead>
+        <tr>
+          <th>Company · Person</th>
+          <th>Role</th>
+          <th>ICP Score</th>
+          <th>Signal</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
 
-    <div class="signal-callout" id="signal-callout">
-      📡 <span><strong>Signal detected</strong> · Roos Ubbink spoke at Emerce eDay about AI in the public sector — 3 weeks ago</span>
-    </div>
-
-    <div class="email-overlay" id="email-overlay">
-      <div class="email-top">
-        <span class="email-top-label">New email — Roos Ubbink · DUO</span>
-        <span class="email-ai-badge">AI WRITING</span>
+    <!-- Email compose overlay -->
+    <div class="email-overlay" id="email">
+      <div class="email-chrome">
+        <span class="email-chrome-label">New email · Roos Ubbink · DUO</span>
+        <span class="email-ai">AI WRITING</span>
       </div>
-      <div class="email-meta">
-        <div class="email-meta-row"><span class="email-meta-lbl">Van</span><span class="email-meta-val">lennart@brushai.com</span></div>
-        <div class="email-meta-row"><span class="email-meta-lbl">Aan</span><span class="email-meta-val">roos.ubbink@duo.nl</span></div>
-        <div class="email-meta-row"><span class="email-meta-lbl">Onderwerp</span><span class="email-meta-val" style="font-weight:600">Kennismaking Noëlle Cicilia</span></div>
-      </div>
-      <div class="email-body" id="email-body"><span class="email-cursor"></span></div>
+      <div class="email-meta-row"><span class="email-lbl">Van</span><span class="email-val">lennart@brushai.com</span></div>
+      <div class="email-meta-row"><span class="email-lbl">Aan</span><span class="email-val">r.ubbink@duo.nl</span></div>
+      <div class="email-meta-row"><span class="email-lbl">Onderwerp</span><span class="email-val" style="font-weight:700">Kennismaking Noëlle Cicilia</span></div>
+      <div class="email-body" id="ebody"><span class="cursor"></span></div>
     </div>
 
-    <div class="result-bar" id="result-bar">
-      🗓 Meeting booked · Roos Ubbink · DUO · Next Wednesday 10:00
+    <!-- Result bar -->
+    <div class="result-bar" id="result">
+      🗓️ Meeting booked · Roos Ubbink · DUO · Next Wednesday 10:00 AM
     </div>
 
-    <div class="demo-progress"><div class="demo-progress-bar" id="progress-bar"></div></div>
+    <div class="w-prog"><div class="w-prog-fill" id="prog"></div></div>
   </div>
 
-  <div class="replay"><button onclick="startDemo()">▶ Replay</button></div>
+  <div class="w-replay"><button onclick="run()">▶ Replay</button></div>
 </div>
 
 <script>
 const LEADS = [
-  { init:'RU', co:'DUO', name:'Roos Ubbink',       role:'Head of Digital',    score:92, color:'#6366f1' },
-  { init:'JV', co:'VodafoneZiggo', name:'Jeroen Vos', role:'Head of UX',       score:78, color:'#818cf8' },
-  { init:'AK', co:'ABN AMRO', name:'Anna Kok',      role:'Digital Lead',       score:45, color:'#94a3b8' },
-  { init:'SK', co:'Philips', name:'Stefan Karels',  role:'Head of Product',    score:85, color:'#6366f1' },
-  { init:'MH', co:'ASML', name:'Mieke Hoeve',       role:'VP Digital',         score:61, color:'#818cf8' },
+  { co:'DUO', name:'Roos Ubbink',    role:'Head of Digital',  score:92, color:'#6366F1', bg:'#EEF2FF', signal:true,  main:true  },
+  { co:'VodafoneZiggo', name:'Jeroen Vos', role:'Head of UX', score:78, color:'#F97316', bg:'#FFF7ED', signal:false, main:false },
+  { co:'ABN AMRO', name:'Anna Kok',   role:'Digital Lead',    score:44, color:'#94A3B8', bg:'#F1F5F9', signal:false, main:false },
+  { co:'Philips', name:'Stefan K.',  role:'Head of Product',  score:85, color:'#8B5CF6', bg:'#F5F3FF', signal:false, main:false },
+  { co:'ASML', name:'Mieke Hoeve',   role:'VP Digital',       score:61, color:'#06B6D4', bg:'#ECFEFF', signal:false, main:false },
 ];
 
 const EMAIL_PARTS = [
-  { t:'Hi Roos,\n\n', hl:false },
-  { t:'Ik zag je ', hl:false },
-  { t:'presentatie op de Emerce eDay', hl:true },
-  { t:' over AI in de publieke sector — mooie aanleiding.\n\nBij Brush AI helpen we ', hl:false },
-  { t:'Triodos Bank, APG en TNO', hl:true },
-  { t:' met AI die echt waarde levert.\n\nMijn collega ', hl:false },
-  { t:'Noëlle Cicilia', hl:true },
-  { t:', AI Person of the Year, zou graag kort kennismaken.\n\nSta je open voor een korte kennismaking?', hl:false },
+  { t: 'Hi Roos,\n\n', hl: false },
+  { t: 'Ik zag je ', hl: false },
+  { t: 'presentatie op de Emerce eDay', hl: true },
+  { t: ' over AI in de publieke sector — mooie aanleiding voor een bericht.\n\nBij Brush AI helpen we ', hl: false },
+  { t: 'Triodos Bank, APG en TNO', hl: true },
+  { t: ' met AI die echt waarde levert.\n\nMijn collega ', hl: false },
+  { t: 'Noëlle Cicilia', hl: true },
+  { t: ', co-founder en AI Person of the Year, zou graag kort kennismaken.\n\nSta je open voor een korte, inhoudelijke kennismaking?', hl: false },
 ];
 
-const TOTAL_MS = 13000;
-let timers = [];
-
-function clear() { timers.forEach(clearTimeout); timers = []; }
+let timers = [], prog_int = null;
+function stop() { timers.forEach(clearTimeout); if(prog_int) clearInterval(prog_int); timers=[]; }
 function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
 
-function startDemo() {
-  clear();
+function setBanner(cls, pill, desc) {
+  const b = document.getElementById('banner');
+  b.className = 'step-banner ' + cls;
+  const p = document.getElementById('step-pill');
+  const d = document.getElementById('step-desc');
+  d.style.opacity = '0';
+  setTimeout(function() {
+    p.textContent = pill;
+    d.textContent = desc;
+    d.style.opacity = '1';
+  }, 150);
+}
 
-  // Reset UI
-  document.getElementById('lead-rows').innerHTML = '';
-  document.getElementById('signal-callout').classList.remove('visible');
-  document.getElementById('email-overlay').classList.remove('visible');
-  document.getElementById('email-body').innerHTML = '<span class="email-cursor"></span>';
-  document.getElementById('result-bar').classList.remove('visible');
-  document.getElementById('step-label').classList.remove('visible');
-  document.getElementById('progress-bar').style.width = '0%';
-  setStep(1, 'Scanning lead database…');
+function setStatus(tr, cls, text) {
+  const td = tr.querySelector('.status-cell');
+  if (!td) return;
+  td.innerHTML = '<span class="status ' + cls + '">' + text + '</span>';
+}
 
-  // Build rows hidden
-  const tbody = document.getElementById('lead-rows');
+function run() {
+  stop();
+
+  // Reset
+  document.getElementById('tbody').innerHTML = '';
+  document.getElementById('email').classList.remove('open');
+  document.getElementById('result').classList.remove('show');
+  document.getElementById('ebody').innerHTML = '<span class="cursor"></span>';
+  document.getElementById('prog').style.width = '0%';
+  setBanner('step-scan', '🔍 SCANNING', 'Searching 275M+ contacts for your ICP profile…');
+
+  const TOTAL = 17000;
+  let elapsed = 0;
+  prog_int = setInterval(function() {
+    elapsed += 100;
+    document.getElementById('prog').style.width = Math.min(100, elapsed / TOTAL * 100) + '%';
+    if (elapsed >= TOTAL) { clearInterval(prog_int); later(run, 2000); }
+  }, 100);
+
+  // Build rows
   const rows = [];
   LEADS.forEach(function(l) {
     const tr = document.createElement('tr');
-    tr.className = 'demo-row';
+    tr.className = 'lead-row';
     tr.innerHTML = `
       <td>
-        <div class="cell-company-wrap">
-          <div class="cell-avatar" style="background:linear-gradient(135deg,${l.color},#818cf8)">${l.init}</div>
+        <div class="cell-co">
+          <div class="avatar" style="background:${l.color}">${l.co.slice(0,2).toUpperCase()}</div>
           <div>
-            <div class="cell-company">${l.co}</div>
-            <div class="cell-role" style="font-size:10px;color:#475569;">${l.name}</div>
+            <div class="co-name">${l.co}</div>
+            <div class="co-person">${l.name}</div>
           </div>
         </div>
       </td>
-      <td class="cell-role">${l.role}</td>
+      <td style="color:#64748B;font-size:11px">${l.role}</td>
       <td>
         <div class="score-wrap">
-          <div class="score-bar-bg"><div class="score-bar-fg" style="background:${l.score>79?'#4ade80':l.score>59?'#fbbf24':'#ef4444'}"></div></div>
-          <span class="score-num" style="color:${l.score>79?'#4ade80':l.score>59?'#fbbf24':'#64748b'}">${l.score}</span>
+          <div class="score-track"><div class="score-fill" style="background:${l.score>79?'#22C55E':l.score>59?'#F97316':'#EF4444'}"></div></div>
+          <span class="score-num" style="color:${l.score>79?'#16A34A':l.score>59?'#EA580C':'#94A3B8'}">${l.score}</span>
         </div>
       </td>
-      <td><span class="badge badge-new">New</span></td>`;
-    tbody.appendChild(tr);
-    rows.push(tr);
+      <td><span class="signal-badge" style="${l.signal?'':'display:none'}">📡 Emerce eDay</span><span style="${l.signal?'display:none':''}">—</span></td>
+      <td class="status-cell"><span class="status st-new">New</span></td>`;
+    document.getElementById('tbody').appendChild(tr);
+    rows.push({ tr, l });
   });
 
-  // ── STEP 1: Rows appear 0-1.5s ──
-  later(function() { document.getElementById('step-label').classList.add('visible'); }, 100);
+  // ── PHASE 1: Rows appear (0-1.4s) ──
   rows.forEach(function(r, i) {
-    later(function() { r.classList.add('visible'); }, 200 + i * 240);
+    later(function() { r.tr.classList.add('visible'); }, 200 + i * 230);
   });
 
-  // ── STEP 2: ICP bars fill 1.5-3s ──
+  // ── PHASE 2: ICP Scoring (1.8s) ──
   later(function() {
-    setStep(2, 'Scoring against your ICP profile…');
+    setBanner('step-score', '🎯 ICP SCORING', 'Scoring every lead against your profile — only top matches advance…');
     rows.forEach(function(r, i) {
       later(function() {
-        const bar = r.querySelector('.score-bar-fg');
-        const badge = r.querySelector('.badge');
-        bar.style.width = LEADS[i].score + '%';
-        badge.className = 'badge badge-scan';
-        badge.textContent = 'Scoring…';
+        const fill = r.tr.querySelector('.score-fill');
+        if (fill) fill.style.width = r.l.score + '%';
+        setStatus(r.tr, 'st-scoring', '📊 Scoring');
         later(function() {
-          badge.className = 'badge badge-scan';
-          badge.textContent = LEADS[i].score + '/100';
-          if (LEADS[i].score < 60) { r.classList.add('faded'); }
-        }, 600);
-      }, i * 150);
+          if (r.l.score < 60) r.tr.classList.add('dim');
+          else setStatus(r.tr, 'st-new', '✓ ' + r.l.score + '/100');
+        }, 700);
+      }, i * 180);
     });
-  }, 1600);
+  }, 1800);
 
-  // ── STEP 3: Signal detected on row 0 (Roos) at 3.5s ──
+  // ── PHASE 3: Signal detected on row 0 (4.2s) ──
   later(function() {
-    setStep(3, 'Signal detected — Pattern A triggered');
-    rows[0].classList.remove('faded');
-    rows[0].classList.add('highlighted');
-    const badge = rows[0].querySelector('.badge');
-    badge.className = 'badge badge-signal';
-    badge.innerHTML = '📡 Signal';
-    later(function() {
-      document.getElementById('signal-callout').classList.add('visible');
-    }, 400);
-  }, 3800);
+    setBanner('step-signal', '📡 SIGNAL DETECTED', 'Roos Ubbink spoke at Emerce eDay 3 weeks ago — Pattern A triggered');
+    const sig = rows[0].tr.querySelector('.signal-badge');
+    if (sig) sig.classList.add('show');
+    rows[0].tr.classList.add('hl');
+    setStatus(rows[0].tr, 'st-signal', '📡 Signal');
+  }, 4200);
 
-  // ── STEP 4: Email writing 5-8.5s ──
+  // ── PHASE 4: Email writing (5.8s) ──
   later(function() {
-    setStep(4, 'Writing personalised email…');
-    document.getElementById('signal-callout').classList.remove('visible');
-    document.getElementById('email-overlay').classList.add('visible');
-    const body = document.getElementById('email-body');
-    body.innerHTML = '<span class="email-cursor" id="cursor"></span>';
+    setBanner('step-email', '✉️ WRITING EMAIL', 'AI writing personalised email using the Emerce signal as hook…');
+    setStatus(rows[0].tr, 'st-writing', '✍️ Writing');
+    document.getElementById('email').classList.add('open');
+    const body = document.getElementById('ebody');
+    body.innerHTML = '<span class="cursor" id="cur"></span>';
 
-    let delay = 300;
+    let delay = 400;
     EMAIL_PARTS.forEach(function(part) {
       const d = delay;
       later(function() {
-        const cursor = body.querySelector('.email-cursor');
-        if (!cursor) return;
+        const cur = body.querySelector('.cursor');
+        if (!cur) return;
         if (part.hl) {
-          const span = document.createElement('span');
-          span.className = 'email-hl';
-          span.textContent = part.t;
-          body.insertBefore(span, cursor);
+          const s = document.createElement('span');
+          s.className = 'hl';
+          s.textContent = part.t;
+          body.insertBefore(s, cur);
         } else {
           part.t.split('').forEach(function(ch, ci) {
             later(function() {
-              const c2 = body.querySelector('.email-cursor');
+              const c2 = body.querySelector('.cursor');
               if (!c2) return;
               const s = document.createElement('span');
-              s.style.whiteSpace = 'pre-wrap';
-              s.style.color = '#1e293b';
               s.textContent = ch;
               body.insertBefore(s, c2);
-            }, ci * 18);
+            }, ci * 16);
           });
         }
       }, d);
-      delay += part.hl ? 120 : (part.t.length * 18) + 80;
+      delay += part.hl ? 100 : part.t.length * 16 + 60;
     });
-  }, 5200);
+  }, 5800);
 
-  // ── STEP 5: Sent + reply 9.5s ──
+  // ── PHASE 5: Email sent (10.2s) ──
   later(function() {
-    setStep(5, 'Email sent — waiting for reply…');
-    document.getElementById('email-overlay').classList.remove('visible');
-    const badge = rows[0].querySelector('.badge');
-    badge.className = 'badge badge-sent';
-    badge.textContent = '✓ Contacted';
-  }, 9500);
+    setBanner('step-sent', '📤 SENT', 'Email delivered. Waiting for reply…');
+    document.getElementById('email').classList.remove('open');
+    setStatus(rows[0].tr, 'st-sent', '📤 Sent');
+    rows[0].tr.classList.add('success');
+  }, 10200);
 
-  // ── STEP 6: Meeting booked 11s ──
+  // ── PHASE 6: Meeting booked (12.5s) ──
   later(function() {
-    setStep(6, '🎉 Meeting booked!');
-    const badge = rows[0].querySelector('.badge');
-    badge.className = 'badge badge-meeting';
-    badge.textContent = '🗓 Meeting';
-    rows[0].classList.add('success');
-    document.getElementById('result-bar').classList.add('visible');
-  }, 11000);
-
-  // ── Progress bar ──
-  let elapsed = 0;
-  const interval = setInterval(function() {
-    elapsed += 100;
-    document.getElementById('progress-bar').style.width = Math.min(100, (elapsed / TOTAL_MS) * 100) + '%';
-    if (elapsed >= TOTAL_MS) {
-      clearInterval(interval);
-      later(function() { startDemo(); }, 2000);
-    }
-  }, 100);
-  timers.push(interval);
+    setBanner('step-booked', '🗓️ MEETING BOOKED', '🎉 Roos Ubbink replied positively — meeting booked for next Wednesday!');
+    setStatus(rows[0].tr, 'st-meeting', '🗓 Meeting booked!');
+    rows[0].tr.classList.remove('success');
+    rows[0].tr.classList.add('meeting');
+    later(function() {
+      document.getElementById('result').classList.add('show');
+    }, 600);
+  }, 12500);
 }
 
-function setStep(n, text) {
-  document.getElementById('step-num').textContent = '0' + n;
-  document.getElementById('step-text').textContent = text;
-  const el = document.getElementById('step-label');
-  el.style.opacity = '0';
-  setTimeout(function() { el.style.opacity = '1'; }, 100);
-}
-
-startDemo();
+run();
 </script>
 </body>
 </html>
