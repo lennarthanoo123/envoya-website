@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Envoya - Lead Machine</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%230F172A'/%3E%3Ccircle cx='20' cy='20' r='18' stroke='%23818CF8' stroke-width='0.8' stroke-dasharray='2.5 2.5' opacity='0.5'/%3E%3Ccircle cx='20' cy='20' r='13' stroke='%23818CF8' stroke-width='0.8' stroke-dasharray='2 2' opacity='0.6'/%3E%3Ccircle cx='20' cy='20' r='8' stroke='%236366F1' stroke-width='0.9' stroke-dasharray='1.5 1.5' opacity='0.7'/%3E%3Ccircle cx='20' cy='20' r='4' fill='%236366F1'/%3E%3Ccircle cx='20' cy='20' r='2.2' fill='%23ffffff'/%3E%3Ccircle cx='31.7' cy='8.3' r='2.5' fill='%23818CF8'/%3E%3C/svg%3E">
-  <meta name="description" content="Lead Machine vindt de juiste lead en raakt hem met de juiste boodschap — automatisch. Jouw team verschijnt gewoon op de afspraken." />
-  <meta property="og:title" content="Envoya Lead Machine — De juiste lead. De juiste boodschap. Elke keer." />
-  <meta property="og:description" content="AI-gestuurde outbound die automatisch jouw ideale klanten vindt, kwalificeert en persoonlijk benadert." />
-  <meta property="og:url" content="https://envoya.tech/nl/" />
+  <meta name="description" content="Lead Machine encuentra el lead correcto y lo impacta con el mensaje adecuado — automáticamente. Tu equipo solo aparece a las reuniones." />
+  <meta property="og:title" content="Envoya Lead Machine — El lead correcto. El mensaje correcto. Siempre." />
+  <meta property="og:description" content="Outbound impulsado por IA que encuentra, califica y personaliza el alcance a tus clientes ideales — automáticamente." />
+  <meta property="og:url" content="https://envoya.tech/es/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -110,19 +110,54 @@
       padding: 56px 40px 48px;
     }
     .hero-text { text-align: left; }
-    .hero-tagline-main { font-size: clamp(18px, 2.2vw, 24px); font-weight: 400; color: #334155; line-height: 1.4; margin-bottom: 1.2rem; letter-spacing: -0.01em; }
-    .hero-visual { position: relative; border-radius: 20px; overflow: hidden; }
-    .hero-visual img { width: 100%; height: 520px; object-fit: cover; object-position: center top; display: block; border-radius: 20px; }
-    .hero-visual-overlay { position: absolute; inset: 0; background: linear-gradient(to left, transparent 40%, rgba(8,14,26,0.6) 100%); border-radius: 20px; pointer-events: none; }
-    .hero-visual-glow { position: absolute; inset: -2px; border-radius: 22px; border: 1px solid rgba(99,102,241,0.3); box-shadow: 0 0 40px rgba(99,102,241,0.2); pointer-events: none; }
-    @media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; padding: 28px 24px 44px; } .hero-text { text-align: left; }
+    .hero-tagline-main {
+      font-size: clamp(18px, 2.2vw, 24px);
+      font-weight: 400;
+      color: #334155;
+      line-height: 1.4;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.01em;
+    }
+    .hero-stat-card { flex-shrink: 0; }
+    .hero-visual img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      border-radius: 20px;
+    }
+    .hero-visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 60%),
+                  linear-gradient(to left, transparent 40%, rgba(255,255,255,0.1) 100%);
+      border-radius: 20px;
+      pointer-events: none;
+    }
+    .hero-visual-glow {
+      position: absolute;
+      inset: -2px;
+      border-radius: 22px;
+      background: transparent;
+      border: 1px solid rgba(99,102,241,0.3);
+      box-shadow: 0 0 40px rgba(99,102,241,0.2), inset 0 0 40px rgba(99,102,241,0.05);
+      pointer-events: none;
+    }
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; padding: 20px 24px 32px; }
+      .hero-text { text-align: left; }
       .hero-sub { margin: 0 0 32px; }
       .hero-ctas { align-items: flex-start; }
-      .hero-ctas-row { justify-content: flex-start; } .hero-visual { max-width: 360px; margin: 0 auto; } .hero-visual img { height: 360px; } }
+      .hero-ctas-row { justify-content: flex-start; }
+      .hero-visual { max-width: 360px; margin: 0 auto; }
+      .hero-visual img { height: 360px; }
+    }
 
     .hero-glow {
       position: absolute; inset: 0; z-index: 0;
-      background: radial-gradient(ellipse 80% 60% at 20% 50%, rgba(99,102,241,0.2) 0%, transparent 70%);
+      background: radial-gradient(ellipse 80% 60% at 20% 50%, rgba(99,102,241,0.08) 0%, transparent 70%),
+                  radial-gradient(ellipse 60% 60% at 80% 30%, rgba(129,140,248,0.06) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -150,7 +185,7 @@
 
     .hero-sub {
       font-size: 17px; color: #0F172A;
-      max-width: 540px; margin: 0 0 40px;
+      max-width: 520px; margin: 0 0 40px;
       line-height: 1.7; font-weight: 300;
     }
 
@@ -222,21 +257,9 @@
     .logo-badge:hover img { opacity: 1; }
     .logo-badge--cronos img { height: 64px !important; filter: none; opacity: 1; }
     .logo-badge--cronos:hover img { opacity: 1 !important; }
-    .logo-badge:hover img { filter: brightness(0) invert(1) opacity(0.65); }
-    .logo-badge--cronos { border-color: rgba(99,102,241,0.2); }
-    .logo-badge--cronos img { filter: brightness(0) invert(1) sepia(1) hue-rotate(210deg) saturate(3) opacity(0.45); }
-
-    .trust-stats {
-      display: flex; gap: 32px; flex-wrap: wrap; margin-left: auto;
-    }
-    .trust-stat { text-align: center; }
-    .trust-stat-num {
-      font-size: 22px; font-weight: 300; color: var(--indigo);
-      letter-spacing: -0.01em;
-    }
-    .trust-stat-lbl {
-      font-size: 11px; color: var(--text-muted); margin-top: 2px;
-    }
+    .logo-badge-text { font-size: 15px; font-weight: 600; color: #334155; letter-spacing: 0.02em; }
+    .logo-badge:hover .logo-badge-text { color: #334155; }
+    .trust-stats { display: none; }
 
     /* ── STATS ROW ── */
     .stats-row {
@@ -252,6 +275,7 @@
       font-size: 40px; font-weight: 300; color: var(--text);
       letter-spacing: -0.02em; line-height: 1;
     }
+    .stat-num sup { font-size: 20px; color: var(--indigo); }
     .stat-num .accent { color: var(--indigo); }
     .stat-lbl {
       font-size: 11px; color: var(--text-muted);
@@ -336,6 +360,7 @@
     }
 
     /* ── LOGO GRID SECTION ── */
+    /* ── Logo grid — Clay/Linear style wordmarks ── */
     .logo-grid-section {
       background: #FFFFFF;
       border-top: 1px solid rgba(255,255,255,0.06);
@@ -351,33 +376,44 @@
       margin-bottom: 2.5rem;
     }
     .logo-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1.5rem 2rem;
-      max-width: 900px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+      max-width: 960px;
       margin: 0 auto;
       padding: 0 40px;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      overflow: hidden;
     }
     .logo-item {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem 1.2rem;
-      border: 1px solid #1a2235;
-      border-radius: 8px;
-      transition: border-color 0.2s, background 0.2s;
-      background: rgba(0,0,0,0.01);
+      padding: 1.2rem 1.6rem;
+      border-right: 1px solid #E2E8F0;
+      border-bottom: 1px solid #E2E8F0;
+      transition: background 0.2s;
+      background: transparent;
+      flex: 0 0 20%;
     }
-    .logo-item:hover { border-color: #2d3f5a; background: rgba(99,102,241,0.04); }
-    .logo-item img {
-      height: 28px;
-      width: auto;
-      max-width: 110px;
-      object-fit: contain;
-      filter: brightness(0) invert(1) opacity(0.22);
-      transition: filter 0.2s;
+    .logo-item:hover { background: rgba(99,102,241,0.04); }
+    .logo-img { height: 32px; width: auto; max-width: 120px; object-fit: contain; filter: none; opacity: 0.6; transition: opacity 0.2s; }
+    .logo-item:hover .logo-img { opacity: 0.85; }
+    /* Clay/Linear style wordmark */
+    .logo-wordmark {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #1e3045;
+      text-align: center;
+      transition: color 0.2s;
+      font-family: -apple-system, 'Inter', 'Helvetica Neue', sans-serif;
+      white-space: nowrap;
     }
-    .logo-item:hover img { filter: brightness(0) invert(1) opacity(0.45); }
+    .logo-item:hover .logo-wordmark { color: #3a5570; }
+    @media (max-width: 640px) { .logo-item { flex: 0 0 33.33%; } }
 
     /* ── PRICING ── */
     .pricing-box {
@@ -445,6 +481,7 @@
       border: 0.5px solid var(--border);
       border-radius: 12px; padding: 32px;
     }
+    /* Case study cards */
     .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
     .case-card { background: #F8FAFC; border: 0.5px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.2s; }
     .case-card:hover { border-color: rgba(99,102,241,0.3); }
@@ -501,6 +538,17 @@
       padding: 56px 40px;
       text-align: center;
     }
+    /* Founder section */
+    .founder-section { padding: 48px 40px; max-width: 1100px; margin: 0 auto; }
+    .founder-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .founder-images { display: flex; flex-direction: column; gap: 12px; }
+    .founder-img-main { width: 100%; border-radius: 16px; object-fit: cover; max-height: 280px; filter: brightness(0.88) contrast(1.05); border: 1px solid #E2E8F0; }
+    .founder-img-team { width: 100%; border-radius: 12px; object-fit: cover; max-height: 180px; object-position: center 30%; filter: brightness(0.82) contrast(1.05) saturate(0.85); border: 1px solid #E2E8F0; }
+    .founder-h { font-size: clamp(26px, 3.5vw, 38px); font-weight: 700; color: var(--text); margin-bottom: 1.2rem; line-height: 1.2; }
+    .founder-text p { color: var(--text-dim); line-height: 1.8; margin-bottom: 1rem; font-size: 15px; }
+    .founder-sig { color: #6366f1 !important; font-style: italic; font-weight: 600; }
+    .section-label-sm { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6366f1; margin-bottom: 1rem; }
+    @media (max-width: 768px) { .founder-inner { grid-template-columns: 1fr; } }
     /* ── CTA Card ── */
     .cta-card { max-width: 440px; margin: 32px auto 0; background: #fff; border: 1px solid #E2E8F0; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
     .cta-card-person { display: flex; align-items: center; gap: 14px; }
@@ -580,6 +628,7 @@
     .hero-stat-line { text-align: center; font-size: 13px; color: #334155; margin-top: 1rem; letter-spacing: 0.02em; }
 
     /* ── COMPARE TABLE ── */
+    /* ── PROBLEM SECTION ── */
     .problem-section { padding: 48px 40px; border-bottom: 1px solid var(--border); }
     .problem-inner { max-width: 960px; margin: 0 auto; }
     .problem-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #ef4444; background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.18); display: inline-block; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; }
@@ -591,6 +640,7 @@
     .problem-card-title { font-size: 15px; font-weight: 700; color: #0F172A; margin-bottom: 10px; line-height: 1.35; }
     .problem-card-text { font-size: 14px; color: #0F172A; line-height: 1.75; }
     @media (max-width: 768px) { .problem-cards { grid-template-columns: 1fr; } .problem-section { padding: 56px 20px; } }
+
     .compare-section { padding: 48px 40px; }
     .compare-wrap { max-width: 800px; margin: 0 auto; overflow-x: auto; }
     .compare-table { width: 100%; border-collapse: collapse; }
@@ -638,37 +688,26 @@
       .hero { padding: 20px 24px 28px; }
 
       /* ── MOBILE HERO: conversion-first ── */
-
-      /* Bigger headline — statement not sentence */
       .hero h1 { font-size: clamp(32px, 9vw, 48px); letter-spacing: -0.03em; }
-
-      /* Hide everything that delays the CTA */
       .hero-sub { display: none !important; }
       .hero-sub-hide-mobile { display: none !important; }
       .hero-tagline-main { font-size: 17px; font-weight: 500; color: #0F172A; margin-bottom: 28px; }
-
-      /* Hide badge on mobile — headline leads cold */
       .hero-tag { display: none !important; }
-
-      /* Hide live data card on mobile — scroll waste before commitment */
       .hero-stat-card { display: none !important; }
-
-      /* Single CTA: hide ghost button, make primary full-width */
       .hero-ctas { align-items: stretch; width: 100%; }
       .hero-ctas-row { flex-direction: column; gap: 0; width: 100%; }
       .hero-ctas-row .btn-primary { width: 100%; text-align: center; box-sizing: border-box; padding: 17px; font-size: 16px; font-weight: 700; border-radius: 10px; }
       .hero-ctas-row .btn-ghost { display: none !important; }
 
-      /* Trust bar — logos smaller, no overflow */
+      /* Trust bar */
       .trust-bar { padding: 16px 24px; }
       .logo-badge { padding: 0.5rem 0.5rem; flex: 1; min-width: 0; }
       .logo-badge img { height: 36px !important; max-width: 100px !important; object-fit: contain; }
       .logo-badge--cronos img { height: 40px !important; }
       .trust-logos { gap: 0; }
 
-      /* General sections — 24px horizontal */
+      /* General sections */
       .section { padding: 32px 24px; }
-      .trust-stats { margin-left: 0; }
       .stats-row { grid-template-columns: repeat(2, 1fr); }
       .stat-box { border-right: none; border-bottom: 1px solid var(--border); }
       .features-grid,
@@ -1281,7 +1320,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo" style="text-decoration:none;cursor:pointer;">
+  <a href="/es/" class="nav-logo" style="text-decoration:none;cursor:pointer;">
     <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
       <circle cx="20" cy="20" r="18" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.5"/>
       <circle cx="20" cy="20" r="13" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
@@ -1297,15 +1336,15 @@
     <span class="nav-logo-text">envoya</span>
   </a>
   <div class="nav-links">
-    <a href="#features">Functies</a>
-    <a href="#how-it-works">Hoe het werkt</a>
-    <a href="#pricing">Prijzen</a>
-    <a href="#contact">Contact</a>
+    <a href="#showcase">Cómo funciona</a>
+    <a href="#pricing">Precios</a>
+    <a href="#faq">Preguntas frecuentes</a>
+    <a href="#contact">Contacto</a>
   </div>
   <div style="display:flex;align-items:center;">
+    <a href="/nl/" class="nav-lang">NL</a>
     <a href="/" class="nav-lang">EN</a>
-    <a href="/es/" class="nav-lang">ES</a>
-    <span style="font-size:11px;color:#EF4444;font-weight:500;margin-right:8px;">2 plekken over</span><a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="nav-cta">Plan een demo</a>
+    <span style="font-size:11px;color:#EF4444;font-weight:500;margin-right:8px;">2 plazas disponibles</span><a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="nav-cta">Reservar demo</a>
   </div>
 </nav>
 
@@ -1314,48 +1353,51 @@
   <div class="hero-glow"></div>
   <div class="hero-inner">
 
+  <!-- Left: text content -->
   <div class="hero-text">
-    <div class="hero-tag">Gebruikt door Jungle Minds &amp; Cronos Group</div>
-    <h1>35 afspraken. 90 dagen.<br><em>Één agent. Nul koude acquisitie.</em></h1>
-    <p class="hero-tagline-main">Wat als je je dag kon besteden aan deals sluiten in plaats van leads zoeken?</p>
-    <p class="hero-sub">Envoya's AI-agent vindt de juiste prospects, schrijft het juiste bericht en vertelt je precies wie je wanneer moet contacteren. Jij blijft in controle. De agent doet het voorwerk. Jouw agenda vult zich. Jij sluit de deal.</p>
+    <div class="hero-tag">Usado por Jungle Minds &amp; Cronos Group</div>
+    <h1>35 reuniones. 90 días.<br><em>Un agente. Cero llamadas en frío.</em></h1>
+    <p class="hero-tagline-main">¿Y si pudieras pasar el día cerrando acuerdos en lugar de buscarlos?</p>
+
+    <p class="hero-sub">El agente de IA de Envoya encuentra los prospectos adecuados, escribe el mensaje correcto y te dice exactamente a quién contactar y cuándo. Tú mantienes el control. El agente hace el trabajo previo. Tu agenda se llena. Tú cierras.</p>
     <div class="hero-ctas">
       <div class="hero-ctas-row">
-        <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="btn-primary">Plan een demo</a>
-        <a href="#showcase" class="btn-ghost">Hoe het werkt ↓</a>
+        <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="btn-primary">Reservar demo</a>
+        <a href="#showcase" class="btn-ghost">Cómo funciona ↓</a>
       </div>
       
     </div>
   </div>
 
+  <!-- Right: agent visual -->
   <div class="hero-stat-card">
     <div class="hsc-header">
       <span class="hsc-dot"></span>
-      <span class="hsc-live">Live campagne data</span>
-      <span class="hsc-pulse">Realtime bijgewerkt</span>
+      <span class="hsc-live">Datos de campaña en vivo</span>
+      <span class="hsc-pulse">Actualizando en tiempo real</span>
     </div>
     <div class="hsc-main">
       <span class="hsc-num" id="hsc-meetings">0</span>
-      <span class="hsc-label">nieuwe afspraken geboekt</span>
+      <span class="hsc-label">nuevas reuniones reservadas</span>
     </div>
     <div class="hsc-grid">
       <div class="hsc-item">
         <span class="hsc-num-sm" id="hsc-prospects">0</span>
-        <span class="hsc-label-sm">prospects bereikt</span>
+        <span class="hsc-label-sm">prospectos contactados</span>
       </div>
       <div class="hsc-item">
         <span class="hsc-num-sm" id="hsc-reply">0%</span>
-        <span class="hsc-label-sm">gem. responspercentage</span>
+        <span class="hsc-label-sm">tasa de respuesta media</span>
       </div>
       <div class="hsc-item hsc-item--wide">
         <span class="hsc-num-lg" id="hsc-pipeline">€0</span>
-        <span class="hsc-label-sm">open pipeline</span>
+        <span class="hsc-label-sm">pipeline abierto</span>
       </div>
     </div>
     <div class="hsc-bar-wrap">
       <div class="hsc-bar" id="hsc-bar"></div>
     </div>
-    <div class="hsc-bar-label">Campagne voortgang — week 6 van 12</div>
+    <div class="hsc-bar-label">Progreso de campaña — semana 6 de 12</div>
     <div class="hsc-footer">
       <div class="hsc-avatar-row">
         <img src="/assets/jeffrey-van-den-dungen.webp" class="hsc-avatar" alt="Jeffrey">
@@ -1370,7 +1412,7 @@
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
-  <span class="trust-label">Vertrouwd door teams bij</span>
+  <span class="trust-label">De confianza en empresas como</span>
   <div class="trust-logos">
     <div class="logo-badge"><img src="/assets/logos/jungleminds.png" alt="Jungle Minds"></div>
     <div class="logo-badge"><img src="/assets/logos/brushai.png" alt="Brush AI"></div>
@@ -1379,27 +1421,28 @@
 </div>
 
 
+
 <!-- PROBLEM SECTION -->
 <section class="problem-section fade-in">
   <div class="problem-inner">
-    <div class="problem-tag">HET PROBLEEM</div>
-    <h2 class="problem-h">De meeste B2B-bedrijven verliezen elke dag deals<br>die ze nooit te zien krijgen.</h2>
-    <p class="problem-sub">Dat is geen schatting. Dat is wat er gebeurt wanneer je concurrent 10x meer prospects bereikt dan jij — met hetzelfde product, hetzelfde team, en een slimmer outreach-systeem.</p>
+    <div class="problem-tag">EL PROBLEMA</div>
+    <h2 class="problem-h">La empresa B2B promedio pierde €2M en pipeline cada año.<br>No por mal producto. Por mala prospección.</h2>
+    <p class="problem-sub">No es una estimación. Es lo que pasa cuando tu competencia llega a 10 veces más prospectos que tú — con el mismo producto, el mismo equipo y un sistema de prospección más inteligente.</p>
     <div class="problem-cards">
       <div class="problem-card">
         <span class="problem-card-icon">🎲</span>
-        <h3 class="problem-card-title">Je pipeline draait op geluk</h3>
-        <p class="problem-card-text">2–3 meetings per week als het meezit. Je concurrent boekt 15+ — zelfde product, zelfde markt, slimmere outreach. Het verschil zit in de machine, niet het team.</p>
+        <h3 class="problem-card-title">Tu pipeline depende de la suerte</h3>
+        <p class="problem-card-text">2–3 reuniones a la semana si tienes suerte. Tu competencia reserva 15+ — mismo producto, mismo mercado, prospección más inteligente. La diferencia es la máquina, no el equipo.</p>
       </div>
       <div class="problem-card">
         <span class="problem-card-icon">🔥</span>
-        <h3 class="problem-card-title">Generieke outreach verbrandt je reputatie</h3>
-        <p class="problem-card-text">Copy-paste templates. 0,3% responspercentage. Elke massa-e-mail leert prospects je permanent te negeren. Je verliest niet alleen tijd. Je verliest toekomstige deals.</p>
+        <h3 class="problem-card-title">La prospección genérica destruye tu reputación</h3>
+        <p class="problem-card-text">Plantillas de copiar y pegar. 0,3% de tasa de respuesta. Cada email masivo que envías enseña a los prospectos a ignorarte — permanentemente. No solo pierdes tiempo. Pierdes negocios futuros.</p>
       </div>
       <div class="problem-card">
         <span class="problem-card-icon">📋</span>
-        <h3 class="problem-card-title">Je closers doen adminwerk in plaats van dealen</h3>
-        <p class="problem-card-text">4–6 uur per dag aan research, schrijven en opvolgen. Dat is €80K/jaar aan salaris voor werk dat een machine zou moeten doen. Terwijl je beste mensen met klanten hadden kunnen praten.</p>
+        <h3 class="problem-card-title">Tus vendedores hacen admin en lugar de cerrar</h3>
+        <p class="problem-card-text">4–6 horas al día investigando, escribiendo, haciendo seguimiento. Eso son €80K/año en salario gastado en trabajo que debería hacer una máquina. Mientras tus mejores personas podrían estar hablando con clientes.</p>
       </div>
     </div>
   </div>
@@ -1408,20 +1451,20 @@
 <!-- DREAM OUTCOME -->
 <section class="dream-section fade-in">
   <div class="dream-inner">
-    <div class="dream-tag">IDEAAL SCENARIO</div>
-    <p class="dream-stat-line">€345K open pipeline. 28 afspraken. 4 weken. Één agent.</p>
-    <h2 class="dream-h">Dit is jouw agenda na 4 weken.</h2>
+    <div class="dream-tag">RESULTADO IDEAL</div>
+    <p class="dream-stat-line">€345K en pipeline abierto. 28 reuniones. 4 semanas. Un agente.</p>
+    <h2 class="dream-h">Así queda tu agenda después de 4 semanas.</h2>
     <!-- subline rendered dynamically by calendar widget -->
     <div id="cal-controls-top" class="cal-controls-top"></div>
     <div class="macbook-img-wrap">
       <div class="macbook-screen-content">
         <div id="calendar-widget"></div>
       </div>
-      <img src="/assets/macbook-frame.png" class="macbook-img" alt="Lead Machine dashboard on MacBook" draggable="false">
+      <img src="/assets/macbook-frame.png" class="macbook-img" alt="Panel de Lead Machine en MacBook" draggable="false">
     </div>
     <div id="cal-controls-bottom" class="cal-controls-bottom"></div>
     <div id="calendar-widget-mobile" class="cal-mobile-only"></div>
-    <p class="dream-footer">Zilveren Kruis · ABN AMRO · Philips · Unilever · KPN · TomTom — allemaal geboekt via Lead Machine.</p>
+    <p class="dream-footer">Zilveren Kruis · ABN AMRO · Philips · Unilever · KPN · TomTom — todos reservados a través de Lead Machine.</p>
   </div>
 </section>
 
@@ -1429,20 +1472,20 @@
 <!-- SOCIAL PROOF -->
 <section class="social-proof fade-in">
   <div class="social-proof-inner">
-    <div class="section-tag">Echte resultaten</div>
-    <h2 class="section-h">Ze geloofden het ook niet.<br>Tot ze de cijfers zagen.</h2>
+    <div class="section-tag">Resultados reales</div>
+    <h2 class="section-h">Ellos tampoco lo creyeron.<br>Hasta que vieron los números.</h2>
     <div class="social-proof-cards">
 
       <!-- Jeffrey — Jungle Minds -->
       <div class="sp-card sp-card--jm">
         <div class="sp-kpis">
-          <div class="sp-kpi"><div class="sp-kpi-num">36</div><div class="sp-kpi-lbl">geboekte nieuwe afspraken</div></div>
-          <div class="sp-kpi"><div class="sp-kpi-num">50+</div><div class="sp-kpi-lbl">warme leads in pipeline</div></div>
-          <div class="sp-kpi"><div class="sp-kpi-num">€140K</div><div class="sp-kpi-lbl">open pipeline waarde</div></div>
+          <div class="sp-kpi"><div class="sp-kpi-num">36</div><div class="sp-kpi-lbl">nuevas citas reservadas</div></div>
+          <div class="sp-kpi"><div class="sp-kpi-num">50+</div><div class="sp-kpi-lbl">leads calientes en el pipeline</div></div>
+          <div class="sp-kpi"><div class="sp-kpi-num">€140K</div><div class="sp-kpi-lbl">valor del pipeline abierto</div></div>
         </div>
-        <p class="sp-quote">"Van 2 afspraken per maand naar een structureel volle agenda. De pipeline die dit genereerde overtreft wat we voorheen in een heel jaar sloten."</p>
+        <p class="sp-quote">"De 2 reuniones al mes a un calendario estructuralmente lleno. El pipeline que generó es más de lo que solíamos cerrar en un año."</p>
         <div>
-          <span class="sp-client-logos-label">Afspraken bij:</span>
+          <span class="sp-client-logos-label">Reuniones en:</span>
           <div class="sp-client-logos">
             <span class="sp-client-logo-pill">VodafoneZiggo</span>
             <span class="sp-client-logo-pill">Alliander</span>
@@ -1462,13 +1505,13 @@
       <!-- Noëlle — Brush AI -->
       <div class="sp-card sp-card--bai">
         <div class="sp-kpis">
-          <div class="sp-kpi"><div class="sp-kpi-num">42</div><div class="sp-kpi-lbl">geboekte nieuwe afspraken</div></div>
-          <div class="sp-kpi"><div class="sp-kpi-num">46</div><div class="sp-kpi-lbl">warme leads in pipeline</div></div>
-          <div class="sp-kpi"><div class="sp-kpi-num">€128K+</div><div class="sp-kpi-lbl">gegenereerde omzet</div></div>
+          <div class="sp-kpi"><div class="sp-kpi-num">42</div><div class="sp-kpi-lbl">nuevas citas reservadas</div></div>
+          <div class="sp-kpi"><div class="sp-kpi-num">46</div><div class="sp-kpi-lbl">leads calientes en el pipeline</div></div>
+          <div class="sp-kpi"><div class="sp-kpi-num">€128K+</div><div class="sp-kpi-lbl">ingresos generados</div></div>
         </div>
-        <p class="sp-quote">"Koude acquisitie werd ons meest betrouwbare verkoopkanaal. ROI duidelijk na week één."</p>
+        <p class="sp-quote">"El outreach en frío se convirtió en nuestro canal de ingresos más fiable. El ROI fue claro desde la primera semana."</p>
         <div>
-          <span class="sp-client-logos-label">Afspraken bij:</span>
+          <span class="sp-client-logos-label">Reuniones en:</span>
           <div class="sp-client-logos">
           <span class="sp-client-logo-pill">Triodos Bank</span>
           <span class="sp-client-logo-pill">KPN</span>
@@ -1489,15 +1532,15 @@
 
       <!-- Third card — coming soon -->
       <div class="sp-card--coming">
-        <div class="sp-coming-label">Volgende klant</div>
-        <div class="sp-coming-text">Kan dit jouw bedrijf zijn?</div>
-        <div class="sp-coming-sub">We onboarden nu nieuwe klanten. Aantal plekken beperkt.</div>
-        <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="sp-coming-cta">Boek een demo →</a>
+        <div class="sp-coming-label">Próximo cliente</div>
+        <div class="sp-coming-text">¿Podría ser<br>tu empresa?</div>
+        <div class="sp-coming-sub">Estamos incorporando nuevos clientes ahora. Las plazas son limitadas.</div>
+        <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="sp-coming-cta">Reservar demo →</a>
       </div>
 
     </div>
 
-    <div class="sp-deal-bar">1 getekende deal dekt de volledige investering. <span>Alles daarna is pure winst.</span></div>
+    <div class="sp-deal-bar">1 acuerdo firmado cubre la inversión completa. <span>Cada acuerdo posterior es rentabilidad pura.</span></div>
 
   </div>
 </section>
@@ -1505,17 +1548,17 @@
 <!-- PRODUCT SHOWCASE -->
 <section class="section fb-section" id="showcase">
   <div class="fb-header fade-in">
-    <div class="section-tag">HET SYSTEEM</div>
-    <h2 class="section-h">Vier stappen. Één agent. Volle pipeline.</h2>
-    <p class="section-p">Dit is wat er draait terwijl jij slaapt.</p>
+    <div class="section-tag">EL SISTEMA</div>
+    <h2 class="section-h">Cuatro pasos. Un agente. Pipeline completo.</h2>
+    <p class="section-p">Esto es lo que funciona mientras duermes.</p>
   </div>
 
   <!-- Block 1: text left, diagram right — Indigo -->
   <div class="fb-block">
     <div class="fb-text">
-      <h3 class="fb-headline">Vind de juiste lead.</h3>
-      <p class="fb-body">Lead Machine trekt uit 275M+ contacten, scoort elk contact op basis van jouw ICP en toont alleen de leads die het meest kans maken. Geen handmatig research. Alleen leads met score 80+ komen door.</p>
-      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="fb-cta">Vraag een demo →</a>
+      <h3 class="fb-headline">Encuentra el lead correcto.</h3>
+      <p class="fb-body">Lead Machine extrae de más de 275M de contactos, puntúa cada contacto frente a tu ICP y presenta solo los leads con más probabilidad de responder. Sin investigación manual. Solo leads con puntuación 80+ pasan el filtro.</p>
+      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="fb-cta">Solicitar demo →</a>
     </div>
     <div class="fb-image">
       <div class="fb-diagram fb-diagram--indigo">
@@ -1527,9 +1570,9 @@
   <!-- Block 2: diagram left, text right — Amber -->
   <div class="fb-block fb-block-reverse">
     <div class="fb-text">
-      <h3 class="fb-headline">Elke e-mail voelt alsof hij met de hand is geschreven.</h3>
-      <p class="fb-body">Echte signalen — een recent interview, een nieuwe aanstelling, een gepubliceerd artikel — worden de haak. Elk bericht is uniek. Daarom is onze responsrate <strong style="color:#6366F1;font-weight:700">5×</strong> het branchegemiddelde.</p>
-      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="fb-cta">Vraag een demo →</a>
+      <h3 class="fb-headline">Cada email parece escrito a mano.</h3>
+      <p class="fb-body">Señales reales — una entrevista reciente, una nueva contratación, un artículo publicado — se convierten en el gancho. Cada mensaje es único. Por eso nuestra tasa de respuesta es <strong style="color:#6366F1;font-weight:700">5×</strong> la media del sector.</p>
+      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="fb-cta">Solicitar demo →</a>
     </div>
     <div class="fb-image">
       <div class="fb-diagram fb-diagram--amber">
@@ -1541,9 +1584,9 @@
   <!-- Block 3: text left, diagram right — Emerald -->
   <div class="fb-block">
     <div class="fb-text">
-      <h3 class="fb-headline">Meetings gepland. Jij closet.</h3>
-      <p class="fb-body">Reacties worden automatisch naar jou doorgestuurd. Warme leads worden bijgehouden. Meetings worden ingepland. Jij verschijnt gewoon. Elke afspraak geboekt door je agent.</p>
-      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="fb-cta">Vraag een demo →</a>
+      <h3 class="fb-headline">Las reuniones llegan. Tú cierras.</h3>
+      <p class="fb-body">Las respuestas se enrutan hacia ti automáticamente. Los leads calientes se rastrean. Las reuniones llegan a tu calendario. Tú apareces. Cada reunión reservada por tu agente.</p>
+      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="fb-cta">Solicitar demo →</a>
     </div>
     <div class="fb-image">
       <div class="fb-diagram fb-diagram--emerald">
@@ -1555,9 +1598,9 @@
   <!-- Block 4: diagram left, text right — Rose -->
   <div class="fb-block fb-block-reverse">
     <div class="fb-text">
-      <h3 class="fb-headline">Het wordt slimmer bij elke deal.</h3>
-      <p class="fb-body">Na elke meeting, elke reactie, elke deal — past Lead Machine zijn model aan. <span style="font-weight:600;color:#0F172A;">Week 8 presteert gemiddeld 40% beter dan week 1.</span> Het ICP scherpt. Het targeten verbetert. Samengesteld rendement vanaf dag één.</p>
-      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="fb-cta">Vraag een demo →</a>
+      <h3 class="fb-headline">Se vuelve más inteligente con cada acuerdo.</h3>
+      <p class="fb-body">Después de cada reunión, cada respuesta, cada acuerdo cerrado — Lead Machine actualiza su modelo. <span style="font-weight:600;color:#0F172A;">La semana 8 supera a la semana 1 en un promedio del 40%.</span> El ICP se afina. El targeting mejora. Rentabilidad compuesta desde el primer día.</p>
+      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="fb-cta">Solicitar demo →</a>
     </div>
     <div class="fb-image">
       <div class="fb-diagram fb-diagram--rose">
@@ -1568,148 +1611,28 @@
 </section>
 
 
-
-
-
-
-
-<!-- PRICING -->
-<section class="section" id="pricing">
-  <div class="section-tag fade-in">Prijzen</div>
-  <div class="section-h fade-in">De laatste sales-investering die je ooit doet.</div>
-  <div class="pricing-box fade-in">
-    <div>
-      <div class="price-num">€25K</div>
-      <div class="price-note">per bedrijf · 3 seats · lifetime licentie</div>
-      <div class="price-items">
-        <div class="price-item">
-          <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          Een volledig outbound-systeem dat 24/7 draait
-        </div>
-        <div class="price-item">
-          <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          Live setup met jouw eigen leads in 2 uur
-        </div>
-        <div class="price-item">
-          <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          Geen maandelijkse kosten — ooit
-        </div>
-        <div class="price-item">
-          <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          AI die elke week slimmer wordt
-        </div>
-        <div class="price-item">
-          <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          Zie elke lead, reactie en meeting op één plek
-        </div>
-      </div>
-      <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:10px 16px;margin:16px 0;font-size:13px;color:#DC2626;font-weight:500;">Volgende onboarding: 7 april · 1 plek beschikbaar</div>
-      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="price-cta" style="width:100%;text-align:center;display:block;">Plan een demo →</a>
-      <p style="font-size:12px;color:#94A3B8;margin-top:10px;text-align:center;">Doorgaans operationeel binnen 7 dagen na ondertekening.</p>
+<!-- FOUNDER SECTION -->
+<section class="founder-section fade-in">
+  <div class="founder-inner">
+    <div class="founder-images">
+      <img src="/assets/lennart-working-1.jpg" alt="Lennart de Haan trabajando" class="founder-img-main" />
+      <img src="/assets/team-happy.jpg" alt="Equipo contento" class="founder-img-team" />
     </div>
-    <div>
-      <div class="roi-title">Waarom dit zich in week één terugbetaalt.</div>
-      <div class="roi-row"><span class="roi-label">BDR-salaris (NL)</span><span class="roi-val">€40–60K / jaar</span></div>
-      <div class="roi-row"><span class="roi-label">Envoya Lead Machine</span><span class="roi-val">€25K eenmalig</span></div>
-      <div class="roi-row"><span class="roi-label">Gem. meetings / maand</span><span class="roi-val">8–12</span></div>
-      <div class="roi-row"><span class="roi-label">Break-even</span><span class="roi-val">1 afgesloten deal</span></div>
-      <div class="roi-row"><span class="roi-label" style="font-size:13px;color:#0F172A;">Kosten jaar 2</span><span style="font-size:13px;font-weight:700;color:#16A34A;">€0</span></div>
-      <div class="roi-row" style="border-bottom:none;"><span class="roi-label" style="font-size:13px;color:#0F172A;">Jouw concurrent betaalt</span><span style="font-size:13px;font-weight:600;color:#EF4444;">€50K opnieuw</span></div>
+    <div class="founder-text">
+      <p class="section-label-sm">Creado por un vendedor, para vendedores</p>
+      <h2 class="founder-h">Yo era el cuello de botella.<br>Así que me automaticé.</h2>
+      <p>Después de 15 años en ventas pasaba 4 horas al día en prospección. Buenos resultados. No escalable. Así que construí Lead Machine. En los primeros 90 días reservó 35 reuniones para mi propio pipeline. Luego se lo di a Jungle Minds y Brush AI. Mismo resultado.</p>
+      <p class="founder-sig">— Lennart de Haan, Co-Founder Envoya</p>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="section faq-section fade-in" id="faq">
-  <div class="section-tag">FAQ</div>
-  <h2 class="section-h" style="font-size:32px;font-weight:700;color:#0F172A;">Nog niet zeker? Dit vragen mensen altijd vlak voor ze tekenen.</h2>
-  <div class="faq-accordion" id="faq-accordion">
-
-    <div class="faq-row open" data-i="0">
-      <button class="faq-q-btn" onclick="toggleFaq(0)">
-        <span>Is dit niet gewoon een duur spam-instrument?</span>
-        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="faq-a-wrap">
-        <p class="faq-a">Nee. Spam is volume zonder relevantie. Lead Machine verstuurt minder e-mails, naar meer gerichte mensen, met meer personalisatie dan een mens ooit zou kunnen. Het gemiddelde responspercentage is 16–26%. Spam haalt 0,1%.</p>
-      </div>
-    </div>
-
-    <div class="faq-row" data-i="1">
-      <button class="faq-q-btn" onclick="toggleFaq(1)">
-        <span>Hoe verschilt dit van een SDR inhuren?</span>
-        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="faq-a-wrap">
-        <p class="faq-a">Een SDR kost €60–90K per jaar, heeft 3 maanden nodig om op te starten en vertrekt. Lead Machine kost €25K éénmalig, is live in 2 uur en wordt beter naarmate je het gebruikt. Hij belt ook niet ziek.</p>
-      </div>
-    </div>
-
-    <div class="faq-row" data-i="2">
-      <button class="faq-q-btn" onclick="toggleFaq(2)">
-        <span>Wat als het bij ons niet werkt?</span>
-        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="faq-a-wrap">
-        <p class="faq-a">We doen een kwalificatiegesprek van 20 minuten voordat je koopt. Als we denken dat Lead Machine niet geschikt is voor jouw bedrijf, zeggen we dat eerlijk. We hebben al klanten afgewezen.</p>
-      </div>
-    </div>
-
-    <div class="faq-row" data-i="3">
-      <button class="faq-q-btn" onclick="toggleFaq(3)">
-        <span>Hoe snel zien we resultaten?</span>
-        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="faq-a-wrap">
-        <p class="faq-a">Eerste e-mails gaan binnen 48 uur na setup de deur uit. Eerste reacties komen doorgaans binnen de eerste week. De meeste klanten hebben hun eerste meeting geboekt binnen 10 dagen.</p>
-      </div>
-    </div>
-
-    <div class="faq-row" data-i="4">
-      <button class="faq-q-btn" onclick="toggleFaq(4)">
-        <span>Moeten we ons verkoopproces aanpassen?</span>
-        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="faq-a-wrap">
-        <p class="faq-a">Nee. Lead Machine past zich aan jouw bestaande werkwijze aan. Jij doet nog steeds de gesprekken en sluit de deals. Wij vullen alleen je agenda.</p>
-      </div>
-    </div>
-
-    <div class="faq-row" data-i="5">
-      <button class="faq-q-btn" onclick="toggleFaq(5)">
-        <span>Is het echt AI, of gewoon mailmerge?</span>
-        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="faq-a-wrap">
-        <p class="faq-a">Echt AI. Elke e-mail wordt opnieuw gegenereerd vanuit een echt signaal dat specifiek is voor die persoon — een presentatie, een artikel, een bedrijfsverandering. Geen twee e-mails zijn hetzelfde.</p>
-      </div>
-    </div>
-
-    <div class="faq-row" data-i="6">
-      <button class="faq-q-btn" onclick="toggleFaq(6)">
-        <span>Waarom €25K en geen maandelijks abonnement?</span>
-        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="faq-a-wrap">
-        <p class="faq-a">Omdat abonnementen onze prikkels verkeerd aligneren. Een maandelijkse vergoeding betekent dat wij baat hebben bij je aanblijven — ook als je geen resultaten boekt. Een eenmalig bedrag betekent dat wij winnen als jij wint. Jij bezit het systeem voor altijd. Geen leveranciersafhankelijkheid. Geen verlengingsonderhandelingen. Eén beslissing, klaar.</p>
-      </div>
-    </div>
-
-  </div>
-
-  <div style="text-align:center;padding:40px 0 0;border-top:0.5px solid #E2E8F0;margin-top:24px;">
-    <p style="font-size:16px;color:#64748B;margin-bottom:16px;">Nog vragen? Boek gewoon de demo van 20 minuten. We beantwoorden alles live.</p>
-    <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" style="background:#6366F1;color:white;font-size:15px;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;display:inline-block;">Boek een demo met Lennart →</a>
-  </div>
-</section>
-
-<!-- CONTACT / CTA -->
+<!-- HUMAN CTA -->
 <section class="cta-section" id="contact">
   <div class="fomo-headline fade-in">
-    <p class="fomo-label">DE OPLOSSING</p>
-    <h2 class="fomo-h">Op dit moment bereikt je concurrent de prospect die jij zou moeten spreken.</h2>
-    <p class="fomo-sub">20 minuten. We laten je precies zien welke bedrijven Lead Machine voor jouw business zou targeten — en hoe de eerste e-mail eruitziet. Je gaat weg met een plan. Of je nu koopt of niet.</p>
-    <p class="fomo-sub" style="display:none">We kijken in 20 minuten naar jouw huidige pipeline, jouw ICP, en wat Envoya concreet voor jouw business kan betekenen. Gratis. Vrijblijvend. Eerlijk.</p>
+    <p class="fomo-label">LA SOLUCIÓN</p>
+    <h2 class="fomo-h">Ahora mismo, tu competencia está llegando<br>al prospecto con el que deberías estar hablando.</h2>
+    <p class="fomo-sub">20 minutos. Te mostramos exactamente qué empresas objetivo Lead Machine para tu negocio — y cómo sería el primer email. Te vas con un plan. Compres o no.</p>
   </div>
   <div class="cta-card fade-in">
     <div class="cta-card-person">
@@ -1720,12 +1643,143 @@
       </div>
     </div>
     <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:10px 16px;font-size:13px;color:#DC2626;font-weight:500;text-align:center;">
-      We onboarden 3 nieuwe klanten per maand. Nu 1 plek beschikbaar voor april.
+      Incorporamos 3 nuevos clientes por mes. Actualmente 1 plaza disponible para abril.
     </div>
-    <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="cta-card-btn">Boek een demo met Lennart →</a>
-    <p class="cta-card-note">Reageert doorgaans binnen 24 uur</p>
+    <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="cta-card-btn">Reservar demo con Lennart →</a>
+    <p class="cta-card-note">Normalmente responde en 24 horas</p>
   </div>
 </section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="section-tag fade-in">Precios</div>
+  <div class="section-h fade-in">La última inversión en ventas que harás.</div>
+  <div class="pricing-box fade-in">
+    <div>
+      <div class="price-num">€25K</div>
+      <div class="price-note">por empresa · 3 licencias · licencia vitalicia</div>
+      <div class="price-items">
+        <div class="price-item">
+          <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Una máquina de outbound completa funcionando 24/7
+        </div>
+        <div class="price-item">
+          <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Configuración en vivo con tus propios leads en 2 horas
+        </div>
+        <div class="price-item">
+          <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Sin cuotas mensuales — nunca
+        </div>
+        <div class="price-item">
+          <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          IA que mejora cada semana que la usas
+        </div>
+        <div class="price-item">
+          <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Ve cada lead, respuesta y reunión en un solo lugar
+        </div>
+      </div>
+      <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:10px 16px;margin:16px 0;font-size:13px;color:#DC2626;font-weight:500;">Próximo onboarding: 7 de abril · 1 plaza disponible</div>
+      <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="price-cta" style="width:100%;text-align:center;display:block;">Reservar demo →</a>
+      <p style="font-size:12px;color:#94A3B8;margin-top:10px;text-align:center;">Normalmente operativo en 7 días tras la firma.</p>
+    </div>
+    <div>
+      <div class="roi-title">Por qué se paga sola en la primera semana.</div>
+      <div class="roi-row"><span class="roi-label">Salario BDR (NL)</span><span class="roi-val">€40–60K / año</span></div>
+      <div class="roi-row"><span class="roi-label">Envoya Lead Machine</span><span class="roi-val">€25K una vez</span></div>
+      <div class="roi-row"><span class="roi-label">Reuniones medias / mes</span><span class="roi-val">8–12</span></div>
+      <div class="roi-row"><span class="roi-label">Punto de equilibrio</span><span class="roi-val">1 acuerdo firmado</span></div>
+      <div class="roi-row"><span class="roi-label" style="font-size:13px;color:#0F172A;">Coste año 2</span><span style="font-size:13px;font-weight:700;color:#16A34A;">€0</span></div>
+      <div class="roi-row" style="border-bottom:none;"><span class="roi-label" style="font-size:13px;color:#0F172A;">Tu competencia paga</span><span style="font-size:13px;font-weight:600;color:#EF4444;">€50K de nuevo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq-section fade-in" id="faq">
+  <div class="section-tag">Preguntas frecuentes</div>
+  <h2 class="section-h" style="font-size:32px;font-weight:700;color:#0F172A;">¿Todavía no estás seguro? Esto es lo que todos preguntan antes de firmar.</h2>
+  <div class="faq-accordion" id="faq-accordion">
+
+    <div class="faq-row open" data-i="0">
+      <button class="faq-q-btn" onclick="toggleFaq(0)">
+        <span>¿No es esto simplemente una herramienta cara de spam?</span>
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a-wrap">
+        <p class="faq-a">No. El spam es volumen sin relevancia. Lead Machine envía menos emails, a personas más segmentadas, con más personalización de la que cualquier humano podría gestionar. La tasa de respuesta media es del 16–26%. El spam obtiene el 0,1%.</p>
+      </div>
+    </div>
+
+    <div class="faq-row" data-i="1">
+      <button class="faq-q-btn" onclick="toggleFaq(1)">
+        <span>¿En qué se diferencia de contratar un SDR?</span>
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a-wrap">
+        <p class="faq-a">Un SDR cuesta €60–90K al año, tarda 3 meses en arrancar y se va. Lead Machine cuesta €25K una vez, está operativo en 2 horas y mejora con el tiempo. Además, no coge la baja por enfermedad.</p>
+      </div>
+    </div>
+
+    <div class="faq-row" data-i="2">
+      <button class="faq-q-btn" onclick="toggleFaq(2)">
+        <span>¿Y si no funciona para nosotros?</span>
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a-wrap">
+        <p class="faq-a">Hacemos una llamada de cualificación de 20 minutos antes de que compres. Si creemos que Lead Machine no es adecuado para tu negocio, te lo decimos. Hemos rechazado clientes. Las empresas que lo usan tienen un ICP definido, un producto que vale la pena vender y alguien que pueda cerrar las reuniones que reservamos.</p>
+      </div>
+    </div>
+
+    <div class="faq-row" data-i="3">
+      <button class="faq-q-btn" onclick="toggleFaq(3)">
+        <span>¿Con qué rapidez vemos resultados?</span>
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a-wrap">
+        <p class="faq-a">Los primeros emails salen en las 48 horas siguientes a la configuración. Las primeras respuestas suelen llegar durante la primera semana. La mayoría de clientes tienen su primera reunión reservada en 10 días.</p>
+      </div>
+    </div>
+
+    <div class="faq-row" data-i="4">
+      <button class="faq-q-btn" onclick="toggleFaq(4)">
+        <span>¿Necesitamos cambiar nuestro proceso de ventas?</span>
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a-wrap">
+        <p class="faq-a">No. Lead Machine se adapta a tu flujo de trabajo existente. Tú sigues haciendo las conversaciones y los cierres. Nosotros solo llenamos tu calendario.</p>
+      </div>
+    </div>
+
+    <div class="faq-row" data-i="5">
+      <button class="faq-q-btn" onclick="toggleFaq(5)">
+        <span>¿Es realmente IA o solo combinación de correo?</span>
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a-wrap">
+        <p class="faq-a">Realmente IA. Cada email se genera desde cero usando una señal real específica de esa persona — una charla que dio, un artículo que escribió, un movimiento de la empresa. No hay dos emails iguales. El sistema también aprende qué patrones generan reuniones y se ajusta automáticamente.</p>
+      </div>
+    </div>
+
+    <div class="faq-row" data-i="6">
+      <button class="faq-q-btn" onclick="toggleFaq(6)">
+        <span>¿Por qué €25K y no una suscripción mensual?</span>
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-a-wrap">
+        <p class="faq-a">Porque las suscripciones alinean los incentivos de forma incorrecta. Una cuota mensual significa que nos beneficiamos cuando te quedas — aunque no obtengas resultados. Un pago único significa que ganamos cuando tú ganas. Eres dueño del sistema para siempre. Sin dependencia de proveedor. Sin negociaciones de renovación. Una decisión, hecha.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center;padding:40px 0 0;border-top:0.5px solid #E2E8F0;margin-top:24px;">
+    <p style="font-size:16px;color:#64748B;margin-bottom:16px;">¿Aún tienes preguntas? Reserva la demo de 20 minutos. Lo respondemos todo en directo.</p>
+    <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" style="background:#6366F1;color:white;font-size:15px;font-weight:600;padding:14px 32px;border-radius:8px;text-decoration:none;display:inline-block;">Reservar demo con Lennart →</a>
+  </div>
+</section>
+
 
 <!-- FOOTER -->
 <footer>
@@ -1739,11 +1793,11 @@
     envoya
   </div>
   <div class="footer-links">
-    <a href="#">Privacy</a>
-    <a href="#">Voorwaarden</a>
-    <a href="mailto:hello@envoya.tech">Contact</a>
+    <a href="#">Privacidad</a>
+    <a href="#">Términos</a>
+    <a href="mailto:hello@envoya.tech">Contacto</a>
   </div>
-  <span class="footer-copy" style="font-size:13px;color:#94A3B8;">© 2026 Envoya · Wij sturen de agent. Jij sluit de deal.</span>
+  <span class="footer-copy" style="font-size:13px;color:#94A3B8;">© 2026 Envoya · Enviamos el agente. Tú cierras el trato.</span>
 </footer>
 
 <script>
@@ -1848,7 +1902,7 @@
     }
   })();
   </script>
-  <script src="/assets/feature-widgets.js?v=1773774533"></script>
+  <script src="/assets/feature-widgets.js?v=1773774167"></script>
 <script>
 function toggleFaq(i) {
   const rows = document.querySelectorAll('.faq-row');
