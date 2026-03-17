@@ -500,13 +500,15 @@
       padding: 56px 40px;
       text-align: center;
     }
-    /* Human CTA */
-    .human-cta-inner { display: flex; align-items: center; gap: 2.5rem; max-width: 760px; margin: 0 auto; text-align: left; }
-    .human-avatar { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid #6366f1; flex-shrink: 0; }
-    .human-name { font-weight: 700; color: var(--text); font-size: 1.05rem; margin: 0 0 0.2rem; }
-    .human-role { color: #6366f1; font-size: 0.82rem; margin: 0 0 1rem; }
-    .human-note { color: #334155; font-size: 0.78rem; margin-top: 0.75rem; }
-    @media (max-width: 640px) { .human-cta-inner { flex-direction: column; text-align: center; } }
+    /* ── CTA Card ── */
+    .cta-card { max-width: 440px; margin: 32px auto 0; background: #fff; border: 1px solid #E2E8F0; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+    .cta-card-person { display: flex; align-items: center; gap: 14px; }
+    .cta-card-avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid #E2E8F0; flex-shrink: 0; }
+    .cta-card-name { font-size: 16px; font-weight: 700; color: #0F172A; }
+    .cta-card-role { font-size: 13px; color: #64748B; margin-top: 2px; }
+    .cta-card-btn { display: block; background: #6366F1; color: #fff; text-align: center; padding: 14px 24px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+    .cta-card-btn:hover { background: #4F46E5; transform: translateY(-2px); }
+    .cta-card-note { font-size: 12px; color: #94A3B8; text-align: center; }
     .cta-icon { display: flex; justify-content: center; margin-bottom: 28px; }
     .cta-h {
       font-size: clamp(28px, 4vw, 40px);
@@ -1707,16 +1709,19 @@
     <p class="fomo-sub">20 minuten. We laten je precies zien welke bedrijven Lead Machine voor jouw business zou targeten — en hoe de eerste e-mail eruitziet. Je gaat weg met een plan. Of je nu koopt of niet.</p>
     <p class="fomo-sub" style="display:none">We kijken in 20 minuten naar jouw huidige pipeline, jouw ICP, en wat Envoya concreet voor jouw business kan betekenen. Gratis. Vrijblijvend. Eerlijk.</p>
   </div>
-  <div class="human-cta-inner fade-in">
-    <img src="/assets/lennart-headshot.jpg" alt="Lennart de Haan" class="human-avatar" />
-    <div>
-      <p class="human-name">Lennart de Haan</p>
-      <p class="human-role">Business Developer · Co-Founder Envoya</p>
-      <div class="cta-btns" style="margin-top:1rem">
-        <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="cta-main">Plan een demo met Lennart →</a>
+  <div class="cta-card fade-in">
+    <div class="cta-card-person">
+      <img src="/assets/lennart-headshot.jpg" alt="Lennart de Haan" class="cta-card-avatar" />
+      <div>
+        <p class="cta-card-name">Lennart de Haan</p>
+        <p class="cta-card-role">Business Developer · Co-Founder Envoya</p>
       </div>
-      <p class="human-note">Reageert meestal binnen 24 uur</p>
     </div>
+    <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:10px 16px;font-size:13px;color:#DC2626;font-weight:500;text-align:center;">
+      We onboarden 3 nieuwe klanten per maand. Nu 1 plek beschikbaar voor april.
+    </div>
+    <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="cta-card-btn">Boek een demo met Lennart →</a>
+    <p class="cta-card-note">Reageert doorgaans binnen 24 uur</p>
   </div>
 </section>
 
