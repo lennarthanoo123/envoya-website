@@ -420,9 +420,104 @@
     observer.observe(container);
   }
 
+  // Mobile-only widget — renders stats directly into #calendar-widget-mobile
+  function initMobile() {
+    const mc = document.getElementById('calendar-widget-mobile');
+    if (!mc) return;
+
+    const nl = isNL;
+    const list = document.createElement('div');
+    list.className = 'cal-mobile-list';
+
+    const statsGrid = document.createElement('div');
+    statsGrid.className = 'cal-mobile-stats';
+
+    // Big counter
+    const apptCell = document.createElement('div');
+    apptCell.className = 'cal-mobile-stat';
+    const apptNum = document.createElement('span');
+    apptNum.className = 'cal-mobile-stat-num';
+    apptNum.textContent = '0';
+    const apptLbl = document.createElement('span');
+    apptLbl.className = 'cal-mobile-stat-lbl';
+    apptLbl.textContent = nl ? 'afspraken' : 'appointments';
+    apptCell.appendChild(apptNum);
+    apptCell.appendChild(apptLbl);
+
+    const dealCell = document.createElement('div');
+    dealCell.className = 'cal-mobile-stat';
+    const dealNum = document.createElement('span');
+    dealNum.className = 'cal-mobile-stat-num deal-num';
+    dealNum.textContent = '0';
+    const dealLbl = document.createElement('span');
+    dealLbl.className = 'cal-mobile-stat-lbl';
+    dealLbl.textContent = nl ? 'deals getekend' : 'deals signed';
+    dealCell.appendChild(dealNum);
+    dealCell.appendChild(dealLbl);
+
+    statsGrid.appendChild(apptCell);
+    statsGrid.appendChild(dealCell);
+    list.appendChild(statsGrid);
+
+    // Deal companies
+    const dealsWrap = document.createElement('div');
+    dealsWrap.className = 'cal-mobile-deals';
+    [['Triodos Bank', nl ? 'Deal getekend ✓' : 'Deal signed ✓'],
+     ['Philips', nl ? 'Deal getekend ✓' : 'Deal signed ✓'],
+     ['Zilveren Kruis', nl ? 'Deal getekend ✓' : 'Deal signed ✓']
+    ].forEach(function([co, lbl], i) {
+      const row = document.createElement('div');
+      row.className = 'cal-mobile-deal-row';
+      row.style.opacity = '0';
+      row.innerHTML = `<span class="cal-mobile-deal-dot"></span><span class="cal-mobile-deal-co">${co}</span><span class="cal-mobile-deal-lbl">${lbl}</span>`;
+      dealsWrap.appendChild(row);
+      setTimeout(function() { row.style.transition = 'opacity 0.4s'; row.style.opacity = '1'; }, 1200 + i * 200);
+    });
+    list.appendChild(dealsWrap);
+    mc.appendChild(list);
+
+    // Animate on scroll into view
+    const io = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        io.unobserve(mc);
+        setTimeout(function() {
+          // Count up
+          var start = null;
+          function step(ts) {
+            if (!start) start = ts;
+            var p = Math.min((ts - start) / 1200, 1);
+            var e = 1 - Math.pow(1 - p, 3);
+            apptNum.textContent = Math.round(e * 28);
+            dealNum.textContent = Math.round(e * 3);
+            if (p < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }, 300);
+      }
+    }, { threshold: 0.2 });
+    io.observe(mc);
+    // Fallback
+    setTimeout(function() {
+      var r = mc.getBoundingClientRect();
+      if (r.top < window.innerHeight) {
+        var start = null;
+        function step(ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / 1200, 1);
+          var e = 1 - Math.pow(1 - p, 3);
+          apptNum.textContent = Math.round(e * 28);
+          dealNum.textContent = Math.round(e * 3);
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+    }, 1000);
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', function() { init(); initMobile(); });
   } else {
     init();
+    initMobile();
   }
 })();

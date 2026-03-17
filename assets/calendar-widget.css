@@ -211,3 +211,17 @@
 
 .cal-event-pitch .cal-event-name { color: rgba(0,0,0,0.85); }
 .cal-event-pitch .cal-event-time { color: rgba(0,0,0,0.6); }
+
+/* Mobile-only calendar container */
+.cal-mobile-only {
+  display: none;
+}
+@media (max-width: 768px) {
+  .cal-mobile-only {
+    display: block;
+    margin-top: 16px;
+  }
+  .cal-mobile-only .cal-mobile-list {
+    display: flex !important;
+  }
+}
