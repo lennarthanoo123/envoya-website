@@ -3,6 +3,7 @@
   'use strict';
 
   var isNL = window.location.pathname.startsWith('/nl');
+  var isES = window.location.pathname.startsWith('/es');
 
   /* ─── Utility ─────────────────────────────────────────── */
 
@@ -328,6 +329,10 @@
       ['Van', 'lennart@envoya.tech'],
       ['Aan', 'roos.ubbink@duo.nl'],
       ['Onderwerp', 'Korte kennismaking — AI × DUO']
+    ] : isES ? [
+      ['De', 'lennart@envoya.tech'],
+      ['Para', 'roos.ubbink@duo.nl'],
+      ['Asunto', 'Presentación rápida — Brush AI × DUO']
     ] : [
       ['From', 'lennart@envoya.tech'],
       ['To', 'roos.ubbink@duo.nl'],
@@ -387,7 +392,7 @@
       opacity: '0',
       transition: 'opacity 0.5s ease',
       whiteSpace: 'nowrap'
-    }, { text: '📡 Pattern A · Signal: Emerce eDay · Confidence 94%' });
+    }, { text: nl ? '📡 Patroon A · Signaal: Emerce eDay · Betrouwbaarheid 94%' : isES ? '📡 Patrón A · Señal: Emerce eDay · Confianza 94%' : '📡 Pattern A · Signal: Emerce eDay · Confidence 94%' });
     win.appendChild(badge);
 
     container.appendChild(win);
@@ -401,6 +406,14 @@
       { t: 'text', c: ' al met AI die echt waarde levert. Mijn collega ' },
       { t: 'hl',   c: 'Noëlle Cicilia' },
       { t: 'text', c: ' zou graag kort kennismaken.' }
+    ] : isES ? [
+      { t: 'text', c: 'Hola Roos,\n\nVi tu ' },
+      { t: 'hl',   c: 'charla en Emerce eDay' },
+      { t: 'text', c: ' sobre IA en el sector público — una razón perfecta para escribirte.\n\nEn Brush AI ayudamos a ' },
+      { t: 'hl',   c: 'Triodos Bank, APG y TNO' },
+      { t: 'text', c: ' a obtener valor real de la IA. Mi colega ' },
+      { t: 'hl',   c: 'Noëlle Cicilia' },
+      { t: 'text', c: ' estaría encantada de conectar brevemente.' }
     ] : [
       { t: 'text', c: 'Hi Roos,\n\nI saw your ' },
       { t: 'hl',   c: 'talk at Emerce eDay' },
