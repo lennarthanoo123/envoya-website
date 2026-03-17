@@ -41,7 +41,9 @@
     function fire() {
       if (fired) return;
       fired = true;
-      setTimeout(function () { cb(target); }, 200);
+      setTimeout(function () {
+        try { cb(target); } catch(e) { console.error('[fw] widget error:', e); }
+      }, 200);
     }
     if (!window.IntersectionObserver) { fire(); return; }
     var io = new IntersectionObserver(function (entries) {
