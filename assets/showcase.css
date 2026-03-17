@@ -611,12 +611,14 @@
     width: 100%;
     align-items: stretch;
     border-radius: 12px 12px 0 0;
-    padding: 20px;
+    padding: 20px 20px 0;
   }
 
   .fw-widget {
     height: auto;
-    overflow: visible;
+    overflow: hidden;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 
   .fb-headline {
