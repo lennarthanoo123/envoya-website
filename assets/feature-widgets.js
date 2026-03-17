@@ -418,121 +418,168 @@
     var nl = isNL;
     container.style.cssText = 'width:100%;height:100%;min-height:280px;display:flex;align-items:stretch;';
 
+    /* Outer shell — white bg like Google Calendar */
     var wrap = el('div', {
-      background: '#0a0f1e',
+      background: '#fff',
       borderRadius: '14px',
-      padding: '18px',
+      border: '1px solid #e2e8f0',
       width: '100%',
       boxSizing: 'border-box',
       display: 'flex',
       flexDirection: 'column',
-      gap: '10px'
+      overflow: 'hidden',
+      boxShadow: '0 4px 24px rgba(0,0,0,0.08)'
     });
 
-    /* Header */
-    var header = el('div', {
+    /* Calendar header bar */
+    var calHeader = el('div', {
+      background: '#f8fafc',
+      borderBottom: '1px solid #e2e8f0',
+      padding: '12px 16px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between'
+    });
+    var calTitle = el('div', {
       fontFamily: 'Inter, -apple-system, sans-serif',
+      fontSize: '13px',
+      fontWeight: '700',
+      color: '#0F172A'
+    }, { text: nl ? 'Mijn agenda — Week 4' : 'My Calendar — Week 4' });
+    var calBadge = el('div', {
+      background: '#EEF2FF',
+      color: '#6366F1',
+      border: '1px solid #C7D2FE',
+      borderRadius: '99px',
+      padding: '3px 10px',
       fontSize: '11px',
-      fontWeight: '800',
-      color: '#94a3b8',
-      textTransform: 'uppercase',
-      letterSpacing: '0.08em',
+      fontWeight: '700',
+      fontFamily: 'Inter, -apple-system, sans-serif',
       display: 'flex',
       alignItems: 'center',
       gap: '4px'
     });
-    var headerPrefix = document.createTextNode('WEEK 4 — ');
-    var counterSpan = el('span', { color: '#e2e8f0' }, { text: '0' });
-    var headerSuffix = document.createTextNode(nl ? ' afspraken geboekt' : ' meetings booked');
-    header.appendChild(headerPrefix);
-    header.appendChild(counterSpan);
-    header.appendChild(headerSuffix);
-    wrap.appendChild(header);
+    var counterSpan = el('span', {}, { text: '0' });
+    calBadge.appendChild(counterSpan);
+    calBadge.appendChild(document.createTextNode(nl ? ' afspraken' : ' meetings'));
+    calHeader.appendChild(calTitle);
+    calHeader.appendChild(calBadge);
+    wrap.appendChild(calHeader);
 
-    /* Meeting cards */
-    var meetings = [
-      { company: 'VodafoneZiggo', type: nl ? 'Intro gesprek' : 'Intro call', time: 'Ma 10:00', bg: '#1e3a5f', accent: '#3b82f6' },
-      { company: 'Triodos Bank', type: nl ? 'Deal getekend ✓' : 'Deal signed ✓', time: 'Ma 14:00', bg: '#052e16', accent: '#10b981', deal: true },
-      { company: 'ABN AMRO', type: 'Discovery', time: 'Di 09:00', bg: '#2d1b69', accent: '#7c3aed' },
-      { company: 'Philips', type: 'Pitch', time: 'Di 14:00', bg: '#451a03', accent: '#f59e0b' },
-      { company: 'Alliander', type: nl ? 'Intro gesprek' : 'Intro call', time: 'Wo 10:00', bg: '#2d1b69', accent: '#7c3aed' },
-      { company: 'ASML', type: 'Discovery', time: 'Do 11:00', bg: '#1e3a5f', accent: '#3b82f6' }
-    ];
-
-    var cards = [];
-    meetings.forEach(function (m) {
-      var card = el('div', {
-        background: m.bg,
-        borderLeft: '3px solid ' + m.accent,
-        borderRadius: '8px',
-        padding: '8px 12px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        opacity: '0',
-        transform: 'translateY(10px)',
-        transition: 'opacity 0.4s ease, transform 0.4s ease',
-        position: 'relative'
-      });
-
-      var left = el('div');
-      var company = el('div', {
-        fontFamily: 'Inter, -apple-system, sans-serif',
-        fontSize: '13px',
-        fontWeight: '700',
-        color: '#f1f5f9',
-        lineHeight: '1.2'
-      }, { text: m.company });
-      var type = el('div', {
-        fontFamily: 'Inter, -apple-system, sans-serif',
-        fontSize: '11px',
-        color: m.accent,
-        marginTop: '2px',
-        fontWeight: '600'
-      }, { text: m.type });
-      left.appendChild(company);
-      left.appendChild(type);
-
-      var time = el('div', {
-        fontFamily: 'Inter, -apple-system, sans-serif',
-        fontSize: '11px',
-        color: '#64748b',
-        fontWeight: '600',
-        flexShrink: '0'
-      }, { text: m.time });
-
-      card.appendChild(left);
-      card.appendChild(time);
-
-      if (m.deal) {
-        card.dataset.isDeal = '1';
-      }
-
-      wrap.appendChild(card);
-      cards.push(card);
+    /* Day-view time grid */
+    var grid = el('div', {
+      flex: '1',
+      padding: '8px 0',
+      overflowY: 'auto'
     });
 
+    /* Meetings: time | colored block | company + type */
+    var meetings = [
+      { time: '09:00', company: 'VodafoneZiggo', type: nl ? 'Kennismaking' : 'Intro call',   color: '#4285f4', day: nl ? 'Ma' : 'Mon' },
+      { time: '13:00', company: 'Triodos Bank',   type: nl ? 'Deal getekend ✓' : 'Deal signed ✓', color: '#33b679', day: nl ? 'Ma' : 'Mon', deal: true },
+      { time: '10:30', company: 'ABN AMRO',       type: 'Discovery',                          color: '#7986cb', day: nl ? 'Di' : 'Tue' },
+      { time: '14:00', company: 'Philips',         type: 'Pitch',                              color: '#f6bf26', day: nl ? 'Di' : 'Tue' },
+      { time: '09:30', company: 'Alliander',       type: nl ? 'Kennismaking' : 'Intro call',  color: '#4285f4', day: nl ? 'Wo' : 'Wed' },
+      { time: '11:00', company: 'ASML',            type: 'Discovery',                          color: '#7986cb', day: nl ? 'Do' : 'Thu' }
+    ];
+
+    var rows = [];
+    meetings.forEach(function (m) {
+      var row = el('div', {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0',
+        padding: '4px 12px',
+        opacity: '0',
+        transform: 'translateY(6px)',
+        transition: 'opacity 0.3s ease, transform 0.3s ease',
+        borderBottom: '1px solid #f8fafc'
+      });
+
+      /* Day + time column */
+      var timeCol = el('div', {
+        width: '68px',
+        flexShrink: '0',
+        textAlign: 'right',
+        paddingRight: '12px'
+      });
+      var dayLabel = el('div', {
+        fontFamily: 'Inter, -apple-system, sans-serif',
+        fontSize: '10px',
+        fontWeight: '700',
+        color: '#94a3b8',
+        textTransform: 'uppercase',
+        letterSpacing: '0.05em'
+      }, { text: m.day });
+      var timeLabel = el('div', {
+        fontFamily: 'Inter, -apple-system, sans-serif',
+        fontSize: '12px',
+        fontWeight: '600',
+        color: '#475569'
+      }, { text: m.time });
+      timeCol.appendChild(dayLabel);
+      timeCol.appendChild(timeLabel);
+
+      /* Color block */
+      var block = el('div', {
+        background: m.color,
+        borderRadius: '6px',
+        padding: '8px 12px',
+        flex: '1',
+        minHeight: '44px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center'
+      });
+      var coName = el('div', {
+        fontFamily: 'Inter, -apple-system, sans-serif',
+        fontSize: '12px',
+        fontWeight: '700',
+        color: m.color === '#f6bf26' ? '#1a1000' : '#fff',
+        lineHeight: '1.2'
+      }, { text: m.company });
+      var typeLabel = el('div', {
+        fontFamily: 'Inter, -apple-system, sans-serif',
+        fontSize: '10px',
+        color: m.color === '#f6bf26' ? 'rgba(0,0,0,0.65)' : 'rgba(255,255,255,0.8)',
+        marginTop: '2px'
+      }, { text: m.type });
+      block.appendChild(coName);
+      block.appendChild(typeLabel);
+
+      if (m.deal) { row.dataset.isDeal = '1'; }
+
+      row.appendChild(timeCol);
+      row.appendChild(block);
+      grid.appendChild(row);
+      rows.push(row);
+    });
+
+    wrap.appendChild(grid);
     container.appendChild(wrap);
 
     /* Animate counter */
     countUp(counterSpan, 0, 28, 1200, 0);
 
-    /* Staggered cards */
-    cards.forEach(function (card, i) {
+    /* Staggered rows */
+    rows.forEach(function (row, i) {
       setTimeout(function () {
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
-        if (card.dataset.isDeal) {
+        row.style.opacity = '1';
+        row.style.transform = 'translateY(0)';
+        if (row.dataset.isDeal) {
           setTimeout(function () {
-            card.style.transform = 'scale(1.05)';
-            card.style.boxShadow = '0 0 16px rgba(16,185,129,0.45)';
-            setTimeout(function () {
-              card.style.transform = 'scale(1)';
-              card.style.boxShadow = '0 0 8px rgba(16,185,129,0.2)';
-            }, 200);
-          }, 420);
+            var block = row.querySelector('div[style*="background: rgb(51, 182, 121)"], div[style*="background: #33b679"]');
+            if (block) {
+              block.style.boxShadow = '0 0 16px rgba(51,182,121,0.5)';
+              block.style.transform = 'scaleX(1.01)';
+              setTimeout(function () {
+                block.style.transform = '';
+                block.style.boxShadow = '0 0 6px rgba(51,182,121,0.2)';
+              }, 300);
+            }
+          }, 350);
         }
-      }, 400 + i * 80);
+      }, 400 + i * 100);
     });
   }
 
