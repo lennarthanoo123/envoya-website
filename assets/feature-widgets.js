@@ -37,14 +37,27 @@
   function observe(id, threshold, cb) {
     var target = document.getElementById(id);
     if (!target) return;
-    if (!window.IntersectionObserver) { cb(target); return; }
+    var fired = false;
+    function fire() {
+      if (fired) return;
+      fired = true;
+      setTimeout(function () { cb(target); }, 200);
+    }
+    if (!window.IntersectionObserver) { fire(); return; }
     var io = new IntersectionObserver(function (entries) {
       if (entries[0].isIntersecting) {
         io.unobserve(target);
-        setTimeout(function () { cb(target); }, 200);
+        fire();
       }
-    }, { threshold: threshold });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
     io.observe(target);
+    // Fallback: if already visible at init time, fire after short delay
+    setTimeout(function () {
+      var rect = target.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0 && target.children.length === 0) {
+        fire();
+      }
+    }, 500);
   }
 
   /* ════════════════════════════════════════════════════════
