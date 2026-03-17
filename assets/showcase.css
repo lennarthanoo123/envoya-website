@@ -603,8 +603,8 @@
   }
 
   .fb-diagram {
-    min-height: 260px;
-    height: 260px !important;
+    min-height: 0;
+    height: auto !important;
     width: 100%;
     align-items: stretch;
     border-radius: 12px 12px 0 0;
@@ -612,8 +612,8 @@
   }
 
   .fw-widget {
-    height: 260px;
-    overflow: hidden;
+    height: auto;
+    overflow: visible;
   }
 
   .fb-headline {

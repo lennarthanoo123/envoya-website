@@ -741,9 +741,43 @@
     .sp-name { font-size: 14px; font-weight: 700; color: var(--text); }
     .sp-role { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
     @media (max-width: 768px) {
-      .social-proof-cards { grid-template-columns: 1fr; }
-      .sp-kpis { grid-template-columns: repeat(3, 1fr); }
       .social-proof { padding: 32px 24px; }
+      .sp-card { padding: 20px; gap: 16px; }
+      .sp-kpis { display: flex; flex-direction: column; gap: 8px; }
+      .sp-kpi {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        padding: 12px 14px;
+        background: #fff;
+        border: 1px solid #E2E8F0;
+        border-radius: 10px;
+        border-right: none;
+      }
+      .sp-kpi-num {
+        font-size: 28px;
+        font-weight: 900;
+        color: #6366F1;
+        min-width: 72px;
+        text-align: center;
+        flex-shrink: 0;
+        letter-spacing: -0.03em;
+      }
+      .sp-kpi-lbl {
+        font-size: 13px;
+        color: #334155;
+        font-weight: 500;
+        text-align: left;
+        text-transform: none;
+        letter-spacing: 0;
+        line-height: 1.4;
+      }
+      .sp-quote { font-size: 15px; padding-left: 12px; }
+      .sp-client-logos { gap: 6px; }
+      .sp-client-logo-pill { font-size: 11px; padding: 3px 8px; }
+      .social-proof-cards { grid-template-columns: 1fr !important; }
+      .sp-deal-bar { font-size: 13px; padding: 12px 16px; }
     }
 
     /* ── HERO STAT CARD ── */
@@ -1363,9 +1397,9 @@
       <!-- Jeffrey — Jungle Minds -->
       <div class="sp-card sp-card--jm">
         <div class="sp-kpis">
-          <div class="sp-kpi"><div class="sp-kpi-num">36</div><div class="sp-kpi-lbl">nieuwe afspraken</div></div>
-          <div class="sp-kpi"><div class="sp-kpi-num">50+</div><div class="sp-kpi-lbl">warme leads</div></div>
-          <div class="sp-kpi"><div class="sp-kpi-num">€140K</div><div class="sp-kpi-lbl">open pipeline</div></div>
+          <div class="sp-kpi"><div class="sp-kpi-num">36</div><div class="sp-kpi-lbl">geboekte nieuwe afspraken</div></div>
+          <div class="sp-kpi"><div class="sp-kpi-num">50+</div><div class="sp-kpi-lbl">warme leads in pipeline</div></div>
+          <div class="sp-kpi"><div class="sp-kpi-num">€140K</div><div class="sp-kpi-lbl">open pipeline waarde</div></div>
         </div>
         <p class="sp-quote">"Van 2 afspraken per maand naar een structureel volle agenda. De pipeline die dit genereerde overtreft wat we voorheen in een heel jaar sloten."</p>
         <div>
@@ -1389,8 +1423,8 @@
       <!-- Noëlle — Brush AI -->
       <div class="sp-card sp-card--bai">
         <div class="sp-kpis">
-          <div class="sp-kpi"><div class="sp-kpi-num">42</div><div class="sp-kpi-lbl">nieuwe afspraken</div></div>
-          <div class="sp-kpi"><div class="sp-kpi-num">46</div><div class="sp-kpi-lbl">warme leads</div></div>
+          <div class="sp-kpi"><div class="sp-kpi-num">42</div><div class="sp-kpi-lbl">geboekte nieuwe afspraken</div></div>
+          <div class="sp-kpi"><div class="sp-kpi-num">46</div><div class="sp-kpi-lbl">warme leads in pipeline</div></div>
           <div class="sp-kpi"><div class="sp-kpi-num">€128K+</div><div class="sp-kpi-lbl">gegenereerde omzet</div></div>
         </div>
         <p class="sp-quote">"Koude acquisitie werd ons meest betrouwbare verkoopkanaal. ROI duidelijk na week één."</p>
@@ -1656,7 +1690,7 @@
 <script src="/assets/calendar-widget.js"></script>
 <link rel="stylesheet" href="/assets/demo-widget.css">
 <script src="/assets/demo-widget.js"></script>
-<link rel="stylesheet" href="/assets/showcase.css?v=1773767742">
+<link rel="stylesheet" href="/assets/showcase.css?v=1773768101">
 <script src="/assets/showcase.js?v=1773766292"></script>
 
   <script>
@@ -1719,6 +1753,6 @@
     }
   })();
   </script>
-  <script src="/assets/feature-widgets.js?v=1773767742"></script>
+  <script src="/assets/feature-widgets.js?v=1773768101"></script>
 </body>
 </html>

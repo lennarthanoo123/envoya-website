@@ -72,7 +72,7 @@
      WIDGET 1 — Lead Intelligence
   ════════════════════════════════════════════════════════ */
   function buildLeadWidget(container) {
-    container.style.cssText = 'width:100%;height:100%;min-height:280px;display:flex;align-items:stretch;';
+    var isMobile = window.innerWidth <= 900; container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;' : 'height:100%;') + 'display:flex;align-items:stretch;';
 
     var card = el('div', {
       background: '#0c1220',
@@ -254,7 +254,7 @@
      WIDGET 2 — Email Writer
   ════════════════════════════════════════════════════════ */
   function buildEmailWidget(container) {
-    container.style.cssText = 'width:100%;height:100%;min-height:280px;display:flex;align-items:stretch;';
+    var isMobile = window.innerWidth <= 900; container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;' : 'height:100%;') + 'display:flex;align-items:stretch;';
 
     var win = el('div', {
       background: '#fff',
@@ -437,7 +437,7 @@
   ════════════════════════════════════════════════════════ */
   function buildCalWidget(container) {
     var nl = isNL;
-    container.style.cssText = 'width:100%;height:100%;min-height:280px;display:flex;align-items:stretch;';
+    var isMobile = window.innerWidth <= 900; container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;' : 'height:100%;') + 'display:flex;align-items:stretch;';
 
     /* Outer shell — white bg like Google Calendar */
     var wrap = el('div', {
@@ -609,7 +609,7 @@
   ════════════════════════════════════════════════════════ */
   function buildLearnWidget(container) {
     var nl = isNL;
-    container.style.cssText = 'width:100%;height:100%;min-height:280px;display:flex;align-items:stretch;';
+    var isMobile = window.innerWidth <= 900; container.style.cssText = 'width:100%;' + (isMobile ? 'height:auto;' : 'height:100%;') + 'display:flex;align-items:stretch;';
 
     var wrap = el('div', {
       background: '#0c1220',
