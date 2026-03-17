@@ -17,6 +17,7 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { overflow-x: hidden; max-width: 100%; }
+    @media (min-width: 769px) { .hero-sub-desktop-hide { display: none !important; } }
 
     :root {
       --indigo:    #6366F1;
@@ -636,7 +637,7 @@
     .problem-sub { font-size: 16px; color: #0F172A; line-height: 1.75; margin-bottom: 3rem; max-width: 640px; }
     .problem-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .problem-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; padding: 24px; }
-    .problem-card-icon { font-size: 32px; margin-bottom: 14px; display: block; line-height: 1; }
+    .problem-card-icon { display: none; }
     .problem-card-title { font-size: 15px; font-weight: 700; color: #0F172A; margin-bottom: 10px; line-height: 1.35; }
     .problem-card-text { font-size: 14px; color: #0F172A; line-height: 1.75; }
     @media (max-width: 768px) { .problem-cards { grid-template-columns: 1fr; } .problem-section { padding: 56px 20px; } }
@@ -1358,7 +1359,8 @@
     <div class="hero-tag">Used by Jungle Minds &amp; Cronos Group</div>
     <h1>35 meetings. 90 days.<br><em>One agent. Zero cold calls.</em></h1>
     <p class="hero-tagline-main">What if you spent your day closing deals instead of finding them?</p>
-    <p class="hero-sub">Envoya's AI agent finds the right prospects, writes the right message, and tells you exactly who to contact and when. You stay in control. The agent does the groundwork. Your calendar fills up. You just close.</p>
+    <p class="hero-sub hero-sub-desktop-hide">Envoya's AI agent finds the right prospects, writes the right message, and tells you exactly who to contact and when.</p>
+    <p class="hero-sub">You stay in control. The agent does the groundwork. Your calendar fills up. You just close.</p>
     <div class="hero-ctas">
       <div class="hero-ctas-row">
         <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="btn-primary">Book a demo</a>
@@ -1616,26 +1618,9 @@
 
 
 <!-- CONTACT / CTA -->
-<!-- FOUNDER SECTION -->
-<section class="founder-section fade-in">
-  <div class="founder-inner">
-    <div class="founder-images">
-      <img src="/assets/lennart-working-1.jpg" alt="Lennart de Haan at work" class="founder-img-main" />
-      <img src="/assets/team-happy.jpg" alt="Happy team" class="founder-img-team" />
-    </div>
-    <div class="founder-text">
-      <p class="section-label-sm">Built by a salesperson, for salespeople</p>
-      <h2 class="founder-h">I was the bottleneck.<br>So I automated myself.</h2>
-      <p>After 15 years in sales I was spending 4 hours a day on outreach. Good results. Not scalable. So I built Lead Machine. In the first 90 days it booked 35 meetings for my own pipeline. Then I gave it to Jungle Minds and Brush AI. Same result.</p>
-      <p class="founder-sig">— Lennart de Haan, Co-Founder Envoya</p>
-    </div>
-  </div>
-</section>
-
 <!-- HUMAN CTA -->
 <section class="cta-section" id="contact">
   <div class="fomo-headline fade-in">
-    <p class="fomo-label">THE SOLUTION</p>
     <h2 class="fomo-h">Right now your competitor is reaching<br>the prospect you should be talking to.</h2>
     <p class="fomo-sub">20 minutes. We show you exactly which companies Lead Machine would target for your business — and what the first email would look like. You leave with a plan. Whether you buy or not.</p>
   </div>
@@ -1657,7 +1642,7 @@
 
 <!-- PRICING -->
 <section class="section" id="pricing">
-  <div class="section-tag fade-in">Pricing</div>
+  <div class="section-tag fade-in">Investment</div>
   <div class="section-h fade-in">The last sales investment you'll ever make.</div>
   <div class="pricing-box fade-in">
     <div>
@@ -1700,6 +1685,24 @@
     </div>
   </div>
 </section>
+
+<!-- FOUNDER SECTION -->
+<section class="founder-section fade-in">
+  <div class="founder-inner">
+    <div class="founder-images">
+      <img src="/assets/lennart-working-1.jpg" alt="Lennart de Haan at work" class="founder-img-main" />
+      <img src="/assets/team-happy.jpg" alt="Happy team" class="founder-img-team" />
+    </div>
+    <div class="founder-text">
+      <p class="section-label-sm">Built by a salesperson, for salespeople</p>
+      <h2 class="founder-h">I was the bottleneck.<br>So I automated myself.</h2>
+      <p>After 15 years in sales I was spending 4 hours a day on outreach. Good results. Not scalable. So I built Lead Machine. In the first 90 days it booked 35 meetings for my own pipeline. Then I gave it to Jungle Minds and Brush AI. Same result.</p>
+      <p class="founder-sig">— Lennart de Haan, Co-Founder Envoya</p>
+    </div>
+  </div>
+</section>
+
+
 
 <!-- FAQ -->
 <section class="section faq-section fade-in" id="faq">

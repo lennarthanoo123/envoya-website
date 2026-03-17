@@ -17,6 +17,7 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { overflow-x: hidden; max-width: 100%; }
+    @media (min-width: 769px) { .hero-sub-desktop-hide { display: none !important; } }
 
     :root {
       --indigo:    #6366F1;
@@ -636,7 +637,7 @@
     .problem-sub { font-size: 16px; color: #0F172A; line-height: 1.75; margin-bottom: 3rem; max-width: 640px; }
     .problem-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .problem-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; padding: 24px; }
-    .problem-card-icon { font-size: 32px; margin-bottom: 14px; display: block; line-height: 1; }
+    .problem-card-icon { display: none; }
     .problem-card-title { font-size: 15px; font-weight: 700; color: #0F172A; margin-bottom: 10px; line-height: 1.35; }
     .problem-card-text { font-size: 14px; color: #0F172A; line-height: 1.75; }
     @media (max-width: 768px) { .problem-cards { grid-template-columns: 1fr; } .problem-section { padding: 56px 20px; } }
@@ -1359,7 +1360,8 @@
     <h1>35 reuniones. 90 días.<br><em>Un agente. Cero llamadas en frío.</em></h1>
     <p class="hero-tagline-main">¿Y si pudieras pasar el día cerrando acuerdos en lugar de buscarlos?</p>
 
-    <p class="hero-sub">El agente de IA de Envoya encuentra los prospectos adecuados, escribe el mensaje correcto y te dice exactamente a quién contactar y cuándo. Tú mantienes el control. El agente hace el trabajo previo. Tu agenda se llena. Tú cierras.</p>
+    <p class="hero-sub hero-sub-desktop-hide">El agente de IA de Envoya encuentra los prospectos adecuados, escribe el mensaje correcto y te dice exactamente a quién contactar y cuándo.</p>
+    <p class="hero-sub">Tú mantienes el control. El agente hace el trabajo previo. Tu agenda se llena. Tú cierras.</p>
     <div class="hero-ctas">
       <div class="hero-ctas-row">
         <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="btn-primary">Reservar demo</a>
@@ -1611,26 +1613,9 @@
 </section>
 
 
-<!-- FOUNDER SECTION -->
-<section class="founder-section fade-in">
-  <div class="founder-inner">
-    <div class="founder-images">
-      <img src="/assets/lennart-working-1.jpg" alt="Lennart de Haan trabajando" class="founder-img-main" />
-      <img src="/assets/team-happy.jpg" alt="Equipo contento" class="founder-img-team" />
-    </div>
-    <div class="founder-text">
-      <p class="section-label-sm">Creado por un vendedor, para vendedores</p>
-      <h2 class="founder-h">Yo era el cuello de botella.<br>Así que me automaticé.</h2>
-      <p>Después de 15 años en ventas pasaba 4 horas al día en prospección. Buenos resultados. No escalable. Así que construí Lead Machine. En los primeros 90 días reservó 35 reuniones para mi propio pipeline. Luego se lo di a Jungle Minds y Brush AI. Mismo resultado.</p>
-      <p class="founder-sig">— Lennart de Haan, Co-Founder Envoya</p>
-    </div>
-  </div>
-</section>
-
 <!-- HUMAN CTA -->
 <section class="cta-section" id="contact">
   <div class="fomo-headline fade-in">
-    <p class="fomo-label">LA SOLUCIÓN</p>
     <h2 class="fomo-h">Ahora mismo, tu competencia está llegando<br>al prospecto con el que deberías estar hablando.</h2>
     <p class="fomo-sub">20 minutos. Te mostramos exactamente qué empresas objetivo Lead Machine para tu negocio — y cómo sería el primer email. Te vas con un plan. Compres o no.</p>
   </div>
@@ -1652,7 +1637,7 @@
 
 <!-- PRICING -->
 <section class="section" id="pricing">
-  <div class="section-tag fade-in">Precios</div>
+  <div class="section-tag fade-in">Inversión</div>
   <div class="section-h fade-in">La última inversión en ventas que harás.</div>
   <div class="pricing-box fade-in">
     <div>
@@ -1695,6 +1680,24 @@
     </div>
   </div>
 </section>
+
+<!-- FOUNDER SECTION -->
+<section class="founder-section fade-in">
+  <div class="founder-inner">
+    <div class="founder-images">
+      <img src="/assets/lennart-working-1.jpg" alt="Lennart de Haan trabajando" class="founder-img-main" />
+      <img src="/assets/team-happy.jpg" alt="Equipo contento" class="founder-img-team" />
+    </div>
+    <div class="founder-text">
+      <p class="section-label-sm">Creado por un vendedor, para vendedores</p>
+      <h2 class="founder-h">Yo era el cuello de botella.<br>Así que me automaticé.</h2>
+      <p>Después de 15 años en ventas pasaba 4 horas al día en prospección. Buenos resultados. No escalable. Así que construí Lead Machine. En los primeros 90 días reservó 35 reuniones para mi propio pipeline. Luego se lo di a Jungle Minds y Brush AI. Mismo resultado.</p>
+      <p class="founder-sig">— Lennart de Haan, Co-Founder Envoya</p>
+    </div>
+  </div>
+</section>
+
+
 
 <!-- FAQ -->
 <section class="section faq-section fade-in" id="faq">

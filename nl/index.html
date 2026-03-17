@@ -17,6 +17,7 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { overflow-x: hidden; max-width: 100%; }
+    @media (min-width: 769px) { .hero-sub-desktop-hide { display: none !important; } }
 
     :root {
       --indigo:    #6366F1;
@@ -587,7 +588,7 @@
     .problem-sub { font-size: 16px; color: #0F172A; line-height: 1.75; margin-bottom: 3rem; max-width: 640px; }
     .problem-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .problem-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 16px; padding: 24px; }
-    .problem-card-icon { font-size: 32px; margin-bottom: 14px; display: block; line-height: 1; }
+    .problem-card-icon { display: none; }
     .problem-card-title { font-size: 15px; font-weight: 700; color: #0F172A; margin-bottom: 10px; line-height: 1.35; }
     .problem-card-text { font-size: 14px; color: #0F172A; line-height: 1.75; }
     @media (max-width: 768px) { .problem-cards { grid-template-columns: 1fr; } .problem-section { padding: 56px 20px; } }
@@ -1318,7 +1319,8 @@
     <div class="hero-tag">Gebruikt door Jungle Minds &amp; Cronos Group</div>
     <h1>35 afspraken. 90 dagen.<br><em>Één agent. Nul koude acquisitie.</em></h1>
     <p class="hero-tagline-main">Wat als je je dag kon besteden aan deals sluiten in plaats van leads zoeken?</p>
-    <p class="hero-sub">Envoya's AI-agent vindt de juiste prospects, schrijft het juiste bericht en vertelt je precies wie je wanneer moet contacteren. Jij blijft in controle. De agent doet het voorwerk. Jouw agenda vult zich. Jij sluit de deal.</p>
+    <p class="hero-sub hero-sub-desktop-hide">Envoya's AI-agent vindt de juiste prospects, schrijft het juiste bericht en vertelt je precies wie je wanneer moet contacteren.</p>
+    <p class="hero-sub">Jij blijft in controle. De agent doet het voorwerk. Jouw agenda vult zich. Jij sluit de deal.</p>
     <div class="hero-ctas">
       <div class="hero-ctas-row">
         <a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="btn-primary">Plan een demo</a>
@@ -1575,7 +1577,7 @@
 
 <!-- PRICING -->
 <section class="section" id="pricing">
-  <div class="section-tag fade-in">Prijzen</div>
+  <div class="section-tag fade-in">Investering</div>
   <div class="section-h fade-in">De laatste sales-investering die je ooit doet.</div>
   <div class="pricing-box fade-in">
     <div>
@@ -1706,7 +1708,6 @@
 <!-- CONTACT / CTA -->
 <section class="cta-section" id="contact">
   <div class="fomo-headline fade-in">
-    <p class="fomo-label">DE OPLOSSING</p>
     <h2 class="fomo-h">Op dit moment bereikt je concurrent de prospect die jij zou moeten spreken.</h2>
     <p class="fomo-sub">20 minuten. We laten je precies zien welke bedrijven Lead Machine voor jouw business zou targeten — en hoe de eerste e-mail eruitziet. Je gaat weg met een plan. Of je nu koopt of niet.</p>
     <p class="fomo-sub" style="display:none">We kijken in 20 minuten naar jouw huidige pipeline, jouw ICP, en wat Envoya concreet voor jouw business kan betekenen. Gratis. Vrijblijvend. Eerlijk.</p>
