@@ -69,20 +69,16 @@
     /* Avatar + info row */
     var topRow = el('div', { display: 'flex', alignItems: 'center', gap: '12px' });
 
-    var avatar = el('div', {
-      width: '44px',
-      height: '44px',
-      borderRadius: '50%',
-      background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexShrink: '0',
-      fontSize: '14px',
-      fontWeight: '700',
-      color: '#fff',
-      fontFamily: 'Inter, -apple-system, sans-serif'
-    }, { text: 'RU' });
+    var avatar = document.createElement('img');
+    avatar.src = '/assets/roos-ubbink.jpg';
+    avatar.alt = 'Roos Ubbink';
+    avatar.style.width = '44px';
+    avatar.style.height = '44px';
+    avatar.style.borderRadius = '50%';
+    avatar.style.objectFit = 'cover';
+    avatar.style.objectPosition = 'center top';
+    avatar.style.flexShrink = '0';
+    avatar.style.border = '2px solid rgba(99,102,241,0.4)';
 
     var info = el('div', { flex: '1' });
     var name = el('div', {
