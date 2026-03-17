@@ -588,10 +588,11 @@
     width: 100%;
     text-align: left;
     align-items: flex-start;
-    padding: 20px 20px 24px;
+    padding: 24px 20px 24px;
     justify-content: flex-start;
     order: 1;
     border-top: 1px solid #E2E8F0;
+    margin-top: 0;
   }
 
   .fb-image {
