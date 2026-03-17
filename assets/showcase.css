@@ -549,7 +549,7 @@
 /* ── MOBILE ── */
 @media (max-width: 900px) {
   .fb-section {
-    padding: 48px 16px 32px;
+    padding: 40px 16px 28px;
   }
 
   .fb-header {
@@ -568,13 +568,14 @@
 
   .fb-block,
   .fb-block-reverse {
-    flex-direction: column;        /* diagram FIRST, text second */
-    gap: 20px;
-    padding: 28px 20px;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
     margin-bottom: 16px;
-    height: auto !important;       /* remove fixed height on mobile */
+    height: auto !important;
     min-height: 0 !important;
-    border-radius: 16px;
+    border-radius: 20px;
+    overflow: hidden;
   }
 
   .fb-block-reverse {
@@ -587,6 +588,8 @@
     width: 100%;
     text-align: left;
     align-items: flex-start;
+    padding: 20px 20px 24px;
+    justify-content: flex-start;
   }
 
   .fb-image {
@@ -604,6 +607,8 @@
     height: 260px !important;
     width: 100%;
     align-items: stretch;
+    border-radius: 12px 12px 0 0;
+    padding: 20px;
   }
 
   .fw-widget {
