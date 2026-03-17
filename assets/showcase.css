@@ -607,18 +607,19 @@
   }
 
   .fb-diagram {
-    min-height: 0;
+    min-height: 0 !important;
     height: auto !important;
-    width: 100%;
+    width: 100% !important;
     align-items: stretch;
-    border-radius: 12px 12px 0 0;
-    padding: 20px 20px 20px;
-    overflow: visible;
+    border-radius: 12px 12px 0 0 !important;
+    padding: 20px !important;
+    overflow: visible !important;
+    flex: none !important;
   }
 
   .fw-widget {
-    height: auto;
-    overflow: visible;
+    height: auto !important;
+    overflow: visible !important;
   }
 
   .fb-headline {
