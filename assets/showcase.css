@@ -152,3 +152,53 @@
     margin-bottom: 48px;
   }
 }
+
+/* ── Clay-style scroll animations ── */
+
+/* Initial hidden state — text fades up, images fade in from side */
+.fb-text {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s cubic-bezier(0.165, 0.84, 0.44, 1),
+              transform 0.65s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.fb-image {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.65s cubic-bezier(0.165, 0.84, 0.44, 1),
+              transform 0.65s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.fb-block-reverse .fb-image {
+  transform: translateX(-32px);
+}
+
+/* Stat callout starts invisible too, slightly delayed */
+.fb-stat {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s,
+              transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s;
+}
+
+/* Visible state — triggered by IntersectionObserver */
+.fb-text.fb-visible,
+.fb-image.fb-visible,
+.fb-stat.fb-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Image slightly delayed after text */
+.fb-image.fb-visible {
+  transition-delay: 0.1s;
+}
+
+/* On mobile: disable side transforms, only fade up */
+@media (max-width: 900px) {
+  .fb-image,
+  .fb-block-reverse .fb-image {
+    transform: translateY(24px);
+  }
+}
