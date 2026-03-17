@@ -3,362 +3,476 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Envoya — Architecture Widget v2</title>
+<title>Envoya — How It Works</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: 'Inter', sans-serif;
-  background: #F1F5F9;
+  background: #F5F4EF;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 56px 24px;
 }
 
-.widget {
+.section {
   width: 100%;
-  max-width: 740px;
-  background: #fff;
-  border-radius: 24px;
-  padding: 36px 32px 28px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.08), 0 0 0 1px #E2E8F0;
+  max-width: 1100px;
 }
 
-/* Title row */
-.w-head {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 28px;
+/* Header */
+.hdr {
+  text-align: center;
+  margin-bottom: 48px;
 }
-.w-title { font-size: 13px; font-weight: 700; color: #0F172A; }
-.w-sub { font-size: 12px; color: #64748B; margin-top: 2px; }
-.w-live {
-  display: flex; align-items: center; gap: 6px;
-  font-size: 11px; font-weight: 700; color: #22c55e;
-  background: #F0FDF4; border: 1px solid #BBF7D0;
-  border-radius: 99px; padding: 4px 12px;
-}
-.w-live-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; animation: glow 1.5s infinite; }
-@keyframes glow {
-  0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
-  50% { box-shadow: 0 0 0 5px rgba(34,197,94,0); }
-}
-
-/* Node grid — 3 columns, 2 rows */
-.node-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 12px 16px;
-  position: relative;
-}
-
-/* Node cards */
-.node-card {
-  border-radius: 14px;
-  padding: 16px 14px;
-  border: 2px solid transparent;
-  opacity: 0;
-  transform: translateY(10px) scale(0.97);
-  transition: opacity 0.45s cubic-bezier(0.34,1.56,0.64,1),
-              transform 0.45s cubic-bezier(0.34,1.56,0.64,1),
-              box-shadow 0.3s, border-color 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-.node-card.visible { opacity: 1; transform: none; }
-.node-card.pulse { border-color: currentColor; box-shadow: 0 0 0 3px rgba(var(--glow),0.15); }
-
-/* Node colors */
-.node-db      { background: #EEF2FF; --glow: 99,102,241; }
-.node-icp     { background: #FFF7ED; --glow: 249,115,22; }
-.node-email   { background: #FFFBEB; --glow: 234,179,8; }
-.node-outreach{ background: #F0FDF4; --glow: 34,197,94; }
-.node-learn   { background: #FAF5FF; --glow: 168,85,247; }
-.node-pipeline{ background: #ECFDF5; --glow: 16,185,129; border: 2px solid #6EE7B7; }
-
-/* Active state per color */
-.node-db.pulse      { border-color: #6366F1; box-shadow: 0 0 0 4px rgba(99,102,241,0.12); }
-.node-icp.pulse     { border-color: #F97316; box-shadow: 0 0 0 4px rgba(249,115,22,0.12); }
-.node-email.pulse   { border-color: #EAB308; box-shadow: 0 0 0 4px rgba(234,179,8,0.12); }
-.node-outreach.pulse{ border-color: #22C55E; box-shadow: 0 0 0 4px rgba(34,197,94,0.12); }
-.node-learn.pulse   { border-color: #A855F7; box-shadow: 0 0 0 4px rgba(168,85,247,0.12); }
-
-/* Node content */
-.node-icon { font-size: 22px; margin-bottom: 8px; }
-.node-name {
-  font-size: 10px; font-weight: 800; letter-spacing: 0.08em;
-  text-transform: uppercase; color: #64748B; margin-bottom: 4px;
-}
-.node-val {
-  font-size: 20px; font-weight: 900; color: #0F172A;
-  letter-spacing: -0.03em; line-height: 1;
-}
-.node-desc { font-size: 11px; color: #64748B; margin-top: 4px; line-height: 1.4; }
-
-/* Pipeline node special */
-.node-pipeline .node-val { color: #059669; font-size: 24px; }
-.node-pipeline .node-desc { color: #047857; font-weight: 600; }
-
-/* Revenue counter */
-.node-revenue {
-  background: linear-gradient(135deg, #0F172A 0%, #1e293b 100%);
-  color: #fff; border: none;
-}
-.node-revenue .node-name { color: rgba(255,255,255,0.5); }
-.node-revenue .node-val { color: #4ade80; font-size: 22px; }
-.node-revenue .node-desc { color: rgba(255,255,255,0.6); }
-
-/* Arrows between nodes (CSS only) */
-.arrows-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 72px;
-  height: 20px;
+.hdr-tag {
+  display: inline-flex;
   align-items: center;
-  position: relative;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6366F1;
+  background: #EEF2FF;
+  border: 1px solid #C7D2FE;
+  border-radius: 99px;
+  padding: 4px 14px;
+  margin-bottom: 20px;
 }
-.arrow-h {
-  flex: 1;
-  height: 2px;
-  background: linear-gradient(90deg, transparent 0%, #CBD5E1 20%, #CBD5E1 80%, transparent 100%);
-  position: relative;
-  max-width: 120px;
+.hdr-h {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.hdr-sub {
+  font-size: 16px;
+  color: #64748B;
+  max-width: 520px;
   margin: 0 auto;
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-.arrow-h.visible { opacity: 1; }
-.arrow-h::after {
-  content: '';
-  position: absolute;
-  right: -1px; top: -4px;
-  width: 0; height: 0;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 7px solid #CBD5E1;
-}
-/* Traveling dot on arrow */
-.arrow-dot {
-  position: absolute;
-  width: 8px; height: 8px; border-radius: 50%;
-  top: -3px; left: 0%;
-  transition: left 0.9s cubic-bezier(0.4,0,0.2,1), opacity 0.2s;
-  opacity: 0;
-}
-.arrow-down {
-  width: 2px;
-  height: 20px;
-  background: #CBD5E1;
-  margin: 0 auto;
-  position: relative;
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-.arrow-down.visible { opacity: 1; }
-.arrow-down::after {
-  content: '';
-  position: absolute;
-  bottom: -1px; left: -4px;
-  width: 0; height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 7px solid #CBD5E1;
+  line-height: 1.65;
 }
 
-/* Step description */
-.w-step {
-  margin-top: 20px;
-  background: #F8FAFC;
-  border: 1px solid #E2E8F0;
-  border-radius: 12px;
-  padding: 14px 16px;
-  display: flex; align-items: flex-start; gap: 12px;
-  min-height: 60px;
+/* Flow row */
+.flow {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  position: relative;
 }
-.step-badge {
-  background: #EEF2FF; color: #6366F1;
-  font-size: 10px; font-weight: 800;
-  padding: 3px 8px; border-radius: 6px;
-  flex-shrink: 0; margin-top: 1px;
+
+/* Step card */
+.step {
+  flex: 1;
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px 22px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.34,1.2,0.64,1),
+              transform 0.5s cubic-bezier(0.34,1.2,0.64,1),
+              box-shadow 0.3s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px #E2E8F0;
+}
+.step.visible {
+  opacity: 1;
+  transform: none;
+}
+.step.active {
+  box-shadow: 0 0 0 2px #6366F1, 0 8px 32px rgba(99,102,241,0.12);
+  transform: translateY(-4px);
+}
+.step.done {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px #E2E8F0;
+  transform: none;
+}
+
+/* Step top: icon + number */
+.step-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.step-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+.step-num {
+  font-size: 11px;
+  font-weight: 800;
+  color: #CBD5E1;
   letter-spacing: 0.04em;
 }
-.step-text {
-  font-size: 13px; color: #1E293B; line-height: 1.6;
-  transition: opacity 0.25s;
+.step.active .step-num { color: #6366F1; }
+.step.done  .step-num { color: #22C55E; }
+
+/* Step text */
+.step-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.step-desc {
+  font-size: 13px;
+  color: #64748B;
+  line-height: 1.6;
 }
 
-/* Progress */
-.w-prog { height: 3px; background: #F1F5F9; border-radius: 99px; margin-top: 16px; overflow: hidden; }
-.w-prog-bar { height: 100%; background: linear-gradient(90deg,#6366F1,#818CF8); width:0%; transition:width 0.1s linear; }
+/* Step metric (bottom) */
+.step-metric {
+  margin-top: 14px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Arrow between steps */
+.arrow {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  flex-shrink: 0;
+  margin-top: -4px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.arrow.visible { opacity: 1; }
+.arrow svg { width: 24px; height: 24px; }
+
+/* Active step indicator */
+.step-active-ring {
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  border: 2px solid #6366F1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.step.active .step-active-ring { opacity: 1; }
+
+/* Step colors */
+.s1 .step-icon { background: #EEF2FF; }
+.s2 .step-icon { background: #FFF7ED; }
+.s3 .step-icon { background: #FFFBEB; }
+.s4 .step-icon { background: #F0FDF4; }
+.s5 .step-icon { background: #FAF5FF; }
+
+.s1 .step-metric { background: #EEF2FF; color: #6366F1; }
+.s2 .step-metric { background: #FFF7ED; color: #EA580C; }
+.s3 .step-metric { background: #FFFBEB; color: #B45309; }
+.s4 .step-metric { background: #F0FDF4; color: #16A34A; }
+.s5 .step-metric { background: #FAF5FF; color: #9333EA; }
+
+/* Bottom: result strip */
+.result-strip {
+  margin-top: 32px;
+  background: #0F172A;
+  border-radius: 16px;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.result-strip.visible { opacity: 1; transform: none; }
+
+.res-item { text-align: center; }
+.res-num {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.res-lbl {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 4px;
+  color: rgba(255,255,255,0.5);
+}
+.res-div { width: 1px; height: 40px; background: rgba(255,255,255,0.1); }
+
+/* Progress dots */
+.dots-row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 28px;
+}
+.prog-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #CBD5E1;
+  transition: background 0.3s, transform 0.3s;
+}
+.prog-dot.active { background: #6366F1; transform: scale(1.4); }
+.prog-dot.done   { background: #22C55E; }
 
 /* Replay */
-.w-replay { text-align: center; margin-top: 14px; }
-.w-replay button {
+.replay { text-align: center; margin-top: 20px; }
+.replay button {
   background: #EEF2FF; color: #6366F1; border: none;
-  padding: 8px 20px; border-radius: 99px;
-  font-size: 12px; font-weight: 600; cursor: pointer;
+  padding: 10px 24px; border-radius: 99px;
+  font-size: 12px; font-weight: 700; cursor: pointer;
   font-family: inherit; transition: background 0.2s;
 }
-.w-replay button:hover { background: #C7D2FE; }
+.replay button:hover { background: #C7D2FE; }
+
+/* Revenue counter color */
+.rev-green { color: #4ADE80; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .flow { flex-direction: column; gap: 12px; }
+  .arrow { transform: rotate(90deg); padding: 4px 0; justify-content: center; }
+  .result-strip { flex-wrap: wrap; gap: 20px; justify-content: center; }
+  .res-div { display: none; }
+}
 </style>
 </head>
 <body>
 
-<div style="max-width:760px;width:100%;">
-  <p style="font-family:Inter,sans-serif;font-size:11px;color:#94a3b8;text-align:center;margin-bottom:14px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;">Envoya Lead Machine — How it works</p>
+<div class="section">
 
-  <div class="widget">
-
-    <!-- Header -->
-    <div class="w-head">
-      <div>
-        <div class="w-title">The Lead Machine engine</div>
-        <div class="w-sub">6 components. 1 outcome: a full calendar.</div>
-      </div>
-      <div class="w-live"><div class="w-live-dot"></div>Running 24/7</div>
-    </div>
-
-    <!-- ROW 1: 3 nodes -->
-    <div class="node-grid">
-      <!-- Row 1 -->
-      <div class="node-card node-db" id="n1">
-        <div class="node-icon">🗄️</div>
-        <div class="node-name">Lead Database</div>
-        <div class="node-val">275M+</div>
-        <div class="node-desc">contacts, live enriched data</div>
-      </div>
-      <div class="node-card node-icp" id="n2">
-        <div class="node-icon">🎯</div>
-        <div class="node-name">ICP Engine</div>
-        <div class="node-val">Top 10%</div>
-        <div class="node-desc">scored, ranked, filtered</div>
-      </div>
-      <div class="node-card node-email" id="n3">
-        <div class="node-icon">✉️</div>
-        <div class="node-name">Email Writer</div>
-        <div class="node-val">16–26%</div>
-        <div class="node-desc">reply rate · AI + signal</div>
-      </div>
-
-      <!-- Row 2 -->
-      <div class="node-card node-pipeline" id="n4">
-        <div class="node-icon">🗓️</div>
-        <div class="node-name">Meetings</div>
-        <div class="node-val" id="meeting-counter">0</div>
-        <div class="node-desc">booked automatically</div>
-      </div>
-      <div class="node-card node-learn" id="n5">
-        <div class="node-icon">🧠</div>
-        <div class="node-name">Self-Learning</div>
-        <div class="node-val">+40%</div>
-        <div class="node-desc">better after week 8</div>
-      </div>
-      <div class="node-card node-revenue" id="n6">
-        <div class="node-icon">💰</div>
-        <div class="node-name">Revenue</div>
-        <div class="node-val">€<span id="rev-counter">0</span>K</div>
-        <div class="node-desc">open pipeline generated</div>
-      </div>
-    </div>
-
-    <!-- Step description -->
-    <div class="w-step">
-      <span class="step-badge" id="step-badge">01</span>
-      <span class="step-text" id="step-text">Lead Machine pulls from 275M+ contacts — live data, updated daily.</span>
-    </div>
-
-    <div class="w-prog"><div class="w-prog-bar" id="prog"></div></div>
+  <!-- Header -->
+  <div class="hdr">
+    <div class="hdr-tag">⚡ HOW IT WORKS</div>
+    <h2 class="hdr-h">Five steps.<br>One outcome: a full pipeline.</h2>
+    <p class="hdr-sub">Lead Machine runs every step automatically — from finding the right person to booking the meeting. You just show up.</p>
   </div>
 
-  <div class="w-replay"><button onclick="run()">▶ Replay</button></div>
+  <!-- Flow -->
+  <div class="flow" id="flow">
+
+    <!-- Step 1 -->
+    <div class="step s1" id="s1">
+      <div class="step-active-ring"></div>
+      <div class="step-top">
+        <div class="step-icon">🎯</div>
+        <span class="step-num">01</span>
+      </div>
+      <div class="step-title">Find the right lead</div>
+      <div class="step-desc">Scans 275M+ contacts, filters by your ICP — role, sector, company size. Only top-scoring leads make it through.</div>
+      <div class="step-metric">📊 Top 10% only</div>
+    </div>
+
+    <div class="arrow" id="a1">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step s2" id="s2">
+      <div class="step-active-ring"></div>
+      <div class="step-top">
+        <div class="step-icon">📡</div>
+        <span class="step-num">02</span>
+      </div>
+      <div class="step-title">Detect a real signal</div>
+      <div class="step-desc">Finds a recent trigger — an interview, a job post, a new hire. Something that makes the email feel researched, not automated.</div>
+      <div class="step-metric">🔍 Pattern A · B · C</div>
+    </div>
+
+    <div class="arrow" id="a2">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step s3" id="s3">
+      <div class="step-active-ring"></div>
+      <div class="step-top">
+        <div class="step-icon">✉️</div>
+        <span class="step-num">03</span>
+      </div>
+      <div class="step-title">Write the right email</div>
+      <div class="step-desc">AI writes a personalised email using the signal as a hook. Not a template — a message that reads like homework was done.</div>
+      <div class="step-metric">📈 16–26% reply rate</div>
+    </div>
+
+    <div class="arrow" id="a3">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step s4" id="s4">
+      <div class="step-active-ring"></div>
+      <div class="step-top">
+        <div class="step-icon">🗓️</div>
+        <span class="step-num">04</span>
+      </div>
+      <div class="step-title">Book the meeting</div>
+      <div class="step-desc">Replies are tracked and routed to you. Warm leads are nurtured automatically. Meetings land in your calendar.</div>
+      <div class="step-metric">🎉 35+ meetings / 90 days</div>
+    </div>
+
+    <div class="arrow" id="a4">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step s5" id="s5">
+      <div class="step-active-ring"></div>
+      <div class="step-top">
+        <div class="step-icon">🧠</div>
+        <span class="step-num">05</span>
+      </div>
+      <div class="step-title">Learn & improve</div>
+      <div class="step-desc">Every meeting and deal trains the ICP model. The system gets smarter automatically — week 8 outperforms week 1 by 40%.</div>
+      <div class="step-metric">🔁 Auto-improving</div>
+    </div>
+
+  </div>
+
+  <!-- Progress dots -->
+  <div class="dots-row" id="dots">
+    <div class="prog-dot" id="dot0"></div>
+    <div class="prog-dot" id="dot1"></div>
+    <div class="prog-dot" id="dot2"></div>
+    <div class="prog-dot" id="dot3"></div>
+    <div class="prog-dot" id="dot4"></div>
+  </div>
+
+  <!-- Result strip -->
+  <div class="result-strip" id="result">
+    <div class="res-item">
+      <div class="res-num rev-green">€<span id="cnt-rev">0</span>K</div>
+      <div class="res-lbl">Open pipeline</div>
+    </div>
+    <div class="res-div"></div>
+    <div class="res-item">
+      <div class="res-num" style="color:#fff"><span id="cnt-mtg">0</span></div>
+      <div class="res-lbl">Meetings booked</div>
+    </div>
+    <div class="res-div"></div>
+    <div class="res-item">
+      <div class="res-num" style="color:#FBBF24">16–26%</div>
+      <div class="res-lbl">Reply rate</div>
+    </div>
+    <div class="res-div"></div>
+    <div class="res-item">
+      <div class="res-num" style="color:#A78BFA">+40%</div>
+      <div class="res-lbl">Better after wk 8</div>
+    </div>
+  </div>
+
+  <div class="replay"><button onclick="run()">▶ Replay</button></div>
+
 </div>
 
 <script>
-const STEPS = [
-  { badge:'01', node:'n1', text:'Lead Machine pulls from 275M+ contacts — live data, enriched daily with company signals.', counter:null },
-  { badge:'02', node:'n2', text:'The ICP Engine scores every contact. Only the top 10% match your ideal customer. The rest are filtered out.', counter:null },
-  { badge:'03', node:'n3', text:'For each top lead, the AI writes a personalised email using a real signal — an interview, a job post, a company move. Not a template.', counter:null },
-  { badge:'04', node:'n4', text:'Replies route to you automatically. Meetings land in your calendar. You show up — the agent handled everything else.', counter:'meetings', target:35 },
-  { badge:'05', node:'n5', text:'After every meeting and every deal, the system updates your ICP profile. Week 8 outperforms week 1 by 40%.', counter:null },
-  { badge:'06', node:'n6', text:'35 meetings. €345K in open pipeline. Every deal after the first one is pure return.', counter:'revenue', target:345 },
-];
+const STEPS = ['s1','s2','s3','s4','s5'];
+const ARROWS = ['a1','a2','a3','a4'];
+const TIMINGS = [600, 1800, 3000, 4200, 5400];
+const ARROW_TIMINGS = [1200, 2400, 3600, 4800];
 
-const TOTAL_MS = 15000;
-let timers = [], progInterval = null;
+let timers = [], rev_int = null;
+function stop() { timers.forEach(clearTimeout); if(rev_int) clearInterval(rev_int); timers=[]; }
+function later(fn, ms) { timers.push(setTimeout(fn,ms)); }
 
-function stop() { timers.forEach(clearTimeout); if(progInterval) clearInterval(progInterval); timers = []; }
-function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
-
-function setStep(s) {
-  const txt = document.getElementById('step-text');
-  txt.style.opacity = '0';
-  setTimeout(function() {
-    document.getElementById('step-badge').textContent = s.badge;
-    txt.textContent = s.text;
-    txt.style.opacity = '1';
-  }, 180);
-}
-
-function countUp(elId, target, duration) {
-  const el = document.getElementById(elId);
+function countUp(id, target, duration) {
+  const el = document.getElementById(id);
   if (!el) return;
   const start = performance.now();
-  function step(now) {
+  function tick(now) {
     const p = Math.min((now - start) / duration, 1);
     const e = 1 - Math.pow(1 - p, 3);
     el.textContent = Math.round(e * target);
-    if (p < 1) requestAnimationFrame(step);
+    if (p < 1) requestAnimationFrame(tick);
   }
-  requestAnimationFrame(step);
+  requestAnimationFrame(tick);
 }
 
-function pulseNode(id) {
-  // Remove previous pulses
-  document.querySelectorAll('.node-card').forEach(function(n) { n.classList.remove('pulse'); });
-  const el = document.getElementById(id);
-  if (el) el.classList.add('pulse');
+function setDot(i, state) {
+  const d = document.getElementById('dot' + i);
+  if (!d) return;
+  d.className = 'prog-dot' + (state === 'active' ? ' active' : state === 'done' ? ' done' : '');
 }
 
 function run() {
   stop();
 
   // Reset
-  document.querySelectorAll('.node-card').forEach(function(n) { n.classList.remove('visible','pulse'); });
-  document.getElementById('meeting-counter').textContent = '0';
-  document.getElementById('rev-counter').textContent = '0';
-  document.getElementById('prog').style.width = '0%';
-  setStep(STEPS[0]);
-
-  // Appear all nodes first with stagger
-  ['n1','n2','n3','n4','n5','n6'].forEach(function(id, i) {
-    later(function() { document.getElementById(id).classList.add('visible'); }, 100 + i * 130);
+  STEPS.forEach(function(id) {
+    const el = document.getElementById(id);
+    el.classList.remove('visible','active','done');
   });
+  ARROWS.forEach(function(id) {
+    document.getElementById(id).classList.remove('visible');
+  });
+  document.getElementById('result').classList.remove('visible');
+  document.getElementById('cnt-rev').textContent = '0';
+  document.getElementById('cnt-mtg').textContent = '0';
+  for (let i = 0; i < 5; i++) setDot(i, '');
 
-  // Step sequence
-  const timings = [1000, 3200, 5400, 7600, 10000, 12400];
-
-  STEPS.forEach(function(s, i) {
+  // Appear all steps
+  STEPS.forEach(function(id, i) {
     later(function() {
-      setStep(s);
-      pulseNode(s.node);
-      if (s.counter === 'meetings') countUp('meeting-counter', s.target, 1400);
-      if (s.counter === 'revenue')  countUp('rev-counter', s.target, 1600);
-    }, timings[i]);
+      document.getElementById(id).classList.add('visible');
+    }, 100 + i * 80);
   });
 
-  // Progress
-  let elapsed = 0;
-  progInterval = setInterval(function() {
-    elapsed += 100;
-    document.getElementById('prog').style.width = Math.min(100, elapsed / TOTAL_MS * 100) + '%';
-    if (elapsed >= TOTAL_MS) {
-      clearInterval(progInterval);
-      later(function() { run(); }, 2000);
-    }
-  }, 100);
-  timers.push(progInterval);
+  // Activate each step in sequence
+  TIMINGS.forEach(function(t, i) {
+    later(function() {
+      // Deactivate previous
+      if (i > 0) {
+        const prev = document.getElementById(STEPS[i-1]);
+        prev.classList.remove('active');
+        prev.classList.add('done');
+        setDot(i-1, 'done');
+      }
+      const el = document.getElementById(STEPS[i]);
+      el.classList.add('active');
+      setDot(i, 'active');
+    }, t);
+  });
+
+  // Draw arrows
+  ARROW_TIMINGS.forEach(function(t, i) {
+    later(function() {
+      document.getElementById(ARROWS[i]).classList.add('visible');
+    }, t);
+  });
+
+  // Finish last step
+  later(function() {
+    const last = document.getElementById(STEPS[4]);
+    last.classList.remove('active');
+    last.classList.add('done');
+    setDot(4, 'done');
+  }, 6600);
+
+  // Show result strip + counters
+  later(function() {
+    document.getElementById('result').classList.add('visible');
+    countUp('cnt-rev', 345, 1800);
+    countUp('cnt-mtg', 78, 1600);
+  }, 7000);
+
+  // Loop
+  later(function() { run(); }, 12000);
 }
 
 run();
