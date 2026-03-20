@@ -1,7 +1,18 @@
+/*
+ HOW TO CREATE A NEW QUOTE:
+ 1. Duplicate this file as quote-ENV-2026-XXX.js
+ 2. Update quote_number, date, valid_until
+ 3. Update the "to" block with client details
+ 4. Adjust unit_price if needed
+ 5. Open quote.html?id=ENV-2026-XXX in browser
+ 6. Click "Download as PDF" to export
+*/
+
 const quoteData = {
   quote_number: "ENV-2026-002",
   date: "19-03-2026",
   valid_until: "07-04-2026",
+  status: "Sent",
 
   from: {
     company: "Envoya",
@@ -9,7 +20,8 @@ const quoteData = {
     address: "Bronsbergen 22, 7207 AA Zutphen",
     kvk: "KvK 56248482",
     btw: "BTW NL852039839B02",
-    email: "admin@envoya.tech"
+    email: "admin@envoya.tech",
+    website: "envoya.tech"
   },
 
   to: {

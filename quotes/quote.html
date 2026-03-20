@@ -11,225 +11,233 @@
   <link rel="stylesheet" href="quote-styles.css">
 </head>
 <body>
+<div class="q-doc">
 
-<div class="quote-wrap">
-
-  <!-- ── Header ─────────────────────────────────── -->
+  <!-- ── S1: Header ─────────────────────────────── -->
   <div class="q-header">
-    <div>
+    <div class="q-logo-wrap">
       <div class="q-logo">
-        <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="20" cy="20" r="18" stroke="#C7D2FE" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.5"/>
-          <circle cx="20" cy="20" r="13" stroke="#C7D2FE" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
-          <circle cx="20" cy="20" r="8" stroke="#fff" stroke-width="0.9" stroke-dasharray="1.5 1.5" opacity="0.7"/>
-          <circle cx="20" cy="20" r="4" fill="#fff"/>
-          <circle cx="20" cy="20" r="2.2" fill="#fff"/>
-          <circle cx="31.7" cy="8.3" r="2.5" fill="#C7D2FE"/>
-          <circle cx="33" cy="20" r="1.2" fill="#fff"/>
-          <circle cx="9.5" cy="28" r="1.5" stroke="#C7D2FE" stroke-width="0.8" fill="none"/>
-          <circle cx="5.5" cy="12" r="0.9" fill="#C7D2FE" opacity="0.6"/>
-          <circle cx="35" cy="30" r="0.7" fill="#C7D2FE" opacity="0.5"/>
+        <!-- Orbit logo: two dashed circles, filled center, satellite dot -->
+        <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="#C7D2FE" stroke-width="1" stroke-dasharray="3 3" opacity="0.7"/>
+          <circle cx="20" cy="20" r="11" stroke="#C7D2FE" stroke-width="1" stroke-dasharray="2.5 2.5" opacity="0.7"/>
+          <circle cx="20" cy="20" r="5" fill="#fff"/>
+          <circle cx="20" cy="20" r="2.5" fill="#6366F1"/>
+          <circle cx="31" cy="9" r="3.5" fill="#C7D2FE"/>
         </svg>
-        <span class="q-logo-text">envoya</span>
+        <span class="q-logo-name">envoya</span>
       </div>
       <div class="q-tagline">We send the agent. You close the deal.</div>
     </div>
     <div class="q-meta">
       <div class="q-meta-label">Quote</div>
-      <div class="q-meta-number" id="q-number"></div>
-      <div class="q-meta-dates">
-        <span id="q-date-label">Date:</span> <span id="q-date"></span><br>
-        <span id="q-valid-label">Valid until:</span> <span id="q-valid"></span>
-      </div>
+      <div class="q-meta-number" id="q-number">—</div>
+      <div class="q-meta-dates" id="q-dates">—</div>
     </div>
   </div>
 
-  <!-- ── From / To ──────────────────────────────── -->
+  <!-- ── S2: From / To / Dates ──────────────────── -->
   <div class="q-parties">
     <div class="q-party">
       <div class="q-party-label">From</div>
-      <div class="q-party-company" id="from-company"></div>
-      <div class="q-party-detail">
-        <span id="from-legal"></span><br>
-        <span id="from-address"></span><br>
-        <span id="from-kvk"></span> · <span id="from-btw"></span><br>
-        <span class="q-party-email" id="from-email"></span>
-      </div>
+      <div class="q-party-company" id="from-company">—</div>
+      <div class="q-party-detail" id="from-detail">—</div>
     </div>
     <div class="q-party">
       <div class="q-party-label">To</div>
-      <div class="q-party-company" id="to-company"></div>
-      <div class="q-party-detail">
-        <span id="to-contact"></span><br>
-        <span class="q-party-email" id="to-email"></span>
+      <div class="q-party-company" id="to-company">—</div>
+      <div class="q-party-detail" id="to-detail">—</div>
+    </div>
+    <div class="q-dates-col">
+      <div class="q-date-row">
+        <span class="q-date-lbl">Date</span>
+        <span class="q-date-val" id="q-date">—</span>
+      </div>
+      <div class="q-date-row">
+        <span class="q-date-lbl">Valid until</span>
+        <span class="q-date-val" id="q-valid">—</span>
       </div>
     </div>
   </div>
 
-  <!-- ── Body ───────────────────────────────────── -->
-  <div class="q-body">
-
-    <!-- Package title -->
-    <div>
-      <div class="q-package-title" id="pkg-title"></div>
-      <div class="q-package-sub" id="pkg-sub"></div>
-    </div>
-
-    <!-- Line item table -->
-    <div>
-      <table class="q-table">
-        <thead>
-          <tr>
-            <th>Description</th>
-            <th class="right" style="width:60px">Qty</th>
-            <th class="right" style="width:130px">Unit price</th>
-            <th class="right" style="width:60px">VAT</th>
-            <th class="right" style="width:130px">Subtotal</th>
-          </tr>
-        </thead>
-        <tbody id="q-tbody">
-          <!-- injected -->
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Totals -->
-    <div class="q-totals">
-      <div class="q-totals-inner" id="q-totals">
-        <!-- injected -->
-      </div>
-    </div>
-
-    <!-- Included items -->
-    <div>
-      <div class="q-section-label">What's included</div>
-      <div class="q-included-grid" id="q-included">
-        <!-- injected -->
-      </div>
-    </div>
-
-    <!-- Guarantee -->
-    <div class="q-highlight guarantee">
-      <div class="q-highlight-title" id="guarantee-title"></div>
-      <div class="q-highlight-text" id="guarantee-text"></div>
-    </div>
-
-    <!-- Expectation -->
-    <div class="q-highlight expectation">
-      <div class="q-highlight-title" id="expectation-title"></div>
-      <div class="q-highlight-text" id="expectation-text"></div>
-    </div>
-
-    <!-- Footer note -->
-    <div style="font-size:10px; color:var(--color-gray); line-height:1.6; font-style:italic;" id="footer-note"></div>
-
+  <!-- ── S3: Package title ──────────────────────── -->
+  <div class="q-pkg-block">
+    <div class="q-pkg-title" id="pkg-title">—</div>
+    <div class="q-pkg-sub" id="pkg-sub">—</div>
   </div>
 
-  <!-- ── Footer ─────────────────────────────────── -->
+  <!-- ── S4: Table ──────────────────────────────── -->
+  <div class="q-table-wrap">
+    <table class="q-table">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th class="r" style="width:50px">Qty</th>
+          <th class="r" style="width:120px">Unit Price</th>
+          <th class="r" style="width:55px">VAT%</th>
+          <th class="r" style="width:120px">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="q-tbody"></tbody>
+    </table>
+  </div>
+
+  <!-- Totals -->
+  <div class="q-totals-wrap">
+    <div class="q-totals" id="q-totals"></div>
+  </div>
+
+  <!-- ── S5: Included items ─────────────────────── -->
+  <div class="q-included-wrap">
+    <div class="q-section-title">Everything included in this package</div>
+    <div class="q-included-grid" id="q-included"></div>
+  </div>
+
+  <!-- ── S6: Guarantee ──────────────────────────── -->
+  <div class="q-guarantee-wrap">
+    <div class="q-guarantee">
+      <div class="q-guarantee-icon">
+        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.5 6l4 4 7-8" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="q-guarantee-title" id="guarantee-title">—</div>
+        <div class="q-guarantee-text" id="guarantee-text">—</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── S7: Expectation ────────────────────────── -->
+  <div class="q-expectation-wrap">
+    <div class="q-expectation">
+      <div class="q-expectation-title" id="expectation-title">—</div>
+      <div class="q-expectation-text" id="expectation-text">—</div>
+    </div>
+  </div>
+
+  <!-- ── S8: Footer ─────────────────────────────── -->
   <div class="q-footer">
     <span class="q-footer-logo">envoya</span>
-    <span id="q-footer-contact"></span>
+    <span class="q-footer-center" id="q-footer-center">—</span>
+    <span class="q-footer-num" id="q-footer-num">—</span>
   </div>
+  <div class="q-footer-note" id="q-footer-note"></div>
 
 </div>
 
 <!-- Print button -->
 <button class="print-btn" onclick="window.print()">Download as PDF</button>
 
-<script src="quote-data.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+// ── Load correct quote file based on ?id= param ──────
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  const script = document.createElement('script');
+  script.src = id ? `quote-${id}.js` : 'quote-data.js';
+  script.onerror = () => {
+    // Fallback to default
+    const fallback = document.createElement('script');
+    fallback.src = 'quote-data.js';
+    fallback.onload = renderQuote;
+    document.head.appendChild(fallback);
+  };
+  script.onload = renderQuote;
+  document.head.appendChild(script);
+})();
+
+function renderQuote() {
   const d = quoteData;
 
-  // Header
+  const fmt = (n) => '€\u00a0' + n.toLocaleString('nl-NL', {
+    minimumFractionDigits: 2, maximumFractionDigits: 2
+  });
+
+  // S1
   document.getElementById('q-number').textContent = d.quote_number;
+  document.title = `Quote ${d.quote_number} — Envoya`;
+
+  // S2
+  document.getElementById('from-company').textContent = d.from.company;
+  document.getElementById('from-detail').innerHTML =
+    `${d.from.legal}<br>${d.from.address}<br>${d.from.kvk} · ${d.from.btw}<br>`
+    + `<span class="q-party-email">${d.from.email}</span>`;
+
+  document.getElementById('to-company').textContent = d.to.company;
+  const toDetail = d.to.contact
+    + (d.to.email ? `<br><span class="q-party-email">${d.to.email}</span>` : '');
+  document.getElementById('to-detail').innerHTML = toDetail;
+
   document.getElementById('q-date').textContent = d.date;
   document.getElementById('q-valid').textContent = d.valid_until;
 
-  // From
-  document.getElementById('from-company').textContent = d.from.company;
-  document.getElementById('from-legal').textContent = d.from.legal;
-  document.getElementById('from-address').textContent = d.from.address;
-  document.getElementById('from-kvk').textContent = d.from.kvk;
-  document.getElementById('from-btw').textContent = d.from.btw;
-  document.getElementById('from-email').textContent = d.from.email;
-
-  // To
-  document.getElementById('to-company').textContent = d.to.company;
-  document.getElementById('to-contact').textContent = d.to.contact;
-  if (d.to.email) document.getElementById('to-email').textContent = d.to.email;
-
-  // Package title
+  // S3
   document.getElementById('pkg-title').textContent = d.package_title;
   document.getElementById('pkg-sub').textContent = d.package_subtitle;
 
-  // Line item
+  // S4 — table row
   const item = d.line_item;
-  const subtotalExcl = item.qty * item.unit_price;
-  const vatAmount = subtotalExcl * item.vat;
-  const total = subtotalExcl + vatAmount;
-
-  const fmt = (n) => '€\u00a0' + n.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const subtotal = item.qty * item.unit_price;
+  const vatAmount = subtotal * item.vat;
+  const total = subtotal + vatAmount;
 
   document.getElementById('q-tbody').innerHTML = `
-    <tr>
+    <tr class="item-row">
       <td>
-        <div class="td-desc">${item.description}</div>
-        <div class="td-includes">${item.includes}</div>
+        <div class="q-item-desc-cell">
+          <div class="q-item-title">${item.description}</div>
+          <div class="q-item-includes">${item.includes}</div>
+        </div>
       </td>
-      <td class="right">${item.qty}</td>
-      <td class="right">${fmt(item.unit_price)}</td>
-      <td class="right">${Math.round(item.vat * 100)}%</td>
-      <td class="right">${fmt(subtotalExcl)}</td>
+      <td class="q-item-num">${item.qty}</td>
+      <td class="q-item-num">${fmt(item.unit_price)}</td>
+      <td class="q-item-num">${Math.round(item.vat * 100)}%</td>
+      <td class="q-item-num">${fmt(subtotal)}</td>
     </tr>
   `;
 
-  // Totals
+  // S4 — totals
   document.getElementById('q-totals').innerHTML = `
     <div class="q-total-row">
       <span class="q-total-label">Subtotal excl. VAT</span>
-      <span class="q-total-val">${fmt(subtotalExcl)}</span>
+      <span class="q-total-val">${fmt(subtotal)}</span>
     </div>
     <div class="q-total-row">
-      <span class="q-total-label">VAT ${Math.round(item.vat * 100)}%</span>
+      <span class="q-total-label">VAT amount (${Math.round(item.vat * 100)}%)</span>
       <span class="q-total-val">${fmt(vatAmount)}</span>
     </div>
-    <div class="q-total-row grand">
+    <div class="q-total-grand">
       <span class="q-total-label">Total incl. VAT</span>
-      <span class="q-total-val">${fmt(total)}</span>
+      <span class="q-total-grand-val">${fmt(total)}</span>
     </div>
   `;
 
-  // Included items
+  // S5
   document.getElementById('q-included').innerHTML = d.included_items.map(it => `
-    <div class="q-included-item">
-      <div class="q-check">
-        <svg viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
+    <div class="q-inc-item">
+      <div class="q-inc-bullet"></div>
       <div>
-        <div class="q-included-title">${it.title}</div>
-        <div class="q-included-desc">${it.desc}</div>
+        <div class="q-inc-title">${it.title}</div>
+        <div class="q-inc-desc">${it.desc}</div>
       </div>
     </div>
   `).join('');
 
-  // Guarantee
+  // S6
   document.getElementById('guarantee-title').textContent = d.guarantee.title;
   document.getElementById('guarantee-text').textContent = d.guarantee.text;
 
-  // Expectation
+  // S7
   document.getElementById('expectation-title').textContent = d.expectation.title;
   document.getElementById('expectation-text').textContent = d.expectation.text;
 
-  // Footer note
-  document.getElementById('footer-note').textContent = d.footer_note;
-
-  // Footer contact
-  document.getElementById('q-footer-contact').textContent =
-    `${d.from.email} · ${d.from.address} · ${d.from.kvk}`;
-});
+  // S8
+  document.getElementById('q-footer-center').textContent =
+    `${d.from.email} · ${d.from.website} · ${d.from.address}`;
+  document.getElementById('q-footer-num').textContent = d.quote_number;
+  document.getElementById('q-footer-note').textContent = d.footer_note;
+}
 </script>
 </body>
 </html>
