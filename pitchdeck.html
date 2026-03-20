@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Lead Machine — Pitch Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0A0F1A;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      gap: 0;
+    }
+
+    /* Print button */
+    .print-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #6366F1;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 18px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      z-index: 100;
+      transition: background 0.2s;
+    }
+    .print-btn:hover { background: #4F46E5; }
+
+    /* Page */
+    .page {
+      width: 794px;
+      min-height: 1123px;
+      background: #0F172A;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      border-bottom: 0.5px solid #1E293B;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .logo-text {
+      color: #F8FAFC;
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+    }
+    .header-product {
+      color: #818CF8;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 10px 0 4px;
+    }
+    .hero-line1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #F8FAFC;
+      line-height: 1.15;
+    }
+    .hero-line2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #6366F1;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .hero-sub {
+      font-size: 12px;
+      color: #64748B;
+      max-width: 480px;
+      line-height: 1.65;
+    }
+
+    /* Stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .stat-card {
+      background: #1E293B;
+      border-radius: 8px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 22px;
+      font-weight: 700;
+      color: #6366F1;
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .stat-label {
+      font-size: 8px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #64748B;
+    }
+
+    /* How it works */
+    .section-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: #818CF8;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .step-card {
+      background: #0D1520;
+      border-radius: 8px;
+      border: 0.5px solid #1E293B;
+      padding: 14px 12px;
+    }
+    .step-badge {
+      display: inline-block;
+      background: #6366F1;
+      color: #fff;
+      font-size: 8px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 20px;
+      margin-bottom: 9px;
+      letter-spacing: 0.05em;
+    }
+    .step-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: #F8FAFC;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .step-desc {
+      font-size: 8px;
+      color: #64748B;
+      line-height: 1.65;
+    }
+
+    /* Investment */
+    .investment-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      flex: 1;
+    }
+    .invest-card {
+      background: #0D1520;
+      border-radius: 8px;
+      border: 0.5px solid #1E293B;
+      padding: 20px 18px;
+    }
+    .invest-card.featured {
+      border-color: #6366F1;
+    }
+    .invest-price {
+      font-size: 40px;
+      font-weight: 700;
+      color: #F8FAFC;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .invest-sub {
+      font-size: 9px;
+      color: #64748B;
+      margin-bottom: 12px;
+    }
+    .urgency-pill {
+      display: inline-block;
+      background: rgba(239,68,68,0.15);
+      border: 0.5px solid #EF4444;
+      color: #EF4444;
+      font-size: 8px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      letter-spacing: 0.03em;
+    }
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      font-size: 9px;
+      color: #F8FAFC;
+      line-height: 1.5;
+    }
+    .check-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #16A34A;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ROI card */
+    .roi-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: #818CF8;
+      margin-bottom: 14px;
+    }
+    .roi-table {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .roi-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 0;
+      border-bottom: 0.5px solid #1E293B;
+      font-size: 9px;
+    }
+    .roi-row:last-child { border-bottom: none; }
+    .roi-label { color: #64748B; }
+    .roi-val-indigo { color: #818CF8; font-weight: 600; }
+    .roi-val-white { color: #F8FAFC; font-weight: 600; }
+    .roi-val-red { color: #EF4444; font-weight: 600; }
+    .roi-val-green { color: #16A34A; font-weight: 600; }
+
+    /* Footer */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 0.5px solid #1E293B;
+      margin-top: auto;
+    }
+    .footer-tagline {
+      font-size: 9px;
+      font-weight: 700;
+      color: #818CF8;
+      letter-spacing: 0.02em;
+    }
+    .footer-contact {
+      font-size: 8px;
+      color: #64748B;
+    }
+
+    /* ─── PAGE 2 ─── */
+    .page2-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #F8FAFC;
+      margin-bottom: 4px;
+    }
+    .page2-sub {
+      font-size: 11px;
+      color: #64748B;
+      padding-bottom: 16px;
+      border-bottom: 0.5px solid #1E293B;
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .module-card {
+      background: #0D1520;
+      border-radius: 8px;
+      border: 0.5px solid #1E293B;
+      padding: 14px 14px;
+    }
+    .module-icon {
+      font-size: 18px;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+    .module-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: #F8FAFC;
+      margin-bottom: 5px;
+    }
+    .module-desc {
+      font-size: 8px;
+      color: #64748B;
+      line-height: 1.6;
+    }
+    .module-tag {
+      display: inline-block;
+      margin-top: 8px;
+      background: rgba(99,102,241,0.12);
+      border: 0.5px solid #6366F1;
+      color: #818CF8;
+      font-size: 7px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 20px;
+      letter-spacing: 0.04em;
+    }
+
+    /* Timeline section */
+    .timeline-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .timeline-card {
+      background: #0D1520;
+      border-radius: 8px;
+      border: 0.5px solid #1E293B;
+      padding: 14px 12px;
+      position: relative;
+    }
+    .timeline-week {
+      font-size: 8px;
+      font-weight: 700;
+      color: #6366F1;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    .timeline-title {
+      font-size: 9px;
+      font-weight: 700;
+      color: #F8FAFC;
+      margin-bottom: 5px;
+    }
+    .timeline-desc {
+      font-size: 8px;
+      color: #64748B;
+      line-height: 1.6;
+    }
+    .timeline-connector {
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #1E293B;
+      font-size: 14px;
+      z-index: 1;
+    }
+
+    /* Testimonial / proof */
+    .proof-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .proof-card {
+      background: #0D1520;
+      border-radius: 8px;
+      border: 0.5px solid #1E293B;
+      padding: 14px 14px;
+    }
+    .proof-quote {
+      font-size: 9px;
+      color: #F8FAFC;
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    .proof-name {
+      font-size: 8px;
+      font-weight: 700;
+      color: #818CF8;
+    }
+    .proof-role {
+      font-size: 8px;
+      color: #64748B;
+    }
+
+    /* CTA block */
+    .cta-block {
+      background: #0D1520;
+      border-radius: 8px;
+      border: 0.5px solid #6366F1;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .cta-left {}
+    .cta-headline {
+      font-size: 16px;
+      font-weight: 700;
+      color: #F8FAFC;
+      margin-bottom: 4px;
+    }
+    .cta-sub {
+      font-size: 9px;
+      color: #64748B;
+    }
+    .cta-right {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .cta-contact {
+      font-size: 11px;
+      font-weight: 600;
+      color: #818CF8;
+      margin-bottom: 3px;
+    }
+    .cta-url {
+      font-size: 9px;
+      color: #64748B;
+    }
+    .cta-urgency {
+      display: inline-block;
+      background: rgba(239,68,68,0.15);
+      border: 0.5px solid #EF4444;
+      color: #EF4444;
+      font-size: 8px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 20px;
+      margin-top: 6px;
+    }
+
+    /* ─── PRINT ─── */
+    @media print {
+      @page {
+        size: A4;
+        margin: 0;
+      }
+      body {
+        background: #0F172A;
+        padding: 0;
+        gap: 0;
+      }
+      .print-btn { display: none; }
+      .page {
+        width: 794px;
+        height: 1123px;
+        min-height: 1123px;
+        page-break-after: always;
+        margin: 0;
+        padding: 40px;
+        overflow: hidden;
+      }
+      .page:last-child { page-break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">⬇ Download PDF</button>
+
+<!-- ═══════════════════════════════════════════════════ PAGE 1 -->
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">
+      <svg width="22" height="22" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="18" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.5"/>
+        <circle cx="20" cy="20" r="13" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
+        <circle cx="20" cy="20" r="8" stroke="#6366F1" stroke-width="0.9" stroke-dasharray="1.5 1.5" opacity="0.7"/>
+        <circle cx="20" cy="20" r="4" fill="#6366F1"/>
+        <circle cx="20" cy="20" r="2.2" fill="#6366F1"/>
+        <circle cx="31.7" cy="8.3" r="2.5" fill="#818CF8"/>
+        <circle cx="33" cy="20" r="1.2" fill="#6366F1"/>
+        <circle cx="9.5" cy="28" r="1.5" stroke="#818CF8" stroke-width="0.8" fill="none"/>
+        <circle cx="5.5" cy="12" r="0.9" fill="#818CF8" opacity="0.6"/>
+        <circle cx="35" cy="30" r="0.7" fill="#818CF8" opacity="0.5"/>
+      </svg>
+      <span class="logo-text">envoya</span>
+    </div>
+    <span class="header-product">Lead Machine</span>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-line1">35 meetings. 90 days.</div>
+    <div class="hero-line2">One agent. Zero cold calls.</div>
+    <div class="hero-sub">Your AI sales agent finds the right prospects, writes the right message, and books the meeting. You stay in control. You just close.</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-number">14%+</div>
+      <div class="stat-label">avg. reply rate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">8–12</div>
+      <div class="stat-label">meetings per month</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">Day 1</div>
+      <div class="stat-label">first results</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">€0</div>
+      <div class="stat-label">monthly fees</div>
+    </div>
+  </div>
+
+  <!-- How it works -->
+  <div>
+    <div class="section-title">How it works</div>
+    <div class="steps-row">
+      <div class="step-card">
+        <span class="step-badge">01</span>
+        <div class="step-title">Find the right lead</div>
+        <div class="step-desc">AI scores 275M+ contacts against your ICP. Only leads scoring 80+ make it through.</div>
+      </div>
+      <div class="step-card">
+        <span class="step-badge">02</span>
+        <div class="step-title">Write the perfect email</div>
+        <div class="step-desc">Every message personalised using real signals — interviews, news, role context. No two emails alike.</div>
+      </div>
+      <div class="step-card">
+        <span class="step-badge">03</span>
+        <div class="step-title">Meeting in your calendar</div>
+        <div class="step-desc">You get notified. You show up. The agent handled everything else.</div>
+      </div>
+      <div class="step-card">
+        <span class="step-badge">04</span>
+        <div class="step-title">Gets smarter every week</div>
+        <div class="step-desc">Every reply, meeting and deal trains the model. Week 8 outperforms week 1 by 40%.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Investment -->
+  <div class="investment-row">
+    <!-- Left: pricing -->
+    <div class="invest-card featured">
+      <div class="invest-price">€25K</div>
+      <div class="invest-sub">one-time · 3 seats · lifetime license</div>
+      <div class="urgency-pill">Next onboarding: April 7 · 1 spot remaining</div>
+      <ul class="checklist">
+        <li><span class="check-dot"></span>A full outbound machine running 24/7</li>
+        <li><span class="check-dot"></span>Live setup with your own leads in 2 hours</li>
+        <li><span class="check-dot"></span>No monthly fees — ever</li>
+        <li><span class="check-dot"></span>AI that gets smarter every week</li>
+        <li><span class="check-dot"></span>See every lead, reply and meeting in one place</li>
+      </ul>
+    </div>
+    <!-- Right: ROI -->
+    <div class="invest-card">
+      <div class="roi-title">Why it pays for itself</div>
+      <div class="roi-table">
+        <div class="roi-row">
+          <span class="roi-label">SDR salary (NL)</span>
+          <span class="roi-val-indigo">€40–60K / year</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-label">Lead Machine</span>
+          <span class="roi-val-white">€25K once</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-label">Avg. meetings / month</span>
+          <span class="roi-val-white">8–12</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-label">Breakeven</span>
+          <span class="roi-val-red">1 signed deal</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-label">Year 2 cost</span>
+          <span class="roi-val-green">€0</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-label">Your competitor pays</span>
+          <span class="roi-val-red">€50K again</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="footer-tagline">We send the agent. You close the deal.</span>
+    <span class="footer-contact">Lennart de Haan · lennart@envoya.tech · envoya.tech</span>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════ PAGE 2 -->
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">
+      <svg width="22" height="22" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="18" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.5"/>
+        <circle cx="20" cy="20" r="13" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
+        <circle cx="20" cy="20" r="8" stroke="#6366F1" stroke-width="0.9" stroke-dasharray="1.5 1.5" opacity="0.7"/>
+        <circle cx="20" cy="20" r="4" fill="#6366F1"/>
+        <circle cx="20" cy="20" r="2.2" fill="#6366F1"/>
+        <circle cx="31.7" cy="8.3" r="2.5" fill="#818CF8"/>
+        <circle cx="33" cy="20" r="1.2" fill="#6366F1"/>
+        <circle cx="9.5" cy="28" r="1.5" stroke="#818CF8" stroke-width="0.8" fill="none"/>
+        <circle cx="5.5" cy="12" r="0.9" fill="#818CF8" opacity="0.6"/>
+        <circle cx="35" cy="30" r="0.7" fill="#818CF8" opacity="0.5"/>
+      </svg>
+      <span class="logo-text">envoya</span>
+    </div>
+    <span class="header-product">Lead Machine</span>
+  </div>
+
+  <!-- Title block -->
+  <div>
+    <div class="page2-title">What's inside Lead Machine</div>
+    <div class="page2-sub">Every module included. No add-ons. No extra licenses.</div>
+  </div>
+
+  <!-- Modules grid -->
+  <div class="modules-grid">
+    <div class="module-card">
+      <div class="module-icon">🎯</div>
+      <div class="module-title">ICP Engine</div>
+      <div class="module-desc">Pulls leads from 275M+ contacts. Scores every prospect against your Ideal Customer Profile. Only the best get through.</div>
+      <span class="module-tag">AI-powered</span>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">✍️</div>
+      <div class="module-title">Email Writer</div>
+      <div class="module-desc">Personalises every email using live signals — recent interviews, news articles, job changes, company movements.</div>
+      <span class="module-tag">No two emails alike</span>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">📅</div>
+      <div class="module-title">Meeting Tracker</div>
+      <div class="module-desc">Tracks every intro, follow-up and meeting in one view. See exactly where each prospect is in your pipeline.</div>
+      <span class="module-tag">Full pipeline view</span>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">🧠</div>
+      <div class="module-title">Signal Research</div>
+      <div class="module-desc">Scans the web for fresh signals per lead — news, LinkedIn activity, podcasts, job postings — before every email.</div>
+      <span class="module-tag">Real-time</span>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">📊</div>
+      <div class="module-title">Performance Dashboard</div>
+      <div class="module-desc">Reply rates, meeting rates, campaign performance. Know what works and what to improve — updated daily.</div>
+      <span class="module-tag">Live metrics</span>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">🔁</div>
+      <div class="module-title">Follow-up Sequences</div>
+      <div class="module-desc">3-email sequences per lead. Each follow-up adapts based on what happened before. Stops the moment someone replies.</div>
+      <span class="module-tag">Smart automation</span>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div>
+    <div class="section-title">What happens after you buy</div>
+    <div class="timeline-row">
+      <div class="timeline-card">
+        <div class="timeline-week">Day 1</div>
+        <div class="timeline-title">Live setup call</div>
+        <div class="timeline-desc">We install Lead Machine on your Mac Mini, configure your ICP, and launch your first campaign — together.</div>
+      </div>
+      <div class="timeline-card">
+        <div class="timeline-week">Week 1–2</div>
+        <div class="timeline-title">First leads & emails</div>
+        <div class="timeline-desc">The agent pulls your first batch of leads, writes personalised emails, and starts sending. You review before it goes live.</div>
+      </div>
+      <div class="timeline-card">
+        <div class="timeline-week">Week 3–4</div>
+        <div class="timeline-title">First meetings</div>
+        <div class="timeline-desc">Replies start coming in. Meetings land in your calendar. The check-in call reviews what's working and optimises the ICP.</div>
+      </div>
+      <div class="timeline-card">
+        <div class="timeline-week">Week 8+</div>
+        <div class="timeline-title">Machine at full speed</div>
+        <div class="timeline-desc">The model has learned from your results. Reply rates climb. The agent is running at full capacity. You just close deals.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Social proof -->
+  <div>
+    <div class="section-title">Early results</div>
+    <div class="proof-row">
+      <div class="proof-card">
+        <div class="proof-quote">"We got 4 meetings in the first two weeks. The emails felt like they were written by someone who actually did their homework."</div>
+        <div class="proof-name">Head of Business Development</div>
+        <div class="proof-role">B2B SaaS, Amsterdam</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-quote">"Normally I spend 3 hours a day on outbound. Now I spend 30 minutes reviewing what the agent did overnight."</div>
+        <div class="proof-name">Commercial Director</div>
+        <div class="proof-role">IT Consultancy, Utrecht</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-quote">"14% reply rate on cold email is something I've never seen before. We had 11 meetings in the first month."</div>
+        <div class="proof-name">Founder & CEO</div>
+        <div class="proof-role">Digital Agency, Rotterdam</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-left">
+      <div class="cta-headline">Ready to run your outbound on autopilot?</div>
+      <div class="cta-sub">One call. Two hours to set up. First meetings within 2 weeks.</div>
+    </div>
+    <div class="cta-right">
+      <div class="cta-contact">lennart@envoya.tech</div>
+      <div class="cta-url">envoya.tech</div>
+      <div class="cta-urgency">April 7 onboarding · 1 spot left</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="footer-tagline">We send the agent. You close the deal.</span>
+    <span class="footer-contact">Lennart de Haan · lennart@envoya.tech · envoya.tech</span>
+  </div>
+
+</div>
+
+</body>
+</html>
