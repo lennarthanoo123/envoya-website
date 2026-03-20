@@ -540,6 +540,22 @@
       text-align: center;
     }
     /* Founder section */
+    /* AGENT SECTION */
+    .agent-section { background: #0F172A; padding: 100px 40px; overflow: hidden; }
+    .agent-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .agent-h { font-size: 42px; font-weight: 800; color: #F8FAFC; line-height: 1.15; letter-spacing: -1px; margin: 12px 0 20px; }
+    .agent-p { font-size: 17px; color: #94A3B8; line-height: 1.7; margin-bottom: 40px; }
+    .agent-stats { display: flex; gap: 40px; }
+    .agent-stat-num { font-size: 28px; font-weight: 800; color: #6366F1; line-height: 1; }
+    .agent-stat-label { font-size: 13px; color: #64748B; margin-top: 4px; }
+    .agent-visual { position: relative; display: flex; justify-content: center; align-items: center; }
+    .agent-glow { position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+    .agent-img { width: 100%; max-width: 560px; border-radius: 16px; position: relative; z-index: 1; box-shadow: 0 32px 80px rgba(0,0,0,0.8); }
+    .agent-badge { position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%); background: #111827; border: 1px solid rgba(99,102,241,0.4); border-radius: 100px; padding: 8px 18px; font-size: 13px; font-weight: 500; color: #818CF8; display: flex; align-items: center; gap: 8px; white-space: nowrap; z-index: 2; box-shadow: 0 4px 20px rgba(99,102,241,0.2); }
+    .agent-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 6px rgba(34,197,94,0.8); animation: pulse-green 2s ease-in-out infinite; }
+    @keyframes pulse-green { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    @media (max-width: 768px) { .agent-inner { grid-template-columns: 1fr; gap: 48px; } .agent-h { font-size: 30px; } .agent-section { padding: 64px 24px; } .agent-stats { gap: 24px; } }
+
     .founder-section { padding: 48px 40px; max-width: 1100px; margin: 0 auto; }
     .founder-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
     .founder-images { display: flex; flex-direction: column; gap: 12px; }
@@ -1684,8 +1700,12 @@
   <div class="pricing-box fade-in">
     <div>
       <div class="price-num">€25K</div>
-      <div class="price-note">por empresa · 3 licencias · licencia vitalicia</div>
+      <div class="price-note">por empresa · 3 licencias · licencia vitalicia · hardware incluido</div>
       <div class="price-items">
+        <div class="price-item">
+          <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          Mac Mini M4 Pro incluido — enchúfalo y empieza
+        </div>
         <div class="price-item">
           <div class="price-check"><svg width="9" height="9" viewBox="0 0 9 9"><polyline points="1,4.5 3.5,7 8,2" fill="none" stroke="#6366F1" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           Una máquina de outbound completa funcionando 24/7
@@ -1719,6 +1739,39 @@
       <div class="roi-row"><span class="roi-label">Punto de equilibrio</span><span class="roi-val">1 acuerdo firmado</span></div>
       <div class="roi-row"><span class="roi-label" style="font-size:13px;color:#0F172A;">Coste año 2</span><span style="font-size:13px;font-weight:700;color:#16A34A;">€0</span></div>
       <div class="roi-row" style="border-bottom:none;"><span class="roi-label" style="font-size:13px;color:#0F172A;">Tu competencia paga</span><span style="font-size:13px;font-weight:600;color:#EF4444;">€50K de nuevo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENT SECTION -->
+<section class="agent-section fade-in">
+  <div class="agent-inner">
+    <div class="agent-text">
+      <div class="section-tag" style="color:#818CF8;border-color:#818CF8;">EL AGENTE</div>
+      <h2 class="agent-h">Conoce a tu nueva incorporación.<br>Nunca duerme.</h2>
+      <p class="agent-p">La mayoría de empresas contratan un SDR por €60K al año. Tarda tres meses en arrancar, reserva 8 reuniones en una buena semana y se va a los 14 meses. Lead Machine funciona 24/7, nunca coge la baja, reserva reuniones desde el primer día y mejora cada semana. Funciona localmente en un Mac Mini dedicado en tu oficina. Tus datos. Tu dispositivo. La infraestructura de nadie más.</p>
+      <div class="agent-stats">
+        <div class="agent-stat">
+          <div class="agent-stat-num">24/7</div>
+          <div class="agent-stat-label">Siempre trabajando</div>
+        </div>
+        <div class="agent-stat">
+          <div class="agent-stat-num">€0</div>
+          <div class="agent-stat-label">Cuotas mensuales</div>
+        </div>
+        <div class="agent-stat">
+          <div class="agent-stat-num">Día 1</div>
+          <div class="agent-stat-label">Primeras reuniones reservadas</div>
+        </div>
+      </div>
+    </div>
+    <div class="agent-visual">
+      <div class="agent-glow"></div>
+      <img src="/assets/agent-hero.jpg" alt="Lead Machine funcionando en Mac Mini" class="agent-img" />
+      <div class="agent-badge">
+        <span class="agent-badge-dot"></span>
+        Agente activo · reservando reuniones
+      </div>
     </div>
   </div>
 </section>
