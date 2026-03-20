@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Quotes — Envoya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-bg: #0F172A; --color-card: #0D1520; --color-border: #1E293B;
+      --color-indigo: #6366F1; --color-soft: #818CF8;
+      --color-white: #F8FAFC; --color-gray: #64748B;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-white);
+      min-height: 100vh;
+      padding: 48px 24px;
+    }
+    .wrap { max-width: 700px; margin: 0 auto; }
+
+    /* Header */
+    .page-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 32px; padding-bottom: 20px;
+      border-bottom: 0.5px solid var(--color-border);
+    }
+    .logo { display: flex; align-items: center; gap: 8px; }
+    .logo-text { font-size: 16px; font-weight: 300; letter-spacing: 0.1em; color: var(--color-white); }
+    .page-title { font-size: 13px; color: var(--color-soft); font-weight: 600; margin-left: auto; }
+
+    /* Quote card */
+    .quote-card {
+      background: var(--color-card);
+      border: 0.5px solid var(--color-border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-decoration: none;
+      transition: border-color 0.2s;
+      margin-bottom: 10px;
+    }
+    .quote-card:hover { border-color: var(--color-indigo); }
+    .qc-num {
+      font-size: 12px; font-weight: 700; color: var(--color-indigo);
+      font-family: 'Inter', monospace; margin-bottom: 4px;
+    }
+    .qc-client { font-size: 15px; font-weight: 700; color: var(--color-white); margin-bottom: 3px; }
+    .qc-pkg { font-size: 11px; color: var(--color-gray); }
+    .qc-right { text-align: right; flex-shrink: 0; }
+    .qc-amount { font-size: 18px; font-weight: 700; color: var(--color-white); margin-bottom: 4px; }
+    .qc-date { font-size: 10px; color: var(--color-gray); }
+    .qc-arrow { color: var(--color-soft); font-size: 18px; margin-left: 12px; }
+
+    .empty { color: var(--color-gray); font-size: 13px; padding: 32px 0; text-align: center; }
+    .new-btn {
+      display: inline-block; margin-top: 24px;
+      background: var(--color-indigo); color: #fff; border: none;
+      border-radius: 8px; padding: 10px 20px; font-size: 13px;
+      font-weight: 600; font-family: 'Inter', sans-serif;
+      cursor: pointer; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .new-btn:hover { background: #4F46E5; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-header">
+    <div class="logo">
+      <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="18" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.5"/>
+        <circle cx="20" cy="20" r="13" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
+        <circle cx="20" cy="20" r="8" stroke="#6366F1" stroke-width="0.9" stroke-dasharray="1.5 1.5" opacity="0.7"/>
+        <circle cx="20" cy="20" r="4" fill="#6366F1"/>
+        <circle cx="31.7" cy="8.3" r="2.5" fill="#818CF8"/>
+        <circle cx="33" cy="20" r="1.2" fill="#6366F1"/>
+        <circle cx="9.5" cy="28" r="1.5" stroke="#818CF8" stroke-width="0.8" fill="none"/>
+        <circle cx="5.5" cy="12" r="0.9" fill="#818CF8" opacity="0.6"/>
+      </svg>
+      <span class="logo-text">envoya</span>
+    </div>
+    <span class="page-title">Quotes</span>
+  </div>
+
+  <div id="quotes-list">
+    <!-- Quote cards injected below, or link directly to quote.html -->
+    <a href="quote.html" class="quote-card">
+      <div>
+        <div class="qc-num" id="idx-num">ENV-2026-002</div>
+        <div class="qc-client" id="idx-client">Elision BV</div>
+        <div class="qc-pkg" id="idx-pkg">Lead Machine — Complete Package</div>
+      </div>
+      <div style="display:flex;align-items:center">
+        <div class="qc-right">
+          <div class="qc-amount" id="idx-amount">€ 25.000,00</div>
+          <div class="qc-date" id="idx-date">19-03-2026 · valid until 07-04-2026</div>
+        </div>
+        <span class="qc-arrow">›</span>
+      </div>
+    </a>
+  </div>
+
+  <a href="quote.html" class="new-btn">+ New quote</a>
+
+</div>
+
+<script src="quote-data.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const d = quoteData;
+  const item = d.line_item;
+  const total = item.qty * item.unit_price * (1 + item.vat);
+  const fmt = (n) => '€\u00a0' + n.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  document.getElementById('idx-num').textContent = d.quote_number;
+  document.getElementById('idx-client').textContent = d.to.company;
+  document.getElementById('idx-pkg').textContent = d.package_title;
+  document.getElementById('idx-amount').textContent = fmt(total);
+  document.getElementById('idx-date').textContent = `${d.date} · valid until ${d.valid_until}`;
+});
+</script>
+</body>
+</html>
