@@ -540,6 +540,109 @@
       text-align: center;
     }
     /* Founder section */
+    /* AGENT SECTION */
+    .agent-section {
+      background: #0F172A;
+      padding: 100px 40px;
+      overflow: hidden;
+    }
+    .agent-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .agent-h {
+      font-size: 42px;
+      font-weight: 800;
+      color: #F8FAFC;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin: 12px 0 20px;
+    }
+    .agent-p {
+      font-size: 17px;
+      color: #94A3B8;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .agent-stats {
+      display: flex;
+      gap: 40px;
+    }
+    .agent-stat-num {
+      font-size: 28px;
+      font-weight: 800;
+      color: #6366F1;
+      line-height: 1;
+    }
+    .agent-stat-label {
+      font-size: 13px;
+      color: #64748B;
+      margin-top: 4px;
+    }
+    .agent-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .agent-glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .agent-img {
+      width: 100%;
+      max-width: 480px;
+      border-radius: 16px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(99,102,241,0.2);
+    }
+    .agent-badge {
+      position: absolute;
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #111827;
+      border: 1px solid rgba(99,102,241,0.4);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #818CF8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      z-index: 2;
+      box-shadow: 0 4px 20px rgba(99,102,241,0.2);
+    }
+    .agent-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22C55E;
+      box-shadow: 0 0 6px rgba(34,197,94,0.8);
+      animation: pulse-green 2s ease-in-out infinite;
+    }
+    @keyframes pulse-green {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    @media (max-width: 768px) {
+      .agent-inner { grid-template-columns: 1fr; gap: 48px; }
+      .agent-h { font-size: 30px; }
+      .agent-section { padding: 64px 24px; }
+      .agent-stats { gap: 24px; }
+    }
+
     .founder-section { padding: 48px 40px; max-width: 1100px; margin: 0 auto; }
     .founder-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
     .founder-images { display: flex; flex-direction: column; gap: 12px; }
@@ -1734,6 +1837,39 @@
       <div class="roi-row"><span class="roi-label">Breakeven</span><span class="roi-val">1 signed deal</span></div>
       <div class="roi-row"><span class="roi-label" style="font-size:13px;color:#0F172A;">Year 2 cost</span><span style="font-size:13px;font-weight:700;color:#16A34A;">€0</span></div>
       <div class="roi-row" style="border-bottom:none;"><span class="roi-label" style="font-size:13px;color:#0F172A;">Your competitor pays</span><span style="font-size:13px;font-weight:600;color:#EF4444;">€50K again</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENT SECTION -->
+<section class="agent-section fade-in">
+  <div class="agent-inner">
+    <div class="agent-text">
+      <div class="section-tag" style="color:#818CF8;border-color:#818CF8;">The Agent</div>
+      <h2 class="agent-h">Meet your new hire.<br>It never sleeps.</h2>
+      <p class="agent-p">Lead Machine runs locally on a dedicated Mac Mini installed at your office. No cloud dependency, no shared infrastructure. Just a machine that's yours — identifying leads, writing emails, and booking meetings around the clock.</p>
+      <div class="agent-stats">
+        <div class="agent-stat">
+          <div class="agent-stat-num">24/7</div>
+          <div class="agent-stat-label">Always running</div>
+        </div>
+        <div class="agent-stat">
+          <div class="agent-stat-num">100%</div>
+          <div class="agent-stat-label">Your data, your device</div>
+        </div>
+        <div class="agent-stat">
+          <div class="agent-stat-num">0</div>
+          <div class="agent-stat-label">Monthly fees</div>
+        </div>
+      </div>
+    </div>
+    <div class="agent-visual">
+      <div class="agent-glow"></div>
+      <img src="/assets/agent-hero.jpg" alt="Lead Machine running on Mac Mini" class="agent-img" />
+      <div class="agent-badge">
+        <span class="agent-badge-dot"></span>
+        Agent active · booking meetings
+      </div>
     </div>
   </div>
 </section>
