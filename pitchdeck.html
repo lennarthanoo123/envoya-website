@@ -21,22 +21,23 @@
       gap: 0;
     }
 
-    /* Print button */
+    /* Print button — bottom right, screen only */
     .print-btn {
       position: fixed;
-      top: 20px;
-      right: 20px;
+      bottom: 24px;
+      right: 24px;
       background: #6366F1;
       color: #fff;
       border: none;
       border-radius: 8px;
-      padding: 8px 18px;
+      padding: 10px 20px;
       font-family: 'Inter', sans-serif;
       font-size: 13px;
       font-weight: 600;
       cursor: pointer;
       z-index: 100;
       transition: background 0.2s;
+      box-shadow: 0 4px 20px rgba(99,102,241,0.35);
     }
     .print-btn:hover { background: #4F46E5; }
 
@@ -299,115 +300,66 @@
       border-bottom: 0.5px solid #1E293B;
     }
 
-    .modules-grid {
+    /* Features grid — 2 cols × 4 rows */
+    .features-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
     }
-    .module-card {
+    .feature-card {
       background: #0D1520;
       border-radius: 8px;
       border: 0.5px solid #1E293B;
-      padding: 14px 14px;
+      padding: 18px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
     }
-    .module-icon {
-      font-size: 18px;
-      margin-bottom: 8px;
-      line-height: 1;
+    .feature-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
     }
-    .module-title {
-      font-size: 10px;
+    .feature-body {}
+    .feature-title {
+      font-size: 11px;
       font-weight: 700;
       color: #F8FAFC;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
+      line-height: 1.3;
     }
-    .module-desc {
-      font-size: 8px;
+    .feature-desc {
+      font-size: 9px;
       color: #64748B;
-      line-height: 1.6;
-    }
-    .module-tag {
-      display: inline-block;
-      margin-top: 8px;
-      background: rgba(99,102,241,0.12);
-      border: 0.5px solid #6366F1;
-      color: #818CF8;
-      font-size: 7px;
-      font-weight: 600;
-      padding: 2px 7px;
-      border-radius: 20px;
-      letter-spacing: 0.04em;
+      line-height: 1.65;
     }
 
-    /* Timeline section */
-    .timeline-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-    }
-    .timeline-card {
-      background: #0D1520;
+    /* Tech specs bar */
+    .specs-bar {
+      background: #1E293B;
       border-radius: 8px;
-      border: 0.5px solid #1E293B;
-      padding: 14px 12px;
-      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      padding: 14px 0;
     }
-    .timeline-week {
+    .spec-item {
+      padding: 0 16px;
+      border-right: 0.5px solid #334155;
+    }
+    .spec-item:last-child { border-right: none; }
+    .spec-label {
       font-size: 8px;
       font-weight: 700;
-      color: #6366F1;
+      color: #818CF8;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
-    .timeline-title {
-      font-size: 9px;
-      font-weight: 700;
-      color: #F8FAFC;
-      margin-bottom: 5px;
-    }
-    .timeline-desc {
+    .spec-value {
       font-size: 8px;
       color: #64748B;
-      line-height: 1.6;
-    }
-    .timeline-connector {
-      position: absolute;
-      right: -10px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #1E293B;
-      font-size: 14px;
-      z-index: 1;
-    }
-
-    /* Testimonial / proof */
-    .proof-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-    .proof-card {
-      background: #0D1520;
-      border-radius: 8px;
-      border: 0.5px solid #1E293B;
-      padding: 14px 14px;
-    }
-    .proof-quote {
-      font-size: 9px;
-      color: #F8FAFC;
-      line-height: 1.6;
-      font-style: italic;
-      margin-bottom: 10px;
-    }
-    .proof-name {
-      font-size: 8px;
-      font-weight: 700;
-      color: #818CF8;
-    }
-    .proof-role {
-      font-size: 8px;
-      color: #64748B;
+      line-height: 1.4;
     }
 
     /* CTA block */
@@ -421,7 +373,6 @@
       justify-content: space-between;
       gap: 20px;
     }
-    .cta-left {}
     .cta-headline {
       font-size: 16px;
       font-weight: 700;
@@ -460,26 +411,31 @@
 
     /* ─── PRINT ─── */
     @media print {
-      @page {
-        size: A4;
-        margin: 0;
+      @page { size: A4; margin: 0; }
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
       body {
-        background: #0F172A;
+        background: #0F172A !important;
         padding: 0;
         gap: 0;
       }
-      .print-btn { display: none; }
+      .print-btn { display: none !important; }
       .page {
         width: 794px;
         height: 1123px;
         min-height: 1123px;
         page-break-after: always;
+        break-after: page;
         margin: 0;
         padding: 40px;
         overflow: hidden;
       }
-      .page:last-child { page-break-after: avoid; }
+      .page:last-child {
+        page-break-after: avoid;
+        break-after: avoid;
+      }
     }
   </style>
 </head>
@@ -648,92 +604,128 @@
     <div class="page2-sub">Every module included. No add-ons. No extra licenses.</div>
   </div>
 
-  <!-- Modules grid -->
-  <div class="modules-grid">
-    <div class="module-card">
-      <div class="module-icon">🎯</div>
-      <div class="module-title">ICP Engine</div>
-      <div class="module-desc">Pulls leads from 275M+ contacts. Scores every prospect against your Ideal Customer Profile. Only the best get through.</div>
-      <span class="module-tag">AI-powered</span>
+  <!-- Features grid: 2 cols × 4 rows -->
+  <div class="features-grid">
+
+    <!-- 1. AI Scanner -->
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="14" fill="#6366F1"/>
+        <text x="14" y="19" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#fff">A</text>
+      </svg>
+      <div class="feature-body">
+        <div class="feature-title">AI Scanner</div>
+        <div class="feature-desc">Scans 275M+ contacts and scores every lead against your ICP. Surfaces only people most likely to reply.</div>
+      </div>
     </div>
-    <div class="module-card">
-      <div class="module-icon">✍️</div>
-      <div class="module-title">Email Writer</div>
-      <div class="module-desc">Personalises every email using live signals — recent interviews, news articles, job changes, company movements.</div>
-      <span class="module-tag">No two emails alike</span>
+
+    <!-- 2. AI Engine -->
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="14" fill="#8B5CF6"/>
+        <text x="14" y="19" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#fff">A</text>
+      </svg>
+      <div class="feature-body">
+        <div class="feature-title">AI Engine</div>
+        <div class="feature-desc">Self-learning model that adjusts ICP weights after every reply, meeting and deal. Gets smarter every week.</div>
+      </div>
     </div>
-    <div class="module-card">
-      <div class="module-icon">📅</div>
-      <div class="module-title">Meeting Tracker</div>
-      <div class="module-desc">Tracks every intro, follow-up and meeting in one view. See exactly where each prospect is in your pipeline.</div>
-      <span class="module-tag">Full pipeline view</span>
+
+    <!-- 3. Script Writer -->
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="14" fill="#0891B2"/>
+        <text x="14" y="19" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#fff">S</text>
+      </svg>
+      <div class="feature-body">
+        <div class="feature-title">Script Writer</div>
+        <div class="feature-desc">Generates hyper-personalised emails per lead using real signals: recent interviews, publications, company news. No two emails the same.</div>
+      </div>
     </div>
-    <div class="module-card">
-      <div class="module-icon">🧠</div>
-      <div class="module-title">Signal Research</div>
-      <div class="module-desc">Scans the web for fresh signals per lead — news, LinkedIn activity, podcasts, job postings — before every email.</div>
-      <span class="module-tag">Real-time</span>
+
+    <!-- 4. Campaigns -->
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="14" fill="#059669"/>
+        <text x="14" y="19" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#fff">C</text>
+      </svg>
+      <div class="feature-body">
+        <div class="feature-title">Campaigns</div>
+        <div class="feature-desc">Run multiple campaigns in parallel per product, market or persona. Each campaign trains its own ICP profile independently.</div>
+      </div>
     </div>
-    <div class="module-card">
-      <div class="module-icon">📊</div>
-      <div class="module-title">Performance Dashboard</div>
-      <div class="module-desc">Reply rates, meeting rates, campaign performance. Know what works and what to improve — updated daily.</div>
-      <span class="module-tag">Live metrics</span>
+
+    <!-- 5. Leads -->
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="14" fill="#D97706"/>
+        <text x="14" y="19" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#fff">L</text>
+      </svg>
+      <div class="feature-body">
+        <div class="feature-title">Leads</div>
+        <div class="feature-desc">Full lead management: pipeline stages, activity timeline, notes, ICP score and AI lead intelligence analysis per contact.</div>
+      </div>
     </div>
-    <div class="module-card">
-      <div class="module-icon">🔁</div>
-      <div class="module-title">Follow-up Sequences</div>
-      <div class="module-desc">3-email sequences per lead. Each follow-up adapts based on what happened before. Stops the moment someone replies.</div>
-      <span class="module-tag">Smart automation</span>
+
+    <!-- 6. Meetings -->
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="14" fill="#DC2626"/>
+        <text x="14" y="19" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#fff">M</text>
+      </svg>
+      <div class="feature-body">
+        <div class="feature-title">Meetings</div>
+        <div class="feature-desc">Track every booked appointment. Log meeting type, status and deal stage. Update outcomes directly in the system.</div>
+      </div>
     </div>
+
+    <!-- 7. Nurture -->
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="14" fill="#7C3AED"/>
+        <text x="14" y="19" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#fff">N</text>
+      </svg>
+      <div class="feature-body">
+        <div class="feature-title">Nurture</div>
+        <div class="feature-desc">Warm leads who aren't ready yet stay visible. System tells you exactly when and how to follow up so nothing falls through.</div>
+      </div>
+    </div>
+
+    <!-- 8. Reports -->
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="14" fill="#0369A1"/>
+        <text x="14" y="19" text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="700" fill="#fff">R</text>
+      </svg>
+      <div class="feature-body">
+        <div class="feature-title">Reports</div>
+        <div class="feature-desc">Live dashboard showing reply rates per email pattern, conversion per funnel stage, pipeline value and full cost overview.</div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Timeline -->
-  <div>
-    <div class="section-title">What happens after you buy</div>
-    <div class="timeline-row">
-      <div class="timeline-card">
-        <div class="timeline-week">Day 1</div>
-        <div class="timeline-title">Live setup call</div>
-        <div class="timeline-desc">We install Lead Machine on your Mac Mini, configure your ICP, and launch your first campaign — together.</div>
-      </div>
-      <div class="timeline-card">
-        <div class="timeline-week">Week 1–2</div>
-        <div class="timeline-title">First leads & emails</div>
-        <div class="timeline-desc">The agent pulls your first batch of leads, writes personalised emails, and starts sending. You review before it goes live.</div>
-      </div>
-      <div class="timeline-card">
-        <div class="timeline-week">Week 3–4</div>
-        <div class="timeline-title">First meetings</div>
-        <div class="timeline-desc">Replies start coming in. Meetings land in your calendar. The check-in call reviews what's working and optimises the ICP.</div>
-      </div>
-      <div class="timeline-card">
-        <div class="timeline-week">Week 8+</div>
-        <div class="timeline-title">Machine at full speed</div>
-        <div class="timeline-desc">The model has learned from your results. Reply rates climb. The agent is running at full capacity. You just close deals.</div>
-      </div>
+  <!-- Tech specs bar -->
+  <div class="specs-bar">
+    <div class="spec-item">
+      <div class="spec-label">Local install</div>
+      <div class="spec-value">Runs on Mac Mini at your office</div>
     </div>
-  </div>
-
-  <!-- Social proof -->
-  <div>
-    <div class="section-title">Early results</div>
-    <div class="proof-row">
-      <div class="proof-card">
-        <div class="proof-quote">"We got 4 meetings in the first two weeks. The emails felt like they were written by someone who actually did their homework."</div>
-        <div class="proof-name">Head of Business Development</div>
-        <div class="proof-role">B2B SaaS, Amsterdam</div>
-      </div>
-      <div class="proof-card">
-        <div class="proof-quote">"Normally I spend 3 hours a day on outbound. Now I spend 30 minutes reviewing what the agent did overnight."</div>
-        <div class="proof-name">Commercial Director</div>
-        <div class="proof-role">IT Consultancy, Utrecht</div>
-      </div>
-      <div class="proof-card">
-        <div class="proof-quote">"14% reply rate on cold email is something I've never seen before. We had 11 meetings in the first month."</div>
-        <div class="proof-name">Founder & CEO</div>
-        <div class="proof-role">Digital Agency, Rotterdam</div>
-      </div>
+    <div class="spec-item">
+      <div class="spec-label">Data privacy</div>
+      <div class="spec-value">Your data never leaves your device</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Lead source</div>
+      <div class="spec-value">Apollo — 275M+ contacts</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">AI model</div>
+      <div class="spec-value">Anthropic Claude — latest</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-label">Setup time</div>
+      <div class="spec-value">Live within 2 hours</div>
     </div>
   </div>
 
