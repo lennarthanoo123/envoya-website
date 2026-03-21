@@ -410,6 +410,28 @@
       margin-top: 6px;
     }
 
+    /* ─── MOBILE RESPONSIVE ─── */
+    @media screen and (max-width: 840px) {
+      body { padding: 12px 10px 80px; }
+      .page { width: 100%; min-height: unset; padding: 20px 16px; gap: 14px; }
+      .hero-line1, .hero-line2 { font-size: 22px !important; }
+      .hero-sub { font-size: 11px !important; max-width: 100% !important; }
+      .stats-row { grid-template-columns: 1fr 1fr !important; }
+      .stat-number { font-size: 18px !important; }
+      .steps-row { grid-template-columns: 1fr 1fr !important; }
+      .investment-row { grid-template-columns: 1fr !important; }
+      .features-grid { grid-template-columns: 1fr !important; }
+      .specs-bar { grid-template-columns: 1fr 1fr !important; }
+      .spec-item { padding: 10px 12px !important; border-right: none !important; border-bottom: 0.5px solid #334155; }
+      .spec-item:last-child { border-bottom: none; }
+      .page2-title { font-size: 16px !important; }
+      .print-btn { bottom: 16px; right: 16px; padding: 10px 16px; font-size: 12px; }
+    }
+    @media screen and (max-width: 480px) {
+      .steps-row { grid-template-columns: 1fr !important; }
+      .specs-bar { grid-template-columns: 1fr !important; }
+    }
+
     /* ─── PRINT ─── */
     @media print {
       @page { size: A4; margin: 0; }
@@ -423,6 +445,7 @@
         gap: 0;
       }
       .print-btn { display: none !important; }
+      .mobile-tip { display: none !important; }
       .page {
         width: 794px;
         height: 1123px;
@@ -442,7 +465,28 @@
 </head>
 <body>
 
-<button class="print-btn" onclick="window.print()">⬇ Download PDF</button>
+<button class="print-btn" id="pdf-btn" onclick="downloadPDF()">⬇ Download PDF</button>
+
+<script>
+function isMobile() {
+  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+}
+function downloadPDF() {
+  if (isMobile()) {
+    const tip = document.getElementById('mobile-tip');
+    tip.style.display = 'block';
+    setTimeout(() => { tip.style.display = 'none'; }, 5000);
+  } else {
+    window.print();
+  }
+}
+</script>
+
+<div id="mobile-tip" class="mobile-tip" style="display:none;position:fixed;bottom:80px;right:16px;left:16px;background:#1E293B;border:1px solid #334155;border-radius:10px;padding:14px 16px;color:#F8FAFC;font-family:Inter,sans-serif;font-size:13px;line-height:1.5;z-index:200;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+  📄 <strong>Tip:</strong> Open dit deck op je laptop of desktop.<br>
+  Klik daar op "Download PDF" → kies <em>Sla op als PDF</em>.
+  <br><span style="font-size:11px;color:#64748B;">iOS Safari ondersteunt geen directe PDF-download.</span>
+</div>
 
 <!-- ═══════════════════════════════════════════════════ PAGE 1 -->
 <div class="page">
