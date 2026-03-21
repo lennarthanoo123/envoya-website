@@ -465,28 +465,61 @@
 </head>
 <body>
 
+<!-- html2canvas + jsPDF via CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <button class="print-btn" id="pdf-btn" onclick="downloadPDF()">⬇ Download PDF</button>
 
 <script>
-function isMobile() {
-  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-}
-function downloadPDF() {
-  if (isMobile()) {
-    const tip = document.getElementById('mobile-tip');
-    tip.style.display = 'block';
-    setTimeout(() => { tip.style.display = 'none'; }, 5000);
-  } else {
-    window.print();
+async function downloadPDF() {
+  const btn = document.getElementById('pdf-btn');
+  btn.textContent = 'Genereren…';
+  btn.disabled = true;
+  btn.style.opacity = '0.6';
+
+  try {
+    const { jsPDF } = window.jspdf;
+    const pages = document.querySelectorAll('.page');
+    const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    const pageW = pdf.internal.pageSize.getWidth();
+    const pageH = pdf.internal.pageSize.getHeight();
+
+    for (let i = 0; i < pages.length; i++) {
+      if (i > 0) pdf.addPage();
+      const canvas = await html2canvas(pages[i], {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#0F172A',
+        logging: false,
+        width: 794,
+      });
+      const imgData = canvas.toDataURL('image/png');
+      const imgH = (canvas.height * pageW) / canvas.width;
+      pdf.addImage(imgData, 'PNG', 0, 0, pageW, imgH > pageH ? pageH : imgH);
+    }
+
+    // Blob download — no print dialog
+    const blob = pdf.output('blob');
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Lead-Machine-Pitch-Deck.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 3000);
+
+  } catch (e) {
+    alert('PDF genereren mislukt. Probeer het opnieuw.');
+    console.error(e);
+  } finally {
+    btn.textContent = '⬇ Download PDF';
+    btn.disabled = false;
+    btn.style.opacity = '1';
   }
 }
 </script>
-
-<div id="mobile-tip" class="mobile-tip" style="display:none;position:fixed;bottom:80px;right:16px;left:16px;background:#1E293B;border:1px solid #334155;border-radius:10px;padding:14px 16px;color:#F8FAFC;font-family:Inter,sans-serif;font-size:13px;line-height:1.5;z-index:200;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
-  📄 <strong>Tip:</strong> Open dit deck op je laptop of desktop.<br>
-  Klik daar op "Download PDF" → kies <em>Sla op als PDF</em>.
-  <br><span style="font-size:11px;color:#64748B;">iOS Safari ondersteunt geen directe PDF-download.</span>
-</div>
 
 <!-- ═══════════════════════════════════════════════════ PAGE 1 -->
 <div class="page">
