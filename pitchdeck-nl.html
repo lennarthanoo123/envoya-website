@@ -488,12 +488,10 @@ async function downloadPDF() {
   try {
     const { jsPDF } = window.jspdf;
     const pages = document.querySelectorAll('.page');
-    const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-    const pageW = pdf.internal.pageSize.getWidth();
-    const pageH = pdf.internal.pageSize.getHeight();
+    const wMm = 210;
+    let pdf = null;
 
     for (let i = 0; i < pages.length; i++) {
-      if (i > 0) pdf.addPage();
       const pageEl = pages[i];
       const canvas = await html2canvas(pageEl, {
         scale: 3,
@@ -506,10 +504,13 @@ async function downloadPDF() {
         scrollY: -window.scrollY,
       });
       const imgData = canvas.toDataURL('image/jpeg', 0.95);
-      const naturalH = (canvas.height / canvas.width) * pageW;
-      const fitH = Math.min(naturalH, pageH);
-      const fitW = (fitH / naturalH) * pageW;
-      pdf.addImage(imgData, 'JPEG', 0, 0, fitW, fitH);
+      const hMm = (canvas.height / canvas.width) * wMm;
+      if (i === 0) {
+        pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: [wMm, hMm] });
+      } else {
+        pdf.addPage([wMm, hMm]);
+      }
+      pdf.addImage(imgData, 'JPEG', 0, 0, wMm, hMm);
     }
 
     // Blob download — no print dialog
