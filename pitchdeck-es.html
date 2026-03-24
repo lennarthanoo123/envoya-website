@@ -100,7 +100,7 @@
     }
     .hero-sub {
       font-size: 12px;
-      color: #64748B;
+      color: #F1F5F9;
       max-width: 480px;
       line-height: 1.65;
     }
@@ -173,7 +173,7 @@
     }
     .step-desc {
       font-size: 8px;
-      color: #64748B;
+      color: #F1F5F9;
       line-height: 1.65;
     }
 
@@ -202,7 +202,7 @@
     }
     .invest-sub {
       font-size: 9px;
-      color: #64748B;
+      color: #F1F5F9;
       margin-bottom: 12px;
     }
     .urgency-pill {
@@ -296,7 +296,7 @@
     }
     .page2-sub {
       font-size: 11px;
-      color: #64748B;
+      color: #F1F5F9;
       padding-bottom: 16px;
       border-bottom: 0.5px solid #1E293B;
     }
@@ -331,7 +331,7 @@
     }
     .feature-desc {
       font-size: 9px;
-      color: #64748B;
+      color: #F1F5F9;
       line-height: 1.65;
     }
 
@@ -359,7 +359,7 @@
     }
     .spec-value {
       font-size: 8px;
-      color: #64748B;
+      color: #F1F5F9;
       line-height: 1.4;
     }
 
@@ -382,7 +382,7 @@
     }
     .cta-sub {
       font-size: 9px;
-      color: #64748B;
+      color: #F1F5F9;
     }
     .cta-right {
       text-align: right;
@@ -495,15 +495,15 @@ async function downloadPDF() {
     for (let i = 0; i < pages.length; i++) {
       if (i > 0) pdf.addPage();
       const canvas = await html2canvas(pages[i], {
-        scale: 2,
+        scale: 4,
         useCORS: true,
         backgroundColor: '#0F172A',
         logging: false,
         width: 794,
       });
-      const imgData = canvas.toDataURL('image/png');
+      const imgData = canvas.toDataURL('image/jpeg', 0.95);
       const imgH = (canvas.height * pageW) / canvas.width;
-      pdf.addImage(imgData, 'PNG', 0, 0, pageW, imgH > pageH ? pageH : imgH);
+      pdf.addImage(imgData, 'JPEG', 0, 0, pageW, imgH > pageH ? pageH : imgH);
     }
 
     // Blob download — no print dialog
@@ -626,7 +626,7 @@ async function downloadPDF() {
       <div class="roi-table">
         <div class="roi-row">
           <span class="roi-label">Salario SDR (Países Bajos)</span>
-          <span class="roi-val-indigo">€40–60K / año</span>
+          <span class="roi-val-indigo">€60–80K / año</span>
         </div>
         <div class="roi-row">
           <span class="roi-label">Lead Machine</span>
@@ -638,7 +638,7 @@ async function downloadPDF() {
         </div>
         <div class="roi-row">
           <span class="roi-label">Punto de equilibrio</span>
-          <span class="roi-val-red">1 deal cerrado</span>
+          <span class="roi-val-white">1 deal cerrado</span>
         </div>
         <div class="roi-row">
           <span class="roi-label">Coste año 2</span>
@@ -646,7 +646,7 @@ async function downloadPDF() {
         </div>
         <div class="roi-row">
           <span class="roi-label">Coste SDR año 2</span>
-          <span class="roi-val-red">de nuevo €40–60K</span>
+          <span class="roi-val-red">de nuevo €60–80K</span>
         </div>
       </div>
     </div>
