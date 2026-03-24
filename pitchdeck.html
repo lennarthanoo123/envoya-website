@@ -495,26 +495,22 @@ async function downloadPDF() {
     for (let i = 0; i < pages.length; i++) {
       if (i > 0) pdf.addPage();
       const pageEl = pages[i];
-      const elH = pageEl.scrollHeight;
       const canvas = await html2canvas(pageEl, {
         scale: 3,
         useCORS: true,
         backgroundColor: '#0F172A',
         logging: false,
         width: 794,
-        height: elH,
         windowWidth: 1440,
-        windowHeight: elH,
         scrollX: 0,
         scrollY: -window.scrollY,
       });
       const imgData = canvas.toDataURL('image/jpeg', 0.95);
-      // Scale to fit A4: fill width, shrink height proportionally if needed
+      // Scale to fit A4 width; if taller than A4, scale down to fit height too
       const naturalH = (canvas.height / canvas.width) * pageW;
-      const scale = naturalH > pageH ? pageH / naturalH : 1;
-      const imgW = pageW * scale;
-      const imgH = naturalH * scale;
-      pdf.addImage(imgData, 'JPEG', 0, 0, imgW, imgH);
+      const fitH = Math.min(naturalH, pageH);
+      const fitW = (fitH / naturalH) * pageW;
+      pdf.addImage(imgData, 'JPEG', 0, 0, fitW, fitH);
     }
 
     // Blob download — no print dialog
