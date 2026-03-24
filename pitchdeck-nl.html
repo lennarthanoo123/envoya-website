@@ -494,15 +494,22 @@ async function downloadPDF() {
 
     for (let i = 0; i < pages.length; i++) {
       if (i > 0) pdf.addPage();
-      const canvas = await html2canvas(pages[i], {
-        scale: 4,
+      const pageEl = pages[i];
+      const naturalW = pageEl.offsetWidth;
+      const naturalH = pageEl.offsetHeight;
+      const canvas = await html2canvas(pageEl, {
+        scale: 3,
         useCORS: true,
         backgroundColor: '#0F172A',
         logging: false,
-        width: 794,
+        width: naturalW,
+        height: naturalH,
+        windowWidth: naturalW,
+        windowHeight: naturalH,
       });
       const imgData = canvas.toDataURL('image/jpeg', 0.95);
-      const imgH = (canvas.height * pageW) / canvas.width;
+      // Fit full width, preserve aspect ratio
+      const imgH = (naturalH / naturalW) * pageW;
       pdf.addImage(imgData, 'JPEG', 0, 0, pageW, imgH > pageH ? pageH : imgH);
     }
 
