@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Envoya</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%230F172A'/%3E%3Ccircle cx='20' cy='20' r='18' stroke='%23818CF8' stroke-width='0.8' stroke-dasharray='2.5 2.5' opacity='0.5'/%3E%3Ccircle cx='20' cy='20' r='13' stroke='%23818CF8' stroke-width='0.8' stroke-dasharray='2 2' opacity='0.6'/%3E%3Ccircle cx='20' cy='20' r='8' stroke='%236366F1' stroke-width='0.9' stroke-dasharray='1.5 1.5' opacity='0.7'/%3E%3Ccircle cx='20' cy='20' r='4' fill='%236366F1'/%3E%3Ccircle cx='20' cy='20' r='2.2' fill='%23ffffff'/%3E%3Ccircle cx='31.7' cy='8.3' r='2.5' fill='%23818CF8'/%3E%3C/svg%3E">
+  <meta name="description" content="Privacy Policy for envoya.tech — Propio Negocio B.V., trading as Envoya." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --indigo:       #6366F1;
+      --indigo-soft:  #818CF8;
+      --indigo-bg:    #EEF2FF;
+      --indigo-bdr:   #C7D2FE;
+      --bg:           #FFFFFF;
+      --card:         #F8FAFC;
+      --border:       #E2E8F0;
+      --text:         #0F172A;
+      --text-sec:     #1E293B;
+      --text-dim:     #475569;
+      --text-muted:   #64748B;
+      --text-faint:   #94A3B8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+      color: var(--text);
+    }
+
+    .nav-back {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+    .nav-back svg { width: 14px; height: 14px; }
+
+    /* ── HERO HEADER ── */
+    .page-header {
+      background: linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #1E293B 100%);
+      padding: 64px 40px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%);
+    }
+
+    .header-logo {
+      max-width: 760px;
+      margin: 0 auto 32px;
+      padding: 0 24px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+
+    .header-logo-text {
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(129,140,248,0.3);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #A5B4FC;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .page-header h1 {
+      font-size: 36px;
+      font-weight: 600;
+      color: #F8FAFC;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .page-header .subtitle {
+      font-size: 15px;
+      color: #94A3B8;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: #CBD5E1;
+    }
+
+    .meta-pill svg { width: 13px; height: 13px; opacity: 0.7; }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+
+    .toc-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 24px;
+    }
+
+    .toc-link {
+      font-size: 13.5px;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 3px 0;
+      transition: color 0.15s;
+    }
+    .toc-link:hover { color: var(--indigo); }
+    .toc-num {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--indigo);
+      min-width: 20px;
+      opacity: 0.8;
+    }
+
+    /* ── INTRO BLOCK ── */
+    .intro-block {
+      background: var(--indigo-bg);
+      border: 1px solid var(--indigo-bdr);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+      font-size: 14px;
+      color: var(--text-sec);
+      line-height: 1.7;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      margin-bottom: 44px;
+      scroll-margin-top: 80px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      background: var(--indigo-bg);
+      border: 1px solid var(--indigo-bdr);
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--indigo);
+      margin-top: 2px;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.3px;
+      line-height: 1.4;
+    }
+
+    /* ── CLAUSE ── */
+    .clause {
+      margin-bottom: 14px;
+      display: flex;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-sec);
+      line-height: 1.75;
+    }
+
+    .clause-num {
+      min-width: 36px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--indigo);
+      padding-top: 3px;
+      letter-spacing: 0.2px;
+    }
+
+    .clause-text { flex: 1; }
+
+    em { font-style: italic; color: var(--text-dim); }
+
+    /* Rights list */
+    .rights-list {
+      list-style: none;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .rights-list li {
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-sec);
+      line-height: 1.65;
+    }
+
+    .rights-list li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      background: var(--indigo);
+      border-radius: 50%;
+      margin-top: 8px;
+      opacity: 0.6;
+    }
+
+    .rights-label {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Contact block */
+    .contact-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 22px;
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-top: 4px;
+    }
+
+    .contact-block a { color: var(--indigo); }
+    .contact-block a:hover { text-decoration: underline; }
+
+    /* ── COMPANY FOOTER ── */
+    .company-footer {
+      margin-top: 56px;
+      padding: 28px 32px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .company-logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      background: #0F172A;
+      border-radius: 12px;
+    }
+
+    .company-info {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .company-name {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    .company-info a { color: var(--indigo); }
+    .company-info a:hover { text-decoration: underline; }
+
+    /* ── PAGE FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 400;
+      letter-spacing: 0.15px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-links a:hover { color: var(--text-sec); transition: color 0.2s; }
+
+    .footer-copy { font-size: 12px; color: var(--text-faint); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 12px 20px; }
+      .page-header { padding: 48px 20px 40px; }
+      .page-header h1 { font-size: 26px; }
+      .page-wrap { padding: 36px 20px 60px; }
+      .toc-grid { grid-template-columns: 1fr; }
+      .company-footer { flex-direction: column; align-items: flex-start; }
+      footer { flex-direction: column; align-items: flex-start; padding: 20px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
+      <rect width="40" height="40" rx="8" fill="#0F172A"/>
+      <circle cx="20" cy="20" r="18" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.5"/>
+      <circle cx="20" cy="20" r="13" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
+      <circle cx="20" cy="20" r="8" stroke="#6366F1" stroke-width="0.9" stroke-dasharray="1.5 1.5" opacity="0.7"/>
+      <circle cx="20" cy="20" r="4" fill="#6366F1"/>
+      <circle cx="20" cy="20" r="2.2" fill="#ffffff"/>
+      <circle cx="31.7" cy="8.3" r="2.5" fill="#818CF8"/>
+    </svg>
+    envoya
+  </a>
+  <a href="/" class="nav-back">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 12L6 8l4-4"/>
+    </svg>
+    Back to website
+  </a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="header-logo">
+    <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="18" stroke="#818CF8" stroke-width="0.9" stroke-dasharray="2.5 2.5" opacity="0.6"/>
+      <circle cx="20" cy="20" r="13" stroke="#818CF8" stroke-width="0.9" stroke-dasharray="2 2" opacity="0.7"/>
+      <circle cx="20" cy="20" r="8" stroke="#6366F1" stroke-width="1" stroke-dasharray="1.5 1.5" opacity="0.8"/>
+      <circle cx="20" cy="20" r="4" fill="#6366F1"/>
+      <circle cx="20" cy="20" r="2.2" fill="#ffffff"/>
+      <circle cx="31.7" cy="8.3" r="2.5" fill="#818CF8"/>
+    </svg>
+    <span class="header-logo-text">envoya</span>
+  </div>
+  <div class="header-badge">Legal</div>
+  <h1>Privacy Policy</h1>
+  <p class="subtitle">envoya.tech — Propio Negocio B.V., trading as Envoya</p>
+  <div class="header-meta">
+    <span class="meta-pill">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 3V1.5M11 3V1.5M2 7h12"/></svg>
+      Version 1.0 · March 2026
+    </span>
+    <span class="meta-pill">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z"/><path d="M8 5v4l2.5 1.5"/></svg>
+      Propio Negocio B.V. · KvK 56248482
+    </span>
+    <span class="meta-pill">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 2l1.5 3.5H13l-2.8 2 1 3.5L8 9l-3.2 2 1-3.5L3 5.5h3.5z"/></svg>
+      GDPR compliant
+    </span>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="page-wrap">
+
+  <!-- INTRO -->
+  <div class="intro-block">
+    Propio Negocio B.V., trading as Envoya, registered at Bronsbergen 22, 7207 AA Zutphen, the Netherlands (Chamber of Commerce no. 56248482) ("<strong>Envoya</strong>", "<strong>we</strong>", "<strong>us</strong>") is committed to protecting your privacy. This Privacy Policy explains what personal data we collect, why we collect it, how we use it, and what rights you have. It applies to visitors of our website envoya.tech and to our clients and prospects.
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <div class="toc-grid">
+      <a href="#s1" class="toc-link"><span class="toc-num">1</span> Data Controller</a>
+      <a href="#s7" class="toc-link"><span class="toc-num">7</span> Cookies</a>
+      <a href="#s2" class="toc-link"><span class="toc-num">2</span> What Personal Data We Collect</a>
+      <a href="#s8" class="toc-link"><span class="toc-num">8</span> Your Rights</a>
+      <a href="#s3" class="toc-link"><span class="toc-num">3</span> Purposes and Legal Bases</a>
+      <a href="#s9" class="toc-link"><span class="toc-num">9</span> Children</a>
+      <a href="#s4" class="toc-link"><span class="toc-num">4</span> Third-Party Services and Data Transfers</a>
+      <a href="#s10" class="toc-link"><span class="toc-num">10</span> Changes to This Privacy Policy</a>
+      <a href="#s5" class="toc-link"><span class="toc-num">5</span> Data Retention</a>
+      <a href="#s11" class="toc-link"><span class="toc-num">11</span> Contact</a>
+      <a href="#s6" class="toc-link"><span class="toc-num">6</span> Data Security</a>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section" id="s1">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <span class="section-title">Data Controller</span>
+    </div>
+    <div class="clause">
+      <span class="clause-num">1.1</span>
+      <div class="clause-text">The data controller for the processing activities described in this Privacy Policy is Propio Negocio B.V., trading as Envoya, Bronsbergen 22, 7207 AA Zutphen, the Netherlands. You can reach us at <a href="mailto:admin@envoya.tech" style="color:var(--indigo);">admin@envoya.tech</a>.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section" id="s2">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <span class="section-title">What Personal Data We Collect</span>
+    </div>
+    <div class="clause">
+      <span class="clause-num">2.1</span>
+      <div class="clause-text"><strong>Website visitors.</strong> When you visit envoya.tech, we may collect: your IP address, browser type, operating system, referring URL, pages viewed, and time of visit. This data is collected through server logs and, where applicable, analytics cookies (see Section 7).</div>
+    </div>
+    <div class="clause">
+      <span class="clause-num">2.2</span>
+      <div class="clause-text"><strong>Contact and enquiry data.</strong> When you contact us via email, a contact form, or schedule a demo, we collect: your name, email address, company name, phone number (if provided), and the content of your message.</div>
+    </div>
+    <div class="clause">
+      <span class="clause-num">2.3</span>
+      <div class="clause-text"><strong>Client data.</strong> When you become a client, we additionally collect: company name, billing address, Chamber of Commerce number, VAT number, bank details (for invoicing), and names and email addresses of Authorized Users as defined in our General Terms and Conditions.</div>
+    </div>
+    <div class="clause">
+      <span class="clause-num">2.4</span>
+      <div class="clause-text"><strong>Lead Machine usage.</strong> The Lead Machine software runs locally on hardware at the client's premises. Envoya does not collect, store, or have access to any campaign data, prospect lists, ICP configurations, or conversation histories generated through the Software, except when the client explicitly grants remote access via Tailscale for support purposes. During such support sessions, any data accessed is used solely for troubleshooting and is not retained by Envoya.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section" id="s3">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <span class="section-title">Purposes and Legal Bases</span>
+    </div>
+    <div class="clause">
+      <span class="clause-num">3.1</span>
+      <div class="clause-text">We process your personal data for the following purposes and on the following legal bases under Article 6(1) of the GDPR:
+        <br><br>
+        <strong>(a) Contract performance</strong> (Art. 6(1)(b) GDPR): processing client contact and billing data to deliver our products and services, issue invoices, provide onboarding and support, and administer the contractual relationship.
+        <br><br>
+        <strong>(b) Legitimate interest</strong> (Art. 6(1)(f) GDPR): analysing website traffic to improve our website and services; responding to enquiries from prospective clients; preventing fraud and ensuring security.
+        <br><br>
+        <strong>(c) Consent</strong> (Art. 6(1)(a) GDPR): placing non-essential cookies on your device (see Section 7); sending marketing communications where you have opted in. You may withdraw consent at any time.
+        <br><br>
+        <strong>(d) Legal obligation</strong> (Art. 6(1)(c) GDPR): retaining invoicing and financial records as required by Dutch tax law.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section" id="s4">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <span class="section-title">Third-Party Services and Data Transfers</span>
+    </div>
+    <div class="clause">
+      <span class="clause-num">4.1</span>
+      <div class="clause-text">We may share personal data with the following categories of recipients, solely to the extent necessary for the purposes described in Section 3: hosting and infrastructure providers; email service providers; payment processors; accountancy and legal advisors.</div>
+    </div>
+    <div class="clause">
+      <span class="clause-num">4.2</span>
+      <div class="clause-text">Our website may use analytics tools (such as Plausible Analytics or similar privacy-friendly alternatives). Where analytics are used, we favour services that do not place tracking cookies and that process data within the EEA.</div>
+    </div>
+    <div class="clause">
+      <span class="clause-num">4.3</span>
+      <div class="clause-text">The Lead Machine software integrates with third-party External Services including Apollo.io, Anthropic API, Brave Search API, and Tailscale. These services are contracted and managed by the client directly. Data transmitted to these services is governed by the respective provider's own privacy policy and terms. Envoya is not a controller or processor in respect of data processed through these External Services by the client.</div>
+    </div>
+    <div class="clause">
+      <span class="clause-num">4.4</span>
+      <div class="clause-text">We do not sell, rent, or trade your personal data to third parties for their marketing purposes.</div>
+    </div>
+    <div class="clause">
+      <span class="clause-num">4.5</span>
+      <div class="clause-text">Where personal data is transferred outside the European Economic Area (EEA), we ensure that appropriate safeguards are in place, such as Standard Contractual Clauses (SCCs) adopted by the European Commission, or a European Commission adequacy decision for the recipient country.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section" id="s5">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <span class="section-title">Data Retention</span>
+    </div>
+    <div class="clause">
+      <span class="clause-num">5.1</span>
+      <div class="clause-text">We retain personal data only for as long as necessary for the purposes for which it was collected:
+        <br><br>
+        <strong>(a)</strong> Website analytics data: aggregated and anonymised; raw server logs are deleted within 90 days.
+        <br><br>
+        <strong>(b)</strong> Contact and enquiry data: retained for up to 12 months after our last interaction, unless a contractual relationship is established.
+        <br><br>
+        <strong>(c)</strong> Client data: retained for the duration of the contractual relationship and for 7 years thereafter to comply with Dutch tax and accounting obligations.
+      </div>
+    </div>
+    <div class="clause">
+      <span class="clause-num">5.2</span>
+      <div class="clause-text">After the applicable retention period, personal data is securely deleted or anonymised.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="section" id="s6">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <span class="section-title">Data Security</span>
+    </div>
+    <div class="clause">
+      <span class="clause-num">6.1</span>
+      <div class="clause-text">We implement appropriate technical and organisational measures to protect your personal data against unauthorised access, alteration, disclosure, or destruction. These measures include encryption of data in transit (TLS), access controls, and regular review of our security practices.</div>
+    </div>
+    <div class="clause">
+      <span class="clause-num">6.2</span>
+      <div class="clause-text">While we take reasonable precautions, no method of transmission over the internet or method of electronic storage is completely secure. We cannot guarantee absolute security.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="section" id="s7">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <span class="section-title">Cookies</span>
+    </div>
+    <div class="clause">
+      <span class="clause-num">7.1</span>
+      <div class="clause-text">Our website may use cookies and similar technologies. A cookie is a small text file placed on your device when you visit a website.</div>
+    </div>
+    <div class="clause">
+      <span class="clause-num">7.2</span>
+      <div class="clause-text"><strong>Essential cookies.</strong> We may use strictly necessary cookies to ensure basic website functionality (e.g. session management). These do not require consent.</div>
+    </div>
+    <div class="clause">
+      <span class="clause-num">7.3</span>
+      <div class="clause-text"><strong>Analytics cookies.</strong> If we use analytics cookies, we will ask for your consent before placing them. You can withdraw consent at any time through your browser settings or through any cookie consent mechanism on our website.</div>
+    </div>
+    <div class="clause">
+      <span class="clause-num">7.4</span>
+      <div class="clause-text">We do not use advertising or tracking cookies.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="section" id="s8">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <span class="section-title">Your Rights</span>
+    </div>
+    <div class="clause">
+      <span class="clause-num">8.1</span>
+      <div class="clause-text">
+        Under the GDPR, you have the following rights with respect to your personal data:
+        <ul class="rights-list">
+          <li><span><span class="rights-label">Right of access</span> — you may request a copy of the personal data we hold about you.</span></li>
+          <li><span><span class="rights-label">Right to rectification</span> — you may request correction of inaccurate or incomplete data.</span></li>
+          <li><span><span class="rights-label">Right to erasure</span> — you may request deletion of your data where there is no compelling reason for continued processing.</span></li>
+          <li><span><span class="rights-label">Right to restrict processing</span> — you may request that we limit the way we use your data.</span></li>
+          <li><span><span class="rights-label">Right to data portability</span> — you may request a machine-readable copy of data you provided to us.</span></li>
+          <li><span><span class="rights-label">Right to object</span> — you may object to processing based on our legitimate interests.</span></li>
+          <li><span><span class="rights-label">Right to withdraw consent</span> — where processing is based on consent, you may withdraw it at any time without affecting the lawfulness of processing prior to withdrawal.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="clause">
+      <span class="clause-num">8.2</span>
+      <div class="clause-text">To exercise any of these rights, please contact us at <a href="mailto:admin@envoya.tech" style="color:var(--indigo);">admin@envoya.tech</a>. We will respond within one (1) month of receiving your request. If your request is complex, we may extend this period by up to two (2) additional months, in which case we will inform you of the extension and the reasons for it.</div>
+    </div>
+    <div class="clause">
+      <span class="clause-num">8.3</span>
+      <div class="clause-text">If you believe that we have not handled your personal data in accordance with applicable law, you have the right to lodge a complaint with the Dutch Data Protection Authority (<em>Autoriteit Persoonsgegevens</em>), Bezuidenhoutseweg 30, 2594 AV The Hague, the Netherlands (<a href="https://autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener" style="color:var(--indigo);">autoriteitpersoonsgegevens.nl</a>).</div>
+    </div>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="section" id="s9">
+    <div class="section-header">
+      <span class="section-num">9</span>
+      <span class="section-title">Children</span>
+    </div>
+    <div class="clause">
+      <span class="clause-num">9.1</span>
+      <div class="clause-text">Our website and services are not directed at individuals under the age of 16. We do not knowingly collect personal data from children. If you believe we have inadvertently collected data from a child, please contact us and we will promptly delete it.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 10 -->
+  <div class="section" id="s10">
+    <div class="section-header">
+      <span class="section-num">10</span>
+      <span class="section-title">Changes to This Privacy Policy</span>
+    </div>
+    <div class="clause">
+      <span class="clause-num">10.1</span>
+      <div class="clause-text">We may update this Privacy Policy from time to time. The most current version will always be available at <a href="/privacy" style="color:var(--indigo);">envoya.tech/privacy</a>. Where changes are material, we will notify clients by email. Your continued use of our website or services after a change constitutes acceptance of the updated Privacy Policy.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 11 -->
+  <div class="section" id="s11">
+    <div class="section-header">
+      <span class="section-num">11</span>
+      <span class="section-title">Contact</span>
+    </div>
+    <div class="clause">
+      <span class="clause-num">11.1</span>
+      <div class="clause-text">If you have any questions about this Privacy Policy or about how we handle your personal data, please contact us:</div>
+    </div>
+    <div class="contact-block">
+      <strong>Propio Negocio B.V. (Envoya)</strong><br>
+      Bronsbergen 22, 7207 AA Zutphen<br>
+      The Netherlands<br>
+      <a href="mailto:admin@envoya.tech">admin@envoya.tech</a>
+    </div>
+  </div>
+
+  <!-- COMPANY FOOTER BLOCK -->
+  <div class="company-footer">
+    <div class="company-logo-wrap">
+      <svg width="26" height="26" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="18" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.5"/>
+        <circle cx="20" cy="20" r="13" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
+        <circle cx="20" cy="20" r="8" stroke="#6366F1" stroke-width="0.9" stroke-dasharray="1.5 1.5" opacity="0.7"/>
+        <circle cx="20" cy="20" r="4" fill="#6366F1"/>
+        <circle cx="20" cy="20" r="2.2" fill="#ffffff"/>
+        <circle cx="31.7" cy="8.3" r="2.5" fill="#818CF8"/>
+      </svg>
+    </div>
+    <div class="company-info">
+      <div class="company-name">Propio Negocio B.V. · Envoya</div>
+      Bronsbergen 22, 7207 AA Zutphen · KvK 56248482 · BTW NL852039839B02<br>
+      <a href="mailto:admin@envoya.tech">admin@envoya.tech</a> · <a href="/">envoya.tech</a><br>
+      Version 1.0 — March 2026 · © 2026 Envoya
+    </div>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <svg width="18" height="18" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="18" stroke="#64748B" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.4"/>
+      <circle cx="20" cy="20" r="13" stroke="#64748B" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.5"/>
+      <circle cx="20" cy="20" r="4" fill="#64748B"/>
+      <circle cx="31.7" cy="8.3" r="2" fill="#6366F1" opacity="0.7"/>
+    </svg>
+    envoya
+  </div>
+  <div class="footer-links">
+    <a href="/privacy">Privacy</a>
+    <a href="/av">Terms</a>
+    <a href="mailto:hello@envoya.tech">Contact</a>
+  </div>
+  <span class="footer-copy">© 2026 Envoya · We send the agent. You close the deal.</span>
+</footer>
+
+</body>
+</html>
