@@ -91,6 +91,19 @@
       background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%);
     }
 
+    .header-logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .header-logo img {
+      height: 36px;
+      width: auto;
+      opacity: 0.95;
+    }
+
     .header-badge {
       display: inline-flex;
       align-items: center;
@@ -388,6 +401,9 @@
 
 <!-- PAGE HEADER -->
 <div class="page-header">
+  <div class="header-logo">
+    <img src="/assets/envoya-logo-light.png" alt="Envoya" />
+  </div>
   <div class="header-badge">Legal</div>
   <h1>General Terms &amp; Conditions</h1>
   <p class="subtitle">Lead Machine — Software License &amp; Service Agreement</p>
