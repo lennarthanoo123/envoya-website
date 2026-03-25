@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions — Envoya</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%230F172A'/%3E%3Ccircle cx='20' cy='20' r='18' stroke='%23818CF8' stroke-width='0.8' stroke-dasharray='2.5 2.5' opacity='0.5'/%3E%3Ccircle cx='20' cy='20' r='13' stroke='%23818CF8' stroke-width='0.8' stroke-dasharray='2 2' opacity='0.6'/%3E%3Ccircle cx='20' cy='20' r='8' stroke='%236366F1' stroke-width='0.9' stroke-dasharray='1.5 1.5' opacity='0.7'/%3E%3Ccircle cx='20' cy='20' r='4' fill='%236366F1'/%3E%3Ccircle cx='20' cy='20' r='2.2' fill='%23ffffff'/%3E%3Ccircle cx='31.7' cy='8.3' r='2.5' fill='%23818CF8'/%3E%3C/svg%3E">
+  <meta name="description" content="General Terms and Conditions for Lead Machine — Envoya (Propio Negocio B.V.)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --indigo:       #6366F1;
+      --indigo-soft:  #818CF8;
+      --indigo-bg:    #EEF2FF;
+      --indigo-bdr:   #C7D2FE;
+      --bg:           #FFFFFF;
+      --card:         #F8FAFC;
+      --border:       #E2E8F0;
+      --text:         #0F172A;
+      --text-sec:     #1E293B;
+      --text-dim:     #475569;
+      --text-muted:   #64748B;
+      --text-faint:   #94A3B8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+      color: var(--text);
+    }
+
+    .nav-back {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+    .nav-back svg { width: 14px; height: 14px; }
+
+    /* ── HERO HEADER ── */
+    .page-header {
+      background: linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #1E293B 100%);
+      padding: 64px 40px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%);
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(129,140,248,0.3);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #A5B4FC;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .page-header h1 {
+      font-size: 36px;
+      font-weight: 600;
+      color: #F8FAFC;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .page-header .subtitle {
+      font-size: 15px;
+      color: #94A3B8;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12px;
+      color: #CBD5E1;
+    }
+
+    .meta-pill svg { width: 13px; height: 13px; opacity: 0.7; }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+
+    .toc-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 24px;
+    }
+
+    .toc-link {
+      font-size: 13.5px;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 3px 0;
+      transition: color 0.15s;
+    }
+    .toc-link:hover { color: var(--indigo); }
+    .toc-num {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--indigo);
+      min-width: 20px;
+      opacity: 0.8;
+    }
+
+    /* ── INTRO BLOCK ── */
+    .intro-block {
+      background: var(--indigo-bg);
+      border: 1px solid var(--indigo-bdr);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+      font-size: 14px;
+      color: var(--text-sec);
+      line-height: 1.7;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      margin-bottom: 44px;
+      scroll-margin-top: 80px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      background: var(--indigo-bg);
+      border: 1px solid var(--indigo-bdr);
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--indigo);
+      margin-top: 2px;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.3px;
+      line-height: 1.4;
+    }
+
+    /* ── CLAUSE ── */
+    .clause {
+      margin-bottom: 14px;
+      display: flex;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-sec);
+      line-height: 1.75;
+    }
+
+    .clause-num {
+      min-width: 36px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--indigo);
+      padding-top: 3px;
+      letter-spacing: 0.2px;
+    }
+
+    .clause-text { flex: 1; }
+
+    /* Definition terms */
+    .def-term {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Inline em */
+    em { font-style: italic; color: var(--text-dim); }
+
+    /* ── COMPANY FOOTER ── */
+    .company-footer {
+      margin-top: 56px;
+      padding: 28px 32px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .company-logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      background: #0F172A;
+      border-radius: 12px;
+    }
+
+    .company-info {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .company-name {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    .company-info a {
+      color: var(--indigo);
+    }
+    .company-info a:hover { text-decoration: underline; }
+
+    /* ── PAGE FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 400;
+      letter-spacing: 0.15px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-links a:hover { color: var(--text-sec); transition: color 0.2s; }
+
+    .footer-copy { font-size: 12px; color: var(--text-faint); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 12px 20px; }
+      .page-header { padding: 48px 20px 40px; }
+      .page-header h1 { font-size: 26px; }
+      .page-wrap { padding: 36px 20px 60px; }
+      .toc-grid { grid-template-columns: 1fr; }
+      .company-footer { flex-direction: column; align-items: flex-start; }
+      footer { flex-direction: column; align-items: flex-start; padding: 20px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
+      <rect width="40" height="40" rx="8" fill="#0F172A"/>
+      <circle cx="20" cy="20" r="18" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.5"/>
+      <circle cx="20" cy="20" r="13" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
+      <circle cx="20" cy="20" r="8" stroke="#6366F1" stroke-width="0.9" stroke-dasharray="1.5 1.5" opacity="0.7"/>
+      <circle cx="20" cy="20" r="4" fill="#6366F1"/>
+      <circle cx="20" cy="20" r="2.2" fill="#ffffff"/>
+      <circle cx="31.7" cy="8.3" r="2.5" fill="#818CF8"/>
+    </svg>
+    envoya
+  </a>
+  <a href="/" class="nav-back">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 12L6 8l4-4"/>
+    </svg>
+    Back to website
+  </a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="header-badge">Legal</div>
+  <h1>General Terms &amp; Conditions</h1>
+  <p class="subtitle">Lead Machine — Software License &amp; Service Agreement</p>
+  <div class="header-meta">
+    <span class="meta-pill">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 3V1.5M11 3V1.5M2 7h12"/></svg>
+      Version 2.1 · March 2026
+    </span>
+    <span class="meta-pill">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z"/><path d="M8 5v4l2.5 1.5"/></svg>
+      Propio Negocio B.V. · KvK 56248482
+    </span>
+    <span class="meta-pill">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.5L10 6h4.5L11 9l1.5 4.5L8 11l-4.5 2.5L5 9 1.5 6H6z"/></svg>
+      Governed by Dutch law
+    </span>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="page-wrap">
+
+  <!-- INTRO -->
+  <div class="intro-block">
+    These General Terms and Conditions ("<strong>Terms</strong>") govern the purchase, installation, and use of the Lead Machine software system ("<strong>Software</strong>") provided by Propio Negocio B.V., trading as Envoya, registered at Bronsbergen 22, 7207 AA Zutphen, the Netherlands (Chamber of Commerce no. 56248482, VAT no. NL852039839B02) ("<strong>Envoya</strong>"). By accepting a quote or using the Software, the client ("<strong>Client</strong>") agrees to these Terms in full.
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <div class="toc-grid">
+      <a href="#s1" class="toc-link"><span class="toc-num">1</span> Definitions</a>
+      <a href="#s9" class="toc-link"><span class="toc-num">9</span> Performance Guarantee</a>
+      <a href="#s2" class="toc-link"><span class="toc-num">2</span> Purchase and Payment</a>
+      <a href="#s10" class="toc-link"><span class="toc-num">10</span> Intellectual Property</a>
+      <a href="#s3" class="toc-link"><span class="toc-num">3</span> License Grant</a>
+      <a href="#s11" class="toc-link"><span class="toc-num">11</span> Confidentiality</a>
+      <a href="#s4" class="toc-link"><span class="toc-num">4</span> Installation and Onboarding</a>
+      <a href="#s12" class="toc-link"><span class="toc-num">12</span> Warranties and Disclaimers</a>
+      <a href="#s5" class="toc-link"><span class="toc-num">5</span> External Services</a>
+      <a href="#s13" class="toc-link"><span class="toc-num">13</span> Limitation of Liability</a>
+      <a href="#s6" class="toc-link"><span class="toc-num">6</span> Data, Privacy and Backups</a>
+      <a href="#s14" class="toc-link"><span class="toc-num">14</span> Term and Termination</a>
+      <a href="#s7" class="toc-link"><span class="toc-num">7</span> Support</a>
+      <a href="#s15" class="toc-link"><span class="toc-num">15</span> Governing Law and Disputes</a>
+      <a href="#s8" class="toc-link"><span class="toc-num">8</span> Updates, Bugfixes and Upgrades</a>
+      <a href="#s16" class="toc-link"><span class="toc-num">16</span> General Provisions</a>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section" id="s1">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <span class="section-title">Definitions</span>
+    </div>
+    <div class="clause"><span class="clause-num"></span><div class="clause-text"><span class="def-term">Software:</span> The Lead Machine system including all components, configuration files, scripts, AI model weights, and documentation provided by Envoya, installed either on Hardware provided by Envoya or on Client-owned hardware.</div></div>
+    <div class="clause"><span class="clause-num"></span><div class="clause-text"><span class="def-term">Hardware:</span> The physical device (Apple Mac Mini M4 Pro or equivalent specification) on which the Software is installed. Hardware may be supplied by Envoya as part of the package or procured independently by the Client, as specified in the applicable quote.</div></div>
+    <div class="clause"><span class="clause-num"></span><div class="clause-text"><span class="def-term">Envoya-Supplied Hardware:</span> Hardware procured and delivered by Envoya as an optional component of the package, as stated in the applicable quote.</div></div>
+    <div class="clause"><span class="clause-num"></span><div class="clause-text"><span class="def-term">Client Hardware:</span> Hardware procured independently by the Client on which Envoya installs the Software. The Client is solely responsible for ensuring Client Hardware meets the minimum specifications communicated by Envoya prior to installation.</div></div>
+    <div class="clause"><span class="clause-num"></span><div class="clause-text"><span class="def-term">License:</span> The non-exclusive, non-transferable, perpetual right to use the Software granted under Section 3.</div></div>
+    <div class="clause"><span class="clause-num"></span><div class="clause-text"><span class="def-term">Authorized Users:</span> Up to three (3) named individuals designated by the Client who may access and operate the Software.</div></div>
+    <div class="clause"><span class="clause-num"></span><div class="clause-text"><span class="def-term">External Services:</span> Third-party platforms required for operation including Apollo.io, Anthropic API, Brave Search API, and Tailscale. Not provided or controlled by Envoya.</div></div>
+    <div class="clause"><span class="clause-num"></span><div class="clause-text"><span class="def-term">Data:</span> All data stored on the Hardware by or on behalf of the Client, including but not limited to campaign data, ICP configurations, prospect lists, conversation histories, and performance metrics.</div></div>
+    <div class="clause"><span class="clause-num"></span><div class="clause-text"><span class="def-term">Onboarding:</span> The initial setup, configuration, and training session delivered by Envoya following payment.</div></div>
+    <div class="clause"><span class="clause-num"></span><div class="clause-text"><span class="def-term">Support Period:</span> Thirty (30) calendar days following successful completion of Onboarding.</div></div>
+    <div class="clause"><span class="clause-num"></span><div class="clause-text"><span class="def-term">Bugfix:</span> A correction to a defect in the Software that causes it to deviate materially from its documented behaviour at the time of delivery. A Bug does not include issues arising from External Service changes, Client Hardware failures, or Client modifications. Provided on a best-effort basis at no additional charge.</div></div>
+    <div class="clause"><span class="clause-num"></span><div class="clause-text"><span class="def-term">Upgrade:</span> A new major version of the Software containing new features, modules, or significant architectural changes. Not included in the license fee and available separately.</div></div>
+    <div class="clause"><span class="clause-num"></span><div class="clause-text"><span class="def-term">Force Majeure:</span> Any event beyond a party's reasonable control that prevents or delays performance of its obligations, which is not attributable to its fault nor falls within its risk pursuant to law, legal act, or generally accepted standards, within the meaning of Article 6:75 of the Dutch Civil Code. Force Majeure includes, without limitation, acts of God, war, pandemic, governmental action, internet infrastructure failure, power outages, and failure of third-party suppliers.</div></div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section" id="s2">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <span class="section-title">Purchase and Payment</span>
+    </div>
+    <div class="clause"><span class="clause-num">2.1</span><div class="clause-text">The one-time license fee is as stated in the applicable quote, exclusive of VAT unless stated otherwise. Where Envoya-Supplied Hardware is included, the hardware cost forms part of or is stated alongside the license fee.</div></div>
+    <div class="clause"><span class="clause-num">2.2</span><div class="clause-text">Payment is due within fourteen (14) days of the invoice date. Onboarding will not commence until payment is received in full.</div></div>
+    <div class="clause"><span class="clause-num">2.3</span><div class="clause-text">Late payment attracts statutory commercial interest (<em>Handelsrente</em>) under Dutch law (Article 6:119a of the Dutch Civil Code) from the due date without further notice.</div></div>
+    <div class="clause"><span class="clause-num">2.4</span><div class="clause-text">Invoice disputes. If the Client does not dispute an invoice in writing within five (5) business days of receipt, the invoice shall be deemed irrevocably accepted.</div></div>
+    <div class="clause"><span class="clause-num">2.5</span><div class="clause-text">Collection costs. If, after at least one payment reminder and a final payment term of fourteen (14) days, the Client fails to pay: (a) all extrajudicial and judicial collection costs shall be borne by the Client; (b) all outstanding invoices become immediately due and payable; and (c) Envoya may suspend all support and remote access without prior notice.</div></div>
+    <div class="clause"><span class="clause-num">2.6</span><div class="clause-text">All fees are non-refundable once Onboarding has commenced, regardless of the Client's decision to cease use of the Software.</div></div>
+    <div class="clause"><span class="clause-num">2.7</span><div class="clause-text">Envoya reserves the right to suspend remote support access in the event of non-payment.</div></div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section" id="s3">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <span class="section-title">License Grant</span>
+    </div>
+    <div class="clause"><span class="clause-num">3.1</span><div class="clause-text">Subject to full payment and compliance with these Terms, Envoya grants the Client a perpetual, non-exclusive, non-transferable, non-sublicensable license to use the Software solely for the Client's internal business purposes.</div></div>
+    <div class="clause"><span class="clause-num">3.2</span><div class="clause-text">The License is limited to three (3) Authorized Users. The Client may not share credentials or permit access beyond the number agreed in the quote.</div></div>
+    <div class="clause"><span class="clause-num">3.3</span><div class="clause-text">The License is personal to the legal entity named in the quote. It may not be transferred, assigned, or sublicensed to any third party — including group companies or affiliates — without prior written consent from Envoya.</div></div>
+    <div class="clause"><span class="clause-num">3.4</span><div class="clause-text">The Client may not: (a) copy, modify, or create derivative works of the Software; (b) reverse engineer or decompile the Software; (c) remove proprietary notices; (d) use the Software to build a competing product; (e) make the Software available to third parties as a service.</div></div>
+    <div class="clause"><span class="clause-num">3.5</span><div class="clause-text">Change of Control. In the event of a sale, merger, or transfer of substantially all of the Client's business to a third party, the License may be transferred to the acquiring entity subject to: (a) prior written notice to Envoya at least thirty (30) days before the transfer; and (b) the acquiring entity's written acceptance of these Terms. Envoya shall not unreasonably withhold consent.</div></div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section" id="s4">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <span class="section-title">Installation and Onboarding</span>
+    </div>
+    <div class="clause"><span class="clause-num">4.1</span><div class="clause-text">Envoya will install and configure the Software on the applicable Hardware at a time agreed with the Client. Installation is estimated at approximately two (2) hours under normal conditions.</div></div>
+    <div class="clause"><span class="clause-num">4.2</span><div class="clause-text">Envoya-Supplied Hardware. Where the quote includes Envoya-Supplied Hardware, Envoya will procure and prepare the Hardware prior to installation. Risk of loss and damage passes to the Client upon delivery of the Hardware to the Client's premises.</div></div>
+    <div class="clause"><span class="clause-num">4.3</span><div class="clause-text">Client Hardware. Where the Client procures its own Hardware, the Client is solely responsible for ensuring the device meets the minimum hardware and operating system specifications provided by Envoya in writing prior to installation. If Client Hardware does not meet specifications and installation cannot proceed, Envoya may charge for the wasted session at its standard day rate and may reschedule installation at the Client's cost.</div></div>
+    <div class="clause"><span class="clause-num">4.4</span><div class="clause-text">The Client is responsible for ensuring: (a) a stable internet connection at the installation site; (b) active accounts and valid API keys for all required External Services prior to the scheduled installation date; (c) at least one Authorized User is available during Onboarding.</div></div>
+    <div class="clause"><span class="clause-num">4.5</span><div class="clause-text">Onboarding includes a live session of up to three (3) hours covering system operation, ICP configuration, and campaign setup. Additional sessions may be purchased separately.</div></div>
+    <div class="clause"><span class="clause-num">4.6</span><div class="clause-text">If installation cannot proceed due to Client circumstances (e.g. missing API keys, unavailable personnel, inadequate network access, non-compliant Client Hardware), Envoya may charge for the wasted session at its standard day rate.</div></div>
+    <div class="clause"><span class="clause-num">4.7</span><div class="clause-text">Deemed Acceptance of Terms. If Envoya commences installation or Onboarding at the Client's request before these Terms have been formally signed, such commencement shall constitute the Client's full acceptance of these Terms and the applicable quote.</div></div>
+    <div class="clause"><span class="clause-num">4.8</span><div class="clause-text">Acceptance of Software. The Software shall be deemed accepted upon the earliest of: (a) the Client's written confirmation of acceptance; (b) the Client's first use of the Software for live campaign operations; or (c) five (5) business days after completion of Onboarding without written notice of material non-conformity with the documented specifications provided in the quote.</div></div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section" id="s5">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <span class="section-title">External Services</span>
+    </div>
+    <div class="clause"><span class="clause-num">5.1</span><div class="clause-text">The Software relies on External Services operated by independent third parties. The Client is solely responsible for obtaining and maintaining valid subscriptions and API keys.</div></div>
+    <div class="clause"><span class="clause-num">5.2</span><div class="clause-text">Required External Services currently include: Apollo.io (lead data), Anthropic API (AI email generation), Brave Search API (signal research), and Tailscale (remote support access). This list may change as the Software evolves; Envoya will notify the Client of material changes where reasonably practicable.</div></div>
+    <div class="clause"><span class="clause-num">5.3</span><div class="clause-text">Envoya makes no warranty as to the availability, accuracy, or continuity of any External Service and is not liable for any disruption or loss of functionality caused by External Service changes or failure.</div></div>
+    <div class="clause"><span class="clause-num">5.4</span><div class="clause-text">Data processed through External Services — such as prospect information submitted to the Anthropic API — is subject to those third parties' own privacy policies and terms. Envoya does not store this data on its own servers.</div></div>
+    <div class="clause"><span class="clause-num">5.5</span><div class="clause-text">Costs associated with External Services are the Client's sole responsibility and are not included in the Envoya license fee.</div></div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="section" id="s6">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <span class="section-title">Data, Privacy and Backups</span>
+    </div>
+    <div class="clause"><span class="clause-num">6.1</span><div class="clause-text">The Software runs locally on the Hardware. ICP models, campaign data, prospect lists, and performance data are stored exclusively on that Hardware. Envoya has no access to Client data except via Tailscale when the Client explicitly grants remote access for support purposes.</div></div>
+    <div class="clause"><span class="clause-num">6.2</span><div class="clause-text">Client backup obligation. The Client is solely responsible for maintaining adequate, regular backups of all Data stored on the Hardware, including but not limited to campaign data, ICP configurations, prospect lists, and conversation histories. Envoya strongly recommends automated daily backups to an off-device location. Envoya accepts no liability for any data loss, whether arising from Software operation, updates, Hardware failure, External Service issues, or any other cause. In the unlikely event that Envoya is found liable for data loss notwithstanding the above, such liability shall in any case be limited to the Data lost between the Client's most recent daily backup (as recommended under this clause) and the moment the proven deficiency in the Software was established.</div></div>
+    <div class="clause"><span class="clause-num">6.3</span><div class="clause-text">During email generation, prospect data is transmitted to the Anthropic API. The Client should review Anthropic's data processing terms and ensure compliance with applicable data protection law, including the GDPR.</div></div>
+    <div class="clause"><span class="clause-num">6.4</span><div class="clause-text">Envoya processes Client contact and billing data for contract administration purposes, as described in its Privacy Policy at <a href="/privacy">envoya.tech/privacy</a>.</div></div>
+    <div class="clause"><span class="clause-num">6.5</span><div class="clause-text">The Client is the data controller for all prospect and campaign data and is solely responsible for ensuring its outreach activities comply with applicable law, including the GDPR, the Dutch Telecommunicatiewet, and applicable anti-spam regulations in the jurisdictions it targets.</div></div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="section" id="s7">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <span class="section-title">Support</span>
+    </div>
+    <div class="clause"><span class="clause-num">7.1</span><div class="clause-text">During the Support Period, Envoya will respond to questions submitted via the agreed communication channel within twenty-four (24) business hours.</div></div>
+    <div class="clause"><span class="clause-num">7.2</span><div class="clause-text">Support covers: guidance on Software features as delivered; ICP and campaign configuration assistance; troubleshooting of Software components installed by Envoya.</div></div>
+    <div class="clause"><span class="clause-num">7.3</span><div class="clause-text">Support does not cover: External Service outages or API changes; Client modifications to the Software or Hardware; issues arising from failure to follow Envoya's operating guidelines; general IT support unrelated to the Software; data recovery following Client failure to maintain adequate backups.</div></div>
+    <div class="clause"><span class="clause-num">7.4</span><div class="clause-text">After the Support Period, Envoya may offer paid support at its then-current rates but has no ongoing obligation to do so.</div></div>
+    <div class="clause"><span class="clause-num">7.5</span><div class="clause-text">Envoya provides no service level agreement (SLA) and makes no uptime or response-time commitment beyond the Support Period.</div></div>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="section" id="s8">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <span class="section-title">Updates, Bugfixes and Upgrades</span>
+    </div>
+    <div class="clause"><span class="clause-num">8.1</span><div class="clause-text">As-is delivery. The Software is delivered and licensed as-is at the time of installation. The license fee does not include any obligation on Envoya to develop, release, or deliver future updates of any kind.</div></div>
+    <div class="clause"><span class="clause-num">8.2</span><div class="clause-text">Bugfixes. Envoya may, at its sole discretion and on a best-effort basis, issue Bugfixes to correct material defects in the Software as delivered. Bugfixes are provided at no additional charge. Envoya makes no commitment as to the timeline, frequency, or availability of any Bugfix.</div></div>
+    <div class="clause"><span class="clause-num">8.3</span><div class="clause-text">Upgrades. New major versions of the Software containing new features, modules, integrations, or significant changes are classified as Upgrades and are not included in the license fee. Upgrades may be offered to existing Clients at a discounted rate at Envoya's discretion.</div></div>
+    <div class="clause"><span class="clause-num">8.4</span><div class="clause-text">Optional updates. Where Envoya makes an update (including a Bugfix) available, installation is at the Client's discretion. Envoya will communicate any known risks associated with an update where reasonably practicable, but the Client accepts full responsibility for the decision to install any update.</div></div>
+    <div class="clause"><span class="clause-num">8.5</span><div class="clause-text">Data loss from updates. Envoya strongly recommends the Client creates a full backup of all Hardware data before installing any update. Envoya accepts no liability whatsoever for data loss, database corruption, system instability, or any other adverse effect arising from the installation of an optional or recommended update, whether or not such update was provided by Envoya. This exclusion applies even if Envoya was advised of the possibility of such loss prior to the update being installed.</div></div>
+    <div class="clause"><span class="clause-num">8.6</span><div class="clause-text">No obligation to maintain compatibility. Envoya is not obliged to issue updates to maintain compatibility with External Services, third-party APIs, operating system versions, or hardware configurations that differ from those in place at the time of delivery. Where External Service API changes render part of the Software non-functional, Envoya may, at its discretion, issue a Bugfix but is under no obligation to do so.</div></div>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="section" id="s9">
+    <div class="section-header">
+      <span class="section-num">9</span>
+      <span class="section-title">Performance Guarantee</span>
+    </div>
+    <div class="clause"><span class="clause-num">9.1</span><div class="clause-text">Envoya offers a conditional performance guarantee as described in the quote ("Guarantee"). The Guarantee applies only if: (a) the Client sends the daily emails generated by the Software, without material modification, on each business day during the first thirty (30) days after Onboarding; (b) the Client promptly follows up on replies as instructed; (c) all External Services remain active and properly configured throughout the period.</div></div>
+    <div class="clause"><span class="clause-num">9.2</span><div class="clause-text">If clause 9.1 conditions are met and fewer than five (5) qualified meetings are booked within the thirty-day period, Envoya will conduct one (1) full campaign revision at no additional charge, covering: ICP configuration, email template and sequence, and targeting filters.</div></div>
+    <div class="clause"><span class="clause-num">9.3</span><div class="clause-text">The Guarantee does not constitute a guarantee of any specific financial outcome or number of closed deals. Converting meetings into sales is the Client's sole responsibility.</div></div>
+    <div class="clause"><span class="clause-num">9.4</span><div class="clause-text">The Guarantee does not apply where underperformance results from: External Service failures; incomplete or inaccurate Client data; Client modifications to Software configuration; Force Majeure; or non-compliance with clause 9.1.</div></div>
+    <div class="clause"><span class="clause-num">9.5</span><div class="clause-text">The Guarantee is offered once per Client and is not renewable or transferable.</div></div>
+  </div>
+
+  <!-- SECTION 10 -->
+  <div class="section" id="s10">
+    <div class="section-header">
+      <span class="section-num">10</span>
+      <span class="section-title">Intellectual Property</span>
+    </div>
+    <div class="clause"><span class="clause-num">10.1</span><div class="clause-text">The Software and all associated intellectual property — including source code, algorithms, model weights, documentation, and branding — remain the exclusive property of Envoya. These Terms confer no ownership rights on the Client.</div></div>
+    <div class="clause"><span class="clause-num">10.2</span><div class="clause-text">The Client retains all rights to its own Data, including prospect lists, campaign histories, and ICP configurations. Envoya makes no claim over such Data.</div></div>
+    <div class="clause"><span class="clause-num">10.3</span><div class="clause-text">Any feedback or suggestions provided by the Client regarding the Software may be used by Envoya without restriction or compensation.</div></div>
+  </div>
+
+  <!-- SECTION 11 -->
+  <div class="section" id="s11">
+    <div class="section-header">
+      <span class="section-num">11</span>
+      <span class="section-title">Confidentiality</span>
+    </div>
+    <div class="clause"><span class="clause-num">11.1</span><div class="clause-text">Each party will keep the other's confidential information strictly confidential and not disclose it to third parties without prior written consent, except as required by law.</div></div>
+    <div class="clause"><span class="clause-num">11.2</span><div class="clause-text">Confidential information includes: pricing, Software technical specifications, business strategies, and Client data.</div></div>
+    <div class="clause"><span class="clause-num">11.3</span><div class="clause-text">The following shall not be considered confidential information: (a) information lawfully received from a third party not bound by any confidentiality obligation; (b) information already known to a party prior to disclosure under these Terms; (c) information independently developed by a party without breach of this clause; (d) information that has entered the public domain through no fault of the receiving party; (e) information required to be disclosed by judicial or administrative order.</div></div>
+    <div class="clause"><span class="clause-num">11.4</span><div class="clause-text">This obligation survives termination of these Terms for a period of three (3) years.</div></div>
+  </div>
+
+  <!-- SECTION 12 -->
+  <div class="section" id="s12">
+    <div class="section-header">
+      <span class="section-num">12</span>
+      <span class="section-title">Warranties and Disclaimers</span>
+    </div>
+    <div class="clause"><span class="clause-num">12.1</span><div class="clause-text">Envoya warrants that: (a) it has the right to grant the License; (b) the Software will, at the time of delivery, substantially perform the functions described in the quote documentation.</div></div>
+    <div class="clause"><span class="clause-num">12.2</span><div class="clause-text">The Client acknowledges that the Software has been demonstrated prior to purchase and that the Client has satisfied itself as to the Software's suitability for its intended use.</div></div>
+    <div class="clause"><span class="clause-num">12.3</span><div class="clause-text">Except as stated in clause 12.1 and Section 9, the Software is provided "as is". Envoya disclaims all other warranties, express or implied, including implied warranties of merchantability, fitness for a particular purpose, and non-infringement.</div></div>
+    <div class="clause"><span class="clause-num">12.4</span><div class="clause-text">Envoya does not warrant that the Software will be error-free or uninterrupted, or that it will achieve any specific commercial result. Email deliverability, reply rates, and meeting bookings depend on factors outside Envoya's control.</div></div>
+    <div class="clause"><span class="clause-num">12.5</span><div class="clause-text">Envoya does not warrant that the Software will remain compatible with External Services, operating systems, or hardware configurations indefinitely.</div></div>
+  </div>
+
+  <!-- SECTION 13 -->
+  <div class="section" id="s13">
+    <div class="section-header">
+      <span class="section-num">13</span>
+      <span class="section-title">Limitation of Liability</span>
+    </div>
+    <div class="clause"><span class="clause-num">13.1</span><div class="clause-text">To the maximum extent permitted by applicable law, Envoya's total liability arising from these Terms shall not exceed the total fees paid by the Client to Envoya in the twelve (12) months preceding the claim. Related, similar, or connected claims shall be treated as a single claim for the purposes of this liability cap.</div></div>
+    <div class="clause"><span class="clause-num">13.2</span><div class="clause-text">Envoya shall not be liable for: (a) loss of profit, revenue, or business; (b) loss of anticipated savings; (c) loss, corruption, or destruction of Data, including Data stored on the Hardware, regardless of cause and whether or not arising from an update provided by Envoya; (d) loss of goodwill or reputation; (e) indirect, special, consequential, or punitive damages — even if advised of the possibility.</div></div>
+    <div class="clause"><span class="clause-num">13.3</span><div class="clause-text">In particular, Envoya expressly excludes all liability for data loss or database corruption arising from: (a) the installation of any optional or recommended Software update or Bugfix; (b) External Service failures; (c) Hardware failure; (d) the Client's failure to maintain adequate backups as required by clause 6.2.</div></div>
+    <div class="clause"><span class="clause-num">13.4</span><div class="clause-text">Nothing in these Terms limits liability for death or personal injury caused by negligence, fraud, or any other matter that cannot be excluded by law.</div></div>
+    <div class="clause"><span class="clause-num">13.5</span><div class="clause-text">Notice of Claim. The Client must notify Envoya in writing of any event that may give rise to a claim within twenty (20) calendar days of discovering, or reasonably being expected to discover, such event, providing a detailed description of the alleged deficiency and allowing Envoya a reasonable period to remedy the issue. Failure to provide timely notice in accordance with this clause releases Envoya from any liability in respect of that claim.</div></div>
+  </div>
+
+  <!-- SECTION 14 -->
+  <div class="section" id="s14">
+    <div class="section-header">
+      <span class="section-num">14</span>
+      <span class="section-title">Term and Termination</span>
+    </div>
+    <div class="clause"><span class="clause-num">14.1</span><div class="clause-text">The License is perpetual unless terminated under this Section.</div></div>
+    <div class="clause"><span class="clause-num">14.2</span><div class="clause-text">Envoya may terminate the License with immediate effect by written notice if: (a) the Client materially breaches these Terms and fails to remedy the breach within fourteen (14) days of written notice; (b) the Client becomes insolvent or enters insolvency proceedings; (c) the Client uses the Software in violation of applicable law; (d) there are reasonable grounds to suspect fraud by the Client; (e) a creditor obtains an attachment order against the Client's assets.</div></div>
+    <div class="clause"><span class="clause-num">14.3</span><div class="clause-text">Upon termination: (a) the License ceases immediately; (b) the Client must delete or destroy all copies of the Software; (c) Envoya may disable remote access components. Fees paid are non-refundable upon termination.</div></div>
+    <div class="clause"><span class="clause-num">14.4</span><div class="clause-text">Upon the Client's irrevocable insolvency or bankruptcy, the License and all access rights shall terminate automatically without any notice or action being required from Envoya.</div></div>
+    <div class="clause"><span class="clause-num">14.5</span><div class="clause-text">Sections 3.4, 6, 10, 11, 13, 15, and 16 survive termination of these Terms.</div></div>
+  </div>
+
+  <!-- SECTION 15 -->
+  <div class="section" id="s15">
+    <div class="section-header">
+      <span class="section-num">15</span>
+      <span class="section-title">Governing Law and Disputes</span>
+    </div>
+    <div class="clause"><span class="clause-num">15.1</span><div class="clause-text">These Terms are governed exclusively by the laws of the Netherlands. The applicability of the United Nations Convention on Contracts for the International Sale of Goods (CISG) is expressly excluded.</div></div>
+    <div class="clause"><span class="clause-num">15.2</span><div class="clause-text">Any disputes shall be submitted to the competent court of Rechtbank Gelderland (Zutphen / Arnhem), unless mandatory law requires otherwise.</div></div>
+    <div class="clause"><span class="clause-num">15.3</span><div class="clause-text">Before initiating legal proceedings, the parties will attempt to resolve disputes in good faith through direct negotiation for at least thirty (30) days following written notice of the dispute.</div></div>
+  </div>
+
+  <!-- SECTION 16 -->
+  <div class="section" id="s16">
+    <div class="section-header">
+      <span class="section-num">16</span>
+      <span class="section-title">General Provisions</span>
+    </div>
+    <div class="clause"><span class="clause-num">16.1</span><div class="clause-text">Entire Agreement. These Terms, together with the applicable quote, constitute the entire agreement between the parties and supersede all prior negotiations and representations.</div></div>
+    <div class="clause"><span class="clause-num">16.2</span><div class="clause-text">Amendments. Envoya may update these Terms from time to time. Updates will be published at envoya.tech/av and apply to new orders placed after the publication date. Existing licenses are governed by the Terms in force at the time of purchase.</div></div>
+    <div class="clause"><span class="clause-num">16.3</span><div class="clause-text">Severability. If any provision is held invalid or unenforceable, the remaining provisions continue in full force. The parties shall use reasonable efforts to replace the invalid provision with a valid provision that achieves, to the greatest extent possible, the economic effect of the original provision.</div></div>
+    <div class="clause"><span class="clause-num">16.4</span><div class="clause-text">No Waiver. Failure to enforce any provision does not constitute a waiver of Envoya's rights.</div></div>
+    <div class="clause"><span class="clause-num">16.5</span><div class="clause-text">Force Majeure. Neither party is liable for failure to perform obligations due to Force Majeure as defined in Section 1. If a Force Majeure event continues for more than sixty (60) calendar days, either party may terminate these Terms by written notice without liability for damages. Work performed prior to termination shall be settled proportionally.</div></div>
+    <div class="clause"><span class="clause-num">16.6</span><div class="clause-text">Notices. All formal notices must be in writing, sent to the addresses in the applicable quote, by registered mail or email with read receipt.</div></div>
+    <div class="clause"><span class="clause-num">16.7</span><div class="clause-text">Language. These Terms are issued in English. In the event of conflict with a translation, the English version prevails.</div></div>
+    <div class="clause"><span class="clause-num">16.8</span><div class="clause-text">Assignment by Envoya. Envoya may assign or transfer this agreement, or any rights or obligations hereunder, to an affiliated company within the meaning of Articles 2:24a and 2:24b of the Dutch Civil Code, without the Client's prior consent. The Client may not assign any rights or obligations under these Terms without Envoya's prior written consent.</div></div>
+  </div>
+
+  <!-- COMPANY FOOTER BLOCK -->
+  <div class="company-footer">
+    <div class="company-logo-wrap">
+      <svg width="26" height="26" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="18" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.5"/>
+        <circle cx="20" cy="20" r="13" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
+        <circle cx="20" cy="20" r="8" stroke="#6366F1" stroke-width="0.9" stroke-dasharray="1.5 1.5" opacity="0.7"/>
+        <circle cx="20" cy="20" r="4" fill="#6366F1"/>
+        <circle cx="20" cy="20" r="2.2" fill="#ffffff"/>
+        <circle cx="31.7" cy="8.3" r="2.5" fill="#818CF8"/>
+      </svg>
+    </div>
+    <div class="company-info">
+      <div class="company-name">Propio Negocio B.V. · Envoya</div>
+      Bronsbergen 22, 7207 AA Zutphen · KvK 56248482 · BTW NL852039839B02<br>
+      <a href="mailto:admin@envoya.tech">admin@envoya.tech</a> · <a href="/">envoya.tech</a><br>
+      Version 2.1 — March 2026 · © 2026 Envoya
+    </div>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <svg width="18" height="18" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="18" stroke="#64748B" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.4"/>
+      <circle cx="20" cy="20" r="13" stroke="#64748B" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.5"/>
+      <circle cx="20" cy="20" r="4" fill="#64748B"/>
+      <circle cx="31.7" cy="8.3" r="2" fill="#6366F1" opacity="0.7"/>
+    </svg>
+    envoya
+  </div>
+  <div class="footer-links">
+    <a href="/privacy">Privacy</a>
+    <a href="/av">Terms</a>
+    <a href="mailto:hello@envoya.tech">Contact</a>
+  </div>
+  <span class="footer-copy">© 2026 Envoya · We send the agent. You close the deal.</span>
+</footer>
+
+</body>
+</html>
