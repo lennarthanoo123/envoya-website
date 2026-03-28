@@ -103,7 +103,7 @@
       color: '#6366f1',
       fontWeight: '600',
       flex: '1'
-    }, { text: 'Searching 275M+ contacts...' });
+    }, { text: '275M+ contacten doorzoeken...' });
     var searchDots = el('div', {
       fontFamily: BASE.fontFamily,
       fontSize: '12px',
@@ -124,7 +124,7 @@
     var chips = [
       { label: 'Head of Digital ★★★★★', bg: '#EEF2FF', color: '#4338ca', border: '#c7d2fe' },
       { label: 'B2B · NL · 50-500 FTE',  bg: '#f1f5f9', color: '#475569', border: '#cbd5e1' },
-      { label: 'Recent signal ✓',         bg: '#ECFDF5', color: '#059669', border: '#6ee7b7' }
+      { label: 'Recent signaal ✓',         bg: '#ECFDF5', color: '#059669', border: '#6ee7b7' }
     ];
     chips.forEach(function (c) {
       var chip = el('div', {
@@ -253,7 +253,7 @@
       textAlign: 'center',
       opacity: '0',
       transition: 'opacity 0.5s ease'
-    }, { text: '↑ 847 leads found · Top 84 match your ICP' });
+    }, { text: '↑ 847 leads gevonden · Top 84 matcht jouw ICP' });
     wrap.appendChild(footer);
 
     container.appendChild(wrap);
