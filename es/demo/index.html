@@ -204,6 +204,12 @@
       color: var(--text-dim);
     }
 
+    .quote-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
     .form-card {
       background: #fff;
       border: 1px solid var(--border);
@@ -397,16 +403,25 @@
             <span>Sin discurso de ventas. Solo un plan de acción concreto.</span>
           </li>
         </ul>
-        </div>
 
         <div class="quotes">
           <div class="quote-card">
-            <div class="quote-text">"De 2 reuniones al mes a una agenda estructuralmente llena."</div>
-            <div class="quote-author">Jeffrey van den Dungen <span>— Jungle Minds</span></div>
+            <div class="quote-header">
+              <img src="/assets/jeffrey-van-den-dungen.webp" alt="Jeffrey van den Dungen" style="width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+              <div>
+                <div class="quote-text">"De 2 reuniones al mes a una agenda estructuralmente llena."</div>
+                <div class="quote-author">Jeffrey van den Dungen <span>— Jungle Minds</span></div>
+              </div>
+            </div>
           </div>
           <div class="quote-card">
-            <div class="quote-text">"El ROI quedó claro después de la primera semana."</div>
-            <div class="quote-author">Noëlle Cicilia <span>— Brush AI</span></div>
+            <div class="quote-header">
+              <img src="/assets/noelle-cicilia.jpg" alt="Noëlle Cicilia" style="width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+              <div>
+                <div class="quote-text">"El ROI quedó claro después de la primera semana."</div>
+                <div class="quote-author">Noëlle Cicilia <span>— Brush AI</span></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
