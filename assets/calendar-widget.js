@@ -112,7 +112,7 @@
     'De agent is net gestart.',
     'Pipeline wordt opgebouwd.',
     'Agenda vult zich.',
-    'Dat zijn geen nep-logo\'s. Dit is een echte week. Echte bedrijven. Echte afspraken.',
+    'Geen mockup. Dit is een echte week. Echte bedrijven. Echte afspraken.',
   ];
   const WEEK_SUBLABELS = isNL ? WEEK_SUBLABELS_NL : WEEK_SUBLABELS_EN;
 
@@ -351,7 +351,7 @@
     cta.className = 'cal-cta-row';
     cta.style.display = 'none';
     cta.innerHTML = `<a href="https://calendly.com/lennartdehaan_envoya" target="_blank" rel="noopener" class="cal-cta-btn">
-      ${isNL ? 'Wil jij dit jouw agenda volgend maand? Boek een demo →' : 'Want this to be your calendar next month? Book a demo →'}
+      ${isNL ? 'Dit als jouw agenda volgende maand? Boek een demo →' : 'Want this to be your calendar next month? Book a demo →'}
     </a>`;
 
     const state = { subline, badge, badgeLabel, badgeWeekCtx, counter, calWrap, mobileList, btnBack, btnNext, weekPill, cta };
