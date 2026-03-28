@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reserva tu demo gratuita — Envoya Lead Machine</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%230F172A'/%3E%3Ccircle cx='20' cy='20' r='18' stroke='%23818CF8' stroke-width='0.8' stroke-dasharray='2.5 2.5' opacity='0.5'/%3E%3Ccircle cx='20' cy='20' r='13' stroke='%23818CF8' stroke-width='0.8' stroke-dasharray='2 2' opacity='0.6'/%3E%3Ccircle cx='20' cy='20' r='8' stroke='%236366F1' stroke-width='0.9' stroke-dasharray='1.5 1.5' opacity='0.7'/%3E%3Ccircle cx='20' cy='20' r='4' fill='%236366F1'/%3E%3Ccircle cx='20' cy='20' r='2.2' fill='%23ffffff'/%3E%3Ccircle cx='31.7' cy='8.3' r='2.5' fill='%23818CF8'/%3E%3C/svg%3E">
+  <meta name="description" content="Reserva una demo gratuita de 30 minutos y descubre cómo Lead Machine agenda 20-35 reuniones cualificadas por trimestre para ti." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+
+    :root {
+      --indigo:      #6366F1;
+      --indigo-soft: #818CF8;
+      --indigo-bg:   #EEF2FF;
+      --bg:          #FFFFFF;
+      --card:        #F8FAFC;
+      --border:      #E2E8F0;
+      --text:        #0F172A;
+      --text-sec:    #1E293B;
+      --text-dim:    #64748B;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      padding: 18px 40px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-text {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: #0F172A;
+    }
+
+    main {
+      flex: 1;
+      padding: 60px 40px;
+      max-width: 1160px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .demo-pitch h1 {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .demo-pitch .subheading {
+      font-size: 16px;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .bullet-list {
+      list-style: none;
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--text-sec);
+      line-height: 1.5;
+    }
+
+    .bullet-list li .check {
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      background: var(--indigo-bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--indigo);
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    .lennart-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .lennart-card img {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--indigo-soft);
+    }
+
+    .lennart-card .lennart-info { flex: 1; }
+
+    .lennart-card .lennart-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .lennart-card .lennart-title {
+      font-size: 13px;
+      color: var(--indigo);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .lennart-card .lennart-bio {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .quotes {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .quote-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--indigo);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .quote-card .quote-text {
+      font-size: 14px;
+      color: var(--text-sec);
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .quote-card .quote-author {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+
+    .quote-card .quote-author span {
+      font-weight: 400;
+      color: var(--text-dim);
+    }
+
+    .form-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 32px;
+      box-shadow: 0 4px 24px rgba(99, 102, 241, 0.08), 0 1px 3px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 100px;
+    }
+
+    .form-card h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .form-card .form-subtext {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-bottom: 28px;
+    }
+
+    .form-group { margin-bottom: 18px; }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-sec);
+      margin-bottom: 6px;
+    }
+
+    .form-group label .optional {
+      font-weight: 400;
+      color: var(--text-dim);
+      margin-left: 4px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--indigo);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 96px; }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #CBD5E1; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 13px 24px;
+      background: var(--indigo);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 8px;
+      letter-spacing: 0.01em;
+    }
+
+    .submit-btn:hover { background: #4F46E5; }
+    .submit-btn:active { transform: scale(0.99); }
+    .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+    .privacy-note {
+      font-size: 12px;
+      color: var(--text-dim);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .success-state {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .success-state .success-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--indigo-bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 24px;
+    }
+
+    .success-state h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .success-state p { font-size: 15px; color: var(--text-dim); line-height: 1.6; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 40px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    footer a { color: var(--indigo); }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      main { padding: 40px 24px; }
+      .demo-grid { grid-template-columns: 1fr; gap: 40px; }
+      .form-card { position: static; }
+      .demo-pitch h1 { font-size: 26px; }
+      footer { padding: 20px 24px; }
+    }
+
+    @media (max-width: 480px) {
+      nav { padding: 14px 16px; }
+      main { padding: 28px 16px; }
+      .form-card { padding: 24px 20px; }
+      .demo-pitch h1 { font-size: 22px; }
+      footer { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/es/" class="nav-logo">
+      <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" rx="8" fill="#0F172A"/>
+        <circle cx="20" cy="20" r="18" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.5"/>
+        <circle cx="20" cy="20" r="13" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
+        <circle cx="20" cy="20" r="8" stroke="#6366F1" stroke-width="0.9" stroke-dasharray="1.5 1.5" opacity="0.7"/>
+        <circle cx="20" cy="20" r="4" fill="#6366F1"/>
+        <circle cx="20" cy="20" r="2.2" fill="#ffffff"/>
+        <circle cx="31.7" cy="8.3" r="2.5" fill="#818CF8"/>
+      </svg>
+      <span class="nav-logo-text">envoya</span>
+    </a>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+    <div class="demo-grid">
+
+      <!-- LEFT: PITCH -->
+      <div class="demo-pitch">
+        <h1>Descubre lo que Lead Machine puede hacer por tu pipeline.</h1>
+        <p class="subheading">En 30 minutos te mostramos exactamente cómo conseguir 20-35 reuniones cualificadas por trimestre — sin contratar más personal.</p>
+
+        <ul class="bullet-list">
+          <li>
+            <span class="check">✓</span>
+            <span>Ve cómo Lead Machine encuentra y contacta a tu cliente ideal</span>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <span>Demo en tiempo real con tu propio sector y público objetivo</span>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <span>Respuesta honesta a: ¿es esto lo adecuado para mi empresa?</span>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <span>Sin discurso de ventas. Solo un plan de acción concreto.</span>
+          </li>
+        </ul>
+
+        <div class="lennart-card">
+          <img src="/assets/lennart-headshot.jpg" alt="Lennart de Haan" onerror="this.style.background='#EEF2FF';this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 68 68\'%3E%3Crect width=\'68\' height=\'68\' fill=\'%23EEF2FF\'/%3E%3Ccircle cx=\'34\' cy=\'28\' r=\'12\' fill=\'%23818CF8\'/%3E%3Cellipse cx=\'34\' cy=\'52\' rx=\'18\' ry=\'12\' fill=\'%23818CF8\'/%3E%3C/svg%3E'" />
+          <div class="lennart-info">
+            <div class="lennart-name">Lennart de Haan</div>
+            <div class="lennart-title">Cofundador, Envoya</div>
+            <div class="lennart-bio">Diez años como director comercial y profesional de ventas. Te mostraré exactamente lo que esto significa para tu pipeline.</div>
+          </div>
+        </div>
+
+        <div class="quotes">
+          <div class="quote-card">
+            <div class="quote-text">"De 2 reuniones al mes a una agenda estructuralmente llena."</div>
+            <div class="quote-author">Jeffrey van den Dungen <span>— Jungle Minds</span></div>
+          </div>
+          <div class="quote-card">
+            <div class="quote-text">"El ROI quedó claro después de la primera semana."</div>
+            <div class="quote-author">Noëlle Cicilia <span>— Brush AI</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: FORM -->
+      <div>
+        <div class="form-card">
+          <div id="form-wrapper">
+            <h2>Reserva tu demo gratuita</h2>
+            <p class="form-subtext">Respuesta en 24 horas. Sin compromisos.</p>
+
+            <form id="demo-form" novalidate>
+              <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" name="name" placeholder="Carlos García" required />
+              </div>
+              <div class="form-group">
+                <label for="company">Nombre de la empresa</label>
+                <input type="text" id="company" name="company" placeholder="Tu Empresa S.L." required />
+              </div>
+              <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" placeholder="carlos@tuempresa.com" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Teléfono <span class="optional">(opcional)</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="+34 600 123 456" />
+              </div>
+              <div class="form-group">
+                <label for="goal">¿Qué quieres lograr con Lead Machine? <span class="optional">(opcional)</span></label>
+                <textarea id="goal" name="goal" rows="4" placeholder="Ej. más reuniones en el sector tech, expandirse a nuevos mercados..."></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn" id="submit-btn">Solicitar demo →</button>
+              <p class="privacy-note">🔒 Tus datos nunca serán compartidos.</p>
+            </form>
+          </div>
+
+          <div class="success-state" id="success-state">
+            <div class="success-icon">✅</div>
+            <h3>¡Gracias!</h3>
+            <p>Lennart se pondrá en contacto contigo en 24 horas.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Envoya &nbsp;·&nbsp; <a href="/es/">Volver a envoya.tech</a>
+  </footer>
+
+  <script>
+    document.getElementById('demo-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+
+      const data = {
+        name:    document.getElementById('name').value,
+        company: document.getElementById('company').value,
+        email:   document.getElementById('email').value,
+        phone:   document.getElementById('phone').value,
+        goal:    document.getElementById('goal').value,
+        lang:    'es'
+      };
+
+      try {
+        const res = await fetch('/api/demo', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+          signal: AbortSignal.timeout(8000)
+        });
+
+        if (res.ok) {
+          showSuccess();
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (err) {
+        const body = encodeURIComponent(
+          `Nombre: ${data.name}\nEmpresa: ${data.company}\nEmail: ${data.email}\nTeléfono: ${data.phone}\nObjetivo: ${data.goal}`
+        );
+        window.location.href = `mailto:lennarthanoo@gmail.com?subject=Solicitud de demo - ${encodeURIComponent(data.company)}&body=${body}`;
+      }
+    });
+
+    function showSuccess() {
+      document.getElementById('form-wrapper').style.display = 'none';
+      const s = document.getElementById('success-state');
+      s.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
