@@ -658,7 +658,7 @@
       color: '#0f172a',
       textTransform: 'uppercase',
       letterSpacing: '0.06em'
-    }, { text: 'Customer DNA' });
+    }, { text: nl ? 'KLANT-DNA' : isES ? 'ADN del Cliente' : 'Customer DNA' });
     var liveBadge = el('div', {
       background: '#FFF1F2',
       color: '#e11d48',
@@ -676,8 +676,8 @@
     /* Bar stats */
     var stats = [
       { label: nl ? 'Head of Digital' : 'Head of Digital', pct: 87, color: '#6366f1' },
-      { label: nl ? 'Finance sector'  : 'Finance sector',  pct: 72, color: '#f59e0b' },
-      { label: 'Pattern A',                                 pct: 94, color: '#22c55e' }
+      { label: nl ? 'Financiële sector' : isES ? 'Sector financiero' : 'Finance sector', pct: 72, color: '#f59e0b' },
+      { label: nl ? 'Patroon A'        : isES ? 'Patrón A'          : 'Pattern A',       pct: 94, color: '#22c55e' }
     ];
 
     var barItems = [];
@@ -738,8 +738,8 @@
       transition: 'opacity 0.5s ease'
     });
     [
-      { text: '+2.3% this week', bg: '#ECFDF5', color: '#059669', border: '#6ee7b7' },
-      { text: '↑ Improving',      bg: '#EEF2FF', color: '#4338ca', border: '#c7d2fe' }
+      { text: nl ? '+2,3% deze week' : isES ? '+2,3% esta semana' : '+2.3% this week', bg: '#ECFDF5', color: '#059669', border: '#6ee7b7' },
+      { text: nl ? '↑ Verbetert'    : isES ? '↑ Mejorando'       : '↑ Improving',      bg: '#EEF2FF', color: '#4338ca', border: '#c7d2fe' }
     ].forEach(function (c) {
       chipRow.appendChild(el('div', {
         background: c.bg,
@@ -772,7 +772,7 @@
       fontSize: '11px',
       fontWeight: '700',
       color: '#e11d48'
-    }, { text: 'ICP Confidence' });
+    }, { text: nl ? 'ICP-betrouwbaarheid' : isES ? 'Confianza ICP' : 'ICP Confidence' });
     var icpPct = el('div', {
       fontFamily: BASE.fontFamily,
       fontSize: '16px',

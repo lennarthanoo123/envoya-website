@@ -33,7 +33,7 @@
       ? 'Annemiek Vos · Head of Digital · Zilveren Kruis\nDinsdag 24 maart · 10:00'
       : 'Annemiek Vos · Head of Digital · Zilveren Kruis\nTuesday, March 24 · 10:00 AM',
     stat1n: '35', stat1l: isNL ? 'meetings dit kwartaal' : 'meetings this quarter',
-    stat2n: '14.4%', stat2l: isNL ? 'responsrate' : 'reply rate',
+    stat2n: isNL ? '14,4%' : '14.4%', stat2l: isNL ? 'responsrate' : 'reply rate',
     stat3n: '1', stat3l: isNL ? 'deal gesloten' : 'deal closed',
   };
 
