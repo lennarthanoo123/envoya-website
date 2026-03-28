@@ -503,7 +503,7 @@
         const body = encodeURIComponent(
           `Nombre: ${data.name}\nEmpresa: ${data.company}\nEmail: ${data.email}\nTeléfono: ${data.phone}\nObjetivo: ${data.goal}`
         );
-        window.location.href = `mailto:lennarthanoo@gmail.com?subject=Solicitud de demo - ${encodeURIComponent(data.company)}&body=${body}`;
+        showSuccess();
       }
     });
 

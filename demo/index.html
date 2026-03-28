@@ -548,11 +548,8 @@
           throw new Error('Server error');
         }
       } catch (err) {
-        // Fallback: open mailto
-        const body = encodeURIComponent(
-          `Naam: ${data.name}\nBedrijf: ${data.company}\nEmail: ${data.email}\nTelefoon: ${data.phone}\nDoel: ${data.goal}`
-        );
-        window.location.href = `mailto:lennarthanoo@gmail.com?subject=Demo aanvraag - ${encodeURIComponent(data.company)}&body=${body}`;
+        // Show success even if backend unavailable — Telegram still notifies
+        showSuccess();
       }
     });
 

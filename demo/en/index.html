@@ -509,7 +509,7 @@
         const body = encodeURIComponent(
           `Name: ${data.name}\nCompany: ${data.company}\nEmail: ${data.email}\nPhone: ${data.phone}\nGoal: ${data.goal}`
         );
-        window.location.href = `mailto:lennarthanoo@gmail.com?subject=Demo request - ${encodeURIComponent(data.company)}&body=${body}`;
+        showSuccess();
       }
     });
 
