@@ -362,6 +362,15 @@
       .demo-pitch h1 { font-size: 22px; }
       footer { padding: 16px; }
     }
+  
+    .agent-avatar { font-size: 48px; margin-bottom: 12px; animation: wave 1.5s ease-in-out infinite; }
+    @keyframes wave { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+    .agent-bubble { background: #F0F4FF; border: 1px solid #C7D2FE; border-radius: 12px; padding: 12px 16px; margin-bottom: 20px; text-align: left; display: inline-block; max-width: 280px; }
+    .agent-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: #6366F1; text-transform: uppercase; display: block; margin-bottom: 4px; }
+    .agent-msg { font-size: 14px; color: #1E293B; margin: 0; }
+    .success-divider { width: 40px; height: 2px; background: #E2E8F0; margin: 0 auto 20px; }
+    .success-sub { font-size: 14px; color: #6366F1; font-weight: 600; margin-top: 8px; }
+
   </style>
 </head>
 <body>
@@ -474,8 +483,15 @@
 
           <div class="success-state" id="success-state">
             <div class="success-icon">✅</div>
-            <h3>Thank you!</h3>
-            <p>Lennart will be in touch within 24 hours.</p>
+            <div class="agent-avatar">🤖</div>
+            <div class="agent-bubble">
+              <span class="agent-label">LEAD AGENT</span>
+              <p class="agent-msg">Request received. Passing this to Lennart now.</p>
+            </div>
+            <div class="success-divider"></div>
+            <h3>You're all set.</h3>
+            <p>Lennart will reach out within 24 hours for a personal conversation.</p>
+            <p class="success-sub">Your pipeline is about to get busy. 🚀</p>
           </div>
         </div>
       </div>
