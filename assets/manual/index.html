@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lead Machine Docs — Envoya</title>
+  <meta name="description" content="Complete documentation for Lead Machine v1.4.6 — AI-powered B2B outbound sales by Envoya." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%230F172A'/%3E%3Ccircle cx='20' cy='20' r='18' stroke='%23818CF8' stroke-width='0.8' stroke-dasharray='2.5 2.5' opacity='0.5'/%3E%3Ccircle cx='20' cy='20' r='13' stroke='%23818CF8' stroke-width='0.8' stroke-dasharray='2 2' opacity='0.6'/%3E%3Ccircle cx='20' cy='20' r='8' stroke='%236366F1' stroke-width='0.9' stroke-dasharray='1.5 1.5' opacity='0.7'/%3E%3Ccircle cx='20' cy='20' r='4' fill='%236366F1'/%3E%3Ccircle cx='20' cy='20' r='2.2' fill='%23ffffff'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --indigo:       #6366F1;
+      --indigo-soft:  #818CF8;
+      --indigo-light: #A5B4FC;
+      --indigo-glow:  rgba(99,102,241,0.15);
+      --bg:           #0F172A;
+      --surface:      #111827;
+      --surface-2:    #1E293B;
+      --surface-3:    #273348;
+      --border:       rgba(99,102,241,0.18);
+      --border-soft:  rgba(255,255,255,0.07);
+      --text:         #F1F5F9;
+      --text-sec:     #CBD5E1;
+      --text-dim:     #94A3B8;
+      --text-faint:   #64748B;
+      --sidebar-w:    272px;
+      --header-h:     56px;
+      --green:        #10B981;
+      --amber:        #F59E0B;
+      --red:          #EF4444;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--indigo-light); text-decoration: none; }
+    a:hover { color: var(--indigo-soft); }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      background: rgba(15,23,42,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      z-index: 100;
+      gap: 16px;
+    }
+
+    .topbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .topbar-logo svg { flex-shrink: 0; }
+
+    .topbar-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border-soft);
+    }
+
+    .topbar-product {
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+
+    .topbar-badges {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .badge-indigo { background: rgba(99,102,241,0.15); color: var(--indigo-light); border: 1px solid rgba(99,102,241,0.3); }
+    .badge-green  { background: rgba(16,185,129,0.12); color: #6EE7B7; border: 1px solid rgba(16,185,129,0.25); }
+    .badge-amber  { background: rgba(245,158,11,0.12); color: #FCD34D; border: 1px solid rgba(245,158,11,0.25); }
+
+    .topbar-date {
+      font-size: 12px;
+      color: var(--text-faint);
+    }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      margin-left: 8px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text-dim);
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    /* ── LAYOUT ── */
+    .layout {
+      display: flex;
+      padding-top: var(--header-h);
+      min-height: 100vh;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      position: fixed;
+      top: var(--header-h);
+      left: 0;
+      bottom: 0;
+      overflow-y: auto;
+      border-right: 1px solid var(--border);
+      background: var(--surface);
+      padding: 24px 0 40px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--surface-3) transparent;
+      transition: transform 0.25s ease;
+    }
+
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-track { background: transparent; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 2px; }
+
+    .sidebar-group { margin-bottom: 8px; }
+
+    .sidebar-group-label {
+      padding: 6px 20px 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 6px 20px;
+      font-size: 13.5px;
+      color: var(--text-dim);
+      transition: all 0.15s;
+      cursor: pointer;
+      border-left: 2px solid transparent;
+    }
+
+    .sidebar-link:hover {
+      color: var(--text);
+      background: rgba(99,102,241,0.07);
+    }
+
+    .sidebar-link.active {
+      color: var(--indigo-light);
+      background: var(--indigo-glow);
+      border-left-color: var(--indigo);
+    }
+
+    .sidebar-link .icon {
+      width: 16px;
+      height: 16px;
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+    .sidebar-link.active .icon { opacity: 1; }
+
+    .sidebar-divider {
+      height: 1px;
+      background: var(--border-soft);
+      margin: 10px 20px;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .main { margin-left: var(--sidebar-w); flex: 1; min-width: 0; }
+    .content { max-width: 860px; padding: 56px 64px 120px; }
+
+    /* ── HERO ── */
+    .doc-hero {
+      margin-bottom: 64px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .doc-hero-eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .doc-hero h1 { font-size: 36px; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; color: var(--text); margin-bottom: 16px; }
+    .doc-hero p { font-size: 16px; color: var(--text-sec); max-width: 600px; line-height: 1.7; }
+    .doc-hero-meta { margin-top: 24px; display: flex; align-items: center; gap: 16px; font-size: 13px; color: var(--text-faint); }
+
+    /* ── QUICK START ── */
+    .quickstart-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 48px; }
+    .quickstart-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: block;
+      color: inherit;
+    }
+    .quickstart-card:hover { border-color: var(--indigo); background: var(--surface-2); transform: translateY(-1px); }
+    .quickstart-icon { width: 36px; height: 36px; background: var(--indigo-glow); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; font-size: 18px; }
+    .quickstart-card h3 { font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .quickstart-card p { font-size: 12px; color: var(--text-faint); line-height: 1.5; margin: 0; }
+
+    /* ── SECTIONS ── */
+    .doc-section { margin-bottom: 80px; padding-top: 8px; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 3px 10px; background: var(--indigo-glow);
+      border: 1px solid rgba(99,102,241,0.25); border-radius: 20px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+      text-transform: uppercase; color: var(--indigo-light); margin-bottom: 12px;
+    }
+    .doc-section h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 16px; line-height: 1.25; }
+    .doc-section > p, .doc-section .intro { font-size: 15px; color: var(--text-sec); margin-bottom: 28px; max-width: 680px; }
+    .doc-section h3 { font-size: 17px; font-weight: 600; color: var(--text); margin: 36px 0 12px; }
+    .doc-section p { color: var(--text-sec); margin-bottom: 14px; }
+
+    /* ── SCREENSHOT ── */
+    .screenshot-wrap {
+      margin: 28px 0 36px; border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border); background: var(--surface-2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(99,102,241,0.1);
+    }
+    .screenshot-wrap img { width: 100%; display: block; }
+    .screenshot-caption { padding: 10px 16px; font-size: 12px; color: var(--text-faint); border-top: 1px solid var(--border-soft); background: var(--surface); }
+
+    /* ── FEATURE GRID ── */
+    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0 28px; }
+    .feature-item { display: flex; align-items: flex-start; gap: 10px; background: var(--surface); border: 1px solid var(--border-soft); border-radius: 10px; padding: 14px 16px; }
+    .feature-bullet { width: 20px; height: 20px; background: var(--indigo-glow); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .feature-bullet svg { width: 10px; height: 10px; color: var(--indigo-light); }
+    .feature-item p { font-size: 13.5px; color: var(--text-sec); margin: 0; line-height: 1.5; }
+    .feature-item strong { color: var(--text); display: block; font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+
+    /* ── STEPS ── */
+    .steps { margin: 20px 0; }
+    .step { display: flex; gap: 16px; margin-bottom: 20px; }
+    .step-num { width: 28px; height: 28px; background: var(--indigo-glow); border: 1px solid rgba(99,102,241,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--indigo-light); flex-shrink: 0; margin-top: 2px; }
+    .step-body { flex: 1; }
+    .step-body strong { display: block; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .step-body p { font-size: 13.5px; color: var(--text-dim); margin: 0; }
+
+    /* ── CALLOUTS ── */
+    .callout { display: flex; gap: 14px; padding: 16px 18px; border-radius: 10px; margin: 24px 0; font-size: 13.5px; line-height: 1.6; }
+    .callout-icon { font-size: 18px; flex-shrink: 0; line-height: 1.4; }
+    .callout-body { flex: 1; }
+    .callout-body strong { display: block; margin-bottom: 4px; font-size: 13px; font-weight: 600; }
+    .callout-body p { margin: 0; }
+    .callout-tip { background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2); color: var(--text-sec); }
+    .callout-tip strong { color: var(--indigo-light); }
+    .callout-warning { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); color: var(--text-sec); }
+    .callout-warning strong { color: #FCD34D; }
+    .callout-info { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); color: var(--text-sec); }
+    .callout-info strong { color: #6EE7B7; }
+
+    /* ── TABLE ── */
+    .doc-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13.5px; }
+    .doc-table th { text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); border-bottom: 1px solid var(--border); }
+    .doc-table td { padding: 12px 14px; border-bottom: 1px solid var(--border-soft); color: var(--text-sec); vertical-align: top; }
+    .doc-table tr:hover td { background: rgba(99,102,241,0.04); }
+    .doc-table td strong { color: var(--text); font-weight: 600; }
+
+    /* ── CODE ── */
+    code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 12.5px; background: var(--surface-2); color: var(--indigo-light); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-soft); }
+
+    /* ── PILLS ── */
+    .pill { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+    .pill-blue  { background: rgba(99,102,241,0.15); color: var(--indigo-light); }
+    .pill-green { background: rgba(16,185,129,0.12); color: #6EE7B7; }
+    .pill-amber { background: rgba(245,158,11,0.1);  color: #FCD34D; }
+    .pill-red   { background: rgba(239,68,68,0.1);   color: #FCA5A5; }
+
+    /* ── DIVIDER ── */
+    .section-divider { height: 1px; background: linear-gradient(90deg, var(--border) 0%, transparent 100%); margin: 64px 0; }
+
+    /* ── CHANGELOG ── */
+    .changelog-entry { border-left: 2px solid var(--border); padding: 0 0 32px 24px; position: relative; }
+    .changelog-entry::before { content: ''; position: absolute; left: -5px; top: 5px; width: 8px; height: 8px; background: var(--indigo); border-radius: 50%; }
+    .changelog-entry h3 { margin: 0 0 8px !important; }
+    .changelog-entry ul { list-style: none; padding: 0; margin-top: 12px; }
+    .changelog-entry ul li { font-size: 13.5px; color: var(--text-sec); padding: 4px 0; display: flex; gap: 10px; align-items: flex-start; }
+    .changelog-entry ul li::before { content: '→'; color: var(--text-faint); flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    .doc-footer { padding: 40px 64px; border-top: 1px solid var(--border-soft); color: var(--text-faint); font-size: 13px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .doc-footer a { color: var(--text-dim); }
+    .doc-footer a:hover { color: var(--indigo-light); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .content { padding: 40px 40px 80px; }
+      .quickstart-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .topbar-date { display: none; }
+      .sidebar { transform: translateX(-100%); z-index: 90; width: 280px; }
+      .sidebar.open { transform: translateX(0); }
+      .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 89; }
+      .sidebar-overlay.open { display: block; }
+      .main { margin-left: 0; }
+      .content { padding: 32px 24px 80px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .quickstart-grid { grid-template-columns: 1fr; }
+      .doc-footer { padding: 32px 24px; }
+      .doc-hero h1 { font-size: 26px; }
+    }
+
+    section { scroll-margin-top: calc(var(--header-h) + 24px); }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="https://envoya.tech" class="topbar-logo">
+    <svg width="24" height="24" viewBox="0 0 40 40" fill="none">
+      <rect width="40" height="40" rx="8" fill="#0F172A"/>
+      <circle cx="20" cy="20" r="18" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2.5 2.5" opacity="0.5"/>
+      <circle cx="20" cy="20" r="13" stroke="#818CF8" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
+      <circle cx="20" cy="20" r="8" stroke="#6366F1" stroke-width="0.9" stroke-dasharray="1.5 1.5" opacity="0.7"/>
+      <circle cx="20" cy="20" r="4" fill="#6366F1"/>
+      <circle cx="20" cy="20" r="2.2" fill="#ffffff"/>
+    </svg>
+    Envoya
+  </a>
+  <div class="topbar-divider"></div>
+  <span class="topbar-product">Lead Machine Docs</span>
+  <div class="topbar-badges">
+    <span class="badge badge-indigo">v1.4.6</span>
+    <span class="badge badge-green">Latest</span>
+    <span class="topbar-date">Last updated: April 1, 2026</span>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="sidebar-overlay" id="overlay"></div>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-group">
+    <div class="sidebar-group-label">Getting Started</div>
+    <a class="sidebar-link" href="#welcome"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>Welcome</a>
+    <a class="sidebar-link" href="#setup-wizard"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>Setup Wizard</a>
+    <a class="sidebar-link" href="#connecting-gmail"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>Connecting Gmail</a>
+    <a class="sidebar-link" href="#connecting-apollo"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>Connecting Apollo</a>
+    <a class="sidebar-link" href="#icp-config"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>ICP Configuration</a>
+  </div>
+  <div class="sidebar-divider"></div>
+  <div class="sidebar-group">
+    <div class="sidebar-group-label">Daily Workflow</div>
+    <a class="sidebar-link" href="#dashboard"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>Dashboard</a>
+    <a class="sidebar-link" href="#pull-leads"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>Pulling New Leads</a>
+    <a class="sidebar-link" href="#leads"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>Leads Table</a>
+    <a class="sidebar-link" href="#lead-detail"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>Lead Detail</a>
+    <a class="sidebar-link" href="#email-generation"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>Email Generation</a>
+    <a class="sidebar-link" href="#meetings"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>Meetings</a>
+  </div>
+  <div class="sidebar-divider"></div>
+  <div class="sidebar-group">
+    <div class="sidebar-group-label">Advanced Features</div>
+    <a class="sidebar-link" href="#nurture"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>Nurture</a>
+    <a class="sidebar-link" href="#ai-engine"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>AI Engine &amp; Learnings</a>
+    <a class="sidebar-link" href="#reports"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/></svg>Reports</a>
+    <a class="sidebar-link" href="#script-writer"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>Script Writer</a>
+    <a class="sidebar-link" href="#campaigns"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>Campaigns</a>
+  </div>
+  <div class="sidebar-divider"></div>
+  <div class="sidebar-group">
+    <div class="sidebar-group-label">Reference</div>
+    <a class="sidebar-link" href="#settings"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Settings</a>
+    <a class="sidebar-link" href="#integrations"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>Integrations</a>
+    <a class="sidebar-link" href="#changelog"><svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Changelog</a>
+  </div>
+</nav>
+
+<div class="layout">
+  <main class="main">
+    <div class="content">
+
+      <!-- HERO -->
+      <div class="doc-hero" id="welcome">
+        <div class="doc-hero-eyebrow">
+          <span class="badge badge-indigo">Documentation</span>
+          <span class="badge badge-green">v1.4.6</span>
+        </div>
+        <h1>Lead Machine Manual</h1>
+        <p>Everything you need to run a high-performance B2B outbound operation — from setting up your ICP to analysing what's working. Built for sales reps who want fewer manual steps and more meetings on the calendar.</p>
+        <div class="doc-hero-meta">
+          <span>Last updated: April 1, 2026</span>
+          <span>·</span>
+          <a href="#changelog">v1.4.6 changelog</a>
+          <span>·</span>
+          <a href="https://envoya.tech">envoya.tech</a>
+        </div>
+      </div>
+
+      <!-- QUICK START -->
+      <div class="quickstart-grid">
+        <a class="quickstart-card" href="#setup-wizard">
+          <div class="quickstart-icon">🚀</div>
+          <h3>New here? Start with Setup</h3>
+          <p>Connect Gmail & Apollo, define your ICP, send your first email in 15 minutes.</p>
+        </a>
+        <a class="quickstart-card" href="#dashboard">
+          <div class="quickstart-icon">📊</div>
+          <h3>Daily workflow</h3>
+          <p>Check the Dashboard, pull leads, generate emails, log meetings.</p>
+        </a>
+        <a class="quickstart-card" href="#ai-engine">
+          <div class="quickstart-icon">🧠</div>
+          <h3>Let the AI learn</h3>
+          <p>Understand how Lead Machine improves ICP weights over time.</p>
+        </a>
+      </div>
+
+      <!-- ── SETUP WIZARD ── -->
+      <section class="doc-section" id="setup-wizard">
+        <div class="section-tag">Getting Started</div>
+        <h2>Setup Wizard</h2>
+        <p class="intro">The Setup Wizard walks you through everything needed to go from a fresh account to live outreach. It takes roughly 10–15 minutes to complete. You can return to any step later via Settings.</p>
+        <div class="callout callout-tip">
+          <div class="callout-icon">💡</div>
+          <div class="callout-body">
+            <strong>Before you begin</strong>
+            <p>Have your Apollo API key and Gmail account ready. You'll also want a short description of your ideal customer — industry, company size, and the job title you're targeting.</p>
+          </div>
+        </div>
+        <h3>Wizard steps</h3>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Create your organization</strong><p>Name your workspace and set the primary sender company (this appears in emails). If you're running multiple brands, you can add Campaigns later for each.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Connect Gmail</strong><p>Authorize via Google OAuth. Lead Machine only requests send and compose permissions — it never reads your inbox. See <a href="#connecting-gmail">Connecting Gmail</a> for details.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Connect Apollo</strong><p>Paste your Apollo API key. Lead Machine uses Apollo to search the company/people database and pull contact emails. Your plan determines how many email enrichments you have per month.</p></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Define your ICP</strong><p>Set target industries, company size ranges, geographies, and the job titles you want to reach. This powers ICP scoring on every lead. You can refine this anytime.</p></div></div>
+          <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Configure your Value Proposition</strong><p>Write 2–3 sentences describing what you offer and who it's for. This becomes the foundation for the AI email writer. Strong VPs lead to stronger emails.</p></div></div>
+          <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Add reference clients</strong><p>Optional but highly recommended. Reference clients appear in email variants to add social proof. The AI picks the most relevant one per lead's industry.</p></div></div>
+          <div class="step"><div class="step-num">7</div><div class="step-body"><strong>Pull your first leads</strong><p>Run a test pull of 5–10 leads to confirm everything is working. Review the draft list and approve before they enter the pipeline.</p></div></div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── CONNECTING GMAIL ── -->
+      <section class="doc-section" id="connecting-gmail">
+        <div class="section-tag">Getting Started</div>
+        <h2>Connecting Gmail</h2>
+        <p class="intro">Lead Machine uses Google OAuth to send emails on your behalf. It requests only send and compose access — it never reads, indexes, or modifies your inbox.</p>
+        <h3>Authorization flow</h3>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Go to Settings → Integrations → Gmail</strong><p>Click <strong>Connect Gmail Account</strong>. A Google consent screen opens in a new tab.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Choose the sending account</strong><p>Select the Google account emails should be sent from. This is typically your work address or the address your prospects know.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Grant permissions</strong><p>Approve the two permissions: <em>Send email on your behalf</em> and <em>Compose email drafts</em>. Click Allow.</p></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Confirm the connection</strong><p>You'll be redirected back to Lead Machine. The Gmail integration card shows a green checkmark and the connected address.</p></div></div>
+        </div>
+        <div class="callout callout-warning">
+          <div class="callout-icon">⚠️</div>
+          <div class="callout-body">
+            <strong>Reconnect if you change your Google password</strong>
+            <p>OAuth tokens are invalidated when you change your Google password or revoke app access. If emails start failing, go to Settings → Integrations and reconnect.</p>
+          </div>
+        </div>
+        <h3>What Lead Machine can do with Gmail</h3>
+        <table class="doc-table">
+          <thead><tr><th>Action</th><th>Allowed</th></tr></thead>
+          <tbody>
+            <tr><td>Send emails on your behalf</td><td><span class="pill pill-green">✓ Yes</span></td></tr>
+            <tr><td>Create draft emails</td><td><span class="pill pill-green">✓ Yes</span></td></tr>
+            <tr><td>Read your inbox</td><td><span class="pill pill-red">✗ Never</span></td></tr>
+            <tr><td>Delete emails</td><td><span class="pill pill-red">✗ Never</span></td></tr>
+            <tr><td>Access contacts or calendar</td><td><span class="pill pill-red">✗ Never</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── CONNECTING APOLLO ── -->
+      <section class="doc-section" id="connecting-apollo">
+        <div class="section-tag">Getting Started</div>
+        <h2>Connecting Apollo</h2>
+        <p class="intro">Apollo.io is the lead database powering Lead Machine's pull functionality. Your Apollo API key gives Lead Machine access to search companies and people — and optionally enrich contact emails.</p>
+        <h3>Finding your API key</h3>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Log in to apollo.io</strong><p>Go to your Apollo account dashboard.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Navigate to Settings → API</strong><p>Find the <strong>API Keys</strong> section. Copy your master API key — this gives full search and enrichment access.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Paste into Lead Machine</strong><p>Go to Settings → Integrations → Apollo. Paste the key and click <strong>Verify &amp; Save</strong>. Lead Machine runs a test search to confirm the key works.</p></div></div>
+        </div>
+        <h3>Apollo credit usage</h3>
+        <table class="doc-table">
+          <thead><tr><th>Operation</th><th>Credits used</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Company/people search</strong></td><td><span class="pill pill-green">Free</span> — no credits consumed</td></tr>
+            <tr><td><strong>Email enrichment</strong></td><td>1 credit per lead</td></tr>
+            <tr><td><strong>Bulk enrichment</strong></td><td>1 credit per lead (same rate)</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-tip">
+          <div class="callout-icon">💡</div>
+          <div class="callout-body">
+            <strong>Save credits with the draft approval flow</strong>
+            <p>Lead Machine only enriches emails for leads you explicitly approve. Leads in the draft review step don't consume credits — enrichment happens after you approve the batch.</p>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── ICP CONFIG ── -->
+      <section class="doc-section" id="icp-config">
+        <div class="section-tag">Getting Started</div>
+        <h2>ICP Configuration</h2>
+        <p class="intro">Your Ideal Customer Profile (ICP) defines who Lead Machine searches for, how it scores leads, and which email variants the AI generates. Getting this right is the most impactful setup step.</p>
+        <h3>ICP dimensions</h3>
+        <div class="feature-grid">
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Industries</strong><p>Select primary sectors with percentage weights (e.g., Fintech 40%, Retail 30%) to influence which leads score highest.</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Company size</strong><p>Set min/max employee ranges. Typically mid-market (50–500) converts best for B2B services.</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Job titles</strong><p>Target titles (e.g., "Head of UX", "CTO"). Multiple titles can be added; AI uses all of them in search and scoring.</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Geography</strong><p>Country/region filter. Combined with Apollo's search to narrow leads to your target markets.</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Exclusion list</strong><p>Block competitor companies or accounts you're already in contact with. They'll never appear in pull results.</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Sector weights</strong><p>Fine-tune scoring by adjusting how much each sector contributes to the ICP score (1–10 scale).</p></div></div>
+        </div>
+        <h3>ICP score explained</h3>
+        <p>Every lead receives an ICP score from <strong>1–10</strong>. The score is computed by matching the lead's company attributes against your ICP dimensions. Higher-weight matches score higher.</p>
+        <table class="doc-table">
+          <thead><tr><th>Score range</th><th>Meaning</th><th>Recommended action</th></tr></thead>
+          <tbody>
+            <tr><td><strong>8–10</strong></td><td>Strong ICP match</td><td>Prioritize — generate email immediately</td></tr>
+            <tr><td><strong>5–7</strong></td><td>Partial match</td><td>Review manually, proceed if context looks good</td></tr>
+            <tr><td><strong>1–4</strong></td><td>Weak match</td><td>Skip or archive unless you have specific context</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-info">
+          <div class="callout-icon">🔄</div>
+          <div class="callout-body">
+            <strong>ICP weights evolve automatically</strong>
+            <p>The AI Engine monitors which lead types convert to meetings and adjusts ICP weights over time. You'll see these adjustments in the Learnings tab.</p>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── DASHBOARD ── -->
+      <section class="doc-section" id="dashboard">
+        <div class="section-tag">Daily Workflow</div>
+        <h2>Dashboard</h2>
+        <p class="intro">The Dashboard is your command center. Open it each morning to see where the pipeline stands, what needs attention today, and how the overall outreach program is performing.</p>
+        <div class="screenshot-wrap">
+          <img src="../screen-dashboard.jpg" alt="Lead Machine Dashboard — KPI cards, pipeline funnel, Daily Quest, and email performance" loading="lazy" />
+          <div class="screenshot-caption">Dashboard — KPI cards, pipeline funnel with AI analysis, Daily Quest, and email sequence performance</div>
+        </div>
+        <h3>KPI cards</h3>
+        <table class="doc-table">
+          <thead><tr><th>Metric</th><th>What it measures</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Total leads</strong></td><td>All leads in the system across all statuses</td></tr>
+            <tr><td><strong>Emails sent</strong></td><td>Total outreach emails dispatched (across all sequences)</td></tr>
+            <tr><td><strong>Meeting rate</strong></td><td>% of emailed leads who converted to a meeting</td></tr>
+            <tr><td><strong>Meetings held</strong></td><td>Meetings that took place (as logged in the Meetings module)</td></tr>
+            <tr><td><strong>Pipeline value</strong></td><td>Estimated contract value from proposals and clients in the pipeline</td></tr>
+          </tbody>
+        </table>
+        <h3>Pipeline funnel</h3>
+        <p>The funnel shows how leads flow through each stage: <span class="pill pill-blue">New</span> → <span class="pill pill-blue">Email 1</span> → <span class="pill pill-blue">Email 2</span> → <span class="pill pill-blue">Email 3</span> → <span class="pill pill-amber">Replied</span> → <span class="pill pill-green">Meeting</span> → <span class="pill pill-green">Proposal</span> → <span class="pill pill-green">Client</span>. Below the funnel, the <strong>AI Analysis</strong> panel surfaces insights: drop-off points, which email step is underperforming, and suggestions to improve conversion.</p>
+        <h3>Daily Quest</h3>
+        <p>Lead Machine uses light gamification to keep outreach consistent. Each day you have a small set of goals — pull leads, send emails, log a meeting outcome. Completing quests earns XP and builds your streak counter. Streaks unlock badges visible on your profile.</p>
+        <div class="callout callout-tip">
+          <div class="callout-icon">🎯</div>
+          <div class="callout-body">
+            <strong>Use Daily Quest as your morning checklist</strong>
+            <p>If you're not sure what to do each morning, the Daily Quest tells you exactly: how many leads to pull, how many emails to send, and whether any leads need a follow-up today.</p>
+          </div>
+        </div>
+        <h3>Daily Fuel</h3>
+        <p>Below the quest, the <strong>Daily Fuel</strong> panel surfaces 3 intelligence items: recent news about your top prospects, industry signals, or LinkedIn activity relevant to active leads. Use these for email hooks or meeting talking points.</p>
+        <h3>Email sequence performance</h3>
+        <p>Cards at the bottom show performance per email step (Email 1, 2, 3). Each card shows reply rate and the AI's assessment of that step's effectiveness.</p>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── PULL LEADS ── -->
+      <section class="doc-section" id="pull-leads">
+        <div class="section-tag">Daily Workflow</div>
+        <h2>Pulling New Leads</h2>
+        <p class="intro">Pulling leads is how new prospects enter your pipeline. Lead Machine searches Apollo's database using your ICP, scores the results, and presents a draft list for your review before anything is committed.</p>
+        <div class="screenshot-wrap">
+          <img src="../screen-pull-leads.jpg" alt="Pull New Leads modal — animated radar, Apollo search, ICP filtering, live checklist" loading="lazy" />
+          <div class="screenshot-caption">Pull New Leads modal — Apollo search with ICP filtering, live progress checklist, and draft approval step</div>
+        </div>
+        <h3>Starting a pull</h3>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Click "Pull New Leads" from the Dashboard or Leads page</strong><p>A modal opens with the animated radar and pull configuration panel.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Choose your batch strategy</strong><p>Three strategies are available (see below). Each trades off between precision and discovery.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Set batch size</strong><p>Typically 10–25 leads per pull. Smaller batches are easier to review; larger batches are more efficient if you trust your ICP config.</p></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Watch the pull run</strong><p>The live checklist shows progress: Search → Filter → Score → Deduplicate → Draft. Takes 15–30 seconds.</p></div></div>
+          <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Review the draft list</strong><p>Leads shown with ICP scores and company info. Approve individually, skip others, or approve all. Only approved leads enter the pipeline and consume Apollo credits.</p></div></div>
+        </div>
+        <h3>Batch strategies</h3>
+        <table class="doc-table">
+          <thead><tr><th>Strategy</th><th>What it does</th><th>Best for</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Exploit</strong></td><td>Pulls leads closely matching your proven ICP — high scores, similar to past wins</td><td>Volume days, when pipeline is thin</td></tr>
+            <tr><td><strong>Explore</strong></td><td>Pulls leads from adjacent segments — slightly outside your main ICP</td><td>Testing new markets or title variants</td></tr>
+            <tr><td><strong>Wildcard</strong></td><td>Broader search with looser ICP criteria — varied results, some surprises</td><td>Discovery — finding unexpected fit</td></tr>
+          </tbody>
+        </table>
+        <div class="screenshot-wrap">
+          <img src="../screen-apollo-preview.jpg" alt="Apollo lead preview panel showing company details and ICP match signals" loading="lazy" />
+          <div class="screenshot-caption">Apollo preview panel — company details, ICP signals, and confidence rating before approval</div>
+        </div>
+        <h3>Deduplication</h3>
+        <p>Lead Machine automatically deduplicates against your existing pipeline. If a lead (matched by email or LinkedIn URL) already exists in any status, they won't appear in the draft list.</p>
+        <h3>Apollo preview</h3>
+        <p>Before approving, click any lead in the draft list to open the Apollo Preview panel. This shows full company details, the lead's LinkedIn, recent funding rounds, and the exact ICP signals that drove the score.</p>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── LEADS TABLE ── -->
+      <section class="doc-section" id="leads">
+        <div class="section-tag">Daily Workflow</div>
+        <h2>Leads Table</h2>
+        <p class="intro">The Leads page is where all active prospects live. Search, filter, sort, and action leads — or switch to Kanban view to see pipeline stages visually.</p>
+        <div class="screenshot-wrap">
+          <img src="../screen-leads.jpg" alt="Leads table with search, filter controls, ICP scores, and status indicators" loading="lazy" />
+          <div class="screenshot-caption">Leads table — search bar, filter panel, ICP scores, pipeline status badges, and quick-action buttons</div>
+        </div>
+        <h3>Table columns</h3>
+        <table class="doc-table">
+          <thead><tr><th>Column</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Name / Company</strong></td><td>Lead name with company — click to open Lead Detail</td></tr>
+            <tr><td><strong>Title</strong></td><td>Job title as retrieved from Apollo</td></tr>
+            <tr><td><strong>ICP Score</strong></td><td>1–10 score. Color-coded: green (8+), amber (5–7), red (1–4)</td></tr>
+            <tr><td><strong>Status</strong></td><td>Current pipeline stage</td></tr>
+            <tr><td><strong>Last Activity</strong></td><td>Most recent action taken</td></tr>
+            <tr><td><strong>Actions</strong></td><td>Quick buttons: Write email, Open LinkedIn, Archive</td></tr>
+          </tbody>
+        </table>
+        <h3>Filtering &amp; search</h3>
+        <div class="feature-grid">
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Full-text search</strong><p>Search by name, company, title, or email. Instant results as you type.</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Status filter</strong><p>Show only leads in a specific pipeline stage — useful for processing a whole batch at once.</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>ICP score filter</strong><p>Filter to show only leads above a minimum ICP threshold (e.g., 7+).</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Campaign filter</strong><p>Focus on one segment at a time when running multiple campaigns.</p></div></div>
+        </div>
+        <h3>Pipeline stages reference</h3>
+        <table class="doc-table">
+          <thead><tr><th>Stage</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td><span class="pill pill-blue">New</span></td><td>Lead approved, no email sent yet</td></tr>
+            <tr><td><span class="pill pill-blue">Email 1</span></td><td>First email sent, awaiting response</td></tr>
+            <tr><td><span class="pill pill-blue">Email 2</span></td><td>Follow-up sent after no reply to Email 1</td></tr>
+            <tr><td><span class="pill pill-blue">Email 3</span></td><td>Final email in the sequence</td></tr>
+            <tr><td><span class="pill pill-amber">Replied</span></td><td>Lead responded — move to meeting or nurture</td></tr>
+            <tr><td><span class="pill pill-green">Meeting</span></td><td>Meeting scheduled or held</td></tr>
+            <tr><td><span class="pill pill-green">Proposal</span></td><td>Proposal sent or in progress</td></tr>
+            <tr><td><span class="pill pill-green">Client</span></td><td>Deal closed — active client</td></tr>
+            <tr><td><span class="pill pill-red">Archived</span></td><td>Not a fit or unsubscribed</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── LEAD DETAIL ── -->
+      <section class="doc-section" id="lead-detail">
+        <div class="section-tag">Daily Workflow</div>
+        <h2>Lead Detail</h2>
+        <p class="intro">The Lead Detail page is the full profile for a single prospect. Everything about them lives here: their pipeline position, the emails you've sent, company intel, AI signals, your notes, and deal information.</p>
+        <div class="screenshot-wrap">
+          <img src="../screen-lead-detail.jpg" alt="Lead detail page — pipeline stage tracker, company overview, ICP score, activity feed" loading="lazy" />
+          <div class="screenshot-caption">Lead Detail — pipeline stage tracker, company info panel, ICP score, and activity feed</div>
+        </div>
+        <h3>Pipeline stage tracker</h3>
+        <p>A horizontal stage bar at the top shows where this lead sits. Click any stage to manually move the lead there. The system also advances leads automatically when emails are marked as sent.</p>
+        <h3>Tabs</h3>
+        <table class="doc-table">
+          <thead><tr><th>Tab</th><th>What's inside</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Overview</strong></td><td>Company info, ICP score breakdown, Apollo data, LinkedIn link</td></tr>
+            <tr><td><strong>Notes</strong></td><td>Free-text notes about this lead — call notes, context, anything worth remembering</td></tr>
+            <tr><td><strong>Deals</strong></td><td>Deal value, stage, probability, and next steps if a deal is in progress</td></tr>
+            <tr><td><strong>Activity</strong></td><td>Chronological feed of every action: emails sent, status changes, notes added</td></tr>
+          </tbody>
+        </table>
+        <h3>Email action buttons</h3>
+        <p>Prominent CTA buttons let you jump straight to email generation for each sequence step. The button for the current/next step is highlighted. Past steps are shown as sent with a timestamp.</p>
+        <div class="screenshot-wrap">
+          <img src="../screen-lead-intelligence.jpg" alt="Lead intelligence panel with AI signals, recent news, and relevance indicators" loading="lazy" />
+          <div class="screenshot-caption">Lead Intelligence panel — AI-generated signals, recent news hooks, and relevance indicators</div>
+        </div>
+        <h3>Lead Intelligence panel</h3>
+        <p>Below the main tabs, the <strong>Lead Intelligence</strong> panel shows AI-generated signals for this specific lead: recent company news, LinkedIn activity, funding announcements, and trigger events that could be used as email hooks.</p>
+        <div class="callout callout-tip">
+          <div class="callout-icon">💡</div>
+          <div class="callout-body">
+            <strong>Use intelligence signals in V1 emails</strong>
+            <p>The Email Writer's V1 (Actueel/News-based) variant is built specifically to incorporate these signals. If the intelligence panel shows a recent news item, V1 will reference it.</p>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── EMAIL GENERATION ── -->
+      <section class="doc-section" id="email-generation">
+        <div class="section-tag">Daily Workflow</div>
+        <h2>Email Generation</h2>
+        <p class="intro">The Email Writer is Lead Machine's core AI feature. For each lead, it generates three distinct email variants tailored to the lead's role, company, and industry — using your value proposition, reference clients, and the lead's intelligence signals.</p>
+        <div class="screenshot-wrap">
+          <img src="../screen-email-writer.jpg" alt="Email writer showing 3 variants with AI reasoning and reply probability" loading="lazy" />
+          <div class="screenshot-caption">Email Writer — three variants (V1 Actueel, V2 Thematisch, V3 Rol/Sector), AI reasoning panel, and reply probability estimate</div>
+        </div>
+        <h3>The three variants</h3>
+        <table class="doc-table">
+          <thead><tr><th>Variant</th><th>Angle</th><th>When it works best</th></tr></thead>
+          <tbody>
+            <tr><td><strong>V1 — Actueel</strong></td><td>News-based. References a recent event or signal specific to the lead's company</td><td>When there's fresh intelligence in the Lead Intelligence panel</td></tr>
+            <tr><td><strong>V2 — Thematisch</strong></td><td>Theme-based. Ties your offer to a broad challenge or trend in the lead's industry</td><td>When there's no specific news hook but a clear industry angle</td></tr>
+            <tr><td><strong>V3 — Rol/Sector</strong></td><td>Role &amp; sector specific. Speaks to the lead's job title and typical pain points of their function</td><td>Default when V1 and V2 don't fit — always relevant</td></tr>
+          </tbody>
+        </table>
+        <div class="screenshot-wrap">
+          <img src="../screen-email-generated.jpg" alt="Generated email with subject line, body copy, and action buttons" loading="lazy" />
+          <div class="screenshot-caption">Generated email — subject line, body copy, AI reasoning toggle, copy button, and Gmail open button</div>
+        </div>
+        <h3>AI reasoning panel</h3>
+        <p>Each variant shows an expandable <strong>AI Reasoning</strong> section explaining why the email was written the way it was: which signals were used, which reference client was selected, and the logic behind the opening hook.</p>
+        <h3>Reply probability</h3>
+        <p>Lead Machine shows an estimated <strong>reply probability</strong> (e.g., ~8%) based on historical performance of similar emails to similar profiles. Variants with higher estimated probability are shown first.</p>
+        <h3>Actions</h3>
+        <div class="feature-grid">
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Copy to clipboard</strong><p>Copy subject + body with one click. Paste into any email client.</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Open in Gmail</strong><p>Opens Gmail compose with subject and body pre-filled. Add the recipient and send.</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Translate EN ↔ NL</strong><p>Toggle between English and Dutch across all three variants simultaneously.</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Regenerate</strong><p>Not happy with a variant? The AI will try a different angle using the same signals.</p></div></div>
+        </div>
+        <div class="screenshot-wrap">
+          <img src="../screen-email-generating.jpg" alt="Email generation in progress — streaming generation with live preview" loading="lazy" />
+          <div class="screenshot-caption">Generation in progress — emails stream in live so you can read as they're written</div>
+        </div>
+        <h3>Sending flow</h3>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Generate emails for the lead</strong><p>From Lead Detail, click the Email CTA button for the current sequence step.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Choose the best variant</strong><p>Read all three. Pick the one that feels most natural and relevant. Edit freely — they're a starting point, not a final draft.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Click "Open in Gmail" or copy</strong><p>Send via Gmail. Once sent, click <strong>Mark as Sent</strong> in Lead Machine to advance the lead's pipeline stage and log the activity.</p></div></div>
+        </div>
+        <div class="callout callout-warning">
+          <div class="callout-icon">⚠️</div>
+          <div class="callout-body">
+            <strong>Always mark as sent</strong>
+            <p>Lead Machine doesn't read your Gmail — it only knows about sends you manually mark. If you forget to mark, the pipeline stage won't advance and follow-up reminders won't trigger correctly.</p>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── MEETINGS ── -->
+      <section class="doc-section" id="meetings">
+        <div class="section-tag">Daily Workflow</div>
+        <h2>Meetings</h2>
+        <p class="intro">The Meetings module tracks every intro call, pitch, and follow-up. Use it to log outcomes, sync with Google Calendar, and build a record of your pipeline conversations.</p>
+        <div class="screenshot-wrap">
+          <img src="../screen-meetings.jpg" alt="Meetings overview table with company, role, date, outcome columns" loading="lazy" />
+          <div class="screenshot-caption">Meetings overview — filter by status, company/role/date table, and outcome logging</div>
+        </div>
+        <h3>Meeting statuses</h3>
+        <table class="doc-table">
+          <thead><tr><th>Status</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><span class="pill pill-amber">To schedule</span></td><td>Lead replied positively — meeting not yet booked</td></tr>
+            <tr><td><span class="pill pill-blue">Scheduled</span></td><td>Calendar invite sent, meeting upcoming</td></tr>
+            <tr><td><span class="pill pill-green">Held</span></td><td>Meeting took place — outcome logged</td></tr>
+            <tr><td><span class="pill pill-red">No-show</span></td><td>Lead didn't attend — follow up to reschedule</td></tr>
+          </tbody>
+        </table>
+        <h3>Logging a meeting</h3>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Move lead to Meeting stage</strong><p>From Lead Detail or the Leads table, advance the lead to the Meeting stage when they agree to meet.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Add meeting details</strong><p>Set the date/time, meeting format (Zoom/Teams/physical), and any pre-meeting notes.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-body"><strong>After the meeting: log the outcome</strong><p>Mark as Held and select an outcome from the list below.</p></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Add meeting notes</strong><p>Log key points from the call. These feed into the AI Engine and help generate better follow-up emails.</p></div></div>
+        </div>
+        <h3>Google Calendar integration</h3>
+        <p>When Google Calendar is connected, Lead Machine creates calendar events for scheduled meetings. Events appear in your primary calendar under the Envoya Lead Machine label.</p>
+        <h3>Outcome types</h3>
+        <table class="doc-table">
+          <thead><tr><th>Outcome</th><th>Next step in pipeline</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Positive interest</strong></td><td>Stay in Meeting stage; schedule next call or send proposal</td></tr>
+            <tr><td><strong>Proposal requested</strong></td><td>Advance to Proposal stage</td></tr>
+            <tr><td><strong>Follow-up required</strong></td><td>Stay in Meeting; reminder set for re-engagement</td></tr>
+            <tr><td><strong>Not a fit</strong></td><td>Archived with reason logged</td></tr>
+            <tr><td><strong>Referred elsewhere</strong></td><td>Archived with referral note</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── NURTURE ── -->
+      <section class="doc-section" id="nurture">
+        <div class="section-tag">Advanced Features</div>
+        <h2>Nurture</h2>
+        <p class="intro">Not every replied lead is ready to buy today. The Nurture module keeps warm leads alive — tracking touches, surfacing re-engagement signals, and prompting you when the timing looks right to reach out again.</p>
+        <h3>What qualifies as a nurture lead</h3>
+        <ul style="list-style:none;padding:0;margin:16px 0;">
+          <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:13.5px;color:var(--text-sec);"><span style="color:var(--indigo-light);flex-shrink:0;">→</span>They replied but said "not right now" or "check back in Q3"</li>
+          <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:13.5px;color:var(--text-sec);"><span style="color:var(--indigo-light);flex-shrink:0;">→</span>A meeting resulted in "follow up in X months"</li>
+          <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:13.5px;color:var(--text-sec);"><span style="color:var(--indigo-light);flex-shrink:0;">→</span>You manually moved them (strong ICP match, just not the right time)</li>
+        </ul>
+        <h3>Nurture signals</h3>
+        <div class="feature-grid">
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Job change</strong><p>The lead moved to a new company or got promoted — high relevance signal for re-engagement.</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Company news</strong><p>Funding round, new product launch, or expansion announcement.</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Time-based trigger</strong><p>The "check back in X months" date has passed — automatic reminder to reach out.</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>LinkedIn activity</strong><p>The lead posted content relevant to your offering — a natural conversation opener.</p></div></div>
+        </div>
+        <h3>Re-engagement flow</h3>
+        <p>When a signal fires, the lead appears in your Nurture queue with the signal highlighted. Generate a tailored re-engagement email (the AI uses the signal as the hook) or dismiss if the timing still isn't right.</p>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── AI ENGINE ── -->
+      <section class="doc-section" id="ai-engine">
+        <div class="section-tag">Advanced Features</div>
+        <h2>AI Engine &amp; Learnings</h2>
+        <p class="intro">The AI Engine is Lead Machine's self-improving layer. It monitors what's working, adjusts ICP weights, and surfaces insights about your outreach — getting smarter the more you use it.</p>
+        <div class="screenshot-wrap">
+          <img src="../screen-ai-engine.jpg" alt="AI Engine learnings interface showing training timeline and signal performance" loading="lazy" />
+          <div class="screenshot-caption">AI Engine — training timeline, ICP weight adjustments, signal performance table, and learning history</div>
+        </div>
+        <h3>How it learns</h3>
+        <p>The AI Engine runs a learning cycle after every 5 logged meeting outcomes (or weekly, whichever comes first). It analyzes:</p>
+        <div class="feature-grid">
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Conversion by ICP dimension</strong><p>Which industries, titles, and company sizes converted to meetings vs. those that didn't reply.</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Email variant performance</strong><p>Which variant (V1/V2/V3) got the most replies for which lead type.</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Signal accuracy</strong><p>Whether intelligence signals used in emails correlated with better reply rates.</p></div></div>
+          <div class="feature-item"><div class="feature-bullet"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></div><div><strong>Sequence performance</strong><p>Whether Email 2 or Email 3 is recovering more leads than expected.</p></div></div>
+        </div>
+        <h3>Reviewing learnings</h3>
+        <p>The Learnings page shows a timeline of learning events with human-readable summaries: <em>"Leads in Fintech with 50–200 employees convert at 2× the average rate. Increasing Fintech ICP weight from 6 to 8."</em></p>
+        <p>You can accept, reject, or manually override any learning. Rejected learnings are noted but not applied — the system learns from your override.</p>
+        <h3>Training timeline</h3>
+        <p>A visual timeline shows when learning events occurred, what data was used, and the resulting changes to ICP weights or email strategies. Useful for auditing how the system has evolved and correlating changes with pipeline performance.</p>
+        <div class="callout callout-tip">
+          <div class="callout-icon">💡</div>
+          <div class="callout-body">
+            <strong>The more you log, the smarter it gets</strong>
+            <p>The AI Engine needs outcome data to learn. The more consistently you log meeting outcomes and mark emails as sent, the faster and more accurately it can adjust. Aim to log outcomes within 24 hours of each meeting.</p>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── REPORTS ── -->
+      <section class="doc-section" id="reports">
+        <div class="section-tag">Advanced Features</div>
+        <h2>Reports</h2>
+        <p class="intro">Reports give you a structured view of pipeline health, email performance, and conversion trends over time. Use them for weekly reviews, team updates, or to spot where your funnel needs work.</p>
+        <h3>Available reports</h3>
+        <table class="doc-table">
+          <thead><tr><th>Report</th><th>What it shows</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Pipeline Funnel</strong></td><td>Volume at each stage, drop-off rates between stages, average time in each stage</td></tr>
+            <tr><td><strong>Email Performance</strong></td><td>Per-variant reply rates, best-performing subject lines, performance by industry segment</td></tr>
+            <tr><td><strong>Conversion Metrics</strong></td><td>Lead-to-meeting rate, meeting-to-proposal rate, proposal-to-client rate</td></tr>
+            <tr><td><strong>ICP Performance</strong></td><td>Conversion rates broken down by ICP dimension — powered by AI Engine data</td></tr>
+            <tr><td><strong>Activity Log</strong></td><td>Full chronological log of all actions, filterable by date range and lead</td></tr>
+          </tbody>
+        </table>
+        <h3>Date ranges &amp; filters</h3>
+        <p>All reports support custom date ranges. Compare this month vs. last month, or look at a specific campaign period. Filter by campaign when running multi-brand outreach.</p>
+        <h3>Exporting</h3>
+        <p>Export any report as CSV or PDF. Useful for sharing with stakeholders or importing into external BI tools.</p>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── SCRIPT WRITER ── -->
+      <section class="doc-section" id="script-writer">
+        <div class="section-tag">Advanced Features</div>
+        <h2>Script Writer</h2>
+        <p class="intro">The Script Writer is where you define the messaging framework that powers the Email Writer. Think of it as the creative brief the AI works from — update it when your positioning evolves or when you want to test new angles.</p>
+        <h3>Components</h3>
+        <table class="doc-table">
+          <thead><tr><th>Component</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Value Proposition</strong></td><td>Your core "what we do and for whom" in 2–3 sentences. Used in every email as the offer statement</td></tr>
+            <tr><td><strong>VP Variants</strong></td><td>Angle-specific variants for different company types. The AI picks the best fit per lead</td></tr>
+            <tr><td><strong>Reference clients</strong></td><td>Library of client names + sectors for social proof. AI selects the most relevant one per lead's industry</td></tr>
+            <tr><td><strong>Hooks library</strong></td><td>Tested opening hooks. Add your own or accept AI suggestions based on performance data</td></tr>
+            <tr><td><strong>CTA variants</strong></td><td>Different call-to-action phrasings to test (e.g., "15 min call" vs. "quick intro")</td></tr>
+          </tbody>
+        </table>
+        <h3>Keeping the script fresh</h3>
+        <p>Review your Script Writer every 4–6 weeks. Update the Value Proposition when your offering evolves, add new reference clients as deals close, and retire hooks that the AI Engine flags as underperforming.</p>
+        <div class="callout callout-tip">
+          <div class="callout-icon">💡</div>
+          <div class="callout-body">
+            <strong>Specific beats generic</strong>
+            <p>The more specific your reference clients and VP variants, the more relevant the AI's emails will be. "We help B2B SaaS companies with 50–300 employees extract value from their CRM data" produces far better output than "we help companies with AI."</p>
+          </div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── CAMPAIGNS ── -->
+      <section class="doc-section" id="campaigns">
+        <div class="section-tag">Advanced Features</div>
+        <h2>Campaigns</h2>
+        <p class="intro">Campaigns let you run separate outreach programs with distinct ICPs, messaging, and sender accounts — all from one Lead Machine workspace. Useful if you're running outreach for multiple companies or segments simultaneously.</p>
+        <h3>When to use campaigns</h3>
+        <ul style="list-style:none;padding:0;margin:16px 0;">
+          <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:13.5px;color:var(--text-sec);"><span style="color:var(--indigo-light);flex-shrink:0;">→</span><span>Running outreach for two brands with different ICPs (e.g., Brush AI and Jungle Minds)</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:13.5px;color:var(--text-sec);"><span style="color:var(--indigo-light);flex-shrink:0;">→</span><span>Testing a new vertical with its own messaging before folding into the main campaign</span></li>
+          <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:13.5px;color:var(--text-sec);"><span style="color:var(--indigo-light);flex-shrink:0;">→</span><span>Sending from a different Gmail address per campaign</span></li>
+        </ul>
+        <h3>Campaign settings</h3>
+        <table class="doc-table">
+          <thead><tr><th>Setting</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Campaign name</strong></td><td>Internal label, not visible to leads</td></tr>
+            <tr><td><strong>Sender account</strong></td><td>Which connected Gmail account to send from</td></tr>
+            <tr><td><strong>ICP config</strong></td><td>Campaign-specific ICP — overrides workspace default</td></tr>
+            <tr><td><strong>Script Writer</strong></td><td>Campaign-specific VP and reference clients</td></tr>
+            <tr><td><strong>Sector weights</strong></td><td>Custom sector scoring independent per campaign</td></tr>
+            <tr><td><strong>Exclusion list</strong></td><td>Companies to never pull for this campaign</td></tr>
+            <tr><td><strong>Status</strong></td><td>Active / Paused / Archived</td></tr>
+          </tbody>
+        </table>
+        <h3>Campaign-level reporting</h3>
+        <p>The Reports module lets you filter by campaign, so you can compare performance across your different outreach programs side by side.</p>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── SETTINGS ── -->
+      <section class="doc-section" id="settings">
+        <div class="section-tag">Reference</div>
+        <h2>Settings</h2>
+        <p class="intro">Settings is where you configure your workspace, manage users, and control notifications. Most settings are configured once during onboarding and rarely need to change.</p>
+        <h3>Organization</h3>
+        <table class="doc-table">
+          <thead><tr><th>Setting</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Workspace name</strong></td><td>Your organization name as shown in the header</td></tr>
+            <tr><td><strong>Default timezone</strong></td><td>Used for scheduling and meeting time display</td></tr>
+            <tr><td><strong>Default language</strong></td><td>EN or NL — affects default email language in the writer</td></tr>
+            <tr><td><strong>Subscription</strong></td><td>Current plan, billing info, and usage stats</td></tr>
+          </tbody>
+        </table>
+        <h3>Users &amp; permissions</h3>
+        <table class="doc-table">
+          <thead><tr><th>Role</th><th>Access</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Admin</strong></td><td>Full access: settings, billing, user management, all leads</td></tr>
+            <tr><td><strong>Member</strong></td><td>Full access to leads and email generation; no billing or user management</td></tr>
+          </tbody>
+        </table>
+        <h3>Notifications</h3>
+        <ul style="list-style:none;padding:0;margin:12px 0;">
+          <li style="display:flex;gap:10px;padding:5px 0;font-size:13.5px;color:var(--text-sec);"><span style="color:var(--indigo-light);">→</span>Daily quest reminder (configurable time)</li>
+          <li style="display:flex;gap:10px;padding:5px 0;font-size:13.5px;color:var(--text-sec);"><span style="color:var(--indigo-light);">→</span>Nurture signal fired for a lead</li>
+          <li style="display:flex;gap:10px;padding:5px 0;font-size:13.5px;color:var(--text-sec);"><span style="color:var(--indigo-light);">→</span>AI Engine learning cycle completed</li>
+          <li style="display:flex;gap:10px;padding:5px 0;font-size:13.5px;color:var(--text-sec);"><span style="color:var(--indigo-light);">→</span>Meeting reminder (1 hour before)</li>
+        </ul>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── INTEGRATIONS ── -->
+      <section class="doc-section" id="integrations">
+        <div class="section-tag">Reference</div>
+        <h2>Integrations</h2>
+        <p class="intro">Lead Machine connects to a small set of external tools. All integrations are managed in Settings → Integrations.</p>
+        <table class="doc-table">
+          <thead><tr><th>Integration</th><th>What it powers</th><th>Required</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Gmail (OAuth)</strong></td><td>Email send / compose, Gmail compose pre-fill</td><td><span class="pill pill-red">Required</span></td></tr>
+            <tr><td><strong>Apollo API</strong></td><td>Lead search, contact enrichment, company data</td><td><span class="pill pill-red">Required</span></td></tr>
+            <tr><td><strong>Brave Search API</strong></td><td>Real-time company news and web signals for Lead Intelligence</td><td><span class="pill pill-amber">Recommended</span></td></tr>
+            <tr><td><strong>Google Calendar</strong></td><td>Meeting sync, calendar event creation</td><td><span class="pill pill-blue">Optional</span></td></tr>
+          </tbody>
+        </table>
+        <h3>Getting a Brave Search API key</h3>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Go to api.search.brave.com</strong><p>Sign up for a free or paid tier. The free tier covers several thousand queries per month — sufficient for most users.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Create an API key</strong><p>Under your account, create a new API subscription key.</p></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Paste into Lead Machine</strong><p>Settings → Integrations → Brave Search. Paste and save. Lead Intelligence will start populating within minutes.</p></div></div>
+        </div>
+      </section>
+      <div class="section-divider"></div>
+
+      <!-- ── CHANGELOG ── -->
+      <section class="doc-section" id="changelog">
+        <div class="section-tag">Reference</div>
+        <h2>Changelog</h2>
+        <p class="intro">What's new in each version of Lead Machine.</p>
+        <div class="changelog-entry">
+          <h3><span class="badge badge-indigo" style="font-size:13px;padding:4px 12px;">v1.4.6</span> <span style="margin-left:12px;font-size:15px;font-weight:400;color:var(--text-dim);">April 1, 2026</span></h3>
+          <ul>
+            <li>AI Engine learning cycle now runs automatically after every 5 logged meeting outcomes (was weekly-only)</li>
+            <li>Email Writer: reply probability estimates now shown per variant with historical confidence range</li>
+            <li>Lead Intelligence: improved signal relevance scoring using Brave Search API integration</li>
+            <li>Nurture: new LinkedIn activity trigger — surfaces leads who recently posted relevant content</li>
+            <li>Dashboard: Daily Fuel panel now shows 3 intelligence items (was 2) with source links</li>
+            <li>Pull Leads: draft approval flow redesigned — approve/skip per lead with inline Apollo preview</li>
+            <li>Reports: new ICP Performance report showing conversion rates broken down by ICP dimension</li>
+            <li>Campaigns: sector weights now configurable per campaign independently</li>
+            <li>Email Writer: EN↔NL translation now available on all three variants simultaneously</li>
+            <li>General: dark mode rendering improvements on Safari and Firefox</li>
+            <li>Performance: lead table loads 40% faster for workspaces with 500+ leads</li>
+          </ul>
+        </div>
+        <div class="changelog-entry" style="margin-top:32px;">
+          <h3><span class="badge badge-indigo" style="font-size:13px;padding:4px 12px;background:rgba(99,102,241,0.08);color:var(--text-dim);">v1.4.5</span> <span style="margin-left:12px;font-size:15px;font-weight:400;color:var(--text-dim);">March 14, 2026</span></h3>
+          <ul>
+            <li>Script Writer: VP variants now support per-industry overrides</li>
+            <li>Meetings: Google Calendar sync now bidirectional — cancellations reflected in Lead Machine</li>
+            <li>Leads table: new bulk-action toolbar for batch status changes</li>
+            <li>AI Engine: training timeline now shows before/after ICP weight comparison</li>
+            <li>Bug fix: Gmail compose pre-fill now handles special characters correctly</li>
+          </ul>
+        </div>
+        <div class="changelog-entry" style="margin-top:32px;border-left-color:var(--surface-3);">
+          <h3><span class="badge" style="font-size:13px;padding:4px 12px;background:transparent;border-color:var(--border-soft);color:var(--text-faint);">v1.4.0</span> <span style="margin-left:12px;font-size:15px;font-weight:400;color:var(--text-faint);">February 2026</span></h3>
+          <ul>
+            <li>Multi-campaign support introduced</li>
+            <li>Lead Intelligence panel added to Lead Detail</li>
+            <li>Nurture module launched (beta)</li>
+            <li>Daily Quest gamification system</li>
+            <li>Batch strategies (Exploit / Explore / Wildcard) for pull configuration</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <footer class="doc-footer">
+      <div>© 2026 Envoya · Lead Machine v1.4.6</div>
+      <div style="display:flex;gap:20px;">
+        <a href="https://envoya.tech">envoya.tech</a>
+        <a href="https://envoya.tech/privacy">Privacy Policy</a>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<script>
+  // Hamburger / mobile nav
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  hamburger.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  });
+
+  overlay.addEventListener('click', closeSidebar);
+
+  sidebar.querySelectorAll('.sidebar-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) closeSidebar();
+    });
+  });
+
+  // Scroll spy
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.sidebar-link[href^="#"]');
+  const HEADER_H = 56 + 40;
+
+  function updateActive() {
+    let current = '';
+    sections.forEach(section => {
+      if (section.getBoundingClientRect().top <= HEADER_H) {
+        current = section.getAttribute('id');
+      }
+    });
+    links.forEach(link => {
+      const href = link.getAttribute('href').replace('#', '');
+      link.classList.toggle('active', href === current);
+    });
+  }
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+</script>
+</body>
+</html>
